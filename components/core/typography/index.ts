@@ -1,1 +1,1 @@
-export * from './typography-config.interface';
+export * from './public-api';

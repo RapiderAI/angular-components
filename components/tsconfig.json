@@ -1,6 +1,13 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "preserveValueImports": false,
+    "isolatedModules": false,
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "strict": false,
+    "noFallthroughCasesInSwitch": false,
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {

@@ -1,0 +1,69 @@
+<div class="button">
+  <button [id]="elementId()"
+          nz-button
+          nz-popconfirm
+          nz-tooltip
+          [ngStyle]="borderStyles"
+          [nzTooltipTitle]="tooltipText()"
+          [nzTooltipOverlayClassName]="'button-tooltip'"
+          [nzTooltipPlacement]="tooltipPlacement()"
+          [nzPopconfirmTitle]="popconfirmTitle()"
+          [nzCondition]="emitWithoutPopconfirm()"
+          [nzType]="type() ?? 'default'"
+          [nzCancelText]="popconfirmCancelText()"
+          [nzOkText]="popconfirmOkText()"
+          [nzOkDanger]="popconfirmOkDanger()"
+          [nzShape]="shape()"
+          [nzSize]="size()"
+          [type]="formButtonType() || 'button'"
+          [nzGhost]="transparent()"
+          [nzBlock]="block()"
+          [nzLoading]="loading()"
+          [disabled]="disabled()"
+          [class]="(colorType() ?? '' + customCssClass() ?? '') ? ' ' + customCssClass() : ''"
+          [style.border-top]="borderSettings()?.borderTop + ' ' + borderSettings()?.borderStyle"
+          [style.border-right]="borderSettings()?.borderRight + ' ' + borderSettings()?.borderStyle"
+          [style.border-bottom]="borderSettings()?.borderBottom + ' ' + borderSettings()?.borderStyle"
+          [style.border-left]="borderSettings()?.borderLeft + ' ' + borderSettings()?.borderStyle"
+          [style.border-radius]="borderSettings()?.borderRadius"
+          [style.border-top-left-radius]="borderSettings()?.borderTopLeftRadius"
+          [style.border-top-right-radius]="borderSettings()?.borderTopRightRadius"
+          [style.border-bottom-right-radius]="borderSettings()?.borderBottomRightRadius"
+          [style.border-bottom-left-radius]="borderSettings()?.borderBottomLeftRadius"
+          [style.border-color]="borderSettings()?.borderColor"
+          [style.border-style]="borderSettings()?.borderStyle"
+          [style.padding]="paddingSettings()?.all"
+          [style.margin]="marginSettings()?.all"
+          [style.box-shadow]="shadowSettings()?.boxShadow"
+          [style.color]="customColorSettings()?.color"
+          [style.background-color]="customColorSettings()?.backgroundColor"
+          [style.width]="customSizeSettings()?.width"
+          [style.max-width]="customSizeSettings()?.maxWidth"
+          [style.min-width]="customSizeSettings()?.minWidth"
+          [style.height]="customSizeSettings()?.height"
+          [style.max-height]="customSizeSettings()?.maxHeight"
+          [style.min-height]="customSizeSettings()?.minHeight"
+          (click)="onButtonClick()"
+          (mouseleave)="onMouseLeave($event)"
+          (nzOnConfirm)="onConfirm()"
+          (nzOnCancel)="onCancel()">
+    <div [ngClass]="iconPlacement() === ButtonIconPlacement.Right ? 'button-icon-right' : 'button-content'">
+      @if(icon()) {
+      <div class="icon"
+           [ngClass]="disabled() ? 'disabled-icon' : null">
+        <rpd-icon [name]="icon()!.name"
+                  [color]="icon()!.color"
+                  [type]="icon()!.type"
+                  [theme]="icon()!.theme"
+                  [size]="icon()!.size"></rpd-icon>
+      </div>
+      }
+      @if(text()) {
+      <div *ngIf="text()"
+           class="text">
+        {{ text() }}
+      </div>
+      }
+    </div>
+  </button>
+</div>

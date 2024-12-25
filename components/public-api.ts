@@ -1,1 +1,1 @@
-export * from './text/index';
+export default void 0;

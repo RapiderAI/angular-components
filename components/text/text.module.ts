@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { TextComponent } from './text.component';
 
 @NgModule({

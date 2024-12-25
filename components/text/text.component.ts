@@ -2,53 +2,18 @@ import { CommonModule } from "@angular/common";
 import { Component, computed, input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { TypographyConfig } from "../core/typography/typography-config.interface";
-import { TextMode } from "../core/text/text-mode.enum";
-import { ColorConfig } from "../core/color/color-config.interface";
-
+import { TypographyConfig } from 'rpd-components/core/typography';
+import { TextMode } from 'rpd-components/core/text';
+import { ColorConfig } from 'rpd-components/core/style';
 
 @Component({
-  selector: 'text-component',
+  selector: 'rpd-text',
   standalone: true,
   imports: [
     CommonModule,
     NzTypographyModule
   ],
-  template: `
-    @if (textMode() === TextMode.Html) {
-      <div class="html-mode">
-        <span [innerHTML]="safeHTML()"
-              nz-typography></span>
-      </div>
-    } @else if (textMode() === TextMode.Text) {
-      <div class="simple-text-mode">
-        <p [ngStyle]="{
-          'font-size': typography()?.fontSize,
-          'font-weight': typography()?.fontWeight,
-          'font-style': typography()?.fontStyle,
-          'text-align': typography()?.textAlign,
-          'text-shadow': typography()?.textShadow,
-          'font-family': typography()?.fontFamily,
-          'font-stretch': typography()?.fontStretch,
-          'text-indent': typography()?.textIndent,
-          'letter-spacing': typography()?.letterSpacing,
-          'line-height': typography()?.lineHeight,
-          'word-spacing': typography()?.wordSpacing,
-          'text-decoration': typography()?.textDecoration,
-          'text-transform': typography()?.textTransform,
-          'user-select': typography()?.userSelect,
-          'background-color': colorSettings()?.backgroundColor,
-          'color': colorSettings()?.color
-        }">
-          @defer (on viewport) {
-            {{ text() }}
-          } @placeholder {
-            <span>Loading text...</span>
-          }
-        </p>
-      </div>
-    }
-  `,
+  templateUrl: './text.component.html',
 })
 export class TextComponent {
 

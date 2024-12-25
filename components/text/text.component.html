@@ -1,0 +1,33 @@
+@if (textMode() === TextMode.Html) {
+  <div class="html-mode">
+    <span [innerHTML]="safeHTML()"
+          nz-typography></span>
+  </div>
+} @else if (textMode() === TextMode.Text) {
+  <div class="simple-text-mode">
+    <p [ngStyle]="{
+      'font-size': typography()?.fontSize,
+      'font-weight': typography()?.fontWeight,
+      'font-style': typography()?.fontStyle,
+      'text-align': typography()?.textAlign,
+      'text-shadow': typography()?.textShadow,
+      'font-family': typography()?.fontFamily,
+      'font-stretch': typography()?.fontStretch,
+      'text-indent': typography()?.textIndent,
+      'letter-spacing': typography()?.letterSpacing,
+      'line-height': typography()?.lineHeight,
+      'word-spacing': typography()?.wordSpacing,
+      'text-decoration': typography()?.textDecoration,
+      'text-transform': typography()?.textTransform,
+      'user-select': typography()?.userSelect,
+      'background-color': colorSettings()?.backgroundColor,
+      'color': colorSettings()?.color
+    }">
+      @defer (on viewport) {
+        {{ text() }}
+      } @placeholder {
+        <span>Loading text...</span>
+      }
+    </p>
+  </div>
+}
