@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnChanges, OnInit, output, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,21 +10,20 @@ import { IconType, FontAwesomeIconAnimation, NgZorroIconTheme, FontAwesomeIconTy
   imports: [
     CommonModule,
     NzIconModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IconComponent implements OnInit, OnChanges {
+export class IconComponent {
 
   /* icon name */
   name = input.required<string>();
   /* icon library */
-  type = input<IconType | undefined>(IconType.FontAwesome);
-  typeSignal = signal(this.type());
+  type = input<IconType | string | undefined>(IconType.FontAwesome);
   /* theme for selected icon library */
-  theme = input<NgZorroIconTheme | undefined>(NgZorroIconTheme.Fill);
+  theme = input<NgZorroIconTheme | undefined>('fill');
   /* icon color */
   color = input<string | undefined>();
   /* icon font size */
@@ -36,23 +35,9 @@ export class IconComponent implements OnInit, OnChanges {
 
   iconClick = output<void>();
 
-  IconType = IconType;
+  protected readonly IconType = IconType;
 
   constructor() { }
-
-  ngOnInit(): void {
-    this.initDefault();
-  }
-
-  ngOnChanges(): void {
-    this.initDefault();
-  }
-
-  initDefault() {
-    if (!this.type()) {
-      this.typeSignal.set(IconType.FontAwesome);
-    }
-  }
 
   onIconClick() {
     if (this.isClickable()) {

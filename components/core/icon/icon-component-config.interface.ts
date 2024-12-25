@@ -1,7 +1,7 @@
 import { FontAwesomeIconAnimation } from './font-awesome-icon-animation.enum';
 import { FontAwesomeIconStyle } from './font-awesome-icon-style.enum';
 import { IconType } from './icon-type.enum';
-import { NgZorroIconTheme } from './ng-zorro-icon-theme.enum';
+import { NgZorroIconTheme } from './ng-zorro-icon-theme.type';
 
 export interface IconComponentConfig {
   name: string; /* icon class */

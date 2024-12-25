@@ -1,14 +1,12 @@
-{{ name() }}
-{{ type() }}
-
 <!-- FONT AWESOME ICON -->
-@if(name() && type() === IconType.FontAwesome) {
+@if(name() && (type() === IconType.FontAwesome || !type())) {
 <span>
   <i class='{{style()}} {{name()}} {{animation()}}'
      [style.color]="color()"
      [style.--fa-primary-color]="color()"
      [style.--fa-secondary-color]="secondColor()"
-     [style.font-size]="size()"></i>
+     [style.font-size]="size()"
+     (click)="onIconClick()"></i>
 </span>
 }
 
@@ -26,22 +24,13 @@
 
 <!-- MATERIAL ICON -->
 @else if(name() && type() === IconType.Material) {
-<mat-icon>{{ name() }}</mat-icon>
+<mat-icon [fontIcon]="name()"></mat-icon>
 }
 
 @else if(name() && type() === IconType.ImportIcon) {
 <span class="import-icon-area">
   <img [src]="name()"
        [style.width]="size()"
-       [style.height]="size()" />
+       [style.height]="size()"/>
 </span>
-}
-
-@else if(!name()) {
-<!-- NO ICON INFO -->
-<ng-container>
-  <!-- for font awesome placeholder -->
-  <!-- // TODO: comment until content editor object bug fixed -->
-  <!-- <i class="fas icon-does-not-exist"></i> -->
-</ng-container>
 }
