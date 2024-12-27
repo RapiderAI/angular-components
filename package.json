@@ -1,6 +1,10 @@
 {
-  "name": "rapider-angular-components",
-  "version": "0.0.0",
+  "name": "@rapider/angular-components",
+  "version": "0.0.1-beta",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -2,9 +2,9 @@ import { CommonModule } from "@angular/common";
 import { Component, computed, input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { TypographyConfig } from 'rpd-components/core/typography';
-import { TextMode } from 'rpd-components/core/text';
-import { ColorConfig } from 'rpd-components/core/style';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { TextMode } from '@rapider/angular-components/core/text';
+import { ColorConfig } from '@rapider/angular-components/core/style';
 
 @Component({
   selector: 'rpd-text',

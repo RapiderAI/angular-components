@@ -1,8 +1,8 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorConfig } from 'rpd-components/core/style';
-import { TypographyConfig } from 'rpd-components/core/typography';
-import { HeadingType } from 'rpd-components/core/heading';
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { HeadingType } from '@rapider/angular-components/core/heading';
 
 @Component({
   selector: 'rpd-heading',

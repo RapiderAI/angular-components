@@ -8,8 +8,8 @@ import { FormButtonType } from './form-button-type.enum';
 import { TooltipPlacement } from './tooltip-placement.enum';
 import { ButtonActionBehavior } from './button-action-behavior.enum';
 import { ButtonRedirectMode } from './button-redirect-mode.enum';
-import { BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig, BorderConfig } from 'rpd-components/core/style';
-import { IconComponentConfig } from 'rpd-components/core/icon';
+import { BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig, BorderConfig } from '@rapider/angular-components/core/style';
+import { IconComponentConfig } from '@rapider/angular-components/core/icon';
 
 export interface ButtonComponentConfig {
   key?: string;

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { MatIconModule } from '@angular/material/icon';
-import { IconType, FontAwesomeIconAnimation, NgZorroIconTheme, FontAwesomeIconType } from 'rpd-components/core/icon';
+import { IconType, FontAwesomeIconAnimation, NgZorroIconTheme, FontAwesomeIconType } from '@rapider/angular-components/core/icon';
 
 @Component({
   selector: 'rpd-icon',

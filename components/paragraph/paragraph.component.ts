@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TypographyConfig } from 'rpd-components/core/typography';
-import { ColorConfig } from 'rpd-components/core/style';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { ColorConfig } from '@rapider/angular-components/core/style';
 
 @Component({
   selector: 'rpd-paragraph',

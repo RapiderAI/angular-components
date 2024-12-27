@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { TextComponent } from 'rpd-components/text';
-import { IconComponentConfig } from 'rpd-components/core/icon';
-import { IconComponent } from 'rpd-components/icon';
+import { TextComponent } from '@rapider/angular-components/text';
+import { IconComponentConfig } from '@rapider/angular-components/core/icon';
+import { IconComponent } from '@rapider/angular-components/icon';
 import {
   SpacingConfig,
   BorderConfig,
@@ -14,7 +14,7 @@ import {
   BoxShadowConfig,
   ColorConfig,
   computeBorderStyles,
-} from 'rpd-components/core/style';
+} from '@rapider/angular-components/core/style';
 import {
   ButtonRedirectTarget,
   ButtonType,
@@ -24,7 +24,7 @@ import {
   FormButtonType,
   TooltipPlacement,
   ButtonIconPlacement,
-} from 'rpd-components/core/button';
+} from '@rapider/angular-components/core/button';
 
 @Component({
   selector: 'rpd-button',

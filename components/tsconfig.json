@@ -11,7 +11,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "rpd-components/*": [
+      "@rapider/angular-components/*": [
         "./*"
       ]
     },
