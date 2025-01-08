@@ -5,7 +5,7 @@
   </div>
 } @else if (textMode() === TextMode.Text) {
   <div class="simple-text-mode">
-    <p [ngStyle]="{
+    <span [ngStyle]="{
       'font-size': typography()?.fontSize,
       'font-weight': typography()?.fontWeight,
       'font-style': typography()?.fontStyle,
@@ -28,6 +28,6 @@
       } @placeholder {
         <span>Loading text...</span>
       }
-    </p>
+    </span>
   </div>
 }

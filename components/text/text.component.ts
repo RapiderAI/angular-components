@@ -18,7 +18,7 @@ import { ColorConfig } from '@rapider/angular-components/core/style';
 export class TextComponent {
 
   /* inputs */
-  textMode = input<TextMode, TextMode | string>(TextMode.Text, {
+  textMode = input<TextMode, TextMode | string | undefined>(TextMode.Text, {
     transform: (initialValue) => {
       if (!initialValue) {
         return TextMode.Text;
