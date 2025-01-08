@@ -1,0 +1,221 @@
+.button {
+  ::ng-deep {
+    .warning {
+      background-color: var(--warning-color);
+      border-color: var(--warning-color);
+      color: var(--primary-button-text-color);
+
+      &:hover,
+      &:focus {
+        background-color: var(--warning-hover-color);
+        border-color: var(--warning-hover-color);
+      }
+    }
+
+    .ant-btn-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--margin-x);
+      width: auto;
+      flex-wrap: nowrap;
+      padding-right: var(--padding-2x);
+      padding-left: var(--padding-2x);
+    }
+
+    .ant-btn-background-ghost.warning {
+      color: var(--warning-color);
+    }
+
+    .danger {
+      background-color: var(--danger-color);
+      border-color: var(--danger-color);
+      color: var(--primary-button-text-color);
+
+      &:hover,
+      &:focus {
+        background-color: var(--danger-hover-color);
+        border-color: var(--danger-hover-color);
+      }
+    }
+
+    .ant-btn-background-ghost.danger {
+      color: var(--danger-color);
+    }
+
+    .success {
+      background-color: var(--success-color);
+      border-color: var(--success-color);
+      color: var(--primary-button-text-color);
+
+      &:hover,
+      &:focus {
+        background-color: var(--success-hover-color);
+        border-color: var(--success-hover-color);
+      }
+    }
+
+    .ant-btn-background-ghost.success {
+      color: var(--success-color);
+    }
+
+    .info {
+      background-color: var(--info-color);
+      border-color: var(--info-color);
+      color: var(--primary-button-text-color);
+
+      &:hover,
+      &:focus {
+        background-color: var(--info-hover-color);
+        border-color: var(--info-hover-color);
+      }
+    }
+
+    .ant-btn-background-ghost.info {
+      color: var(--info-color);
+    }
+
+    .ant-btn-dashed.danger {
+      background-color: transparent;
+      border-color: var(--danger-color);
+      color: var(--danger-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: var(--danger-hover-color);
+        color: var(--danger-hover-color);
+      }
+    }
+
+    .ant-btn-dashed.warning {
+      background-color: transparent;
+      border-color: var(--warning-color);
+      color: var(--warning-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: var(--warning-hover-color);
+        color: var(--warning-hover-color);
+      }
+    }
+
+    .ant-btn-dashed.success {
+      background-color: transparent;
+      border-color: var(--success-color);
+      color: var(--success-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: var(--success-hover-color);
+        color: var(--success-hover-color);
+      }
+    }
+
+    .ant-btn-dashed.info {
+      background-color: transparent;
+      border-color: var(--info-color);
+      color: var(--info-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: var(--info-hover-color);
+        color: var(--info-hover-color);
+      }
+    }
+
+    .ant-btn-link.danger {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--danger-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--danger-hover-color);
+      }
+    }
+
+    .ant-btn-link.warning {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--warning-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--warning-hover-color);
+      }
+    }
+
+    .ant-btn-link.success {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--success-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--success-hover-color);
+      }
+    }
+
+    .ant-btn-link.info {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--info-color);
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--info-hover-color);
+      }
+    }
+  }
+}
+
+.button-icon-right {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-x);
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-x);
+}
+
+::ng-deep .button-tooltip {
+  .ant-tooltip-content {
+    width: max-content;
+
+    .ant-tooltip-inner {
+      max-width: unset;
+    }
+  }
+}
+
+::ng-deep .disabled-icon {
+  rpd-icon {
+    span {
+      i:not(:hover) {
+        color: var(--disabled-text-color);
+      }
+
+      i:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+}
