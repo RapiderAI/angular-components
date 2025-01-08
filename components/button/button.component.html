@@ -20,7 +20,7 @@
           [nzBlock]="block()"
           [nzLoading]="loading()"
           [disabled]="disabled()"
-          [class]="(colorType() ?? '' + customCssClass() ?? '') ? ' ' + customCssClass() : ''"
+          [class]="colorType() + ' ' + customCssClass()"
           [style.border-top]="borderSettings()?.borderTop + ' ' + borderSettings()?.borderStyle"
           [style.border-right]="borderSettings()?.borderRight + ' ' + borderSettings()?.borderStyle"
           [style.border-bottom]="borderSettings()?.borderBottom + ' ' + borderSettings()?.borderStyle"

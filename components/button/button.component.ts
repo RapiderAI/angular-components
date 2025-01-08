@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { TextComponent } from '@rapider/angular-components/text';
 import { IconComponentConfig } from '@rapider/angular-components/core/icon';
 import { IconComponent } from '@rapider/angular-components/icon';
 import {
@@ -35,7 +34,6 @@ import {
     NzToolTipModule,
     RouterModule,
     NzPopconfirmModule,
-    TextComponent,
     IconComponent,
   ],
   templateUrl: './button.component.html',
