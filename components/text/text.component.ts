@@ -18,13 +18,35 @@ import { ColorConfig } from '@rapider/angular-components/core/style';
 export class TextComponent {
 
   /* inputs */
-  textMode = input<TextMode | string>(TextMode.Text);
-  content = input<string>('');
-  // Signal for safe HTML
-  safeHTML = signal<SafeHtml>('');
-  text = input<string>();
+  textMode = input<TextMode, TextMode | string>(TextMode.Text, {
+    transform: (initialValue) => {
+      if (!initialValue) {
+        return TextMode.Text;
+      }
+      return <TextMode>initialValue;
+    }
+  });
+  content = input<string, string | null | undefined>('', {
+    transform: (initialValue) => {
+      if (!initialValue) {
+        return '';
+      }
+      return initialValue;
+    }
+  });
+  text = input<string, string | null | undefined>('', {
+    transform: (initialValue) => {
+      if (!initialValue) {
+        return '';
+      }
+      return initialValue;
+    }
+  });
   typography = input<TypographyConfig>();
   colorSettings = input<ColorConfig>();
+
+  // Signal for safe HTML
+  safeHTML = signal<SafeHtml>('');
 
   protected readonly TextMode = TextMode;
 
