@@ -11,6 +11,7 @@ import { TextMode } from '@rapider/angular-components/core/text';
     CommonModule,
     NzBadgeComponent,
   ],
+  standalone: true,
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
 })
