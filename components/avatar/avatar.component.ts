@@ -18,6 +18,7 @@ import { NzShapeSCType, NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'rpd-avatar',
+  standalone: true,
   imports: [
     CommonModule,
     NzAvatarModule,
