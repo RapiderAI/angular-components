@@ -21,7 +21,7 @@ import {
   styleUrl: './image.component.scss',
 })
 export class ImageComponent {
-  source = input<string | null | undefined, string>('', {
+  source = input<string, string | null | undefined>('', {
     transform: (initialValue) => {
       console.log(initialValue)
       if (!initialValue) {
