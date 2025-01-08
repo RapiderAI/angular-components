@@ -16,7 +16,7 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h1>
+    [class]="className()"></h1>
 } @else if(type() === HeadingType.H2) {
 <h2 [innerHTML]="content()"
     [style.font-size]="typography()?.fontSize"
@@ -35,7 +35,7 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h2>
+    [class]="className()"></h2>
 } @else if(type() === HeadingType.H3) {
 <h3 [innerHTML]="content()"
     [style.font-size]="typography()?.fontSize"
@@ -54,7 +54,7 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h3>
+    [class]="className()"></h3>
 } @else if(type() === HeadingType.H4) {
 <h4 [innerHTML]="content()"
     [style.font-size]="typography()?.fontSize"
@@ -73,7 +73,7 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h4>
+    [class]="className()"></h4>
 } @else if(type() === HeadingType.H5) {
 <h5 [innerHTML]="content()"
     [style.font-size]="typography()?.fontSize"
@@ -92,7 +92,7 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h5>
+    [class]="className()"></h5>
 } @else if(type() === HeadingType.H6) {
 <h6 [innerHTML]="content()"
     [style.font-size]="typography()?.fontSize"
@@ -111,5 +111,5 @@
     [style.user-select]="typography()?.userSelect"
     [style.background-color]="colorSettings()?.backgroundColor"
     [style.color]="colorSettings()?.color"
-    [class]="className"></h6>
+    [class]="className()"></h6>
 }
