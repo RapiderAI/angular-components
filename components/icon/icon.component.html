@@ -1,36 +1,38 @@
-<!-- FONT AWESOME ICON -->
-@if(name() && (type() === IconType.FontAwesome || !type())) {
-<span>
-  <i class='{{style()}} {{name()}} {{animation()}}'
-     [style.color]="color()"
-     [style.--fa-primary-color]="color()"
-     [style.--fa-secondary-color]="secondColor()"
-     [style.font-size]="size()"
-     (click)="onIconClick()"></i>
-</span>
-}
+<div>
+  <!-- FONT AWESOME ICON -->
+  @if(name() && (type() === IconType.FontAwesome || !type())) {
+  <span>
+    <i class='{{style()}} {{name()}} {{animation()}}'
+       [style.color]="color()"
+       [style.--fa-primary-color]="color()"
+       [style.--fa-secondary-color]="secondColor()"
+       [style.font-size]="size()"
+       (click)="onIconClick()"></i>
+  </span>
+  }
 
-<!-- NG ZORRO ICON -->
-@else if(name() && type() === IconType.NgZorro) {
-<span nz-icon
-      [class]="isClickable() ? 'ant-input-password-icon' : null"
-      [style.font-size]="size()"
-      [style.color]="color()"
-      [nzType]="name()"
-      [nzTheme]="theme() ?? 'fill'"
-      [nzTwotoneColor]="secondColor() ?? ''"
-      (click)="onIconClick()"></span>
-}
+  <!-- NG ZORRO ICON -->
+  @else if(name() && type() === IconType.NgZorro) {
+  <span nz-icon
+        [class]="isClickable() ? 'ant-input-password-icon' : null"
+        [style.font-size]="size()"
+        [style.color]="color()"
+        [nzType]="name()"
+        [nzTheme]="theme() ?? 'fill'"
+        [nzTwotoneColor]="secondColor() ?? ''"
+        (click)="onIconClick()"></span>
+  }
 
-<!-- MATERIAL ICON -->
-@else if(name() && type() === IconType.Material) {
-<mat-icon [fontIcon]="name()"></mat-icon>
-}
+  <!-- MATERIAL ICON -->
+  @else if(name() && type() === IconType.Material) {
+  <mat-icon [fontIcon]="name()"></mat-icon>
+  }
 
-@else if(name() && type() === IconType.ImportIcon) {
-<span class="import-icon-area">
-  <img [src]="name()"
-       [style.width]="size()"
-       [style.height]="size()"/>
-</span>
-}
+  @else if(name() && type() === IconType.ImportIcon) {
+  <span class="import-icon-area">
+    <img [src]="name()"
+         [style.width]="size()"
+         [style.height]="size()" />
+  </span>
+  }
+</div>
