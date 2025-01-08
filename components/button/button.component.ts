@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, OnInit, output, signal } from '@angular/core';
+import { Component, computed, input, OnChanges, OnInit, output, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -119,20 +119,16 @@ export class ButtonComponent implements OnInit, OnChanges {
 
   ButtonRedirectTarget = ButtonRedirectTarget;
 
-  borderStyles: any = {};
-
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
     this.initDefaults();
-    this.setBorderStyles();
   }
 
   ngOnChanges() {
     this.initDefaults();
-    this.setBorderStyles();
   }
 
   initDefaults() {
@@ -168,10 +164,11 @@ export class ButtonComponent implements OnInit, OnChanges {
     target.blur();
   }
 
-  setBorderStyles(): any {
-    this.borderStyles = computeBorderStyles({
+  borderStyles = computed(() => {
+    return computeBorderStyles({
       border: this.borderSettings()?.border,
       borderRadius: this.borderSettings()?.borderRadius,
     });
-  }
+  });
+
 }
