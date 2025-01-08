@@ -1,0 +1,20 @@
+.avatar-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--margin-x);
+}
+
+.avatar {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.avatar-description {
+  margin-left: var(--margin-x);
+}

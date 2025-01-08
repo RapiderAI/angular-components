@@ -1,0 +1,57 @@
+<div class="avatar-wrap">
+  <div class="avatar">
+    <!-- iconName is deprecated use icon object (type : IconComponentConfig) -->
+    @if(text() || imageUrl() || icon()?.name) {
+    <nz-avatar nz-tooltip
+               [nzTooltipTitle]="tooltipText()"
+               [nzText]="text()"
+               [nzIcon]="icon()?.name ?? iconName()"
+               [nzShape]="shape()"
+               [nzSize]="size()"
+               [nzSrc]="imageUrl()"
+               [nzAlt]="altText()"
+               [style]="cssStyle()"
+               [ngStyle]="borderStyles()"
+               [style.border-top]="borderSettings()?.borderTop + ' ' + borderSettings()?.borderStyle"
+               [style.border-right]="borderSettings()?.borderRight + ' ' + borderSettings()?.borderStyle"
+               [style.border-bottom]="borderSettings()?.borderBottom + ' ' + borderSettings()?.borderStyle"
+               [style.border-left]="borderSettings()?.borderLeft + ' ' + borderSettings()?.borderStyle"
+               [style.border-radius]="borderSettings()?.borderRadius"
+               [style.border-top-left-radius]="borderSettings()?.borderTopLeftRadius"
+               [style.border-top-right-radius]="borderSettings()?.borderTopRightRadius"
+               [style.border-bottom-left-radius]="borderSettings()?.borderBottomLeftRadius"
+               [style.border-bottom-right-radius]="borderSettings()?.borderBottomRightRadius"
+               [style.border-color]="borderSettings()?.borderColor"
+               [style.border-style]="borderSettings()?.borderStyle"
+               [style.width]="sizeSettings()?.width"
+               [style.height]="sizeSettings()?.height"
+               [style.min-width]="sizeSettings()?.minWidth"
+               [style.min-height]="sizeSettings()?.minHeight"
+               [style.max-width]="sizeSettings()?.maxWidth"
+               [style.max-height]="sizeSettings()?.maxHeight"
+               [style.color]="colorSettings()?.color"
+               [style.background-color]="colorSettings()?.backgroundColor"
+               [style.boxShadow]="boxShadowSettings()?.boxShadow"
+               [style.padding]="paddingSettings()?.all"
+               [style.margin]="marginSettings()?.all"
+               [style.margin-left]="marginSettings()?.left"></nz-avatar>
+    }
+
+    @if(icon()) {
+    <div class="icon">
+      <rpd-icon [name]="icon()?.name!"
+                [type]="icon()?.type"
+                [theme]="icon()?.theme"
+                [color]="icon()?.color"
+                [size]="icon()?.size"></rpd-icon>
+    </div>
+    }
+  </div>
+
+  @if(description()) {
+  <p class="avatar-description">
+    {{ description() }}
+  </p>
+  }
+
+</div>
