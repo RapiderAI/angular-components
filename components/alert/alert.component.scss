@@ -1,0 +1,40 @@
+.alert {
+
+  &::ng-deep {
+    .alert-description-start {
+      display: flex;
+      align-items: center;
+
+      .button-area {
+        margin-left: var(--margin-x);
+      }
+    }
+
+    .alert-description-end {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--margin-x);
+    }
+
+    .ant-alert {
+      // padding: var(--alert-padding);
+      // height: var(--alert-height);
+      // min-height: var(--alert-min-height);
+      // max-height: var(--alert-max-height);
+    }
+  }
+}
+
+.theme-background-mode ::ng-deep {
+  .ant-alert {
+    background: color-mix(in srgb, var(--body-background-color) 50%, transparent);
+    border: var(--border-size-x) solid color-mix(in srgb, var(--body-background-color) 70%, transparent);
+    border-radius: var(--border-radius-2x);
+  }
+
+  .anticon svg {
+    fill: var(--text-color);
+  }
+}

@@ -1,0 +1,73 @@
+<div class="alert"
+     [ngClass]="{'theme-background-mode': type() === AlertType.ThemeBackground}">
+  <nz-alert [nzType]="getValidType()"
+            [nzMessage]="titleTemplate"
+            [nzDescription]="descriptionArea"
+            [nzShowIcon]="showIcon()"
+            [nzCloseable]="closeable()"
+            [ngStyle]="borderStyles()"
+            [style.border-top]="borderSettings()?.borderTop + ' ' + borderSettings()?.borderStyle"
+            [style.border-right]="borderSettings()?.borderRight + ' ' + borderSettings()?.borderStyle"
+            [style.border-bottom]="borderSettings()?.borderBottom + ' ' + borderSettings()?.borderStyle"
+            [style.border-left]="borderSettings()?.borderLeft + ' ' + borderSettings()?.borderStyle"
+            [style.border-radius]="borderSettings()?.borderRadius"
+            [style.border-top-left-radius]="borderSettings()?.borderTopLeftRadius"
+            [style.border-top-right-radius]="borderSettings()?.borderTopRightRadius"
+            [style.border-bottom-left-radius]="borderSettings()?.borderBottomLeftRadius"
+            [style.border-bottom-right-radius]="borderSettings()?.borderBottomRightRadius"
+            [style.border-color]="borderSettings()?.borderColor"
+            [style.border-style]="borderSettings()?.borderStyle"
+            [style.width]="sizeSettings()?.width"
+            [style.min-width]="sizeSettings()?.minWidth"
+            [style.max-width]="sizeSettings()?.maxWidth"
+            [style.boxShadow]="boxShadowSettings()?.boxShadow"
+            [style.margin]="marginSettings()?.all"
+            [style.margin-top]="marginSettings()?.top"
+            [style.margin-right]="marginSettings()?.right"
+            [style.margin-bottom]="marginSettings()?.bottom"
+            [style.margin-left]="marginSettings()?.left"
+            [style.background-color]="colorSettings()?.backgroundColor"></nz-alert>
+  <ng-template #titleTemplate>
+    <rpd-heading [type]="title()?.type"
+                 [content]="title()?.content"
+                 [typography]="title()?.typography"
+                 [colorSettings]="title()?.colorSettings"></rpd-heading>
+  </ng-template>
+  <ng-template #descriptionArea>
+    @if(description() || actionConfig()) {
+    <div [ngClass]="'alert-description-' + actionConfigPlacement">
+      @if(description()) {
+      <rpd-text [text]="description()?.text"
+                [textMode]="description()?.textMode"
+                [colorSettings]="description()?.colorSettings"
+                [typography]="description()?.typography"
+                [content]="description()?.content"></rpd-text>
+      }
+      @if(actionConfig()) {
+      <rpd-button class="button-area"
+                  [text]="actionConfig()?.text"
+                  [type]="actionConfig()?.type"
+                  [shape]="actionConfig()?.shape"
+                  [size]="actionConfig()?.size"
+                  [transparent]="actionConfig()?.transparent"
+                  [loading]="actionConfig()?.loading"
+                  [block]="actionConfig()?.block"
+                  [disabled]="actionConfig()?.disabled"
+                  [icon]="actionConfig()?.icon"
+                  [colorType]="actionConfig()?.colorType"
+                  [popconfirmTitle]="actionConfig()?.popconfirmTitle"
+                  [emitWithoutPopconfirm]="actionConfig()?.emitWithoutPopconfirm"
+                  [iconPlacement]="actionConfig()?.iconPlacement"
+                  [formButtonType]="actionConfig()?.formButtonType"
+                  [borderSettings]="actionConfig()?.borderSettings"
+                  [customSizeSettings]="actionConfig()?.customSizeSettings"
+                  [customColorSettings]="actionConfig()?.customColorSettings"
+                  [shadowSettings]="actionConfig()?.shadowSettings"
+                  [paddingSettings]="actionConfig()?.paddingSettings"
+                  [marginSettings]="actionConfig()?.marginSettings"
+                  (click)="onActionClick()"></rpd-button>
+      }
+    </div>
+    }
+  </ng-template>
+</div>
