@@ -3,12 +3,29 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "strictFunctionTypes": true,
+    "stripInternal": true
   },
+  "angularCompilerOptions": {
+    "strictInputAccessModifiers": true,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true,
+    "fullTemplateTypeCheck": true,
+    "strictTemplates": true,
+    "strictInjectionParameters": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
   "exclude": [
     "**/*.spec.ts"
   ]
