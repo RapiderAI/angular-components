@@ -1,0 +1,16 @@
+<div [ngClass]="{
+    'visible': opacity === 'visible',
+    'slightly-transparent': opacity === 'slightly-transparent',
+    'moderately-transparent': opacity === 'moderately-transparent',
+    'highly-transparent': opacity === 'highly-transparent',
+    'invisible': opacity === 'invisible'
+  }">
+    <nz-spin [nzDelay]="delay"
+            [nzIndicator]="indicator"
+            [nzSize]="size"
+            [nzSpinning]="spinning"
+            [nzSimple]="simple"
+            [nzTip]="tip">
+        <ng-content></ng-content>
+    </nz-spin>
+</div>
