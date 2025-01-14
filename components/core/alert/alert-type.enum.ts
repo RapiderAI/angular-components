@@ -3,4 +3,5 @@ export enum AlertType {
   Info = 'info',
   Warning = 'warning',
   Error = 'error',
+  ThemeBackground = 'theme-background',
 }

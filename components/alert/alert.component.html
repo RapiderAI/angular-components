@@ -1,5 +1,5 @@
 <div class="alert"
-     [ngClass]="{'theme-background-mode': type() === AlertType.ThemeBackground}">
+     [ngClass]="{'theme-background-mode': type === AlertType.ThemeBackground}">
   <nz-alert [nzType]="type"
             [nzMessage]="titleTemplate"
             [nzDescription]="descriptionArea"
