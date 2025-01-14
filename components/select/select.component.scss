@@ -1,0 +1,145 @@
+.select::ng-deep {
+  nz-select {
+    width: 100%;
+    border-radius: var(--border-radius);
+  }
+
+  nz-select-top-control {
+    border: var(--select-border) !important;
+    border-top: var(--select-border-top) var(--select-border-style);
+    border-right: var(--select-border-right) var(--select-border-style);
+    border-bottom: var(--select-border-bottom) var(--select-border-style);
+    border-left: var(--select-border-left) var(--select-border-style);
+    border-radius: var(--select-border-radius) !important;
+    border-top-left-radius: var(--select-border-top-left-radius);
+    border-top-right-radius: var(--select-border-top-right-radius);
+    border-bottom-left-radius: var(--select-border-bottom-left-radius);
+    border-bottom-right-radius: var(--select-border-bottom-right-radius);
+    border-color: var(--select-border-color);
+    border-style: var(--select-border-style);
+
+    height: var(--select-height);
+    max-height: var(--select-max-height);
+    min-height: var(--select-min-height);
+    width: var(--select-width) !important;
+    max-width: var(--select-max-width);
+    min-width: var(--select-min-width);
+
+    background-color: var(--select-background-color) !important;
+
+    padding: var(--select-padding) !important;
+    padding-top: var(--select-padding-top);
+    padding-right: var(--select-padding-right);
+    padding-bottom: var(--select-padding-bottom);
+    padding-left: var(--select-padding-left);
+
+    margin: var(--select-margin) !important;
+    margin-top: var(--select-margin-top);
+    margin-right: var(--select-margin-right);
+    margin-bottom: var(--select-margin-bottom);
+    margin-left: var(--select-margin-left);
+
+    box-shadow: var(--select-box-shadow) !important;
+  }
+
+  .ant-select-selection-item-remove {
+    display: flex;
+  }
+
+  .ant-select-selection-search {
+    margin-inline-start: 0;
+  }
+
+  .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-x);
+  }
+}
+
+.option-select::ng-deep {
+  nz-select {
+    margin-right: var(--margin-2x);
+    width: 100%;
+    border-radius: var(--border-radius);
+  }
+
+  nz-select-top-control {
+    cursor: pointer !important;
+
+    border: var(--select-border) !important;
+    border-top: var(--select-border-top) var(--select-border-style);
+    border-right: var(--select-border-right) var(--select-border-style);
+    border-bottom: var(--select-border-bottom) var(--select-border-style);
+    border-left: var(--select-border-left) var(--select-border-style);
+    border-radius: var(--select-border-radius) !important;
+    border-top-left-radius: var(--select-border-top-left-radius);
+    border-top-right-radius: var(--select-border-top-right-radius);
+    border-bottom-left-radius: var(--select-border-bottom-left-radius);
+    border-bottom-right-radius: var(--select-border-bottom-right-radius);
+    border-color: var(--select-border-color);
+    border-style: var(--select-border-style);
+
+    height: var(--select-height) !important;
+    max-height: var(--select-max-height);
+    min-height: var(--select-min-height);
+    width: var(--select-width) !important;
+    max-width: var(--select-max-width);
+    min-width: var(--select-min-width);
+
+    background-color: var(--select-background-color) !important;
+
+    padding: var(--select-padding) !important;
+    padding-top: var(--select-padding-top);
+    padding-right: var(--select-padding-right);
+    padding-bottom: var(--select-padding-bottom);
+    padding-left: var(--select-padding-left);
+
+    margin: var(--select-margin) !important;
+    margin-top: var(--select-margin-top);
+    margin-right: var(--select-margin-right);
+    margin-bottom: var(--select-margin-bottom);
+    margin-left: var(--select-margin-left);
+
+    box-shadow: var(--select-box-shadow) !important;
+
+    nz-select-item {
+      cursor: pointer;
+    }
+
+    nz-select-search {
+      display: none;
+    }
+  }
+
+  .ant-select-selection-placeholder {
+    color: var(--select-color) !important;
+  }
+}
+
+.custom-option {
+  display: flex;
+  gap: var(--margin-x);
+  align-items: center;
+
+  ::ng-deep i {
+    vertical-align: inherit;
+  }
+}
+
+.buttons-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--padding-2x);
+  background-color: var(--component-header-background-color);
+}
+
+rappider-button {
+  padding: var(--padding-2x);
+}
+
+.popover-icon {
+  margin-right: var(--margin-2x);
+  margin-left: var(--margin-2x);
+}

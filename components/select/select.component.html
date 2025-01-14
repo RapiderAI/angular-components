@@ -1,0 +1,164 @@
+<div [ngClass]="settings.mode === SelectMode.OptionSelect ? 'option-select' : 'select'">
+  <ng-container *ngIf="optionMode === SelectOptionMode.GrouppedOptions">
+    groups
+    <nz-select [(ngModel)]="value"
+               [nzAllowClear]="settings?.allowClear"
+               [nzMode]="(settings.mode === SelectMode.OptionSelect ? SelectMode.OptionSelect : settings?.mode) || DEFAULT_MODE"
+               [nzDropdownMatchSelectWidth]="dropdownMatchSelectWidth"
+               [nzDropdownClassName]="dropdownClassName"
+               [nzShowSearch]="settings?.searchable"
+               [nzPlaceHolder]="placeholder || '' | translate"
+               [ngClass]="cssClass"
+               [ngStyle]="cssStyle"
+               [disabled]="disabled"
+               [nzSize]="size"
+               [nzMaxTagCount]="settings?.maxTagCount"
+               [nzMaxTagPlaceholder]="tagPlaceHolder"
+               [nzDropdownRender]="footerTemplate"
+               [nzCustomTemplate]="customTemplate"
+               (ngModelChange)="onBlur()"
+               (nzOnSearch)="onSearchTextChange($event)">
+      <ng-container *ngFor="let group of displayedGrouppedOptions">
+        <!-- If there is groupLabel -->
+        <ng-container *ngIf="group.groupLabel !== undefined">
+          <nz-option-group [nzLabel]="group.groupLabel">
+            <nz-option *ngFor="let item of group.items"
+                       [nzCustomContent]="true"
+                       [nzValue]="item.value"
+                       [nzLabel]="item.label">
+              <div nz-popover
+                   [nzPopoverTitle]="item?.selectPopover?.title ? popoverTitleTemplate: null"
+                   [nzPopoverContent]="item?.selectPopover?.content ? popoverContentTemplate: null"
+                   [nzPopoverPlacement]="item?.selectPopover?.placement"
+                   [nzPopoverOverlayStyle]="{'max-width.px': item?.selectPopover?.size || '300'}"
+                   title=" ">{{item.label}}</div>
+              <ng-template #popoverTitleTemplate>
+                <rappider-icon *ngIf="item?.selectPopover?.titleIcon"
+                               class="popover-icon"
+                               [name]="item?.selectPopover?.titleIcon?.name"
+                               [type]="item?.selectPopover?.titleIcon?.type"></rappider-icon>
+                <span title=" ">{{item?.selectPopover?.title}}</span>
+              </ng-template>
+              <ng-template #popoverContentTemplate>
+                <rappider-icon *ngIf="item?.selectPopover?.contentIcon"
+                               class="popover-icon"
+                               [name]="item?.selectPopover?.contentIcon?.name"
+                               [type]="item?.selectPopover?.contentIcon?.type"></rappider-icon>
+                <span title=" ">{{item?.selectPopover?.content}}</span>
+              </ng-template>
+            </nz-option>
+          </nz-option-group>
+        </ng-container>
+        <!-- If there is no groupLabel -->
+        <ng-container *ngIf="group.groupLabel === undefined">
+          <nz-option *ngFor="let item of group.items"
+                     [nzCustomContent]="true"
+                     [nzValue]="item.value"
+                     [nzLabel]="item.label">
+            <div nz-popover
+                 [nzPopoverTitle]="item?.selectPopover?.title ? popoverTitleTemplate: null"
+                 [nzPopoverContent]="item?.selectPopover?.content ? popoverContentTemplate: null"
+                 [nzPopoverPlacement]="item?.selectPopover?.placement"
+                 [nzPopoverOverlayStyle]="{'max-width.px': item?.selectPopover?.size || '300'}"
+                 title=" ">{{item.label}}</div>
+            <ng-template #popoverTitleTemplate>
+              <rappider-icon *ngIf="item?.selectPopover?.titleIcon"
+                             class="popover-icon"
+                             [name]="item?.selectPopover?.titleIcon?.name"
+                             [type]="item?.selectPopover?.titleIcon?.type"></rappider-icon>
+              <span title=" ">{{item?.selectPopover?.title}}</span>
+            </ng-template>
+            <ng-template #popoverContentTemplate>
+              <rappider-icon *ngIf="item?.selectPopover?.contentIcon"
+                             class="popover-icon"
+                             [name]="item?.selectPopover?.contentIcon?.name"
+                             [type]="item?.selectPopover?.contentIcon?.type"></rappider-icon>
+              <span title=" ">{{item?.selectPopover?.content}}</span>
+            </ng-template>
+          </nz-option>
+        </ng-container>
+      </ng-container>
+    </nz-select>
+  </ng-container>
+  <ng-container *ngIf="optionMode === SelectOptionMode.Options">
+    <nz-select [(ngModel)]="value"
+               [nzAllowClear]="settings?.allowClear"
+               [nzMode]="(settings.mode === SelectMode.OptionSelect ? SelectMode.Multiple : settings?.mode) || DEFAULT_MODE"
+               [nzSize]="size"
+               [nzMaxTagCount]="settings?.maxTagCount"
+               [nzMaxTagPlaceholder]="tagPlaceHolder"
+               [nzDropdownMatchSelectWidth]="dropdownMatchSelectWidth"
+               [nzDropdownClassName]="dropdownClassName"
+               [nzShowSearch]="settings?.searchable"
+               [nzPlaceHolder]="placeholder || '' | translate"
+               [ngClass]="cssClass"
+               [ngStyle]="cssStyle"
+               [disabled]="disabled"
+               [nzCustomTemplate]="optionsCustomTemplate"
+               [nzDropdownRender]="footerTemplate"
+               (ngModelChange)="onBlur()"
+               (nzOnSearch)="onSearchTextChange($event)">
+      <nz-option *ngFor="let option of options"
+                 [nzLabel]="option.key | translate"
+                 [nzValue]="option.value"
+                 [nzCustomContent]="true">
+        <div class="custom-option">
+          <rappider-icon *ngIf="option.icon?.name"
+                         [name]="option.icon.name"
+                         [type]="option.icon.type"
+                         [theme]="option.icon.theme"
+                         [color]="option.icon.color"
+                         [size]="option.icon.size"></rappider-icon>
+          <span>
+            {{ option.key | translate }}
+          </span>
+        </div>
+      </nz-option>
+    </nz-select>
+    <ng-template #optionsCustomTemplate
+                 let-selected>
+      <rappider-icon *ngIf="selectedOptionIcon"
+                     [name]="selectedOptionIcon.name"
+                     [type]="selectedOptionIcon.type"
+                     [theme]="selectedOptionIcon.theme"
+                     [color]="selectedOptionIcon.color"
+                     [size]="selectedOptionIcon.size"></rappider-icon>
+      {{ selected.nzLabel }}
+    </ng-template>
+  </ng-container>
+
+  <ng-template #tagPlaceHolder
+               let-selectedList>
+    <div [title]="tooltipTitle">+ {{ selectedList.length }} more selected</div>
+  </ng-template>
+
+  <ng-template #footerTemplate>
+    <div *ngIf="buttons?.length">
+      <rappider-spin [spinning]="loading">
+        <div class="footer-template">
+          <div class="buttons-area">
+            <rappider-button *ngFor="let button of buttons"
+                             [type]="button?.type"
+                             [shape]="button?.shape"
+                             [text]="button?.text"
+                             [size]="button?.size"
+                             [transparent]="button?.transparent"
+                             [loading]="button?.loading"
+                             [block]="button?.block"
+                             [disabled]="button?.disabled"
+                             [colorType]="button?.colorType"
+                             [icon]="button?.icon"
+                             [formButtonType]="button?.formButtonType"
+                             [borderSettings]="button?.borderSettings"
+                             [customSizeSettings]="button?.customSizeSettings"
+                             [customColorSettings]="button?.customColorSettings"
+                             [shadowSettings]="button?.shadowSettings"
+                             [paddingSettings]="button?.paddingSettings"
+                             [marginSettings]="button?.marginSettings"
+                             (click)="onButtonClick(button)"></rappider-button>
+          </div>
+        </div>
+      </rappider-spin>
+    </div>
+  </ng-template>
+</div>
