@@ -1,0 +1,43 @@
+<div [class]="!bordered ? 'accordion-borderless' : 'accordion'">
+  <nz-collapse nzAccordion
+               [nzBordered]="bordered"
+               [nzExpandIconPosition]="collapseIconPosition">
+    <nz-collapse-panel *ngFor="let panel of panels"
+                       [nzHeader]="titleArea"
+                       [nzActive]="panel?.active"
+                       [nzDisabled]="panel?.disabled"
+                       [ngStyle]="borderStyles"
+                       [style.border-top]="borderSettings?.borderTop + ' ' + borderSettings?.borderStyle"
+                       [style.border-right]="borderSettings?.borderRight + ' ' + borderSettings?.borderStyle"
+                       [style.border-bottom]="borderSettings?.borderBottom + ' ' + borderSettings?.borderStyle"
+                       [style.border-left]="borderSettings?.borderLeft + ' ' + borderSettings?.borderStyle"
+                       [style.border-top-left-radius]="borderSettings?.borderTopLeftRadius"
+                       [style.border-top-right-radius]="borderSettings?.borderTopRightRadius"
+                       [style.border-bottom-left-radius]="borderSettings?.borderBottomLeftRadius"
+                       [style.border-bottom-right-radius]="borderSettings?.borderBottomRightRadius"
+                       [style.border-color]="borderSettings?.borderColor"
+                       [style.border-style]="borderSettings?.borderStyle"
+                       [style.boxShadow]="boxShadowSettings?.boxShadow"
+                       [style.width]="sizeSettings?.width"
+                       [style.height]="sizeSettings?.height"
+                       [style.min-width]="sizeSettings?.minWidth"
+                       [style.min-height]="sizeSettings?.minHeight"
+                       [style.max-width]="sizeSettings?.maxWidth"
+                       [style.max-height]="sizeSettings?.maxHeight"
+                       [style.padding]="paddingSettings?.all"
+                       [style.margin]="marginSettings?.all"
+                       [style.background-color]="colorSettings?.backgroundColor">
+      <ng-template #titleArea>
+        <rappider-heading [content]="panel?.name?.content"
+                          [type]="panel?.name?.type"
+                          [typography]="panel?.name?.typography"
+                          [colorSettings]="panel?.name?.colorSettings"></rappider-heading>
+      </ng-template>
+      <rappider-text [textMode]="panel?.content?.textMode"
+                     [content]="panel?.content?.content"
+                     [text]="panel?.content?.text"
+                     [typography]="panel?.content?.typography"
+                     [colorSettings]="panel?.content?.colorSettings"></rappider-text>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>

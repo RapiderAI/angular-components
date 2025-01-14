@@ -1,0 +1,21 @@
+.accordion-borderless {
+  ::ng-deep {
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding-left: 0px;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      display: flex;
+      align-items: center;
+      padding-left: 0px;
+    }
+  }
+}
+
+.accordion {
+  ::ng-deep {
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
