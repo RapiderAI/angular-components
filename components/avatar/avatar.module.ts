@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { AvatarComponent } from './avatar.component';
+import { RappiderAvatarComponent } from './avatar.component';
 
 @NgModule({
-  exports: [AvatarComponent],
-  imports: [AvatarComponent]
+  imports: [RappiderAvatarComponent],
+  exports: [RappiderAvatarComponent]
 })
-export class AvatarModule { }
+export class RappiderAvatarModule { }

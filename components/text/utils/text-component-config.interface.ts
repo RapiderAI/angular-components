@@ -1,6 +1,6 @@
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { ColorConfig } from '@rapider/angular-components/core/style';
-import { TextMode } from './text-mode.enum';
+import { TextMode } from '@rapider/angular-components/core/text';
 
 export interface TextComponentConfig {
   // for html mode

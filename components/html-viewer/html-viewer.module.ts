@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HtmlViewerComponent } from './html-viewer.component';
+import { RappiderHtmlViewerComponent } from './html-viewer.component';
 
 @NgModule({
-  exports: [HtmlViewerComponent],
-  imports: [HtmlViewerComponent]
+  imports: [RappiderHtmlViewerComponent],
+  exports: [RappiderHtmlViewerComponent],
 })
-export class HtmlViewerModule { }
+export class RappiderHtmlViewerModule { }

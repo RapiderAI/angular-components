@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { IconComponent } from './icon.component';
+import { RappiderIconComponent } from './icon.component';
 
 @NgModule({
-  exports: [IconComponent],
-  imports: [IconComponent]
+  imports: [RappiderIconComponent],
+  exports: [RappiderIconComponent]
 })
-export class IconModule { }
+export class RappiderIconModule { }

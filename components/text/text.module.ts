@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { TextComponent } from './text.component';
+import { RappiderTextComponent } from './text.component';
 
 @NgModule({
-  exports: [TextComponent],
-  imports: [TextComponent]
+  imports: [RappiderTextComponent],
+  exports: [RappiderTextComponent]
 })
-export class TextModule { }
+export class RappiderTextModule { }

@@ -1,58 +1,57 @@
-import { Component, OnInit, input, output, computed } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BorderConfig, SizeConfig, BoxShadowConfig, SpacingConfig, computeBorderStyles } from '@rapider/angular-components/core/style';
+import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
+import { RappiderTextComponent } from '@rapider/angular-components/text';
+import { TagType } from '@rapider/angular-components/core/tag';
+import { TextComponentConfig } from '@rapider/angular-components/text';
+import { TooltipPlacement } from '@rapider/angular-components/core/button';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { IconComponent } from '@rapider/angular-components/icon';
-import { TextComponent } from '@rapider/angular-components/text';
-import { TagType } from '@rapider/angular-components/core/tag';
-import { TextComponentConfig } from '@rapider/angular-components/core/text';
-import { IconComponentConfig } from '@rapider/angular-components/core/icon';
-import { TooltipPlacement } from '@rapider/angular-components/core/button';
-import {
-  BorderConfig,
-  BoxShadowConfig,
-  computeBorderStyles,
-  SizeConfig,
-  SpacingConfig
-} from '@rapider/angular-components/core/style';
-
 
 @Component({
-  selector: 'rpd-tag',
+  selector: 'rappider-tag',
   standalone: true,
   imports: [
     CommonModule,
-    IconComponent,
-    TextComponent,
+    RappiderIconComponent,
+    RappiderTextComponent,
     NzTagModule,
     NzToolTipModule,
   ],
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss'],
+  styleUrls: ['./tag.component.scss']
 })
-export class TagComponent implements OnInit {
+export class RappiderTagComponent implements OnInit {
 
-  mode = input<TagType>(TagType.Default);
-  /* checked status, only works when nzMode="checkable" */
-  checked = input<boolean>(false);
-  color = input<string>();
-  text = input<TextComponentConfig>();
-  icon = input<IconComponentConfig>();
-  tooltipPlacement = input<TooltipPlacement | undefined>();
-  tooltipText = input<string>();
-  /* styles */
-  borderSettings = input<BorderConfig>();
-  marginSettings = input<SpacingConfig>();
-  sizeSettings = input<SizeConfig>();
-  paddingSettings = input<SpacingConfig>();
-  boxShadowSettings = input<BoxShadowConfig>();
+  /* Mode of tag */
+  @Input() mode = TagType.Default;
+  /* Checked status of Tag, double binding, only works when nzMode="checkable" */
+  @Input() checked = false;
+  /* Color of the Tag */
+  @Input() color: string;
+  /* text */
+  @Input() text: TextComponentConfig;
+  @Input() icon: IconComponentConfig;
+
+  @Input() borderSettings: BorderConfig;
+  @Input() sizeSettings: SizeConfig;
+  @Input() boxShadowSettings: BoxShadowConfig;
+  @Input() paddingSettings: SpacingConfig;
+  @Input() marginSettings: SpacingConfig;
+  @Input() tooltipText?: string;
+  @Input() tooltipPlacement?: TooltipPlacement;
 
   /* Checked status change call back, only works when nzMode="checkable" */
-  checkedChange = output<void>();
-  /* Callback executed when tag is closed, only works when nzMode="closable" */
-  close = output<void>();
+  @Output() checkedChange = new EventEmitter();
+  /* 	Callback executed when tag is closed, only works when nzMode="closable" */
+  // eslint-disable-next-line @angular-eslint/no-output-native
+  @Output() close = new EventEmitter();
+
+  borderStyles: any = {};
 
   ngOnInit(): void {
+    this.setBorderStyles();
   }
 
   onCheckChange() {
@@ -63,11 +62,11 @@ export class TagComponent implements OnInit {
     this.close.emit();
   }
 
-  borderStyles = computed(() => {
-    return computeBorderStyles({
-      border: this.borderSettings()?.border,
-      borderRadius: this.borderSettings()?.borderRadius,
+  setBorderStyles(): any {
+    this.borderStyles = computeBorderStyles({
+      border: this.borderSettings?.border || null,
+      borderRadius: this.borderSettings?.borderRadius || null
     });
-  });
+  }
 
 }

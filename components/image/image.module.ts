@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ImageComponent } from './image.component';
+import { RappiderImageComponent } from './image.component';
 
 @NgModule({
-  exports: [ImageComponent],
-  imports: [ImageComponent]
+  imports: [RappiderImageComponent],
+  exports: [RappiderImageComponent]
 })
-export class ImageModule { }
+export class RappiderImageModule { }

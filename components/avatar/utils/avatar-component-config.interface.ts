@@ -1,13 +1,6 @@
-import { IconComponentConfig } from '@rapider/angular-components/core/icon';
-import {
-  BorderConfig,
-  SizeConfig,
-  ColorConfig,
-  BoxShadowConfig,
-  SpacingConfig,
-} from '@rapider/angular-components/core/style';
-import { AvatarShape } from './avatar-shape.enum';
-import { AvatarSize } from './avatar-size.enum';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { BorderConfig, SizeConfig, ColorConfig, BoxShadowConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { AvatarShape, AvatarSize } from '@rapider/angular-components/core/avatar';
 
 
 export interface AvatarComponentConfig {

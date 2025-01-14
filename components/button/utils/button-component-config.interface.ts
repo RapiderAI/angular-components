@@ -1,15 +1,17 @@
-import { ButtonRedirectTarget } from './button-redirect-target.enum';
-import { ButtonColorType } from './button-color-type.enum';
-import { ButtonIconPlacement } from './button-icon-placement.enum';
-import { ButtonShape } from './button-shape.type';
-import { ButtonSize } from './button-size.type';
-import { ButtonType } from './button-type.type';
-import { FormButtonType } from './form-button-type.enum';
-import { TooltipPlacement } from './tooltip-placement.enum';
-import { ButtonActionBehavior } from './button-action-behavior.enum';
-import { ButtonRedirectMode } from './button-redirect-mode.enum';
+import {
+  ButtonRedirectMode,
+  ButtonActionBehavior,
+  TooltipPlacement,
+  ButtonType,
+  ButtonSize,
+  ButtonShape,
+  ButtonIconPlacement,
+  ButtonColorType,
+  ButtonRedirectTarget,
+  FormButtonType,
+} from '@rapider/angular-components/core/button';
 import { BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig, BorderConfig } from '@rapider/angular-components/core/style';
-import { IconComponentConfig } from '@rapider/angular-components/core/icon';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 
 export interface ButtonComponentConfig {
   key?: string;

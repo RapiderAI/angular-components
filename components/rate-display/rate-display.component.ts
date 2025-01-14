@@ -1,16 +1,17 @@
-import { Component, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 
 @Component({
-  selector: 'rpd-rate-display',
+  selector: 'rappider-rate-display',
   standalone: true,
   imports: [
     FormsModule,
     NzRateModule,
   ],
   templateUrl: './rate-display.component.html',
+  styleUrls: ['./rate-display.component.scss']
 })
-export class RateDisplayComponent {
-  rate = input<number>();
+export class RappiderRateDisplayComponent {
+  @Input() rate: number;
 }

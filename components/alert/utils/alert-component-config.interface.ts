@@ -1,22 +1,15 @@
-import { ButtonComponentConfig } from '@rapider/angular-components/core/button';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { HeadingComponentConfig } from '@rapider/angular-components/core/heading';
-import { TextComponentConfig } from '@rapider/angular-components/core/text';
-import {
-  BorderConfig,
-  BoxShadowConfig,
-  ColorConfig,
-  SizeConfig,
-  SpacingConfig,
-} from '@rapider/angular-components/core/style';
-import { AlertActionConfigPlacement } from './alert-action-config-placement.enum';
-import { AlertType } from './alert-type.enum';
+import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { TextComponentConfig } from '@rapider/angular-components/text';
+import { AlertActionConfigPlacement, AlertType } from '@rapider/angular-components/core/alert';
 
 
-export interface AlertConfig {
-  data?: any;
-  type: AlertType;
+export interface AlertComponentConfig {
   title?: HeadingComponentConfig;
   description?: TextComponentConfig;
+  type: AlertType;
+  data?: any;
   showIcon: boolean;
   closeable: boolean;
   actionConfig?: ButtonComponentConfig;

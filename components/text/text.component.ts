@@ -1,66 +1,50 @@
-import { CommonModule } from "@angular/common";
-import { Component, effect, input, signal } from "@angular/core";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { TextMode } from '@rapider/angular-components/core/text';
 import { ColorConfig } from '@rapider/angular-components/core/style';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @Component({
-  selector: 'rpd-text',
+  selector: 'rappider-text',
   standalone: true,
   imports: [
     CommonModule,
-    NzTypographyModule
+    NzTypographyModule,
   ],
   templateUrl: './text.component.html',
+  styleUrls: ['./text.component.scss'],
 })
-export class TextComponent {
+export class RappiderTextComponent implements OnInit, OnChanges {
+  @Input() textMode?: TextMode;
+  // text content for html mode
+  @Input() content: string;
+  // text content for simple text mode
+  @Input() text: string;
+  @Input() typography: TypographyConfig;
+  @Input() colorSettings: ColorConfig;
 
-  /* inputs */
-  textMode = input<TextMode, TextMode | string | undefined>(TextMode.Text, {
-    transform: (initialValue) => {
-      if (!initialValue) {
-        return TextMode.Text;
-      }
-      return <TextMode>initialValue;
+  public TextMode = TextMode;
+  safeHTML: SafeHtml;
+
+  constructor(private sanitizer: DomSanitizer) { }
+
+  initData() {
+    if (!this.textMode) {
+      this.textMode = TextMode.Text;
     }
-  });
-  content = input<string, string | null | undefined>('', {
-    transform: (initialValue) => {
-      if (!initialValue) {
-        return '';
-      }
-      return initialValue;
-    }
-  });
-  text = input<string, string | null | undefined>('', {
-    transform: (initialValue) => {
-      if (!initialValue) {
-        return '';
-      }
-      return initialValue;
-    }
-  });
-  typography = input<TypographyConfig>();
-  colorSettings = input<ColorConfig>();
-
-  // Signal for safe HTML
-  safeHTML = signal<SafeHtml>('');
-
-  protected readonly TextMode = TextMode;
-
-  constructor(private sanitizer: DomSanitizer) {
-    effect(() => {
-      this.updateSafeHtml(this.content());
-    });
-  }
-
-  private updateSafeHtml(htmlContent: string) {
-    if (this.textMode() === TextMode.Html) {
-      this.safeHTML.set(
-        this.sanitizer.bypassSecurityTrustHtml(htmlContent)
-      );
+    if (this.content && this.textMode === TextMode.Html) {
+      this.safeHTML = this.sanitizer.bypassSecurityTrustHtml(this.content || this.text);
     }
   }
+
+  ngOnInit() {
+    this.initData();
+  }
+
+  ngOnChanges() {
+    this.initData();
+  }
+
 }

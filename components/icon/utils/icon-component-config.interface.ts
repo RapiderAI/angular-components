@@ -1,7 +1,4 @@
-import { FontAwesomeIconAnimation } from './font-awesome-icon-animation.enum';
-import { FontAwesomeIconStyle } from './font-awesome-icon-style.enum';
-import { IconType } from './icon-type.enum';
-import { NgZorroIconTheme } from './ng-zorro-icon-theme.type';
+import { FontAwesomeIconAnimation, FontAwesomeIconStyle, IconType, NgZorroIconTheme } from '@rapider/angular-components/core/icon';
 
 export interface IconComponentConfig {
   name: string; /* icon class */

@@ -1,7 +1,7 @@
-import { TextComponentConfig } from '@rapider/angular-components/core/text';
-import { IconComponentConfig } from '@rapider/angular-components/core/icon';
+import { TextComponentConfig } from '@rapider/angular-components/text';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { TooltipPlacement } from '@rapider/angular-components/core/button';
-import { TagType } from './tag-type.enum';
+import { TagType } from '@rapider/angular-components/core/tag';
 
 export interface TagComponentConfig {
   mode?: TagType;

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HeadingComponent } from './heading.component';
+import { RappiderHeadingComponent } from './heading.component';
 
 @NgModule({
-  exports: [HeadingComponent],
-  imports: [HeadingComponent]
+  imports: [RappiderHeadingComponent],
+  exports: [RappiderHeadingComponent],
 })
-export class HeadingModule { }
+export class RappiderHeadingModule { }
