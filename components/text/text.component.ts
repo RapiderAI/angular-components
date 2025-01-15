@@ -5,6 +5,7 @@ import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { TextMode } from '@rapider/angular-components/core/text';
 import { ColorConfig } from '@rapider/angular-components/core/style';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'rappider-text',
@@ -12,6 +13,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
   imports: [
     CommonModule,
     NzTypographyModule,
+    TranslateModule,
   ],
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss'],

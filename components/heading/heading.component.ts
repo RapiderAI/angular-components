@@ -3,12 +3,14 @@ import { ColorConfig } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { CommonModule } from '@angular/common';
 import { HeadingType } from '@rapider/angular-components/core/heading';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'rappider-heading',
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
   ],
   templateUrl: './heading.component.html',
   styleUrls: ['./heading.component.scss']

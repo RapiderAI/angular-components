@@ -1,5 +1,5 @@
 <h1 *ngIf="type === HeadingType.H1 || type === null || type === undefined"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"
@@ -20,7 +20,7 @@
 </h1>
 
 <h2 *ngIf="type === HeadingType.H2"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"
@@ -41,7 +41,7 @@
 </h2>
 
 <h3 *ngIf="type === HeadingType.H3"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"
@@ -62,7 +62,7 @@
 </h3>
 
 <h4 *ngIf="type === HeadingType.H4"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"
@@ -83,7 +83,7 @@
 </h4>
 
 <h5 *ngIf="type === HeadingType.H5"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"
@@ -104,7 +104,7 @@
 </h5>
 
 <h6 *ngIf="type === HeadingType.H6"
-    [innerHTML]="content"
+    [innerHTML]="content | translate"
     [style.font-size]="typography?.fontSize"
     [style.font-weight]="typography?.fontWeight"
     [style.font-style]="typography?.fontStyle"

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { ColorConfig } from '@rapider/angular-components/core/style';
 
@@ -8,6 +9,7 @@ import { ColorConfig } from '@rapider/angular-components/core/style';
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
   ],
   templateUrl: './paragraph.component.html',
   styleUrls: ['./paragraph.component.scss']

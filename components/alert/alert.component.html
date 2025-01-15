@@ -29,7 +29,7 @@
             [style.background-color]="colorSettings?.backgroundColor"></nz-alert>
   <ng-template #titleTemplate>
     <rappider-heading [type]="title?.type"
-                      [content]="title?.content"
+                      [content]="title?.content | translate"
                       [typography]="title?.typography"
                       [colorSettings]="title?.colorSettings"></rappider-heading>
   </ng-template>
@@ -41,7 +41,7 @@
                      [textMode]="description?.textMode"
                      [colorSettings]="description?.colorSettings"
                      [typography]="description?.typography"
-                     [content]="description?.content"></rappider-text>
+                     [content]="description?.content | translate"></rappider-text>
       <rappider-button *ngIf="actionConfig"
                        class="button-area"
                        [text]="actionConfig.text"

@@ -1,18 +1,19 @@
 <div class="button">
   <button *ngIf="text || icon?.name"
           [id]="elementId"
+          [ngClass]="{'ant-btn-xs': size === 'extra-small'}"
           nz-button
           nz-popconfirm
           nz-tooltip
           [ngStyle]="borderStyles"
-          [nzTooltipTitle]="tooltipText"
+          [nzTooltipTitle]="tooltipText | translate"
           [nzTooltipOverlayClassName]="'button-tooltip'"
           [nzTooltipPlacement]="tooltipPlacement"
-          [nzPopconfirmTitle]="popconfirmTitle"
+          [nzPopconfirmTitle]="popconfirmTitle | translate"
           [nzCondition]="emitWithoutPopconfirm"
           [nzType]="type || 'default'"
-          [nzCancelText]="popconfirmCancelText"
-          [nzOkText]="popconfirmOkText"
+          [nzCancelText]="popconfirmCancelText | translate"
+          [nzOkText]="popconfirmOkText | translate"
           [nzOkDanger]="popconfirmOkDanger"
           [nzShape]="shape || null"
           [nzSize]="size || 'default'"
@@ -60,7 +61,7 @@
       </div>
       <div *ngIf="text"
            class="text">
-        {{ text }}
+        {{ text | translate }}
       </div>
     </div>
   </button>

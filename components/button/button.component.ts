@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import {
@@ -35,6 +36,7 @@ import {
     RouterModule,
     NzPopconfirmModule,
     RappiderIconComponent,
+    TranslateModule,
   ],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
