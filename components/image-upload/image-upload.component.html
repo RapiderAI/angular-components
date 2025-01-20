@@ -1,0 +1,54 @@
+<rappider-spin [spinning]="isLoading">
+    <input #imageUploadInputElement
+           type="file"
+           style="display: none"
+           (change)="onFileSelect($event.target)"> //* change this like (change)="onFileSelect($event.target.files) */
+    <div [ngClass]="{'image-container': value, 'empty-image-container': !value}">
+      <div class="image-container">
+        <rappider-image [source]="value"
+                        [alternateText]="uploadedImage?.alternateText"
+                        [customSizeSettings]="{'width': uploadedImage?.width, 'height': uploadedImage?.height}"
+                        [placeholder]="uploadedImage?.placeholder"
+                        [fallback]="uploadedImage?.fallback"
+                        [disablePreview]="uploadedImage?.disablePreview"
+                        [borderSettings]="uploadedImage?.borderSettings"
+                        [shadowSettings]="uploadedImage?.shadowSettings"
+                        [marginSettings]="uploadedImage?.marginSettings"
+                        [paddingSettings]="uploadedImage?.paddingSettings"></rappider-image>
+      </div>
+      <div class="upload-button">
+        <rappider-button *ngIf="uploadButtonVisibility"
+                         [key]="uploadButton?.key"
+                         [text]="uploadButton?.text"
+                         [type]="uploadButton?.type"
+                         [icon]="uploadButton?.icon"
+                         [shape]="uploadButton?.shape"
+                         [size]="uploadButton?.size"
+                         [transparent]="uploadButton?.transparent"
+                         [loading]="uploadButton?.loading"
+                         [block]="uploadButton?.block"
+                         [disabled]="uploadButton?.disabled"
+                         [colorType]="uploadButton?.colorType"
+                         [popconfirmTitle]="uploadButton?.popconfirmTitle"
+                         [emitWithoutPopconfirm]="uploadButton?.emitWithoutPopconfirm"
+                         [iconPlacement]="uploadButton?.iconPlacement"
+                         [formButtonType]="uploadButton?.formButtonType"
+                         [borderSettings]="uploadButton?.borderSettings"
+                         [customSizeSettings]="uploadButton?.customSizeSettings"
+                         [customColorSettings]="uploadButton?.customColorSettings"
+                         [shadowSettings]="uploadButton?.shadowSettings"
+                         [paddingSettings]="uploadButton?.paddingSettings"
+                         [marginSettings]="uploadButton?.marginSettings"
+                         (click)="imageUploadInputElement.click()"></rappider-button>
+                        </div>
+  <!-- active this section after implement the previewer component 
+                      <div *ngIf="previewerConfig?.visibility"
+                             class="preview-img">
+                          <rappider-previewer [source]="value"
+                                              [modalConfig]="previewerConfig?.modalConfig"
+                                              [buttonConfig]="previewerConfig?.buttonConfig"></rappider-previewer>
+                        </div> -->
+
+                      </div>
+                    </rappider-spin>
+

@@ -1,0 +1,14 @@
+.preview-img,
+.image-container {
+  display: inline-block;
+}
+
+.empty-image-container,
+.image-container {
+  width: 128px;
+  height: auto;
+}
+
+.upload-button {
+  margin-top: var(--margin-x);
+}
