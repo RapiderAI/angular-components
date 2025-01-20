@@ -1,125 +1,111 @@
-import {
-    Component,
-    Input,
-    Output,
-    EventEmitter,
-    forwardRef,
-    OnInit,
-    OnChanges
-  } from '@angular/core';
-  import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { BadgeComponent } from '@rapider/angular-components/badge';
+import { ButtonComponent } from '@rapider/angular-components/button';
+import { IconComponent } from '@rapider/angular-components/icon';
+import { CalendarMode, CalendarEvent } from '@rapider/angular-components/core/calendar';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
 
-  import {
-    BorderConfig,
-    BoxShadowConfig,
-    ColorConfig,
-    SizeConfig,
-    SpacingConfig,
-  } from '@rapider/angular-components/core/style';
-  import { BadgeComponent } from '../badge/badge.component';
-  import { ButtonComponent } from '../button/button.component';
-  import { IconComponent } from '../icon/icon.component';
-  import { CommonModule } from '@angular/common';
-  import { NzCalendarModule } from 'ng-zorro-antd/calendar';
-  import { FormsModule } from '@angular/forms';
-  import { NzPopoverModule } from 'ng-zorro-antd/popover';
-import { CalendarMode, CalendarEvent } from '../core/calendar';
-import { TypographyConfig } from '../core/typography';
-  
-  @Component({
-    selector: 'rpd-calendar',
-    standalone: true,
-    imports: [
-      CommonModule,
-      NzCalendarModule,
-      FormsModule,
-      NzPopoverModule,
-      BadgeComponent,
-      ButtonComponent,
-      IconComponent
-      // I will update this later 
-      // RappiderEditFormComponent
-    ],
-    templateUrl: './calendar.component.html',
-  })
-  
-  // eslint brace-style: "error"
-  export class CalendarComponent implements ControlValueAccessor, OnInit, OnChanges {
-    @Input() mode: CalendarMode;
-    @Input() isFullscreen: boolean;
-    @Input() calendarEvents: CalendarEvent[];
-    @Input() borderSettings: BorderConfig;
-    @Input() sizeSettings: SizeConfig;
-    @Input() colorSettings: ColorConfig;
-    @Input() boxShadowSettings: BoxShadowConfig;
-    @Input() paddingSettings: SpacingConfig;
-    @Input() marginSettings: SpacingConfig;
-    @Input() typographySettings: TypographyConfig;
-  
-    // eslint-disable-next-line @angular-eslint/no-output-native
-    @Output() blur = new EventEmitter<Date>();
-    @Output() valueChange = new EventEmitter<Date>();
-    @Output() updateEventSubmit = new EventEmitter<any>();
-    @Output() createEventSubmit = new EventEmitter<any>();
-  
-    _value: Date;
+@Component({
+  selector: 'rpd-calendar',
+  standalone: true,
+  imports: [
+    CommonModule,
+    NzCalendarModule,
+    FormsModule,
+    NzPopoverModule,
+    BadgeComponent,
+    ButtonComponent,
+    IconComponent,
     // I will update this later
-    // formConfig = CALENDAR_FORM_CONFIG;
-    createEventPopoverVisibilities = {};
-  
-    get value() {
-      return this._value;
-    }
-  
-    set value(value: Date) {
-      this._value = value;
-      this.onChange(value);
-      this.onTouched();
-      this.valueChange.emit(value);
-    }
-  
-    onChange: any = () => { };
-    onTouched: any = () => { };
-  
-    writeValue(value): void {
-      this._value = value;
-    }
-  
-    registerOnChange(fn: any): void {
-      this.onChange = fn;
-    }
-  
-    registerOnTouched(fn: any): void {
-      this.onTouched = fn;
-    }
-  
-    onValueChange(value: Date) {
-      this.blur.emit(value);
-    }
-  
-    ngOnInit() {
-      this.setPopoverVisibilityFlag();
-    }
-  
-    ngOnChanges() {
-      this.setPopoverVisibilityFlag();
-    }
-  
-    setPopoverVisibilityFlag() {
-      this.calendarEvents = this.calendarEvents?.map((calendarEvent) => ({
-        ...calendarEvent,
-        popoverVisibility: false
-      }));
-    }
-  
-    isDateBetween(date: Date, starts: string, ends: string) {
-      const startDate = new Date(starts);
-      const endDate = new Date(ends);
-      return (
-        date.getTime() >= startDate.getTime() &&
-        date.getTime() <= endDate.getTime()
-      );
-    }
+    // RappiderEditFormComponent
+  ],
+  templateUrl: './calendar.component.html',
+})
+
+// eslint brace-style: "error"
+export class CalendarComponent
+  implements ControlValueAccessor, OnInit, OnChanges {
+  @Input() mode: CalendarMode;
+  @Input() isFullscreen: boolean;
+  @Input() calendarEvents: CalendarEvent[];
+  @Input() borderSettings: BorderConfig;
+  @Input() sizeSettings: SizeConfig;
+  @Input() colorSettings: ColorConfig;
+  @Input() boxShadowSettings: BoxShadowConfig;
+  @Input() paddingSettings: SpacingConfig;
+  @Input() marginSettings: SpacingConfig;
+  @Input() typographySettings: TypographyConfig;
+
+  // eslint-disable-next-line @angular-eslint/no-output-native
+  @Output() blur = new EventEmitter<Date>();
+  @Output() valueChange = new EventEmitter<Date>();
+  @Output() updateEventSubmit = new EventEmitter<any>();
+  @Output() createEventSubmit = new EventEmitter<any>();
+
+  _value: Date;
+  // I will update this later
+  // formConfig = CALENDAR_FORM_CONFIG;
+  createEventPopoverVisibilities = {};
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value: Date) {
+    this._value = value;
+    this.onChange(value);
+    this.onTouched();
+    this.valueChange.emit(value);
+  }
+
+  onChange: any = () => { };
+  onTouched: any = () => { };
+
+  writeValue(value): void {
+    this._value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onValueChange(value: Date) {
+    this.blur.emit(value);
+  }
+
+  ngOnInit() {
+    this.setPopoverVisibilityFlag();
+  }
+
+  ngOnChanges() {
+    this.setPopoverVisibilityFlag();
+  }
+
+  setPopoverVisibilityFlag() {
+    this.calendarEvents = this.calendarEvents?.map((calendarEvent) => ({
+      ...calendarEvent,
+      popoverVisibility: false,
+    }));
+  }
+
+  isDateBetween(date: Date, starts: string, ends: string) {
+    const startDate = new Date(starts);
+    const endDate = new Date(ends);
+    return (
+      date.getTime() >= startDate.getTime() &&
+      date.getTime() <= endDate.getTime()
+    );
+  }
   /* I will update this later
     openEventDetailPopover(item: CalendarEvent) {
       item.popoverVisibility = true;
@@ -144,27 +130,27 @@ import { TypographyConfig } from '../core/typography';
       this.closeEventDetailPopover(item);
     }
     */
-    openCreateEventPopover(date: Date) {
-      const dateString = date.toDateString();
-      this.createEventPopoverVisibilities = {
-        ...this.createEventPopoverVisibilities,
-        [dateString]: true
-      };
-    }
-  
-    closeCreateEventPopover(date: Date) {
-      const dateString = date.toDateString();
-      this.createEventPopoverVisibilities = {
-        ...this.createEventPopoverVisibilities,
-        [dateString]: false
-      };
-    }
-  
-    createEvent(formValue, dateOnPopoverVisible: Date) {
-      this.createEventSubmit.emit(formValue);
-      this.createEventPopoverVisibilities = {
-        ...this.createEventPopoverVisibilities,
-        [dateOnPopoverVisible.toDateString()]: false
-      };
-    }
+  openCreateEventPopover(date: Date) {
+    const dateString = date.toDateString();
+    this.createEventPopoverVisibilities = {
+      ...this.createEventPopoverVisibilities,
+      [dateString]: true,
+    };
   }
+
+  closeCreateEventPopover(date: Date) {
+    const dateString = date.toDateString();
+    this.createEventPopoverVisibilities = {
+      ...this.createEventPopoverVisibilities,
+      [dateString]: false,
+    };
+  }
+
+  createEvent(formValue, dateOnPopoverVisible: Date) {
+    this.createEventSubmit.emit(formValue);
+    this.createEventPopoverVisibilities = {
+      ...this.createEventPopoverVisibilities,
+      [dateOnPopoverVisible.toDateString()]: false,
+    };
+  }
+}

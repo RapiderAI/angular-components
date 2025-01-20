@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { NzBadgeComponent } from 'ng-zorro-antd/badge';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
-import { BadgeStatus } from '@rapider/angular-components/core/badge';
-import { TextMode } from '@rapider/angular-components/core/text';
+import { BadgeStatus } from '@rapider/angular-components/core/badge/badge-status.enum';
+import { TextMode } from '@rapider/angular-components/core/text/text-mode.enum';
 
 @Component({
-  selector: 'rpd-badge',
+  selector: 'rappider-calendar',
   imports: [
     CommonModule,
     NzBadgeComponent,
