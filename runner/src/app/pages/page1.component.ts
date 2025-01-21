@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb/breadcrumb.component';
+import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
 
 @Component({
   standalone: true,
@@ -41,6 +43,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
+    RappiderBreadcrumbComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -68,6 +71,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-breadcrumb [options]="options"></rappider-breadcrumb>
     -->
 
   </div>
@@ -75,6 +79,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
+
 
   `,
 })
@@ -87,6 +92,19 @@ export class Page1Component {
   text: TextComponentConfig = {
     text: 'Facebook'
   }
+  options: BreadcrumbOption[] = [
+    {
+      label: "Home",
+      params: {},
+      url: ''
+    } ,
+    {
+      label: "About",
+      params: {},
+      url: ''
+    }     
+  ];
+
   panels: AccordionPanel[] = [
     {
       name: {

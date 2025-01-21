@@ -1,0 +1,20 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item *ngFor="let option of options"
+                        [ngStyle]="cssStyle">
+  
+      <!-- breadcrumb with link -->
+      <ng-container *ngIf="option">
+        <ng-container *ngIf="option.redirectUrl; else noAnchor">
+          <a (click)="onBreadcrumbOptionClick(option)">
+            <span class="label">{{ option.label | translate }}</span>
+          </a>
+        </ng-container>
+      </ng-container>
+  
+      <!-- breadcrumb without link -->
+      <ng-template #noAnchor>
+        <span class="label">{{ option.label | translate }}</span>
+      </ng-template>
+  
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
