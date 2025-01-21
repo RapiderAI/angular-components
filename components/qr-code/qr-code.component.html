@@ -1,0 +1,20 @@
+<div>
+  <qrcode [qrdata]="qrData"
+          [alt]="alt"
+          [allowEmptyString]="allowEmptyString"
+          [title]="title"
+          [imageSrc]="imageSrc"
+          [elementType]="elementType"
+          [imageHeight]="imageHeight"
+          [imageWidth]="imageWidth"
+          [width]="width"
+          [margin]="margin"
+          [scale]="scale"
+          [errorCorrectionLevel]="errorCorrectionLevel"
+          [version]="version"
+          [colorDark]="colorDark"
+          [colorLight]="colorLight"
+          [cssClass]="cssClass"
+          (qrCodeUrl)="onQRCodeUrl($event)">
+  </qrcode>
+</div>
