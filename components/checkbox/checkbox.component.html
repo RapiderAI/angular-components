@@ -1,0 +1,54 @@
+<ng-container *ngIf="checkboxType === CheckboxType.Button; else defaultCheckboxType">
+    <div class="checkbox-button-type">
+      <label nz-tooltip
+             [nzTooltipTitle]="tooltip">
+        <input [(ngModel)]="value"
+               [id]="elementId"
+               class="content"
+               type="checkbox"
+               [ngClass]="cssClass"
+               [ngStyle]="cssStyle"
+               [disabled]="disabled"
+               (ngModelChange)="onValueChange($event)">
+        <span class="label">
+          <rappider-icon *ngIf="icon"
+                         [name]="icon.name"
+                         [type]="icon.type"
+                         [theme]="icon.theme"
+                         [color]="icon.color"
+                         [size]="icon.size"></rappider-icon>
+          <span *ngIf="text && icon?.name">&nbsp;&nbsp;</span>
+          <rappider-text [content]="text?.content"
+                         [text]="text?.text"
+                         [textMode]="text?.textMode"
+                         [typography]="text?.typography"
+                         [colorSettings]="text?.colorSettings"></rappider-text>
+        </span>
+      </label>
+    </div>
+  </ng-container>
+  
+  <ng-template #defaultCheckboxType>
+    <label class="content"
+           nz-checkbox
+           [(ngModel)]="value"
+           [ngClass]="cssClass"
+           [ngStyle]="cssStyle"
+           [disabled]="disabled"
+           (ngModelChange)="onValueChange($event)">
+      <rappider-text [content]="text?.content"
+                     [text]="text?.text"
+                     [textMode]="text?.textMode"
+                     [typography]="text?.typography"
+                     [colorSettings]="text?.colorSettings"></rappider-text>
+    </label>
+    <rappider-icon *ngIf="additionalIcon"
+                   class="additional-icon"
+                   nz-tooltip
+                   [nzTooltipTitle]="tooltip"
+                   [color]="additionalIcon.color"
+                   [name]="additionalIcon.name"
+                   [type]="additionalIcon.type"
+                   [theme]="additionalIcon.theme"
+                   [size]="additionalIcon.size"></rappider-icon>
+  </ng-template>
