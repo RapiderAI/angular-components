@@ -1,0 +1,16 @@
+<div class="divider">
+  <nz-divider [nzDashed]="style || 'false'"
+              [nzType]="type || 'horizontal'"
+              [nzText]="type === DividerType.Horizontal &&
+              ((text?.text && text?.textMode === TextMode.Text) ||
+              (text?.content && text.textMode === TextMode.Html)) ? textArea : null"
+              [nzOrientation]="textPlacement || 'center'">
+    <ng-template #textArea>
+      <rappider-text [textMode]="text?.textMode"
+                     [content]="text?.content"
+                     [text]="text?.text"
+                     [typography]="text?.typography"
+                     [colorSettings]="text?.colorSettings"></rappider-text>
+    </ng-template>
+  </nz-divider>
+</div>

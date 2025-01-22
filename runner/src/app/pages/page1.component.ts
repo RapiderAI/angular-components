@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderDividerComponent } from '@rapider/angular-components/divider/divider.component';
 
 @Component({
   standalone: true,
@@ -41,6 +42,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
+    RappiderDividerComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -68,6 +70,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-divider [text]="text" [style]="style" [type]="type" [textPlacement]="textPlacement" [dividerWidth]="dividerWidth" [dividerColor]="dividerColor"></rappider-divider>
     -->
 
   </div>
@@ -84,6 +87,13 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+  
   text: TextComponentConfig = {
     text: 'Facebook'
   }
