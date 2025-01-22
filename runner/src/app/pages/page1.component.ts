@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox/textbox.component';
 
 @Component({
   standalone: true,
@@ -41,6 +42,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
+    RappiderTextboxComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -68,6 +70,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
     -->
 
   </div>
@@ -75,15 +78,16 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
-
   `,
 })
+
 export class Page1Component {
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+  placeholder="Enter your name";
   text: TextComponentConfig = {
     text: 'Facebook'
   }
