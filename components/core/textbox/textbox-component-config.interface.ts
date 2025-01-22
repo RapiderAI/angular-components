@@ -1,6 +1,6 @@
-import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '../shared';
-import { TextBoxSize } from './textbox-size.enum';
-import { TextBoxType } from './textbox-type.enum';
+import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { TextBoxSize } from '@rapider/angular-components/core/textbox/textbox-size.enum';
+import { TextBoxType } from '@rapider/angular-components/core/textbox/textbox-type.enum';
 
 export interface TextboxComponentConfig {
   placeholder?: string;

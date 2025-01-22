@@ -1,4 +1,4 @@
-import { TextBoxType } from "./textbox-type.enum";
+import { TextBoxType } from '@rapider/angular-components/core/textbox/textbox-type.enum';
 
 export const textboxTypeOptions = [
   {
