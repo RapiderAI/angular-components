@@ -1,0 +1,27 @@
+/*******************/
+/*** Third Party Styling ****/
+/*******************/
+
+/* quill */
+/*****************/
+@import "node_modules/quill/dist/quill.core.css";
+@import "node_modules/quill/dist/quill.bubble.css";
+@import "node_modules/quill/dist/quill.snow.css";
+@import "node_modules/quill-mention/dist/quill.mention.min.css";
+
+/* bootstrap */
+@import "node_modules/bootstrap/scss/bootstrap";
+
+/* code mirror */
+@import "node_modules/codemirror/lib/codemirror";
+@import "node_modules/codemirror/theme/material";
+@import "node_modules/codemirror/theme/darcula";
+
+/* vidtstack video player */
+@import "vidstack/player/styles/default/theme.css";
+@import "vidstack/player/styles/default/layouts/video.css";
+
+/* swiper */
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';

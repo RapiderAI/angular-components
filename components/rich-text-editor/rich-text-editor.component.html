@@ -1,0 +1,15 @@
+<quill-editor class="quill-editor"
+              [(ngModel)]="value"
+              [theme]="theme"
+              [placeholder]="placeholder"
+              [modules]="modules"
+              [ngClass]="cssClass"
+              [ngStyle]="cssStyle"
+              (onBlur)="onBlur()">
+</quill-editor>
+
+<ng-container *ngIf="theme === RichTextEditorTheme.Bubble">
+  <div class="feedback-text">
+    <small>Select text to format</small>
+  </div>
+</ng-container>
