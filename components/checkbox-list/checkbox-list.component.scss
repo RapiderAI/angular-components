@@ -1,0 +1,33 @@
+.title {
+  margin-bottom: var(--margin-3x);
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-2x);
+}
+
+.list-direction-column {
+  margin-bottom: var(--margin-2x);
+
+  &:last-child {
+    margin: 0px;
+  }
+}
+
+.list-direction-row {
+  margin-right: var(--margin-2x);
+
+  &:last-child {
+    margin: 0px;
+  }
+}
+
+.button {
+  margin-top: var(--margin-2x);
+}
+
+.select-all {
+  margin-bottom: var(--margin-4x);
+}
