@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 
 @Component({
   standalone: true,
@@ -41,6 +42,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
+    RappiderCheckboxListComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -73,7 +75,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-accordion [panels]="panels"></rappider-accordion>
+    <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
   </div>
 
   `,
@@ -87,6 +89,37 @@ export class Page1Component {
   text: TextComponentConfig = {
     text: 'Facebook'
   }
+
+  options = [
+    {
+      key: {
+        text: "Alice"
+      },
+      value: "alice",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+    {
+      key: {
+        text: "Jane"
+      },
+      value: "jane",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+  ];
   panels: AccordionPanel[] = [
     {
       name: {

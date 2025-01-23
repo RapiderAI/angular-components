@@ -1,11 +1,11 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CheckboxListDirection } from '@rapider/angular-components/core/checkbox-list';
+import { CheckboxList, CheckboxListDirection, MappedCheckboxList } from '@rapider/angular-components/core/checkbox-list';
 import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent, HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { TextComponentConfig } from '@rapider/angular-components/text';
-import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox';
+import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox/checkbox.component';
 
 
 
@@ -67,11 +67,11 @@ export class RappiderCheckboxListComponent implements OnInit, OnChanges, Control
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.options) {
+    if (changes['options']) {
       this._value = this.options?.filter(option => option.isSelected).map(item => item.value);
       this.writeValue(this.value);
     }
-    if (changes.initialValue) {
+    if (changes['initialValue']) {
       this.setInitialValue();
     }
   }
