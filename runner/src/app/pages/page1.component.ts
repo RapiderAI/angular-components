@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderPaginationComponent } from '@rapider/angular-components/pagination/pagination.component';
 
 @Component({
   standalone: true,
@@ -41,6 +42,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
+    RappiderPaginationComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -68,6 +70,8 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-pagination [pageIndex]="pageIndex" [total]="total" [size]="size" [pageSize]="pageSize" [isSimple]="isSimple"></rappider-pagination>
+
     -->
 
   </div>
@@ -101,7 +105,11 @@ export class Page1Component {
     }
   ];
   rate = 4;
-
+  pageIndex = 3;
+  total = 100;
+  size = "default";
+  pageSize = 10;
+  isSimple = true;
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },
