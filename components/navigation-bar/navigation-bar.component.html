@@ -1,0 +1,230 @@
+<div class="navigation-bar">
+  <a *ngIf="isBrandVisible"
+     [routerLink]="brandRouteUrl">
+    <div class="brand">
+      <span *ngIf="brandImage"
+            class="brand-image">
+        <rappider-image [source]="brandImage?.source"
+                        [alternateText]="brandImage?.alternateText"
+                        [placeholder]="brandImage?.placeholder"
+                        [fallback]="brandImage?.fallback"
+                        [disablePreview]="brandImage?.disablePreview"
+                        [borderSettings]="brandImage?.borderSettings"
+                        [customSizeSettings]="brandImage?.customSizeSettings"
+                        [shadowSettings]="brandImage?.shadowSettings"
+                        [marginSettings]="brandImage?.marginSettings"
+                        [paddingSettings]="brandImage?.paddingSettings"></rappider-image>
+      </span>
+      <span *ngIf="
+                        brandText"
+            class="brand-text">
+        {{brandText}}
+      </span>
+    </div>
+  </a>
+  <div *ngIf="menu && isMenuVisible"
+       class="menu">
+    <rappider-menu [config]="menu?.config"
+                   [paddingValue]="menu?.paddingValue"
+                   [isCollapsed]="menu?.isCollapsed"
+                   [menuPlacement]="menu?.menuPlacement"
+                   (menuItemClick)="onMenuItemClick($event)"></rappider-menu>
+  </div>
+
+  <div class="additional-area">
+    <div *ngIf="isSearchable"
+         class="search-area">
+      <rappider-input-group [prefixIcon]="searchArea?.prefixIcon"
+                            [prefixButton]="searchArea?.prefixButton"
+                            [suffixIcon]="searchArea?.suffixIcon"
+                            [suffixButton]="searchArea?.suffixButton"
+                            [textbox]="searchArea?.textbox"
+                            (buttonClick)="onSearchButtonClick($event)"
+                            (valueChange)="onSearchValueChange($event)"></rappider-input-group>
+    </div>
+
+    <div *ngIf="buttons"
+         class="buttons-area">
+      <ng-container *ngFor="let button of buttons">
+        <rappider-button *ngIf="button?.isVisible !== false"
+                         [type]="button?.type"
+                         [shape]="button?.shape"
+                         [text]="button?.text"
+                         [size]="button?.size"
+                         [transparent]="button?.transparent"
+                         [loading]="button?.loading"
+                         [block]="button?.block"
+                         [disabled]="button?.disabled"
+                         [colorType]="button?.colorType"
+                         [icon]="button?.icon"
+                         [formButtonType]="button?.formButtonType"
+                         [borderSettings]="button?.borderSettings"
+                         [customSizeSettings]="button?.customSizeSettings"
+                         [customColorSettings]="button?.customColorSettings"
+                         [shadowSettings]="button?.shadowSettings"
+                         [paddingSettings]="button?.paddingSettings"
+                         [marginSettings]="button?.marginSettings"
+                         (click)="onAdditionalButtonClick(button)"></rappider-button>
+      </ng-container>
+    </div>
+
+    <div *ngIf="cart && isCartVisible"
+         class="cart">
+      <rappider-cart-preview [cartItem]="cart.cartItem"
+                             [footer]="cart.footer"
+                             [footerContent]="cart.footerContent"
+                             [buttons]="cart.buttons"
+                             [dropdownButton]="cart.dropdownButton"
+                             [placement]="cart.placement"
+                             [triggerType]="cart.triggerType"
+                             (dropdownButtonClick)="onCartDropdownButtonClick($event)"
+                             (buttonClick)="onCartButtonClick($event)"
+                             (cartItemButtonClick)="onCartItemButtonClick($event)">
+      </rappider-cart-preview>
+    </div>
+
+    <div *ngIf="dropdowns"
+         class="dropdowns-area">
+      <ng-container *ngFor="let dropdown of dropdowns">
+        <rappider-dropdown-menu *ngIf="dropdown?.isVisible !== false"
+                                [items]="dropdown?.items"
+                                [label]="dropdown?.label"
+                                [triggerType]="dropdown?.triggerType"
+                                [icon]="dropdown?.icon"
+                                [placement]="dropdown?.placement"
+                                [labelMode]="dropdown?.labelMode"
+                                (menuItemClick)="onDropdownMenuItemClick($event)"></rappider-dropdown-menu>
+      </ng-container>
+    </div>
+
+    <div *ngIf="togglerIcon?.name"
+         class="toggler"
+         (click)="onClickToggler()">
+      <rappider-icon [name]="togglerIcon?.name"
+                     [type]="togglerIcon?.type"
+                     [theme]="togglerIcon?.theme"
+                     [color]="togglerIcon?.color"
+                     [size]="togglerIcon?.size"></rappider-icon>
+    </div>
+  </div>
+</div>
+
+<!-- Responsive Dropdown Menu -->
+
+<div *ngIf="responsiveMenuMode === ResponsiveMenuMode.Dropdown && responsiveDropdownMenuVisible"
+     class="dropdown-mode">
+  <div *ngIf="isSearchable"
+       class="collapse-search-area">
+    <rappider-input-group [prefixIcon]="searchArea?.prefixIcon"
+                          [prefixButton]="searchArea?.prefixButton"
+                          [suffixIcon]="searchArea?.suffixIcon"
+                          [suffixButton]="searchArea?.suffixButton"
+                          [textbox]="searchArea?.textbox"
+                          (buttonClick)="onSearchButtonClick($event)"
+                          (valueChange)="onSearchValueChange($event)"></rappider-input-group>
+  </div>
+
+  <div *ngIf="menu && isMenuVisible"
+       class="collapse-menu">
+    <rappider-menu [config]="menu.config"
+                   [paddingValue]="menu?.paddingValue"
+                   [isCollapsed]="menu.isCollapsed"
+                   [menuPlacement]="menu.menuPlacement"
+                   (menuItemClick)="onMenuItemClick($event)"></rappider-menu>
+  </div>
+
+  <div *ngIf="buttons"
+       class="collapse-buttons-area">
+    <ng-container *ngFor="let button of buttons">
+      <rappider-button *ngIf="button?.isVisible !== false"
+                       [type]="button?.type"
+                       [shape]="button?.shape"
+                       [text]="button?.text"
+                       [size]="button?.size"
+                       [transparent]="button?.transparent"
+                       [loading]="button?.loading"
+                       [block]="button?.block"
+                       [disabled]="button?.disabled"
+                       [colorType]="button?.colorType"
+                       [icon]="button?.icon"
+                       [formButtonType]="button?.formButtonType"
+                       [borderSettings]="button?.borderSettings"
+                       [customSizeSettings]="button?.customSizeSettings"
+                       [customColorSettings]="button?.customColorSettings"
+                       [shadowSettings]="button?.shadowSettings"
+                       [paddingSettings]="button?.paddingSettings"
+                       [marginSettings]="button?.marginSettings"
+                       (click)="onAdditionalButtonClick(button)"></rappider-button>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="responsiveMenuMode === ResponsiveMenuMode.Drawer && drawer"
+     class="drawer-mode">
+  <rappider-drawer [(visible)]="drawer.visible"
+                   [title]="drawer.title"
+                   [closable]="drawer.closable"
+                   [width]="drawer.width"
+                   [height]="drawer.height"
+                   [placement]="drawer.placement"
+                   [footer]="drawer.footer"
+                   [keyboard]="drawer.keyboard"
+                   [closeIcon]="drawer.closeIcon"
+                   [closeOnNavigation]="drawer.closeOnNavigation"
+                   [mask]="drawer.mask"
+                   [maskClosable]="drawer.maskClosable"
+                   [maskStyle]="drawer.maskStyle"
+                   [bodyStyle]="drawer.bodyStyle"
+                   [offsetX]="drawer.offsetX"
+                   [offsetY]="drawer.offsetY"
+                   [zIndex]="drawer.zIndex"
+                   wrapClassName="navigation-bar-drawer"
+                   (close)="onDrawerClose()">
+    <div *ngIf="isSearchable"
+         class="drawer-search-area">
+      <rappider-input-group [prefixIcon]="searchArea?.prefixIcon"
+                            [prefixButton]="searchArea?.prefixButton"
+                            [suffixIcon]="searchArea?.suffixIcon"
+                            [suffixButton]="searchArea?.suffixButton"
+                            [textbox]="searchArea?.textbox"
+                            (buttonClick)="onSearchButtonClick($event)"
+                            (valueChange)="onSearchValueChange($event)"></rappider-input-group>
+    </div>
+
+    <div *ngIf="menu && isMenuVisible"
+         class="drawer-menu">
+      <rappider-menu [config]="menu.config"
+                     [paddingValue]="menu?.paddingValue"
+                     [isCollapsed]="menu.isCollapsed"
+                     [menuPlacement]="menu.menuPlacement"
+                     (menuItemClick)="onMenuItemClick($event)"></rappider-menu>
+    </div>
+
+    <div *ngIf="buttons"
+         class="drawer-buttons-area">
+      <ng-container *ngFor="let button of buttons">
+        <rappider-button *ngIf="button?.isVisible !== false"
+                         [type]="button?.type"
+                         [shape]="button?.shape"
+                         [text]="button?.text"
+                         [size]="button?.size"
+                         [transparent]="button?.transparent"
+                         [loading]="button?.loading"
+                         [block]="button?.block"
+                         [disabled]="button?.disabled"
+                         [colorType]="button?.colorType"
+                         [icon]="button?.icon"
+                         [formButtonType]="button?.formButtonType"
+                         [borderSettings]="button?.borderSettings"
+                         [customSizeSettings]="button?.customSizeSettings"
+                         [customColorSettings]="button?.customColorSettings"
+                         [shadowSettings]="button?.shadowSettings"
+                         [paddingSettings]="button?.paddingSettings"
+                         [marginSettings]="button?.marginSettings"
+                         (click)="onAdditionalButtonClick(button)"></rappider-button>
+      </ng-container>
+    </div>
+  </rappider-drawer>
+</div>
+
+<!-- /Responsive Dropdown Menu -->

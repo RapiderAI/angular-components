@@ -9,3 +9,4 @@ export * from './button-type-options';
 export * from './button-redirect-mode.enum';
 export * from './button-redirect-target.enum';
 export * from './button-action-behavior.enum';
+export * from './button-wrapper.interface';

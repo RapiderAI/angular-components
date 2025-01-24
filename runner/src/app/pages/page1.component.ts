@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderNavigationBarComponent } from '@rapider/angular-components/navigation-bar';
 
 @Component({
   standalone: true,
@@ -42,6 +43,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderSelectModule,
     RappiderSpinComponent,
     // RappiderBadgeComponent,
+    RappiderNavigationBarComponent
   ],
   selector: 'app-page',
   template: `
