@@ -2,19 +2,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
-import { RappiderAccordionComponent } from '../accordion/accordion.component';
-import { RappiderButtonComponent } from '../button/button.component';
-import { RappiderHeadingComponent } from '../heading/heading.component';
-import { RappiderImageComponent } from '../image/image.component';
-import { RappiderParagraphComponent } from '../paragraph/paragraph.component';
-import { CartItemAdditionalContent } from '../core/cart-item/cart-item-additional-content.interface';
-import { ButtonComponentConfig } from '../button';
-import { CartItem } from '../core/cart-item';
-import { HeadingComponentConfig } from '../heading';
-import { ImageComponentConfig } from '../image';
-import { TypographyConfig } from '../core/typography/typography-config.interface';
-//import { RappiderIconBlockComponent } from '../icon-block/icon-block.component';
-//import { RappiderDividerComponent } from '../divider/divider.component';
+import { RappiderAccordionComponent } from '@rapider/angular-components/accordion';
+import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
+import { HeadingComponentConfig, RappiderHeadingComponent } from '@rapider/angular-components/heading';
+import { ImageComponentConfig, RappiderImageComponent } from'@rapider/angular-components/image';
+import { RappiderParagraphComponent } from '@rapider/angular-components/paragraph';
+import { CartItemAdditionalContent } from '@rapider/angular-components/core/cart-item'; 
+import { CartItem } from '@rapider/angular-components/core/cart-item';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { RappiderIconBlockComponent } from '@rapider/angular-components/icon-block/icon-block.component';
+import { RappiderDividerComponent } from '@rapider/angular-components/divider/divider.component';
 
 
 @Component({
@@ -28,8 +25,8 @@ import { TypographyConfig } from '../core/typography/typography-config.interface
     RappiderParagraphComponent,
     RappiderButtonComponent,
     RappiderAccordionComponent,
-    // RappiderIconBlockComponent,
-    // RappiderDividerComponent
+    RappiderIconBlockComponent,
+    RappiderDividerComponent
   ],
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss'],

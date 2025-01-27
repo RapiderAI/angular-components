@@ -1,0 +1,67 @@
+<div *ngIf="mode === IconBlockModes.Mode1"
+     class="icon-block-mode-1">
+  <div *ngIf="avatar">
+    <rappider-avatar [text]="avatar.text"
+                     [iconName]="avatar.iconName"
+                     [shape]="avatar.shape"
+                     [imageUrl]="avatar.imageUrl"
+                     [altText]="avatar.altText"
+                     [cssStyle]="avatar.cssStyle"
+                     [size]="avatar.size"
+                     [borderSettings]="avatar.borderSettings"
+                     [sizeSettings]="avatar.sizeSettings"
+                     [colorSettings]="avatar.colorSettings"
+                     [boxShadowSettings]="avatar.boxShadowSettings"
+                     [paddingSettings]="avatar.paddingSettings"
+                     [marginSettings]="avatar.marginSettings"
+                     [description]="avatar.description"></rappider-avatar>
+  </div>
+  <div *ngIf="title"
+       [ngClass]="avatar ? 'margin-left' : 'no-margin' "
+       class="content-area">
+    <rappider-heading [type]="title.type"
+                      [content]="title.content"></rappider-heading>
+    <div *ngIf="content"
+         class="content">
+      <rappider-text [content]="content.content"
+                     [textMode]="content.textMode"
+                     [text]="content.text"
+                     [typography]="content.typography"
+                     [colorSettings]="content.colorSettings"></rappider-text>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mode === IconBlockModes.Mode2"
+     class="icon-block-mode-2">
+  <div *ngIf="avatar">
+    <rappider-avatar [text]="avatar.text"
+                     [iconName]="avatar.iconName"
+                     [shape]="avatar.shape"
+                     [imageUrl]="avatar.imageUrl"
+                     [altText]="avatar.altText"
+                     [cssStyle]="avatar.cssStyle"
+                     [size]="avatar.size"
+                     [borderSettings]="avatar.borderSettings"
+                     [sizeSettings]="avatar.sizeSettings"
+                     [colorSettings]="avatar.colorSettings"
+                     [boxShadowSettings]="avatar.boxShadowSettings"
+                     [paddingSettings]="avatar.paddingSettings"
+                     [marginSettings]="avatar.marginSettings"
+                     [description]="avatar.description"></rappider-avatar>
+  </div>
+  <div *ngIf="title"
+       [ngClass]="avatar ? 'margin-top' : 'no-margin' "
+       class="title-area">
+    <rappider-heading [type]="title.type"
+                      [content]="title.content"></rappider-heading>
+  </div>
+  <div *ngIf="content"
+       class="content">
+    <rappider-text [content]="content.content"
+                   [textMode]="content.textMode"
+                   [text]="content.text"
+                   [typography]="content.typography"
+                   [colorSettings]="content.colorSettings"></rappider-text>
+  </div>
+</div>

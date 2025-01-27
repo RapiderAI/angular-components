@@ -1,13 +1,10 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ButtonComponentConfig } from '../../utils/button/button-component-config.interface';
-import { IconComponentConfig } from '../../utils/icon/icon-component-config.interface';
-import { TextboxComponentConfig } from '../../utils/textbox/textbox-component-config.interface';
 import { CommonModule } from '@angular/common';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { RappiderButtonComponent } from '../button/button.component';
-import { RappiderIconComponent } from '../icon/icon.component';
-import { RappiderTextboxComponent } from '../textbox/textbox.component';
+import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
+import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
+import { RappiderTextboxComponent, TextboxComponentConfig } from '@rapider/angular-components/textbox';
 
 @Component({
   selector: 'rappider-input-group',
@@ -17,8 +14,8 @@ import { RappiderTextboxComponent } from '../textbox/textbox.component';
     NzInputModule,
     FormsModule,
     RappiderIconComponent,
-    RappiderTextboxComponent,
-    RappiderButtonComponent
+    RappiderButtonComponent,
+    RappiderTextboxComponent
   ],
   templateUrl: './input-group.component.html',
   styleUrls: ['./input-group.component.scss'],

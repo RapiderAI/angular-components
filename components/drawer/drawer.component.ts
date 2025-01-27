@@ -1,8 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
-import { DrawerPlacement } from '../../utils/drawer/drawer-placement.enum';
-import { RappiderButtonComponent } from '../button/button.component';
 import { CommonModule } from '@angular/common';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { DrawerPlacement } from '@rapider/angular-components/core/drawer/drawer-placement.enum';
 
 @Component({
   selector: 'rappider-drawer',

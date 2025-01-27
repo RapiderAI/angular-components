@@ -1,17 +1,17 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { cloneDeep } from 'lodash';
-import { MenuPlacement } from '../../utils/menu';
-import { MenuActionBehavior } from '../../utils/menu/menu-action-behavior.enum';
-import { MenuConfig } from '../../utils/menu/menu-config.interface';
-import { MenuMode } from '../../utils/menu/menu-mode.enum';
-import { Menu } from '../../utils/menu/menu.interface';
-import { RappiderIconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { MenuPlacement } from '@rapider/angular-components/core/menu/menu-placement.enum';
+import { MenuActionBehavior } from '@rapider/angular-components/core/menu/menu-action-behavior.enum';
+import { MenuConfig } from '@rapider/angular-components/core/menu/menu-config.interface';
+import { MenuMode } from '@rapider/angular-components/core/menu/menu-mode.enum';
+import { Menu } from '@rapider/angular-components/core/menu/menu.interface';
+import { RappiderIconComponent } from '@rapider/angular-components/icon';
 
 
 @Component({
@@ -20,10 +20,10 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
   imports: [
     CommonModule,
     NzMenuModule,
-    RappiderIconComponent,
     NzTagModule,
     TranslateModule,
-    NzToolTipModule
+    NzToolTipModule,
+    RappiderIconComponent
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
@@ -59,14 +59,14 @@ export class RappiderMenuComponent implements OnInit, OnChanges, AfterViewInit {
   /* If there is menus data, calls addLevelFieldToMenus function */
   ngOnChanges(changes: SimpleChanges): void {
     this.config = cloneDeep(this.config);
-    if (changes.config) {
+    if (changes['config']) {
       this.addLevelFieldToMenus(this.config?.items, 1);
       this.initDefault();
     }
-    if (changes.isCollapsed) {
+    if (changes['isCollapsed']) {
       this.expandAllMenus(this.config?.items);
     }
-    if (changes.activeItem) {
+    if (changes['activeItem']) {
       this.openHandler();
     }
 
