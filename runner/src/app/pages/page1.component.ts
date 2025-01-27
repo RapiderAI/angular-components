@@ -75,7 +75,7 @@ import { RappiderNavigationBarComponent } from '@rapider/angular-components/navi
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-accordion [panels]="panels"></rappider-accordion>
+    <rappider-navigation-bar [isMenuVisible]="isMenuVisible"></rappider-navigation-bar>
   </div>
 
   `,
@@ -86,6 +86,8 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
+  isMenuVisible = true;
   text: TextComponentConfig = {
     text: 'Facebook'
   }

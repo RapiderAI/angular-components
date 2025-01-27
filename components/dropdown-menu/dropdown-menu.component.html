@@ -102,8 +102,7 @@
                   nz-popconfirm
                   [nzPopconfirmTitle]="menu.popconfirmTitle | translate"
                   [nzOkText]="menu.label| translate"
-                  [nzOkDanger]="menu.popConfirmOkDanger"
-                  (nzOnConfirm)="onMenuItemClick($event, menu)"> {{ menu.label | translate }} </li>
+                  [nzOkDanger]="menu.popConfirmOkDanger"> {{ menu.label | translate }} </li>
               <li *ngIf="!menu.popconfirmTitle"
                   nz-menu-item
                   (click)="onMenuItemClick($event, menu)"> {{ menu.label | translate }}

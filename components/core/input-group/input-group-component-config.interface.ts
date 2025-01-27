@@ -1,6 +1,7 @@
-import { ButtonComponentConfig } from '../button/button-component-config.interface';
-import { IconComponentConfig } from '../icon/icon-component-config.interface';
-import { TextboxComponentConfig } from '../textbox/textbox-component-config.interface';
+import { ButtonComponentConfig } from '@rapider/angular-components/button/utils/button-component-config.interface';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { TextboxComponentConfig } from '@rapider/angular-components/core/textbox/textbox-component-config.interface';
+
 
 export interface InputGroupComponentConfig {
   prefixIcon?: IconComponentConfig;

@@ -12,6 +12,7 @@ import { CartItem } from '@rapider/angular-components/core/cart-item';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { RappiderIconBlockComponent } from '@rapider/angular-components/icon-block/icon-block.component';
 import { RappiderDividerComponent } from '@rapider/angular-components/divider/divider.component';
+import { DividerComponentConfig } from '@rapider/angular-components/core/divider';
 
 
 @Component({
@@ -33,7 +34,7 @@ import { RappiderDividerComponent } from '@rapider/angular-components/divider/di
 })
 export class RappiderCartItemComponent {
   @Input() image: ImageComponentConfig;
-  //@Input() divider: DividerComponentConfig;
+  @Input() divider: DividerComponentConfig;
   @Input() item: CartItem;
   @Input() additionalItems: CartItemAdditionalContent[];
   @Input() additionalItemsTitle: HeadingComponentConfig;

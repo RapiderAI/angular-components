@@ -1,21 +1,15 @@
-import { ButtonComponentConfig } from '../button/button-component-config.interface';
-import { CollapseIconPosition } from '../collapse/collapse-icon-position.enum';
-import { HeadingComponentConfig } from '../heading/heading-component-config.interface';
-import { Panel } from '../panel/panel.interface';
+import { ButtonComponentConfig } from "@rapider/angular-components/button";
+import { HeadingComponentConfig } from '@rapider/angular-components/heading';
+import { BorderConfig, SizeConfig, ColorConfig, BoxShadowConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { Panel } from '@rapider/angular-components/core/panel';
+import { RappiderParagraphComponent } from '@rapider/angular-components/paragraph';
+import { CollapseIconPosition } from '@rapider/angular-components/core/collapse/collapse-icon-position.enum';
 
-import { ParagraphComponentConfig } from '../paragraph/paragraph-component-config.interface';
-import {
-  BorderConfig,
-  BoxShadowConfig,
-  ColorConfig,
-  SizeConfig,
-  SpacingConfig,
-  TypographyConfig,
-} from '../shared';
 
 export interface CartItem {
   title: HeadingComponentConfig;
-  paragraphContent: ParagraphComponentConfig;
+  paragraphContent: RappiderParagraphComponent;
   additionalContent: HeadingComponentConfig;
   button: ButtonComponentConfig;
   panels: Panel[];

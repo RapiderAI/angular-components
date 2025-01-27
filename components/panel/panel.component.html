@@ -1,0 +1,27 @@
+<div class="panel">
+  <div *ngIf="title || icon"
+       class="title-container"
+       [style.background-color]="backgroundColor">
+    <div *ngIf="icon?.name"
+         class="icon-area">
+      <rappider-icon [name]="icon.name"
+                     [type]="icon.type"
+                     [theme]="icon.theme"
+                     [color]="icon.color"
+                     [size]="icon.size">
+      </rappider-icon>
+    </div>
+    <div *ngIf="title"
+         class="title-area">
+      <rappider-heading [content]="title.content"
+                        [type]="title.type"></rappider-heading>
+    </div>
+  </div>
+  <div *ngIf="content"
+       class="content-area"
+       [style.background-color]="backgroundColor">
+    <p [innerHTML]="content">
+      {{ content }}
+    </p>
+  </div>
+</div>
