@@ -1,56 +1,32 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
-import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
-import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
+import { TextComponentConfig } from '@rapider/angular-components/text';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { IconType } from '@rapider/angular-components/core/icon';
-import { RappiderParagraphComponent } from '@rapider/angular-components/paragraph';
-import { RappiderHtmlViewerComponent } from '@rapider/angular-components/html-viewer';
-import { RappiderImageComponent } from '@rapider/angular-components/image';
-import { RappiderAvatarComponent } from '@rapider/angular-components/avatar';
-import { RappiderTagComponent } from '@rapider/angular-components/tag';
-import { RappiderRateDisplayComponent } from '@rapider/angular-components/rate-display';
-import { RappiderAlertComponent } from '@rapider/angular-components/alert';
-import { RappiderAccordionComponent } from '@rapider/angular-components/accordion';
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
 import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
-import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderNavigationBarComponent } from '@rapider/angular-components/navigation-bar';
+import { ImageComponentConfig } from '@rapider/angular-components/image';
+import { MenuActionBehavior, MenuComponentConfig, MenuMode } from '@rapider/angular-components/core/menu';
 
 @Component({
   standalone: true,
   imports: [
     FormsModule,
     RouterModule,
-    RappiderTextComponent,
-    RappiderButtonComponent,
-    RappiderHeadingComponent,
-    RappiderIconComponent,
-    RappiderParagraphComponent,
-    RappiderHtmlViewerComponent,
-    RappiderImageComponent,
-    RappiderAvatarComponent,
-    RappiderTagComponent,
-    RappiderRateDisplayComponent,
-    RappiderAlertComponent,
-    RappiderAccordionComponent,
     RappiderRateComponent,
     RappiderSelectModule,
-    RappiderSpinComponent,
     // RappiderBadgeComponent,
-    RappiderNavigationBarComponent
+    RappiderNavigationBarComponent,
   ],
   selector: 'app-page',
   template: `
-
-  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-
-    <!--
+    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+      <!--
       <rappider-badge status="success">Success</rappider-badge>
       <rappider-badge status="error">Error</rappider-badge>
 
@@ -71,46 +47,130 @@ import { RappiderNavigationBarComponent } from '@rapider/angular-components/navi
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
     -->
+    </div>
 
-  </div>
+    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+      <rappider-rate
+        [(ngModel)]="rate"
+        (valueChange)="onChange($event)"
+      ></rappider-rate>
+    </div>
 
-  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-navigation-bar [isMenuVisible]="isMenuVisible"></rappider-navigation-bar>
-  </div>
-
+    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+      <rappider-navigation-bar
+        [isMenuVisible]="isMenuVisible"
+        [brandText]="brandText"
+        [brandImage]="brandImage"  
+        [menu]="menu"  
+      ></rappider-navigation-bar>
+    </div>
   `,
 })
 export class Page1Component {
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
-    type: IconType.FontAwesome
+    type: IconType.FontAwesome,
   };
-
+brandImage: ImageComponentConfig = {
+  source: 'https://www.hollywoodreporter.com/wp-content/uploads/2012/12/img_logo_blue.jpg',
+  alternateText: 'facebook',
+  width: '100px',
+};
   isMenuVisible = true;
+  brandText = 'Rappider';
   text: TextComponentConfig = {
-    text: 'Facebook'
-  }
+    text: 'Facebook',
+  };
   panels: AccordionPanel[] = [
     {
       name: {
-        content: "heading name",
-        type: HeadingType.H6
+        content: 'heading name',
+        type: HeadingType.H6,
       },
       content: {
-        text: "text here"
+        text: 'text here',
       },
       active: true,
-      disabled: false
-    }
+      disabled: false,
+    },
   ];
+
+  menu: MenuComponentConfig = {
+    config: {
+    items: [
+      {
+        label: "Home",
+        isExpanded: false,
+        redirectUrl: "/",
+        actionBehavior: MenuActionBehavior.Router,
+        children: [
+          {
+            label: "Home",
+            redirectUrl: "/",
+            actionBehavior: MenuActionBehavior.Router,
+          },
+          {
+            label: "Home",
+            redirectUrl: "/",
+            actionBehavior: MenuActionBehavior.Router,
+          },
+          {
+            label: "Home",
+            redirectUrl: "/",
+            actionBehavior: MenuActionBehavior.Router,
+          }
+        ]
+      },
+      {
+        label: "Home",
+        isExpanded: false,
+        redirectUrl: "/",
+        actionBehavior: MenuActionBehavior.Router,
+      },
+      {
+        label: "Contact",
+        isExpanded: false
+      },
+      {
+        label: "Home",
+        isExpanded: false,
+        redirectUrl: "/",
+        actionBehavior: MenuActionBehavior.Router,
+        "children": [
+          {
+            label: "Home",
+            redirectUrl: "/",
+            actionBehavior: MenuActionBehavior.Router,
+          },
+          {
+            label: "Home",
+            redirectUrl: "/",
+            actionBehavior: MenuActionBehavior.Router,
+          }
+        ]
+      },
+      {
+        label: "Home",
+        isExpanded: false,
+      },
+      {
+        label: "Home",
+        isExpanded: false,
+      }
+    ],
+    mode: MenuMode.Horizontal
+  }
+}
+
+
   rate = 4;
 
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },
       { key: 'Pegasus', value: 'pegasus' },
-    ]
+    ],
   };
 
   onChange(event) {
