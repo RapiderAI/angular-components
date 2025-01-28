@@ -42,7 +42,6 @@ import { RappiderDividerComponent } from '@rapider/angular-components/divider/di
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderDividerComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -71,12 +70,14 @@ import { RappiderDividerComponent } from '@rapider/angular-components/divider/di
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-divider [text]="text" [style]="style" [type]="type" [textPlacement]="textPlacement" [dividerWidth]="dividerWidth" [dividerColor]="dividerColor"></rappider-divider>
+      <rappider-checkbox [text]="text"></rappider-checkbox>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
 
   `,
@@ -96,7 +97,8 @@ export class Page1Component {
   
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
+
   panels: AccordionPanel[] = [
     {
       name: {
@@ -110,6 +112,7 @@ export class Page1Component {
       disabled: false
     }
   ];
+
   rate = 4;
 
   select: SelectComponentConfig = {
