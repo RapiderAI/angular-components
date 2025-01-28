@@ -13,6 +13,16 @@ import { RappiderNavigationBarComponent } from '@rapider/angular-components/navi
 import { ImageComponentConfig } from '@rapider/angular-components/image';
 import { MenuActionBehavior, MenuMode } from '@rapider/angular-components/core/menu';
 import { MenuComponentConfig } from '@rapider/angular-components/menu';
+import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
+import { SelectableOption } from '@rapider/angular-components/core/common';
+import { RappiderProgressComponent } from "@rapider/angular-components/progress";
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { SpacingConfig } from '@rapider/angular-components/core/style';
+import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
+import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
+import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
+import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 
 @Component({
   standalone: true,
@@ -21,16 +31,28 @@ import { MenuComponentConfig } from '@rapider/angular-components/menu';
     RouterModule,
     RappiderRateComponent,
     RappiderSelectModule,
-    // RappiderBadgeComponent,
     RappiderNavigationBarComponent,
   ],
   selector: 'app-page',
   template: `
     <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-      <!--
+    RappiderSelectComponent,
+    RappiderSpinComponent,
+    RappiderCheckboxListComponent,
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
+    RappiderBlockquoteComponent,
+    RappiderProgressComponent,
+    RappiderCommentComponent,
+  ],
+  selector: 'app-page',
+  template: `
+
+  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+
+      <rappider-accordion [panels]="panels"></rappider-accordion>
       <rappider-badge status="success">Success</rappider-badge>
       <rappider-badge status="error">Error</rappider-badge>
-
       <rappider-text text="welcome to the showboard" textMode="html" [content]="html"></rappider-text>
       <rappider-button text="Button Here3" type="primary"></rappider-button>
       <rappider-heading content="content" type="h1"></rappider-heading>
@@ -47,7 +69,10 @@ import { MenuComponentConfig } from '@rapider/angular-components/menu';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
-    -->
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
+      <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
+      <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
+      <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
     </div>
 
     <div style="border: 1px solid black; padding: 30px; margin: 5px;">
@@ -65,9 +90,44 @@ import { MenuComponentConfig } from '@rapider/angular-components/menu';
         [menu]="menu"  
       ></rappider-navigation-bar>
     </div>
+  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+    <rappider-comment [comments]="comment.comments"></rappider-comment>
+  </div>
   `,
 })
 export class Page1Component {
+
+  comment = {
+    comments: [
+      {
+        author: 'Can',
+        avatar: 'user',
+        createdDate: new Date(),
+        content: 'Content here',
+        likeCount: 40,
+        dislikeCount: 12,
+        children: [
+          {
+            author: 'Can',
+            avatar: 'user',
+            createdDate: new Date(),
+            content: 'Content here',
+            likeCount: 40,
+            dislikeCount: 12,
+            replyText: 'reply here',
+            rate: 4,
+            isLiked: true,
+            isDisliked: true,
+          }
+        ],
+        replyText: 'reply here',
+        rate: 4,
+        isLiked: true,
+        isDisliked: true,
+      }
+    ]
+  };
+
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
@@ -84,6 +144,45 @@ brandImage: ImageComponentConfig = {
     text: 'Facebook',
   };
   panels: AccordionPanel[] = [
+=======
+    type: IconType.FontAwesome
+  };
+
+  paddingSettings: SpacingConfig = {
+    all: '10px'
+  };
+
+  marginSettings: SpacingConfig = {
+    all: '10px'
+  };
+
+  options2: SelectableOption[] = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Totoro', value: 'totoro' }
+  ];
+
+  placeholder = "Enter your name";
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+
+  text: TextComponentConfig = {
+    text: 'Facebook'
+  };
+
+  blockquote = {
+    quote: <TextComponentConfig>{
+      text: 'Lorem ipsum dolot sit amet.'
+    },
+    footer: {
+      text: 'John Doe'
+    }
+  };
+
+  options = [
     {
       name: {
         content: 'heading name',
@@ -150,6 +249,14 @@ brandImage: ImageComponentConfig = {
             actionBehavior: MenuActionBehavior.Router,
           }
         ]
+    },
+  ];
+
+  panels: AccordionPanel[] = [
+    {
+      name: {
+        content: "heading name",
+        type: HeadingType.H6
       },
       {
         label: "Home",
