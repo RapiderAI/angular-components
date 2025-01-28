@@ -91,7 +91,9 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
   <rappider-input-label [title]="'i am input label'" [description]="'i am description'" [icon]="{name: 'fa-solid fa-user-group',type: 'FONT_AWESOME'}"></rappider-input-label>
-    -->
+    <rappider-comment [comments]="comment.comments"></rappider-comment>
+   
+-->
 
   </div>
 
