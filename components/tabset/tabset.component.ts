@@ -1,11 +1,11 @@
-import { Component, TemplateRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TabsetComponentConfig } from './utils/tabset-component-config.interface';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { TabsetPosition, TabsetSize, TabsetType } from '@rapider/angular-components/core/tabset';
-import { TabsetComponentConfig } from '@rapider/angular-components/tabset/utils';
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'rappider-tabset',
