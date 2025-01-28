@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
@@ -16,11 +17,11 @@ import { RappiderAccordionComponent } from '@rapider/angular-components/accordio
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
-import { FormsModule } from '@angular/forms';
-import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 
 @Component({
   standalone: true,
@@ -40,9 +41,11 @@ import { RappiderCheckboxListComponent } from '@rapider/angular-components/check
     RappiderAlertComponent,
     RappiderAccordionComponent,
     RappiderRateComponent,
-    RappiderSelectModule,
+    RappiderSelectComponent,
     RappiderSpinComponent,
     RappiderCheckboxListComponent
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -70,22 +73,33 @@ import { RappiderCheckboxListComponent } from '@rapider/angular-components/check
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
+    <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
-
   `,
 })
+
 export class Page1Component {
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
+  placeholder="Enter your name";
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+
   text: TextComponentConfig = {
     text: 'Facebook'
   }
@@ -120,6 +134,7 @@ export class Page1Component {
       },
     },
   ];
+  
   panels: AccordionPanel[] = [
     {
       name: {
@@ -133,8 +148,13 @@ export class Page1Component {
       disabled: false
     }
   ];
-  rate = 4;
 
+  rate = 4;
+  pageIndex = 3;
+  total = 100;
+  size = "default";
+  pageSize = 10;
+  isSimple = true;
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },
