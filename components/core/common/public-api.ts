@@ -1,1 +1,2 @@
-export * from './selectable-option.type';
+export * from './selectable-option.interface';
+export * from './selectable-option-with-tooltip.interface';

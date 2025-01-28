@@ -1,7 +1,5 @@
 import { TextComponentConfig } from '@rapider/angular-components/text';
-import { DividerOrientation } from '@rapider/angular-components/core/divider/divider-orientation.enum';
-import { DividerType } from '@rapider/angular-components/core/divider/divider-type.enum';
-import { DividerStyle } from '@rapider/angular-components/core/divider/divider-style.enum';
+import { DividerOrientation, DividerType, DividerStyle } from '@rapider/angular-components/core/divider';
 
 export interface DividerComponentConfig {
   style?: DividerStyle;

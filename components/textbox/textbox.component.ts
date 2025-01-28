@@ -1,15 +1,13 @@
 import { Component, OnInit, Input, forwardRef, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { BorderConfig, BoxShadowConfig, ColorConfig, computeBorderStyles, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { TextBoxType, TextBoxSize } from '@rapider/angular-components/core/textbox';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMentionModule } from 'ng-zorro-antd/mention';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
-import { BorderConfig, BoxShadowConfig, ColorConfig, computeBorderStyles, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
-import { TextBoxType } from '@rapider/angular-components/core/textbox/textbox-type.enum';
-import { TextBoxSize } from '@rapider/angular-components/core/textbox/textbox-size.enum';
-import { TypographyConfig } from '@rapider/angular-components/core/typography/typography-config.interface';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 @Component({
@@ -21,7 +19,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     NzInputModule,
     NzMentionModule,
     TranslateModule,
-  NgxMaskDirective  ],
+    NgxMaskDirective
+  ],
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.scss'],
   providers: [

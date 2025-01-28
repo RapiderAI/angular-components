@@ -7,9 +7,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { BoxShadowConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
-import { RadioDirection } from '@rapider/angular-components/core/radio/radio-component-direction.enum';
-import { SelectableOption } from '@rapider/angular-components/core/common/selectable-option.type';
-import { radioSelectedIconConfig } from '@rapider/angular-components/core/radio/radio-selected-icon-config';
+import { RadioDirection, radioSelectedIconConfig } from '@rapider/angular-components/core/radio';
+import { SelectableOption } from '@rapider/angular-components/core/common';
 
 
 @Component({

@@ -1,7 +1,6 @@
-import { BoxShadowConfig } from '@rapider/angular-components/core/style';
-import { SpacingConfig } from '@rapider/angular-components/core/style';
+import { BoxShadowConfig, SpacingConfig } from '@rapider/angular-components/core/style';
+import { SelectableOption } from '@rapider/angular-components/core/common';
 import { RadioDirection } from './radio-component-direction.enum';
-import { SelectableOption } from '@rapider/angular-components/core/common/selectable-option.type';
 
 export interface RadioConfig {
   options?: SelectableOption[];
