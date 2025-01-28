@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderNumberInputComponent } from '@rapider/angular-components/number-input/number-input.component';
 
 @Component({
   standalone: true,
@@ -42,7 +41,7 @@ import { RappiderNumberInputComponent } from '@rapider/angular-components/number
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderNumberInputComponent
+
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -70,6 +69,7 @@ import { RappiderNumberInputComponent } from '@rapider/angular-components/number
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-checkbox [text]="text"></rappider-checkbox>
     -->
 
   </div>
