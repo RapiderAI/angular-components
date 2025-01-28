@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ProgressStatus, ProgressType, ProgressSize } from '@rapider/angular-components/progress/utils';
+import { ProgressStatus, ProgressType, ProgressSize } from '@rapider/angular-components/core/progress';
 import { ColorConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { CommonModule } from '@angular/common';
