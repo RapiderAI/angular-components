@@ -8,7 +8,7 @@ import { BoxShadowConfig, SpacingConfig } from '@rapider/angular-components/core
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RadioDirection } from '@rapider/angular-components/core/radio/radio-component-direction.enum';
-import { SelectableOption } from '@rapider/angular-components/core/form-utils/selectable-option.type';
+import { SelectableOption } from '@rapider/angular-components/core/common/selectable-option.type';
 import { radioSelectedIconConfig } from '@rapider/angular-components/core/radio/radio-selected-icon-config';
 
 
