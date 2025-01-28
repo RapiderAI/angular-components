@@ -1,0 +1,31 @@
+.divider::ng-deep {
+
+  .ant-divider-horizontal {
+    min-width: var(--width-2x);
+  }
+
+  .ant-divider-vertical {
+    min-height: var(--height-x);
+  }
+
+  .ant-divider {
+    border-color: var(--border-color);
+    border-width: var(--border-width);
+  }
+
+  .ant-divider-with-text:before,
+  .ant-divider-with-text:after {
+    border-width: var(--border-width);
+    border-color: var(--border-color);
+  }
+
+  rappider-text {
+    .html-mode {
+      text-wrap: wrap;
+    }
+
+    .simple-text-mode {
+      text-wrap: wrap;
+    }
+  }
+}

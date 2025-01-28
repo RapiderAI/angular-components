@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderPaginationComponent } from '@rapider/angular-components/pagination/pagination.component';
 
 @Component({
   standalone: true,
@@ -70,14 +69,13 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
-      <rappider-pagination [pageIndex]="pageIndex" [total]="total" [size]="size" [pageSize]="pageSize" [isSimple]="isSimple"></rappider-pagination>
-
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
 
   `,
@@ -88,9 +86,17 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+  
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
+
   panels: AccordionPanel[] = [
     {
       name: {
@@ -104,6 +110,7 @@ export class Page1Component {
       disabled: false
     }
   ];
+
   rate = 4;
   pageIndex = 3;
   total = 100;
