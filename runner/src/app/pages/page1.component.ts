@@ -22,7 +22,7 @@ import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
 import { SelectableOption } from '@rapider/angular-components/core/common';
-import { RappiderProgressComponent } from "../../../../components/progress/progress.component";
+import { RappiderProgressComponent } from "@rapider/angular-components/progress";
 import { ColorConfig } from '@rapider/angular-components/core/style';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
 
