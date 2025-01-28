@@ -30,6 +30,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 
 @Component({
   standalone: true,
@@ -58,6 +59,7 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderCommentComponent,
+    RappiderCountdownComponent,
   ],
   selector: 'app-page',
   template: `
@@ -88,12 +90,13 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
   </div>
   `,
 })
