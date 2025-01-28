@@ -9,7 +9,7 @@ import { BorderConfig, BoxShadowConfig, ColorConfig, computeBorderStyles, SizeCo
 import { TextBoxType } from '@rapider/angular-components/core/textbox/textbox-type.enum';
 import { TextBoxSize } from '@rapider/angular-components/core/textbox/textbox-size.enum';
 import { TypographyConfig } from '@rapider/angular-components/core/typography/typography-config.interface';
-
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 @Component({
@@ -21,10 +21,11 @@ import { TypographyConfig } from '@rapider/angular-components/core/typography/ty
     NzInputModule,
     NzMentionModule,
     TranslateModule,
-  ],
+  NgxMaskDirective  ],
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.scss'],
   providers: [
+    provideNgxMask(),
     {
       provide: NG_VALUE_ACCESSOR,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
