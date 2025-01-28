@@ -1,6 +1,6 @@
 import { BorderConfig, BoxShadowConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { IconComponentConfig } from'@rapider/angular-components/icon';
-import { CheckboxType } from './checkbox-type.enum';
+import { CheckboxType } from '../../core/checkbox/checkbox-type.enum';
 import { TextComponentConfig } from '@rapider/angular-components/text';
 
 export interface CheckboxComponentConfig {

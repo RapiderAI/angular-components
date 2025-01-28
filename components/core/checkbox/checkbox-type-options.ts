@@ -1,4 +1,4 @@
-import { CheckboxType } from "./checkbox-type.enum";
+import { CheckboxType } from '@rapider/angular-components/core/checkbox/checkbox-type.enum';
 
 export const checkboxTypeOptions = [
   {
