@@ -1,0 +1,11 @@
+.progress::ng-deep {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  .ant-progress-line {
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

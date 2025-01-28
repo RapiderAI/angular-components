@@ -1,17 +1,25 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TextComponentConfig } from '@rapider/angular-components/text';
-import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { FormsModule } from '@angular/forms';
+import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
+import { RappiderButtonComponent } from '@rapider/angular-components/button';
+import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
+import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
-import { FormsModule } from '@angular/forms';
-import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
+import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderNavigationBarComponent } from '@rapider/angular-components/navigation-bar';
-import { ImageComponentConfig } from '@rapider/angular-components/image';
-import { MenuActionBehavior, MenuComponentConfig, MenuMode } from '@rapider/angular-components/core/menu';
+import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
+import { SelectableOption } from '@rapider/angular-components/core/common';
+import { RappiderProgressComponent } from "@rapider/angular-components/progress";
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { SpacingConfig } from '@rapider/angular-components/core/style';
+import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
+import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 
 @Component({
   standalone: true,
@@ -19,9 +27,14 @@ import { MenuActionBehavior, MenuComponentConfig, MenuMode } from '@rapider/angu
     FormsModule,
     RouterModule,
     RappiderRateComponent,
-    RappiderSelectModule,
+    RappiderSelectComponent,
+    RappiderSpinComponent,
+    RappiderCheckboxListComponent,
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
     // RappiderBadgeComponent,
-    RappiderNavigationBarComponent,
+    ,
+    RappiderProgressComponent
   ],
   selector: 'app-page',
   template: `
@@ -46,42 +59,80 @@ import { MenuActionBehavior, MenuComponentConfig, MenuMode } from '@rapider/angu
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
+      <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+      <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
+      <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
     -->
     </div>
-
-    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-      <rappider-rate
-        [(ngModel)]="rate"
-        (valueChange)="onChange($event)"
-      ></rappider-rate>
-    </div>
-
-    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-      <rappider-navigation-bar
-        [isMenuVisible]="isMenuVisible"
-        [brandText]="brandText"
-        [brandImage]="brandImage"  
-        [menu]="menu"  
-      ></rappider-navigation-bar>
-    </div>
+  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+    <rappider-accordion [panels]="panels"></rappider-accordion>
+  </div>
   `,
 })
+
 export class Page1Component {
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome,
   };
-brandImage: ImageComponentConfig = {
-  source: 'https://www.hollywoodreporter.com/wp-content/uploads/2012/12/img_logo_blue.jpg',
-  alternateText: 'facebook',
-  width: '100px',
-};
-  isMenuVisible = true;
-  brandText = 'Rappider';
-  text: TextComponentConfig = {
-    text: 'Facebook',
+
+  paddingSettings: SpacingConfig = {
+   all: '10px'
   };
+
+  marginSettings: SpacingConfig = {
+   all: '10px'
+  };
+
+  options: SelectableOption[] = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Totoro', value: 'totoro' }
+  ];
+  placeholder="Enter your name";
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+
+  text: TextComponentConfig = {
+    text: 'Facebook'
+  }
+
+  options = [
+    {
+      key: {
+        text: "Alice"
+      },
+      value: "alice",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+    {
+      key: {
+        text: "Jane"
+      },
+      value: "jane",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+  ];
+  
   panels: AccordionPanel[] = [
     {
       name: {
@@ -96,76 +147,12 @@ brandImage: ImageComponentConfig = {
     },
   ];
 
-  menu: MenuComponentConfig = {
-    config: {
-    items: [
-      {
-        label: "Home",
-        isExpanded: false,
-        redirectUrl: "/",
-        actionBehavior: MenuActionBehavior.Router,
-        children: [
-          {
-            label: "Home",
-            redirectUrl: "/",
-            actionBehavior: MenuActionBehavior.Router,
-          },
-          {
-            label: "Home",
-            redirectUrl: "/",
-            actionBehavior: MenuActionBehavior.Router,
-          },
-          {
-            label: "Home",
-            redirectUrl: "/",
-            actionBehavior: MenuActionBehavior.Router,
-          }
-        ]
-      },
-      {
-        label: "Home",
-        isExpanded: false,
-        redirectUrl: "/",
-        actionBehavior: MenuActionBehavior.Router,
-      },
-      {
-        label: "Contact",
-        isExpanded: false
-      },
-      {
-        label: "Home",
-        isExpanded: false,
-        redirectUrl: "/",
-        actionBehavior: MenuActionBehavior.Router,
-        "children": [
-          {
-            label: "Home",
-            redirectUrl: "/",
-            actionBehavior: MenuActionBehavior.Router,
-          },
-          {
-            label: "Home",
-            redirectUrl: "/",
-            actionBehavior: MenuActionBehavior.Router,
-          }
-        ]
-      },
-      {
-        label: "Home",
-        isExpanded: false,
-      },
-      {
-        label: "Home",
-        isExpanded: false,
-      }
-    ],
-    mode: MenuMode.Horizontal
-  }
-}
-
-
   rate = 4;
-
+  pageIndex = 3;
+  total = 100;
+  size = "default";
+  pageSize = 10;
+  isSimple = true;
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },

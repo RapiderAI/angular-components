@@ -1,0 +1,32 @@
+:root {
+  --pagination-gap: unset;
+  --pagination-color: var(--primary-color);
+}
+
+nz-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--pagination-gap);
+}
+
+.pagination::ng-deep {
+  .ant-pagination-item-active {
+    border-color: var(--pagination-color);
+    background-color: var(--pagination-color);
+  }
+
+  .ant-pagination-item:hover a,
+  i {
+    color: var(--pagination-color);
+  }
+
+  .ant-pagination-next:hover .ant-pagination-item-link,
+  .ant-pagination-prev:hover .ant-pagination-item-link {
+    border-color: var(--pagination-color);
+    color: var(--pagination-color);
+  }
+
+  .ant-pagination-item-link-icon {
+    color: var(--pagination-color) !important;
+  }
+}

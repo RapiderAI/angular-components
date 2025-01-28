@@ -1,0 +1,25 @@
+<a [routerLink]="redirectUrl">
+  <div class="items-area">
+    <div class="container-area">
+      <div *ngIf="image"
+           class="image-area">
+        <rappider-image [source]="image?.source"
+                        [width]="image?.width"
+                        [placeholder]="image?.placeholder"
+                        [height]="image?.height"
+                        [fallback]="image?.fallback"
+                        [alternateText]="image?.alternateText"
+                        [borderSettings]="image?.borderSettings"
+                        [customSizeSettings]="image?.width"
+                        [shadowSettings]="image?.shadowSettings"
+                        [marginSettings]="image?.marginSettings"
+                        [paddingSettings]="image?.paddingSettings"></rappider-image>
+      </div>
+      <div *ngIf="label"
+           class="label-content-area">
+        <rappider-heading [content]="label.content"
+                          [type]="label.type"></rappider-heading>
+      </div>
+    </div>
+  </div>
+</a>

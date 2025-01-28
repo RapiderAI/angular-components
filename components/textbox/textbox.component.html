@@ -3,6 +3,9 @@
          [(ngModel)]="value"
          [autocomplete]="autocomplete || 'off'"
          [type]="type"
+         [dropSpecialCharacters]="dropSpecialCharacters"
+         [mask]="mask"
+         [showMaskTyped]="showMaskTyped"
          [placeholder]="placeholder || '' | translate"
          [ngClass]="cssClass"
          [ngStyle]="cssStyle || borderStyles"
@@ -74,11 +77,10 @@
          [autofocus]="autoFocus"
          [id]="elementId || ''"
          (blur)="onBlur()"
-         (keydown.enter)="onEnterClick()" />
-         <!-- Activate this after adding the related module
+         (keydown.enter)="onEnterClick()" 
          [dropSpecialCharacters]="dropSpecialCharacters"
          [mask]="mask"
-         [showMaskTyped]="showMaskTyped"  -->
+         [showMaskTyped]="showMaskTyped"/>
   <nz-mention *ngIf="mentionSupported"
               [nzSuggestions]="mentionValues"
               [nzValueWith]="valueWith"
