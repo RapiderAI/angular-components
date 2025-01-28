@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeadingComponentConfig } from '@rapider/angular-components/core/heading';
-import { ImageComponentConfig } from '@rapider/angular-components/core/image';
+import { ImageComponentConfig } from '@rapider/angular-components/image';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
 import { RappiderImageComponent } from '@rapider/angular-components/image';
 import { RouterModule } from '@angular/router';
