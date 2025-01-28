@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
@@ -16,10 +17,10 @@ import { RappiderAccordionComponent } from '@rapider/angular-components/accordio
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
-import { FormsModule } from '@angular/forms';
-import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 
 @Component({
   standalone: true,
@@ -39,9 +40,10 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderAlertComponent,
     RappiderAccordionComponent,
     RappiderRateComponent,
-    RappiderSelectModule,
+    RappiderSelectComponent,
     RappiderSpinComponent,
-    RappiderPaginationComponent
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -69,6 +71,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
     -->
 
   </div>
@@ -77,9 +80,9 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     <rappider-accordion [panels]="panels"></rappider-accordion>
     
   </div>
-
   `,
 })
+
 export class Page1Component {
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
@@ -87,12 +90,14 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
+  placeholder="Enter your name";
+
   style = '';
   type = 'horizontal';
   textPlacement = 'center';
   dividerWidth = '2px';
   dividerColor = 'red';
-  
+
   text: TextComponentConfig = {
     text: 'Facebook'
   };
