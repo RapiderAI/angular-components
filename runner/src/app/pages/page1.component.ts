@@ -22,6 +22,9 @@ import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
 import { SelectableOption } from '@rapider/angular-components/core/common';
+import { RappiderProgressComponent } from "../../../../components/progress/progress.component";
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { SpacingConfig } from '@rapider/angular-components/core/style';
 
 @Component({
   standalone: true,
@@ -45,6 +48,8 @@ import { SelectableOption } from '@rapider/angular-components/core/common';
     RappiderSpinComponent,
     RappiderRadioComponent
     // RappiderBadgeComponent,
+    ,
+    RappiderProgressComponent
   ],
   selector: 'app-page',
   template: `
@@ -77,7 +82,10 @@ import { SelectableOption } from '@rapider/angular-components/core/common';
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
-    <rappider-radio  [options]="options"></rappider-radio>
+  </div>
+
+  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+    <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
   </div>
 
   `,
@@ -92,10 +100,15 @@ export class Page1Component {
     text: 'Facebook'
   }
 
+  paddingSettings: SpacingConfig = {
+  };
+
+  marginSettings: SpacingConfig = {
+  };
 
   options: SelectableOption[] = [
-      { key: 'Alice', value: 'alice' },
-      { key: 'Totoro', value: 'totoro' }
+    { key: 'Alice', value: 'alice' },
+    { key: 'Totoro', value: 'totoro' }
   ];
 
   panels: AccordionPanel[] = [
