@@ -28,8 +28,6 @@ import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
-import { RappiderTreeSelectComponent } from '@rapider/angular-components/tree-select';
-import { NzTreeNodeOptions } from 'node_modules/ng-zorro-antd/tree/public-api';
 
 @Component({
   standalone: true,
@@ -56,7 +54,7 @@ import { NzTreeNodeOptions } from 'node_modules/ng-zorro-antd/tree/public-api';
     RappiderPaginationComponent,
     // RappiderBadgeComponent,
     RappiderProgressComponent,
-    RappiderTreeSelectComponent
+
   ],
   selector: 'app-page',
   template: `
@@ -94,9 +92,6 @@ import { NzTreeNodeOptions } from 'node_modules/ng-zorro-antd/tree/public-api';
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
-    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-  <rappider-tree-select [tree]="tree" [multipleSelect]="true" [defaultExpandAll]="true" [placeholder]="'Select a property'" [size]="'default'"></rappider-tree-select>
-  </div>
   `,
 })
 
@@ -107,10 +102,6 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
-  tree: NzTreeNodeOptions[] = [
-    { title: 'parent 1', key: '100', children: [{ title: 'leaf 1', key: '1001' }, { title: 'leaf 2', key: '1002' }] },
-    { title: 'parent 2', key: '200', children: [{ title: 'leaf 3', key: '2001' }, { title: 'leaf 4', key: '2002' }] }
-  ];
 
   paddingSettings: SpacingConfig = {
     all: '10px'
