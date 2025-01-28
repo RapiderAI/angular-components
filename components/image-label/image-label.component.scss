@@ -1,0 +1,21 @@
+.items-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: var(--margin-3x);
+  text-align: center;
+}
+
+.container-area:hover .image-area {
+  transform: var(--default-hover-transform);
+  transition: var(--default-hover-transition);
+}
+
+.image-area {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.label-content-area {
+  padding-top: var(--padding-4x);
+}
