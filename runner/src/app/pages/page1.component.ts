@@ -20,8 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
-import { SelectableOption } from '@rapider/angular-components/core/common';
 
 @Component({
   standalone: true,
@@ -43,7 +41,6 @@ import { SelectableOption } from '@rapider/angular-components/core/common';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderRadioComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -71,13 +68,16 @@ import { SelectableOption } from '@rapider/angular-components/core/common';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+      <rappider-label content="this is label component"></rappider-label>
+      <rappider-radio [options]="options"></rappider-radio>
+
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
-    <rappider-radio  [options]="options"></rappider-radio>
+    
   </div>
 
   `,
@@ -88,6 +88,7 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
   text: TextComponentConfig = {
     text: 'Facebook'
   }
