@@ -7,7 +7,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { BorderConfig, BoxShadowConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
-import { CheckboxType } from '@rapider/angular-components/core/checkbox/checkbox-type.enum';
+import { CheckboxType } from '@rapider/angular-components/core/checkbox';
 
 @Component({
   selector: 'rappider-checkbox',
