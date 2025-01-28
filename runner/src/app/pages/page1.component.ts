@@ -30,6 +30,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label/input-label.component';
+import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 
 @Component({
   standalone: true,
@@ -57,7 +58,8 @@ import { RappiderInputLabelComponent } from '@rapider/angular-components/input-l
     RappiderBlockquoteComponent,
     // RappiderBadgeComponent,
     RappiderProgressComponent,
-    RappiderInputLabelComponent
+    RappiderInputLabelComponent,
+    RappiderCommentComponent,
   ],
   selector: 'app-page',
   template: `
@@ -99,6 +101,38 @@ import { RappiderInputLabelComponent } from '@rapider/angular-components/input-l
 })
 
 export class Page1Component {
+
+  comment = {
+    comments: [
+      {
+        author: 'Can',
+        avatar: 'user',
+        createdDate: new Date(),
+        content: 'Content here',
+        likeCount: 40,
+        dislikeCount: 12,
+        children: [
+          {
+            author: 'Can',
+            avatar: 'user',
+            createdDate: new Date(),
+            content: 'Content here',
+            likeCount: 40,
+            dislikeCount: 12,
+            replyText: 'reply here',
+            rate: 4,
+            isLiked: true,
+            isDisliked: true,
+          }
+        ],
+        replyText: 'reply here',
+        rate: 4,
+        isLiked: true,
+        isDisliked: true,
+      }
+    ]
+  };
+
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
