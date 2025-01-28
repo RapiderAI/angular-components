@@ -29,6 +29,7 @@ import { RappiderCheckboxListComponent } from '@rapider/angular-components/check
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
+import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 
 @Component({
   standalone: true,
@@ -55,7 +56,8 @@ import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockqu
     RappiderPaginationComponent,
     RappiderBlockquoteComponent,
     // RappiderBadgeComponent,
-    RappiderProgressComponent
+    RappiderProgressComponent,
+    RappiderCommentComponent,
   ],
   selector: 'app-page',
   template: `
@@ -91,12 +93,44 @@ import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockqu
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    
+    <rappider-comment [comments]="comment.comments"></rappider-comment>
   </div>
   `,
 })
 
 export class Page1Component {
+
+  comment = {
+    comments: [
+      {
+        author: 'Can',
+        avatar: 'user',
+        createdDate: new Date(),
+        content: 'Content here',
+        likeCount: 40,
+        dislikeCount: 12,
+        children: [
+          {
+            author: 'Can',
+            avatar: 'user',
+            createdDate: new Date(),
+            content: 'Content here',
+            likeCount: 40,
+            dislikeCount: 12,
+            replyText: 'reply here',
+            rate: 4,
+            isLiked: true,
+            isDisliked: true,
+          }
+        ],
+        replyText: 'reply here',
+        rate: 4,
+        isLiked: true,
+        isDisliked: true,
+      }
+    ]
+  };
+
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
