@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderDividerComponent } from "../../../../components/divider/divider.component";
 
 @Component({
   standalone: true,
@@ -41,7 +42,7 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    // RappiderBadgeComponent,
+    RappiderDividerComponent
   ],
   selector: 'app-page',
   template: `
@@ -74,6 +75,10 @@ import { SelectComponentConfig } from '@rapider/angular-components/select';
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+  </div>
+
+  <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+    <rappider-divider [text]="text" [type]="'horizontal'"></rappider-divider>
   </div>
 
   `,
