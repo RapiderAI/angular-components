@@ -1,4 +1,4 @@
-import { PaginationSize } from '@rapider/angular-components/core/pagination/pagination-size.enum';
+import { PaginationSize } from '@rapider/angular-components/core/pagination';
 
 export interface PaginationComponentConfig {
     pageIndex?: number;

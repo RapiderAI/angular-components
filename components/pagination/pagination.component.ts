@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, HostBinding, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { PaginationSize } from '@rapider/angular-components/core/pagination/pagination-size.enum';
+import { PaginationSize } from '@rapider/angular-components/core/pagination';
 
 
 @Component({
