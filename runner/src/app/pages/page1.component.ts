@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderLabelComponent } from '@rapider/angular-components/label/label.component';
 
 @Component({
   standalone: true,
@@ -42,7 +41,6 @@ import { RappiderLabelComponent } from '@rapider/angular-components/label/label.
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderLabelComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -71,6 +69,7 @@ import { RappiderLabelComponent } from '@rapider/angular-components/label/label.
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-label content="this is label component"></rappider-label>
+      <rappider-radio [options]="options"></rappider-radio>
 
     -->
 
@@ -78,6 +77,7 @@ import { RappiderLabelComponent } from '@rapider/angular-components/label/label.
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
 
   `,
@@ -92,6 +92,13 @@ export class Page1Component {
   text: TextComponentConfig = {
     text: 'Facebook'
   }
+
+
+  options: SelectableOption[] = [
+      { key: 'Alice', value: 'alice' },
+      { key: 'Totoro', value: 'totoro' }
+  ];
+
   panels: AccordionPanel[] = [
     {
       name: {
