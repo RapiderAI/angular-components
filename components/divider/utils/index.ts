@@ -1,1 +1,1 @@
-export * from '../../divider/utils/divider-component-config.interface';
+export * from './divider-component-config.interface';

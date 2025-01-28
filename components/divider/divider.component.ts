@@ -2,9 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { RappiderTextComponent, TextComponentConfig } from  '@rapider/angular-components/text';
-import { DividerOrientation } from '@rapider/angular-components/core/divider';
-import { DividerType } from '@rapider/angular-components/core/divider';
-import { DividerStyle } from '@rapider/angular-components/core/divider';
+import { DividerOrientation, DividerStyle, DividerType } from '@rapider/angular-components/core/divider';
 import { TextMode } from '@rapider/angular-components/core/text';
 
 @Component({
