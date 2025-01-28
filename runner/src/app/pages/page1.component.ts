@@ -28,6 +28,7 @@ import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
+import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 
 @Component({
   standalone: true,
@@ -52,8 +53,8 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
     RappiderCheckboxListComponent,
     RappiderTextboxComponent,
     RappiderPaginationComponent,
+    RappiderBlockquoteComponent,
     // RappiderBadgeComponent,
-    ,
     RappiderProgressComponent
   ],
   selector: 'app-page',
@@ -62,9 +63,9 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
 
     <!--
+      <rappider-accordion [panels]="panels"></rappider-accordion>
       <rappider-badge status="success">Success</rappider-badge>
       <rappider-badge status="error">Error</rappider-badge>
-
       <rappider-text text="welcome to the showboard" textMode="html" [content]="html"></rappider-text>
       <rappider-button text="Button Here3" type="primary"></rappider-button>
       <rappider-heading content="content" type="h1"></rappider-heading>
@@ -82,15 +83,15 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
-      <div style="border: 1px solid black; padding: 30px; margin: 5px;">
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
+      <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
   `,
 })
@@ -103,18 +104,19 @@ export class Page1Component {
   };
 
   paddingSettings: SpacingConfig = {
-   all: '10px'
+    all: '10px'
   };
 
   marginSettings: SpacingConfig = {
-   all: '10px'
+    all: '10px'
   };
 
-  options: SelectableOption[] = [
+  options2: SelectableOption[] = [
     { key: 'Alice', value: 'alice' },
     { key: 'Totoro', value: 'totoro' }
   ];
-  placeholder="Enter your name";
+
+  placeholder = "Enter your name";
 
   style = '';
   type = 'horizontal';
@@ -124,7 +126,16 @@ export class Page1Component {
 
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
+
+  blockquote = {
+    quote: <TextComponentConfig>{
+      text: 'Lorem ipsum dolot sit amet.'
+    },
+    footer: {
+      text: 'John Doe'
+    }
+  };
 
   options = [
     {
@@ -156,7 +167,7 @@ export class Page1Component {
       },
     },
   ];
-  
+
   panels: AccordionPanel[] = [
     {
       name: {
