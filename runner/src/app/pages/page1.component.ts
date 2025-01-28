@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
@@ -16,11 +17,10 @@ import { RappiderAccordionComponent } from '@rapider/angular-components/accordio
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
-import { FormsModule } from '@angular/forms';
-import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderTextboxComponent } from '@rapider/angular-components/textbox/textbox.component';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 
 @Component({
   standalone: true,
@@ -40,9 +40,10 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox/te
     RappiderAlertComponent,
     RappiderAccordionComponent,
     RappiderRateComponent,
-    RappiderSelectModule,
+    RappiderSelectComponent,
     RappiderSpinComponent,
-    RappiderTextboxComponent
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -77,6 +78,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox/te
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
   `,
 })
@@ -87,10 +89,19 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
   placeholder="Enter your name";
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
+
   panels: AccordionPanel[] = [
     {
       name: {
@@ -104,8 +115,13 @@ export class Page1Component {
       disabled: false
     }
   ];
-  rate = 4;
 
+  rate = 4;
+  pageIndex = 3;
+  total = 100;
+  size = "default";
+  pageSize = 10;
+  isSimple = true;
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },
