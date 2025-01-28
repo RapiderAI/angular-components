@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CheckboxList, CheckboxListDirection, MappedCheckboxList } from '@rapider/angular-components/core/checkbox-list';
+import { CheckboxList, CheckboxListDirection } from '@rapider/angular-components/core/checkbox-list';
 import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent, HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { TextComponentConfig } from '@rapider/angular-components/text';
@@ -44,7 +44,7 @@ export class RappiderCheckboxListComponent implements OnInit, OnChanges, Control
 
   selectAll = false;
   Direction = CheckboxListDirection;
-  mappedOptions: MappedCheckboxList[];
+  mappedOptions: CheckboxList[];
   _value: string[] = [];
   selectAllText: TextComponentConfig = {
     text: 'Select All',

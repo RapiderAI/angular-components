@@ -22,6 +22,7 @@ import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
+import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 
 @Component({
   standalone: true,
@@ -43,7 +44,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
     RappiderRateComponent,
     RappiderSelectComponent,
     RappiderSpinComponent,
-    RappiderCheckboxListComponent
+    RappiderCheckboxListComponent,
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     // RappiderBadgeComponent,
@@ -74,12 +75,12 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
+      <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
     <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
   `,
