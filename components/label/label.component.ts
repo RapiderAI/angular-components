@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ColorConfig } from '@rapider/angular-components/core/style';
-import { TypographyConfig } from '@rapider/angular-components/core/typography/typography-config.interface';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
 
 @Component({
   selector: 'rappider-label',
