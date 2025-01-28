@@ -5,7 +5,7 @@ import { CheckboxList, CheckboxListDirection } from '@rapider/angular-components
 import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent, HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { TextComponentConfig } from '@rapider/angular-components/text';
-import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox/checkbox.component';
+import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox';
 
 
 
