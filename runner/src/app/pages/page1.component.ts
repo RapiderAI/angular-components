@@ -20,6 +20,11 @@ import { RappiderRateComponent } from '@rapider/angular-components/rate';
 import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
+import { SelectableOption } from '@rapider/angular-components/core/common';
+import { RappiderProgressComponent } from "@rapider/angular-components/progress";
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
@@ -48,6 +53,8 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     // RappiderBadgeComponent,
+    ,
+    RappiderProgressComponent
   ],
   selector: 'app-page',
   template: `
@@ -75,6 +82,8 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
+      <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+      <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
     -->
 
@@ -93,6 +102,18 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
+  paddingSettings: SpacingConfig = {
+   all: '10px'
+  };
+
+  marginSettings: SpacingConfig = {
+   all: '10px'
+  };
+
+  options: SelectableOption[] = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Totoro', value: 'totoro' }
+  ];
   placeholder="Enter your name";
 
   style = '';
