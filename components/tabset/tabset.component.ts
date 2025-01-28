@@ -7,10 +7,6 @@ import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { CommonModule } from '@angular/common';
 
-interface TabsInterface {
-  template: TemplateRef<any>;
-}
-
 @Component({
   selector: 'rappider-tabset',
   standalone: true,
