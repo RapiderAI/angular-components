@@ -1,0 +1,13 @@
+.number-input {
+    ::ng-deep {
+      .ant-input-number-disabled .ant-input-number-input {
+        background-color: var(--disabled-color);
+        color: var(--disabled-text-color);
+      }
+  
+      .ant-input-number-input,
+      .ant-input-number-handler {
+        background-color: var(--input-background-color);
+      }
+    }
+  }

@@ -1,0 +1,47 @@
+<div class="radio"
+     [ngClass]="{'radio-button-horizontal': showOptionsAsButtons && direction === Direction.Horizontal, 
+     'radio-button-vertical': showOptionsAsButtons && direction === Direction.Vertical}">
+  <ng-container *ngIf="isValid; else notValid">
+    <nz-radio-group [(ngModel)]="value"
+                    [class]="direction === Direction.Vertical ? 'vertical-mode' : null"
+                    (ngModelChange)="onValueChange($event)">
+
+      <ng-container *ngIf="showOptionsAsButtons">
+        <p *ngFor="let option of options"
+           nz-radio-button
+           [nzTooltipTitle]="option?.tooltipText"
+           nzTooltipPlacement="top"
+           nz-tooltip
+           [nzValue]="option.value"
+           [ngClass]="cssClass"
+           [ngStyle]="cssStyle"
+           [style.padding]="paddingSettings?.all"
+           [style.margin]="marginSettings?.all">
+          <rappider-icon *ngIf="option.icon"
+                         class="icon"
+                         [name]="option?.icon?.name"></rappider-icon>
+          <span [innerHTML]=" option.key | translate"></span>
+          <rappider-icon *ngIf="showSelectedIcon && option.value === value"
+                         class="selected-icon"
+                         [name]="radioSelectedIconConfig.name"
+                         [type]="radioSelectedIconConfig.type"></rappider-icon>
+        </p>
+      </ng-container>
+      <ng-container *ngIf="!showOptionsAsButtons">
+        <p *ngFor="let option of options"
+           [id]="elementId + '_' + option.value"
+           nz-radio
+           [nzValue]="option.value"
+           [ngClass]="cssClass"
+           [ngStyle]="cssStyle"
+           [style.padding]="paddingSettings?.all"
+           [style.margin]="marginSettings?.all">{{ option.key | translate}}
+        </p>
+      </ng-container>
+    </nz-radio-group>
+  </ng-container>
+
+  <ng-template #notValid>
+    <rappider-text> [content]="setInvalidConfigText?.content" </rappider-text>
+  </ng-template>
+</div>

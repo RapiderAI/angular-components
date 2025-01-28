@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox/checkbox.component';
 
 @Component({
   standalone: true,
@@ -42,7 +41,7 @@ import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox/
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderCheckboxComponent
+
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -77,6 +76,7 @@ import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox/
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
 
   `,
@@ -87,9 +87,11 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
   text: TextComponentConfig = {
     text: 'Facebook'
   }
+
   panels: AccordionPanel[] = [
     {
       name: {
