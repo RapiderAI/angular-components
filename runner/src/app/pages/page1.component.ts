@@ -30,6 +30,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
 
 @Component({
   standalone: true,
@@ -58,6 +59,7 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderCommentComponent,
+    RappiderInputErrorComponent
   ],
   selector: 'app-page',
   template: `
@@ -88,12 +90,14 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
-    -->
+    <rappider-comment [comments]="comment.comments"></rappider-comment>
+  <rappider-input-error [errors]="['error1', 'error2', 'error3']" [colorSettings]="{color: 'blue'}" [typography]="{fontSize:'50px'}"></rappider-input-error>
+   
+  -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
   </div>
   `,
 })
