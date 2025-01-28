@@ -1,4 +1,4 @@
-import { ProgressStatus, ProgressType, ProgressSize } from '@rapider/angular-components/progress/utils';
+import { ProgressStatus, ProgressType, ProgressSize } from '@rapider/angular-components/core/progress';
 import { ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 
 export interface ProgressComponentConfig {
