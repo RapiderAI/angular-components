@@ -20,8 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb/breadcrumb.component';
-import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
+
 
 @Component({
   standalone: true,
@@ -70,6 +69,7 @@ import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
+
     -->
 
   </div>
@@ -89,9 +89,15 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+  
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
 
   panels: AccordionPanel[] = [
     {
@@ -106,6 +112,7 @@ export class Page1Component {
       disabled: false
     }
   ];
+
   rate = 4;
 
   select: SelectComponentConfig = {
