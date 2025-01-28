@@ -1,0 +1,62 @@
+<div class="rappider-tabset">
+  <nz-tabset [(nzSelectedIndex)]="selectedIndex"
+             [nzSize]="tabsetSize"
+             [nzTabPosition]="tabsetPosition"
+             [nzType]="tabsetType"
+             [nzTabBarGutter]="tabsetBarGutter"
+             [nzCentered]="center"
+             [nzTabBarExtraContent]="extraContent ? extraTemplate : null"
+             [nzHideAll]="hideAll"
+             (nzAdd)="newTab()"
+             (nzClose)="closeTab($event)"
+             (nzSelectedIndexChange)="onSelectedIndexChange($event)"
+             (nzSelectChange)="onSelectChange(selectedIndex, tabs[selectedIndex])">
+    <nz-tab *ngFor="let tab of tabs"
+            [nzTitle]="titleTemplate"
+            [nzDisabled]="tab.disabled"
+            [nzForceRender]="tab.forceRender">
+      <ng-template #titleTemplate>
+        <rappider-icon *ngIf="tab.icon"
+                       [name]="tab.icon.name"
+                       [type]="tab.icon.type"
+                       [theme]="tab.icon.theme"
+                       [color]="tab.icon.color"
+                       [size]="tab.icon.size"></rappider-icon>
+        <span> {{ tab.title }} </span>
+      </ng-template>
+      <span> {{ tab.content }} </span>
+    </nz-tab>
+  </nz-tabset>
+
+  <ng-template #extraTemplate>
+    <rappider-button [key]="extraContent?.key"
+                     [type]="extraContent?.type"
+                     [shape]="extraContent?.shape"
+                     [text]="extraContent?.text"
+                     [size]="extraContent?.size"
+                     [transparent]="extraContent?.transparent"
+                     [loading]="extraContent?.loading"
+                     [block]="extraContent?.block"
+                     [disabled]="extraContent?.disabled"
+                     [colorType]="extraContent?.colorType"
+                     [icon]="extraContent?.icon"
+                     [popconfirmTitle]="extraContent?.popconfirmTitle"
+                     [emitWithoutPopconfirm]="extraContent?.emitWithoutPopconfirm"
+                     [popconfirmCancelText]="extraContent?.popconfirmCancelText"
+                     [popconfirmOkText]="extraContent?.popconfirmOkText"
+                     [popconfirmOkDanger]="extraContent?.popconfirmOkDanger"
+                     [formButtonType]="extraContent?.formButtonType"
+                     [borderSettings]="extraContent?.borderSettings"
+                     [marginSettings]="extraContent?.marginSettings"
+                     [paddingSettings]="extraContent?.paddingSettings"
+                     [shadowSettings]="extraContent?.shadowSettings"
+                     [customColorSettings]="extraContent?.customColorSettings"
+                     [customSizeSettings]="extraContent?.customSizeSettings"
+                     [tooltipText]="extraContent?.tooltipText"
+                     [tooltipPlacement]="extraContent?.tooltipPlacement"
+                     [redirectUrl]="extraContent?.redirectUrl"
+                     [redirectTarget]="extraContent?.redirectTarget"
+                     (confirm)="onExtraContentConfirm()">
+    </rappider-button>
+  </ng-template>
+</div>
