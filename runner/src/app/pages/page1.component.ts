@@ -28,6 +28,8 @@ import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
+import { RappiderTreeSelectComponent } from '@rapider/angular-components/tree-select';
+import { NzTreeNodeOptions } from 'node_modules/ng-zorro-antd/tree/public-api';
 
 @Component({
   standalone: true,
@@ -53,8 +55,8 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     // RappiderBadgeComponent,
-    ,
-    RappiderProgressComponent
+    RappiderProgressComponent,
+    RappiderTreeSelectComponent
   ],
   selector: 'app-page',
   template: `
@@ -92,6 +94,9 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
   </div>
+    <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+  <rappider-tree-select [tree]="tree" [multipleSelect]="true" [defaultExpandAll]="true" [placeholder]="'Select a property'" [size]="'default'"></rappider-tree-select>
+  </div>
   `,
 })
 
@@ -102,19 +107,24 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
+  tree: NzTreeNodeOptions[] = [
+    { title: 'parent 1', key: '100', children: [{ title: 'leaf 1', key: '1001' }, { title: 'leaf 2', key: '1002' }] },
+    { title: 'parent 2', key: '200', children: [{ title: 'leaf 3', key: '2001' }, { title: 'leaf 4', key: '2002' }] }
+  ];
+
   paddingSettings: SpacingConfig = {
-   all: '10px'
+    all: '10px'
   };
 
   marginSettings: SpacingConfig = {
-   all: '10px'
+    all: '10px'
   };
 
   options: SelectableOption[] = [
     { key: 'Alice', value: 'alice' },
     { key: 'Totoro', value: 'totoro' }
   ];
-  placeholder="Enter your name";
+  placeholder = "Enter your name";
 
   style = '';
   type = 'horizontal';
@@ -126,37 +136,6 @@ export class Page1Component {
     text: 'Facebook'
   }
 
-  options = [
-    {
-      key: {
-        text: "Alice"
-      },
-      value: "alice",
-      checkboxType: "default",
-      tooltip: "tooltip",
-      icon: {
-        name: "fa-solid fa-wand-magic-sparkles"
-      },
-      additionalIcon: {
-        name: "fa-solid fa-wand-magic-sparkles"
-      },
-    },
-    {
-      key: {
-        text: "Jane"
-      },
-      value: "jane",
-      checkboxType: "default",
-      tooltip: "tooltip",
-      icon: {
-        name: "fa-solid fa-wand-magic-sparkles"
-      },
-      additionalIcon: {
-        name: "fa-solid fa-wand-magic-sparkles"
-      },
-    },
-  ];
-  
   panels: AccordionPanel[] = [
     {
       name: {
