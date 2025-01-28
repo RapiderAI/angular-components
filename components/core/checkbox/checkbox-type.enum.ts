@@ -1,4 +1,4 @@
 export enum CheckboxType {
-    Default = 'default',
-    Button = 'button'
-  }
+  Default = 'default',
+  Button = 'button'
+}
