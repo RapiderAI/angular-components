@@ -43,7 +43,6 @@ import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
     RappiderRateComponent,
     RappiderSelectModule,
     RappiderSpinComponent,
-    RappiderBreadcrumbComponent
     // RappiderBadgeComponent,
   ],
   selector: 'app-page',
@@ -71,13 +70,13 @@ import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
-      <rappider-breadcrumb [options]="options"></rappider-breadcrumb>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
     <rappider-accordion [panels]="panels"></rappider-accordion>
+    
   </div>
 
 
@@ -89,21 +88,10 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
   text: TextComponentConfig = {
     text: 'Facebook'
   }
-  options: BreadcrumbOption[] = [
-    {
-      label: "Home",
-      params: {},
-      url: ''
-    } ,
-    {
-      label: "About",
-      params: {},
-      url: ''
-    }     
-  ];
 
   panels: AccordionPanel[] = [
     {
