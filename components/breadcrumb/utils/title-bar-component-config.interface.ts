@@ -1,7 +1,7 @@
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
-import { BreadcrumbOption } from './breadcrumb-option.interface';
+import { BreadcrumbOption } from '../../core/breadcrumb/breadcrumb-option.interface';
 //import { DropdownMenuComponentConfig } from '@rapider/angular-components/dropdown-menu';
 
 export interface TitleBarComponentConfig {

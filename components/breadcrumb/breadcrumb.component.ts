@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { BreadcrumbOption } from '@rapider/angular-components/core/breadcrumb/breadcrumb-option.interface';
+import { BreadcrumbOption } from '@rapider/angular-components/core/breadcrumb';
 
 
 @Component({
