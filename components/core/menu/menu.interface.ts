@@ -1,5 +1,5 @@
-import { IconComponentConfig } from '@rapider/angular-components/icon/utils/icon-component-config.interface';
-import { MenuActionBehavior } from '@rapider/angular-components/core/menu/menu-action-behavior.enum';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { MenuActionBehavior } from '@rapider/angular-components/core/menu';
 
 
 export interface Menu {

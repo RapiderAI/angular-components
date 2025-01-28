@@ -1,5 +1,5 @@
-import { MenuConfig } from './menu-config.interface';
-import { MenuPlacement } from './menu-placement.enum';
+import { MenuConfig, MenuPlacement } from "@rapider/angular-components/core/menu";
+
 
 export interface MenuComponentConfig {
   config: MenuConfig;

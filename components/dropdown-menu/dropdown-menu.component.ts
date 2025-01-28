@@ -8,16 +8,11 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { FormsModule } from '@angular/forms';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { DropdownMenuItem } from '@rapider/angular-components/core/dropdown-menu';
-import { DropdownMenuLabelMode } from '@rapider/angular-components/core/dropdown-menu';
-import { DropdownMenuPlacement } from '@rapider/angular-components/core/dropdown-menu';
-import { DropdownMenuTriggerType } from '@rapider/angular-components/core/dropdown-menu';
-import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { DropdownMenuItem, DropdownMenuLabelMode, DropdownMenuPlacement, DropdownMenuTriggerType, DropdownType } from '@rapider/angular-components/core/dropdown-menu';
 import { IconType } from '@rapider/angular-components/core/icon';
-import { MenuActionBehavior } from '@rapider/angular-components/core/menu/menu-action-behavior.enum';
-import { SelectMode } from '@rapider/angular-components/core/select/select-mode.enum';
-import { DropdownType } from'@rapider/angular-components/core/dropdown-menu';
-import { RappiderIconComponent } from '@rapider/angular-components/icon';
+import { MenuActionBehavior } from '@rapider/angular-components/core/menu';
+import { SelectMode } from '@rapider/angular-components/core/select';
+import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
 
 @Component({
   selector: 'rappider-dropdown-menu',

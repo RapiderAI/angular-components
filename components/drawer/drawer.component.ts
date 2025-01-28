@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { DrawerPlacement } from '@rapider/angular-components/core/drawer/drawer-placement.enum';
+import { DrawerPlacement } from '@rapider/angular-components/core/drawer';
 
 @Component({
   selector: 'rappider-drawer',

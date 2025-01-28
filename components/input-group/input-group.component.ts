@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
-import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
-import { TextboxComponentConfig } from '../core/textbox/textbox-component-config.interface';
+import { RappiderTextboxComponent, TextboxComponentConfig } from '@rapider/angular-components/textbox';
 
 @Component({
   selector: 'rappider-input-group',

@@ -10,8 +10,8 @@ import { RappiderParagraphComponent } from '@rapider/angular-components/paragrap
 import { CartItemAdditionalContent } from '@rapider/angular-components/core/cart-item'; 
 import { CartItem } from '@rapider/angular-components/core/cart-item';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
-import { RappiderIconBlockComponent } from '@rapider/angular-components/icon-block/icon-block.component';
-import { RappiderDividerComponent } from '@rapider/angular-components/divider/divider.component';
+import { RappiderIconBlockComponent } from '@rapider/angular-components/icon-block';
+import { RappiderDividerComponent } from '@rapider/angular-components/divider';
 import { DividerComponentConfig } from '@rapider/angular-components/core/divider';
 
 

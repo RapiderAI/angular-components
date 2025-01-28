@@ -6,8 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
 import { DropdownMenuPlacement, DropdownMenuTriggerType } from '@rapider/angular-components/core/dropdown-menu';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
-import { RappiderCartItemComponent } from '@rapider/angular-components/cart-item/cart-item.component';
-import { CartItemComponentConfig } from '@rapider/angular-components/core/cart-item';
+import { CartItemComponentConfig, RappiderCartItemComponent } from '@rapider/angular-components/cart-item';
 
 
 
