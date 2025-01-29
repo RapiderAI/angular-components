@@ -20,8 +20,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { ImageComponentConfig, RappiderImageComponent } from '@rapider/angular-components/image';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
-
-// import { RappiderPreviewerComponent } from  '@rapider/angular-components/core/previewer';
+import { RappiderPreviewerComponent } from  '@rapider/angular-components/previewer';
 
 @Component({
   selector: 'rappider-image-upload',
@@ -34,7 +33,7 @@ import { RappiderSpinComponent } from '@rapider/angular-components/spin';
     RappiderButtonComponent,
     RappiderImageComponent,
     RappiderSpinComponent,
-    // RappiderPreviewerComponent
+    RappiderPreviewerComponent
   ],
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.scss'],
