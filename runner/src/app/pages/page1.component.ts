@@ -53,13 +53,7 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     RappiderSelectComponent,
     RappiderSpinComponent,
     RappiderImageUploadComponent
-    RappiderCheckboxListComponent,
-    RappiderTextboxComponent,
-    RappiderPaginationComponent,
-    RappiderBlockquoteComponent,
-    // RappiderBadgeComponent,
-    RappiderProgressComponent,
-    RappiderCommentComponent,
+
   ],
   selector: 'app-page',
   template: `
@@ -86,7 +80,6 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-rate [(ngModel)]="rate" (valueChange)="onChange($event)"></rappider-rate>
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
-      <rappider-image-upload uploadButtonVisibility= "true"></rappider-image-upload>
       <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
@@ -95,7 +88,7 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
+  <rappider-image-upload uploadButtonVisibility= "true"></rappider-image-upload>
   </div>
   `,
 })

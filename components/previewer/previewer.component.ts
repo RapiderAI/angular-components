@@ -4,6 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderImageComponent } from '@rapider/angular-components/image';
 import { RappiderPdfViewerComponent } from '@rapider/angular-components/pdf-viewer';
+import { ModalComponentConfig, RappiderModalComponent } from '@rapider/angular-components/modal';
 
 
 
@@ -14,8 +15,8 @@ import { RappiderPdfViewerComponent } from '@rapider/angular-components/pdf-view
     CommonModule,
     RappiderButtonComponent,
     RappiderImageComponent,
-    RappiderPdfViewerComponent
-    //RappiderModalComponent,
+    RappiderPdfViewerComponent,
+    RappiderModalComponent
   ],
   templateUrl: './previewer.component.html',
   styleUrls: ['./previewer.component.scss'],
@@ -28,7 +29,7 @@ import { RappiderPdfViewerComponent } from '@rapider/angular-components/pdf-view
   ]
 })
 export class RappiderPreviewerComponent implements ControlValueAccessor, OnChanges {
-  // @Input() modalConfig: ModalComponentConfig;
+  @Input() modalConfig: ModalComponentConfig;
   @Input() buttonConfig: ButtonComponentConfig;
   @Input() source: any;
   @Input() visibility: boolean;
@@ -66,14 +67,14 @@ export class RappiderPreviewerComponent implements ControlValueAccessor, OnChang
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.source) {
+    if (changes['source']) {
       if (this.source?.type === 'application/pdf' || this.source?.startsWith('data:application/pdf')) {
         this.isPDF = true;
       } else {
         this.isPDF = false;
       }
     }
-    if (changes.visibility) {
+    if (changes['visibility']) {
       if (this.visibility) {
         setTimeout(() => {
           this.pdfViewerVisibility = true;

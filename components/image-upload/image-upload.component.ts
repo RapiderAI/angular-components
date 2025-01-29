@@ -1,26 +1,13 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Input,
-  Output,
-  ViewChild,
-  ElementRef,
-  SimpleChanges,
-} from '@angular/core';
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
-// import { CrudFormPreviewerItem } from '../../utils/edit-form';
-import { ButtonType } from '@rapider/angular-components/core/button/button-type.enum';
+import { Component, EventEmitter, forwardRef, Input,Output, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { ImageComponentConfig, RappiderImageComponent } from '@rapider/angular-components/image';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
+import { ButtonType } from '@rapider/angular-components/core/button';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
-import { RappiderPreviewerComponent } from  '@rapider/angular-components/previewer';
+import { RappiderPreviewerComponent } from '@rapider/angular-components/previewer';
+import { CrudFormPreviewerItem } from '@rapider/angular-components/core/edit-form';
 
 @Component({
   selector: 'rappider-image-upload',
@@ -33,7 +20,7 @@ import { RappiderPreviewerComponent } from  '@rapider/angular-components/preview
     RappiderButtonComponent,
     RappiderImageComponent,
     RappiderSpinComponent,
-    RappiderPreviewerComponent
+    RappiderPreviewerComponent,
   ],
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.scss'],
@@ -52,7 +39,7 @@ export class RappiderImageUploadComponent {
   @Input() uploadButtonVisibility: boolean;
   @Input() isLoading: boolean;
   @Input() uploadButton: ButtonComponentConfig;
-  // @Input() previewerConfig: CrudFormPreviewerItem;
+  @Input() previewerConfig: CrudFormPreviewerItem;
 
   @Output() fileSelect = new EventEmitter<File>();
 
@@ -131,7 +118,7 @@ export class RappiderImageUploadComponent {
       reader.readAsDataURL(file);
     }
 
-   /* this.previewerConfig = {
+    this.previewerConfig = {
       ...this.previewerConfig,
       buttonConfig: {
         text: file?.name,
@@ -140,6 +127,6 @@ export class RappiderImageUploadComponent {
     this.uploadButton = {
       ...this.uploadButton,
       text: 'Change Avatar',
-    }; */
+    }; 
   }
 }
