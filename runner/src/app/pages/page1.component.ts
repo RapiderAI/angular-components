@@ -31,6 +31,7 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label/input-label.component';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderBadgeComponent } from '@rapider/angular-components/badge/badge.component';
 import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
 import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-complete'
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
@@ -65,6 +66,7 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
     RappiderProgressComponent,
     RappiderInputLabelComponent,
     RappiderCommentComponent,
+    RappiderBadgeComponent,
     RappiderInputErrorComponent
     RappiderAutoCompleteComponent,
     RappiderStatisticComponent,
@@ -101,6 +103,7 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-badge [count]="10" [overflowCount]="9" [showDot]="true" [offset]="5"></rappider-badge>
       <rappider-input-error [errors]="['error1', 'error2', 'error3']" [colorSettings]="{color: 'blue'}" [typography]="{fontSize:'50px'}"></rappider-input-error>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
       <rappider-auto-complete [backfill]="true" [dataSource]="['a','au','aut','auto']"></rappider-auto-complete>
