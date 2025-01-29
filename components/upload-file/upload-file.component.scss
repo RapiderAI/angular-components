@@ -1,0 +1,35 @@
+.drag-drop-file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 0 !important;
+  background-color: var(--component-header-background-color);
+  border: var(--border-size-2x) dashed var(--secondary-border-color);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+
+  .drag-drop-file-upload-text {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--main-font-size);
+    text-align: center;
+  }
+
+  &.hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+
+.divider-text {
+  margin: 10px 0;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.browse-file-upload {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
