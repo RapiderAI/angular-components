@@ -146,6 +146,7 @@ export class Page1Component {
     type: IconType.FontAwesome
   };
 
+
   paddingSettings: SpacingConfig = {
     all: '10px'
   };
