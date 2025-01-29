@@ -30,6 +30,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 
@@ -60,6 +61,7 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
     // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderCommentComponent,
+    RappiderStatisticComponent,
     RappiderCountdownComponent,
     RappiderModalComponent,
   ],
@@ -93,6 +95,7 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
       <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
     -->
