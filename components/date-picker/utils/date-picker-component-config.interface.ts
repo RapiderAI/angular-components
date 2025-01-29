@@ -1,6 +1,4 @@
-import { DatePickerDateMode } from './date-picker-date-mode.enum';
-import { DateFormat } from './date-picker-date-format.enum';
-import { DateSplitter } from './date-picker-splitter.enum';
+import { DatePickerDateMode, DateFormat, DateSplitter } from '@rapider/angular-components/core/date-picker';
 import { BorderConfig, BoxShadowConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { TextComponentConfig } from '@rapider/angular-components/text';
 
