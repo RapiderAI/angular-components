@@ -91,12 +91,13 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
+
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-  <rappider-modal [title]="'modal title'" [visible]="true" [cancelText]="'cncl'" [okDanger]="true"></rappider-modal>
   </div>
   `,
 })
