@@ -30,6 +30,7 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
 
 @Component({
   standalone: true,
@@ -58,6 +59,7 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderCommentComponent,
+    RappiderModalComponent,
   ],
   selector: 'app-page',
   template: `
@@ -88,12 +90,13 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
+  <rappider-modal [title]="'modal title'" [visible]="true" [cancelText]="'cncl'" [okDanger]="true"></rappider-modal>
   </div>
   `,
 })
