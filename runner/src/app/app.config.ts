@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -10,10 +10,15 @@ import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 
-const antDesignIcons = AllIcons as {
-  [key: string]: IconDefinition;
-};
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
+import { registerLocaleData } from '@angular/common'; 
+import en from '@angular/common/locales/en';
+
+// ✅ İngilizce locale'i Angular'a tanıt
+registerLocaleData(en);
+
+const antDesignIcons = AllIcons as { [key: string]: IconDefinition };
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +27,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideNzIcons(icons),
-    provideTranslateService()
+    provideTranslateService(),
+    
+    { provide: LOCALE_ID, useValue: 'en-US' },
+    
+    { provide: NZ_I18N, useValue: en_US }
   ]
 };
