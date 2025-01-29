@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu {
+  align-items: center;
+}
+
+.icon-picker {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.card {
+  width: 20%;
+  text-align: center;
+  margin: 5px;
+}
+
+.selected-card {
+  width: 20%;
+  text-align: center;
+  margin: 5px;
+  border: 1px solid var(--primary-color) !important;
+}

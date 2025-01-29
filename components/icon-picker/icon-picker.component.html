@@ -1,0 +1,41 @@
+<!-- WRAPPER -->
+<button nz-button
+        nzGhost="false"
+        nzType="default"
+        (click)="showIconPickerModal()">
+  <i style="margin-right: 5px;"
+     class="far fa-edit"></i>
+  {{ buttonText }}
+  <rappider-icon *ngIf="value?.name"
+                 style="margin-left: 5px;"
+                 [name]="value.name"
+                 [type]="value.type"
+                 [theme]="value.theme"></rappider-icon>
+</button>
+
+<!-- ICON PICKER MODAL -->
+<rappider-modal [(visible)]="isIconPickerModalVisible"
+                title="Icon picker"
+                [fullScreen]="true"
+                (okClick)="onClickOk()"
+                (cancelClick)="closeIconPickerModal()">
+  <div class="layout">
+    <div class="menu">
+      <rappider-menu [config]="menuConfig"
+                     (menuItemClick)="onLibrarySelect($event)"></rappider-menu>
+    </div>
+
+    <div class="icon-picker">
+      <nz-card *ngFor="let icon of selectedSection.items; let i = index"
+               [ngClass]="getCardClass(i)"
+               [nzHoverable]="true"
+               (click)="onIconSelect(icon, i)">
+        <rappider-icon *ngIf="icon?.name"
+                       [name]="icon.name"
+                       [type]="selectedSection.iconType"
+                       [theme]="icon.theme"
+                       [size]="icon.size"></rappider-icon>
+      </nz-card>
+    </div>
+  </div>
+</rappider-modal>

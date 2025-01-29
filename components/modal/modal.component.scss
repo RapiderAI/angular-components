@@ -1,0 +1,54 @@
+::ng-deep .full-screen-modal {
+  top: var(--rappider-header-height);
+  bottom: var(--rappider-footer-height);
+  margin-left: 50px;
+  height: calc(100% - var(--rappider-header-height) - var(--rappider-footer-height));
+  width: calc(100% - 50px);
+  padding: 0px;
+
+  .ant-modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ant-modal-body {
+    max-height: unset;
+    flex: 1;
+  }
+}
+
+::ng-deep .right-sidebar-active-full-modal {
+  width: calc(100% - 450px) !important;
+}
+
+::ng-deep .mini-modal {
+  width: auto;
+  height: auto;
+}
+
+::ng-deep .default-modal {
+  width: 40%;
+  height: 70%;
+  padding: 0px;
+
+  .ant-modal-content {
+    height: auto;
+  }
+
+  .ant-modal-body {
+    height: 82% !important;
+  }
+}
+
+::ng-deep .ant-modal {
+  .ant-modal-body {
+    .ant-checkbox-wrapper,
+    .ant-radio-wrapper,
+    input[type="checkbox"],
+    input[type="radio"] {
+      pointer-events: auto;
+    }
+  }
+}
