@@ -1,0 +1,48 @@
+.tag-select {
+  width: 100%;
+
+  ::ng-deep {
+    nz-select-top-control {
+      max-height: var(--tag-max-height);
+      min-height: var(--tag-min-height);
+      width: var(--tag-width) !important;
+      max-width: var(--tag-max-width);
+      min-width: var(--tag-min-width);
+
+      border: var(--tag-border) !important;
+      border-top: var(--tag-border-top) var(--tag-border-style);
+      border-right: var(--tag-border-right) var(--tag-border-style);
+      border-bottom: var(--tag-border-bottom) var(--tag-border-style);
+      border-left: var(--tag-border-left) var(--tag-border-style);
+      border-radius: var(--tag-border-radius) !important;
+      border-top-left-radius: var(--tag-border-top-left-radius);
+      border-top-right-radius: var(--tag-border-top-right-radius);
+      border-bottom-left-radius: var(--tag-border-bottom-left-radius);
+      border-bottom-right-radius: var(--tag-border-bottom-right-radius);
+      border-color: var(--tag-border-color);
+      border-style: var(--tag-border-style);
+
+      background-color: var(--tag-background-color) !important;
+
+      padding: var(--tag-padding) !important;
+      padding-top: var(--tag-padding-top);
+      padding-right: var(--tag-padding-right);
+      padding-bottom: var(--tag-padding-bottom);
+      padding-left: var(--tag-padding-left);
+
+      margin: var(--tag-margin) !important;
+      margin-top: var(--tag-margin-top);
+      margin-right: var(--tag-margin-right);
+      margin-bottom: var(--tag-margin-bottom);
+      margin-left: var(--tag-margin-left);
+
+      box-shadow: var(--tag-box-shadow) !important;
+    }
+  }
+}
+
+.clear-button {
+  position: absolute;
+  top: 20%;
+  right: 10px;
+}
