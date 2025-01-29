@@ -1,0 +1,14 @@
+.blockquote {
+  border-left: var(--border-size-3x) solid var(--secondary-border-color);
+  padding-left: var(--padding-4x);
+}
+
+.blockquote-footer {
+  display: flex;
+  align-items: center;
+  margin-top: var(--margin-2x);
+}
+
+.blockquote-footer::before {
+  color: var(--text-color) !important;
+}

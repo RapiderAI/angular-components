@@ -1,0 +1,49 @@
+<div class="comment">
+  <ng-template #commentTemplateRef
+               let-comment="comment">
+    <nz-comment [nzAuthor]="comment.author">
+      <nz-avatar nz-comment-avatar
+                 nzIcon="user"
+                 [nzSrc]="comment.avatar"></nz-avatar>
+
+      <nz-comment-content>
+        <div *ngIf="comment.rate">
+          <rappider-rate-display [rate]="comment.rate"></rappider-rate-display>
+        </div>
+        <p>{{ comment.content }} </p>
+      </nz-comment-content>
+      <nz-comment-action>
+        <i nz-tooltip
+           nzTooltipTitle="Like"
+           [ngClass]="comment.isLiked ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up'"
+           [style]="{color: likeButtonColor}"
+           (click)="onLikeClick(comment)"></i>
+        <span class="count like">{{ comment.likeCount }}</span>
+      </nz-comment-action>
+      <nz-comment-action>
+        <i nz-tooltip
+           nzTooltipTitle="Dislike"
+           [ngClass]="comment.isDisliked ? 'fa-solid fa-thumbs-down' : 'fa-regular fa-thumbs-down'"
+           [style]="{color: dislikeButtonColor}"
+           (click)="onDislikeClick(comment)"></i>
+        <span class="count dislike">{{ comment.dislikeCount }}</span>
+      </nz-comment-action>
+      <nz-comment-action *ngIf="comment.replyText">
+        <span (click)="onReplyToClick(comment)"></span> {{ comment.replyText }}
+      </nz-comment-action>
+      <ng-container *ngIf="comment.children && comment.children.length">
+        <ng-template ngFor
+                     let-child
+                     [ngForOf]="comment.children">
+          <ng-template [ngTemplateOutlet]="commentTemplateRef"
+                       [ngTemplateOutletContext]="{ comment: child }"></ng-template>
+        </ng-template>
+      </ng-container>
+    </nz-comment>
+  </ng-template>
+
+  <ng-container *ngFor="let comment of comments">
+    <ng-template [ngTemplateOutlet]="commentTemplateRef"
+                 [ngTemplateOutletContext]="{ comment: comment}"></ng-template>
+  </ng-container>
+</div>
