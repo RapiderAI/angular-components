@@ -1,0 +1,24 @@
+<ng-container>
+  <nz-select [(ngModel)]="value"
+             class="tag-select"
+             nzMode="tags"
+             nzAllowClear
+             [nzPlaceHolder]="placeholder || ''"
+             [nzShowSearch]="settings?.searchable"
+             [nzSize]="size"
+             [ngClass]="cssClass"
+             [ngStyle]="cssStyle"
+             [nzShowArrow]="false"
+             [disabled]="disable"
+             (ngModelChange)="onBlur($event)">
+    <nz-option *ngFor="let option of options"
+               [nzLabel]="option.key"
+               [nzValue]="option.value"></nz-option>
+  </nz-select>
+  <div *ngIf="!multipleSelection && tagCount === 1"
+       class="clear-button">
+    <rappider-button [type]="clearButtonComponentConfig.type"
+                     [icon]="clearButtonComponentConfig.icon"
+                     (confirm)="clearTags()"></rappider-button>
+  </div>
+</ng-container>
