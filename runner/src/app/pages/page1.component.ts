@@ -31,6 +31,8 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
+import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
 
 @Component({
   standalone: true,
@@ -59,7 +61,9 @@ import { RappiderStatisticComponent } from '@rapider/angular-components/statisti
     // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderCommentComponent,
-    RappiderStatisticComponent
+    RappiderStatisticComponent,
+    RappiderCountdownComponent,
+    RappiderModalComponent,
   ],
   selector: 'app-page',
   template: `
@@ -92,13 +96,14 @@ import { RappiderStatisticComponent } from '@rapider/angular-components/statisti
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
       <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
-
+      <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
+      <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
     -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-</div>
+  </div>
   `,
 })
 
