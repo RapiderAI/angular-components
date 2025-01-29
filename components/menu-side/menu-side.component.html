@@ -1,0 +1,76 @@
+<div class="menu">
+    <ng-template #menuTemplate
+                 [ngIf]="!isMobileView">
+        <ul nz-menu
+            nzMode="inline">
+            <ng-container *ngTemplateOutlet="recursiveMenuTemplate; context:{ $implicit: items }">
+            </ng-container>
+
+            <ng-template #recursiveMenuTemplate
+                         let-items>
+                <ng-container *ngFor="let item of items; trackBy: trackMenu">
+                    <!-- has children -->
+                    <li *ngIf="item.children?.length; else singleMenuItemTemplate"
+                        class="menu-item"
+                        nz-submenu
+                        [nzTitle]="submenuTitleTemplate"
+                        [nzDisabled]="item.disabled">
+                        <ng-template #submenuTitleTemplate>
+                            <ng-container *ngTemplateOutlet="menuItemTitleTemplate; context:{ $implicit: item }">
+                            </ng-container>
+                        </ng-template>
+                        <ul>
+                            <ng-container
+                                          *ngTemplateOutlet="recursiveMenuTemplate; context:{ $implicit: item?.children }">
+                            </ng-container>
+                        </ul>
+                    </li>
+
+                    <!-- single menu item -->
+                    <ng-template #singleMenuItemTemplate>
+                        <li nz-menu-item
+                            class="menu-item"
+                            (click)="menuClick($event, item)">
+                            <ng-container *ngTemplateOutlet="menuItemTitleTemplate; context:{ $implicit: item }">
+                            </ng-container>
+                        </li>
+                    </ng-template>
+                </ng-container>
+            </ng-template>
+        </ul>
+    </ng-template>
+    <nz-drawer [(nzVisible)]="mobileMenuVisibility"
+               [nzBodyStyle]="{'padding': '0'}"
+               [nzContent]="menuTemplate"
+               nzPlacement="right"
+               nzTitle="SA Families"
+               nzWidth="90%"
+               nzWrapClassName="mobile-menu-wrapper"
+               (nzOnClose)="closeMobileMenu()">
+    </nz-drawer>
+</div>
+
+<ng-template #menuItemTitleTemplate
+             let-item>
+    <div class="menu-item-container">
+        <div class="menu-item-title-icon-wrapper">
+            <div class="icon-area">
+                <rappider-icon *ngIf="item?.icon"
+                               class="menu-item-icon"
+                               [name]="item.icon.name"
+                               [type]="item.icon.type"
+                               [theme]="item.icon.theme"
+                               [color]="item.icon.color"></rappider-icon>
+            </div>
+            <div class="title-area">
+                {{ item.title }}
+            </div>
+        </div>
+        <rappider-tag *ngIf="item?.tag"
+                      [mode]="item.tag.mode"
+                      [color]="item.tag.color"
+                      [text]="item.tag.text"
+                      [icon]="item.tag.icon"
+                      [checked]="item.tag.checked"></rappider-tag>
+    </div>
+</ng-template>
