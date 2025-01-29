@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RappiderButtonModule } from '@rapider/angular-components/button/button.module'
+import { RappiderButtonModule } from '@rapider/angular-components/button'
 import { TranslateModule } from '@ngx-translate/core';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 

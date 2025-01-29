@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { RappiderHeadingModule } from '@rapider/angular-components/heading/heading.module';
-import { RappiderTextModule } from '@rapider/angular-components/text/text.module'
+import { RappiderHeadingModule } from '@rapider/angular-components/heading';
+import { RappiderTextModule } from '@rapider/angular-components/text'
 import { TextComponentConfig } from '@rapider/angular-components/text';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { BadgeStatus } from '@rapider/angular-components/core/badge';
