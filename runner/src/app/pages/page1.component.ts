@@ -31,6 +31,9 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label/input-label.component';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
+import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
 
 @Component({
   standalone: true,
@@ -60,6 +63,9 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     RappiderProgressComponent,
     RappiderInputLabelComponent,
     RappiderCommentComponent,
+    RappiderStatisticComponent,
+    RappiderCountdownComponent,
+    RappiderModalComponent,
   ],
   selector: 'app-page',
   template: `
@@ -90,10 +96,12 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
-  <rappider-input-label [title]="'i am input label'" [description]="'i am description'" [icon]="{name: 'fa-solid fa-user-group',type: 'FONT_AWESOME'}"></rappider-input-label>
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
-   
--->
+      <rappider-input-label [title]="'i am input label'" [description]="'i am description'" [icon]="{name: 'fa-solid fa-user-group',type: 'FONT_AWESOME'}"></rappider-input-label>
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
+      <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
+      <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
+    -->
 
   </div>
 
@@ -140,6 +148,7 @@ export class Page1Component {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
 
   paddingSettings: SpacingConfig = {
     all: '10px'
