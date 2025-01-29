@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { StepsDirection, StepsSize, StepsType, StepStatus, StepsLabelPlacement } from '@rapider/angular-components/core/steps';
-import { Steps } from '@rapider/angular-components/steps';
+import { Step } from '@rapider/angular-components/core/steps';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { CommonModule } from '@angular/common';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
@@ -14,7 +14,7 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
   styleUrls: ['./steps.component.scss']
 })
 export class RappiderStepsComponent implements OnInit, OnChanges {
-  @Input() steps: Steps[];
+  @Input() steps: Step[];
   @Input() stepsType: StepsType;
   @Input() current: number;
   @Input() stepsDirection: StepsDirection;
