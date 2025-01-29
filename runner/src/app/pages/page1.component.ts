@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
@@ -16,11 +17,20 @@ import { RappiderAccordionComponent } from '@rapider/angular-components/accordio
 import { AccordionPanel } from '@rapider/angular-components/core/accordion';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { RappiderRateComponent } from '@rapider/angular-components/rate';
-import { FormsModule } from '@angular/forms';
-import { RappiderSelectModule } from '@rapider/angular-components/select/select.module';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
 import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
+import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
+import { SelectableOption } from '@rapider/angular-components/core/common';
+import { RappiderProgressComponent } from "@rapider/angular-components/progress";
+import { ColorConfig } from '@rapider/angular-components/core/style';
+import { SpacingConfig } from '@rapider/angular-components/core/style';
+import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
+import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
+import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
+import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 
 @Component({
   standalone: true,
@@ -40,10 +50,16 @@ import { RappiderImageUploadComponent } from '@rapider/angular-components/image-
     RappiderAlertComponent,
     RappiderAccordionComponent,
     RappiderRateComponent,
-    RappiderSelectModule,
+    RappiderSelectComponent,
     RappiderSpinComponent,
     RappiderImageUploadComponent
+    RappiderCheckboxListComponent,
+    RappiderTextboxComponent,
+    RappiderPaginationComponent,
+    RappiderBlockquoteComponent,
     // RappiderBadgeComponent,
+    RappiderProgressComponent,
+    RappiderCommentComponent,
   ],
   selector: 'app-page',
   template: `
@@ -51,9 +67,9 @@ import { RappiderImageUploadComponent } from '@rapider/angular-components/image-
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
 
     <!--
+      <rappider-accordion [panels]="panels"></rappider-accordion>
       <rappider-badge status="success">Success</rappider-badge>
       <rappider-badge status="error">Error</rappider-badge>
-
       <rappider-text text="welcome to the showboard" textMode="html" [content]="html"></rappider-text>
       <rappider-button text="Button Here3" type="primary"></rappider-button>
       <rappider-heading content="content" type="h1"></rappider-heading>
@@ -71,25 +87,123 @@ import { RappiderImageUploadComponent } from '@rapider/angular-components/image-
       <rappider-spin [spinning]="true">helo</rappider-spin>
       <rappider-select [options]="select.options" [ngModel]="'turkish-airlines'" optionMode="options"></rappider-select>
       <rappider-image-upload uploadButtonVisibility= "true"></rappider-image-upload>
-    -->
+      <rappider-textbox [placeholder]="placeholder"></rappider-textbox>
+      <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
+      <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
+      <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>    -->
 
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-accordion [panels]="panels"></rappider-accordion>
+    <rappider-comment [comments]="comment.comments"></rappider-comment>
   </div>
-
   `,
 })
+
 export class Page1Component {
+
+  comment = {
+    comments: [
+      {
+        author: 'Can',
+        avatar: 'user',
+        createdDate: new Date(),
+        content: 'Content here',
+        likeCount: 40,
+        dislikeCount: 12,
+        children: [
+          {
+            author: 'Can',
+            avatar: 'user',
+            createdDate: new Date(),
+            content: 'Content here',
+            likeCount: 40,
+            dislikeCount: 12,
+            replyText: 'reply here',
+            rate: 4,
+            isLiked: true,
+            isDisliked: true,
+          }
+        ],
+        replyText: 'reply here',
+        rate: 4,
+        isLiked: true,
+        isDisliked: true,
+      }
+    ]
+  };
+
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
   icon: IconComponentConfig = {
     name: 'fa-brands fa-facebook',
     type: IconType.FontAwesome
   };
+
+  paddingSettings: SpacingConfig = {
+    all: '10px'
+  };
+
+  marginSettings: SpacingConfig = {
+    all: '10px'
+  };
+
+  options2: SelectableOption[] = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Totoro', value: 'totoro' }
+  ];
+
+  placeholder = "Enter your name";
+
+  style = '';
+  type = 'horizontal';
+  textPlacement = 'center';
+  dividerWidth = '2px';
+  dividerColor = 'red';
+
   text: TextComponentConfig = {
     text: 'Facebook'
-  }
+  };
+
+  blockquote = {
+    quote: <TextComponentConfig>{
+      text: 'Lorem ipsum dolot sit amet.'
+    },
+    footer: {
+      text: 'John Doe'
+    }
+  };
+
+  options = [
+    {
+      key: {
+        text: "Alice"
+      },
+      value: "alice",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+    {
+      key: {
+        text: "Jane"
+      },
+      value: "jane",
+      checkboxType: "default",
+      tooltip: "tooltip",
+      icon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+      additionalIcon: {
+        name: "fa-solid fa-wand-magic-sparkles"
+      },
+    },
+  ];
+
   panels: AccordionPanel[] = [
     {
       name: {
@@ -103,8 +217,13 @@ export class Page1Component {
       disabled: false
     }
   ];
-  rate = 4;
 
+  rate = 4;
+  pageIndex = 3;
+  total = 100;
+  size = "default";
+  pageSize = 10;
+  isSimple = true;
   select: SelectComponentConfig = {
     options: [
       { key: 'Turkish Airlines', value: 'turkish-airlines' },

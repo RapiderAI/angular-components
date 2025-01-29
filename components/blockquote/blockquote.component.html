@@ -1,0 +1,17 @@
+<blockquote class="blockquote blockquote-reverse mb-3">
+  <ng-container *ngIf="quote">
+    <rappider-text [content]="quote.content"
+                   [textMode]="quote.textMode"
+                   [text]="quote.text"
+                   [typography]="quote.typography"
+                   [colorSettings]="quote.colorSettings"></rappider-text>
+  </ng-container>
+  <footer *ngIf="footer"
+          class="blockquote-footer">
+    <rappider-text [content]="footer.content"
+                   [textMode]="footer.textMode"
+                   [text]="footer.text"
+                   [typography]="footer.typography"
+                   [colorSettings]="footer.colorSettings"></rappider-text>
+  </footer>
+</blockquote>
