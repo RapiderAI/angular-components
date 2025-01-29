@@ -1,0 +1,37 @@
+<div class="input-label">
+  <div class="icon-label-wrapper">
+    <ng-container *ngIf="icon">
+      <rappider-icon [nz-tooltip]="!!iconTooltipTitle"
+                     [nzTooltipTitle]="iconTooltipTitle"
+                     [name]="icon.name"
+                     [type]="icon.type"
+                     [theme]="icon.theme"
+                     [color]="icon.color"
+                     [size]="icon.size"></rappider-icon>
+    </ng-container>
+    <div *ngIf="title"
+         class="title"
+         [style.font-size]="typography?.fontSize"
+         [style.font-weight]="typography?.fontWeight"
+         [style.font-style]="typography?.fontStyle"
+         [style.text-align]="typography?.textAlign"
+         [style.text-shadow]="typography?.textShadow"
+         [style.font-family]="typography?.fontFamily"
+         [style.font-stretch]="typography?.fontStretch"
+         [style.text-indent]="typography?.textIndent"
+         [style.letter-spacing]="typography?.letterSpacing"
+         [style.line-height]="typography?.lineHeight"
+         [style.word-spacing]="typography?.wordSpacing"
+         [style.text-decoration]="typography?.textDecoration"
+         [style.text-transform]="typography?.textTransform"
+         [style.user-select]="typography?.userSelect"
+         [style.background-color]="colorSettings?.backgroundColor"
+         [style.color]="colorSettings?.color">
+      {{ title | translate }}
+    </div>
+  </div>
+  <div *ngIf="description"
+       class="label-description"
+       [innerHTML]="description">
+  </div>
+</div>
