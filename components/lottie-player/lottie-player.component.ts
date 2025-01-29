@@ -1,16 +1,21 @@
 import { Component, Input } from '@angular/core';
-import { AnimationOptions } from 'ngx-lottie';
+import { AnimationLoader, AnimationOptions, LottieComponent, provideLottieOptions } from 'ngx-lottie';
 import { CommonModule } from '@angular/common';
-import { LottieModule } from 'ngx-lottie';
 
 @Component({
   selector: 'rappider-lottie-player',
   templateUrl: './lottie-player.component.html',
   imports: [
     CommonModule,
-    LottieModule
+    LottieComponent
   ],
   standalone: true,
+  providers: [
+    provideLottieOptions({
+      player: () => import('lottie-web'),
+    }),
+    AnimationLoader,
+  ],
   styleUrls: ['./lottie-player.component.scss']
 })
 export class RappiderLottiePlayerComponent {
