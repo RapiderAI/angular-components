@@ -1,5 +1,5 @@
 import { IconComponentConfig } from '@rapider/angular-components/icon';
-import { SwitchSize } from './switch-size.enum';
+import { SwitchSize } from '@rapider/angular-components/core/switch';
 
 export interface SwitchComponentConfig {
   disabled?: boolean;
