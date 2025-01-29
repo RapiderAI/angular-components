@@ -31,6 +31,7 @@ import { RappiderPaginationComponent } from '@rapider/angular-components/paginat
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
 
 @Component({
   standalone: true,
@@ -60,6 +61,7 @@ import { RappiderCountdownComponent } from '@rapider/angular-components/countdow
     RappiderProgressComponent,
     RappiderCommentComponent,
     RappiderCountdownComponent,
+    RappiderModalComponent,
   ],
   selector: 'app-page',
   template: `
@@ -92,6 +94,7 @@ import { RappiderCountdownComponent } from '@rapider/angular-components/countdow
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
       <rappider-comment [comments]="comment.comments"></rappider-comment>
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
+      <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
     -->
 
   </div>
