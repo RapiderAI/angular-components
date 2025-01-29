@@ -1,5 +1,6 @@
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { TagComponentConfig } from '@rapider/angular-components/tag';
+import { MenuActionBehavior } from './menu-action-behavior.enum';
 
 export interface MenuItem {
   key: string;
@@ -10,9 +11,4 @@ export interface MenuItem {
   redirectUrl?: string;
   queryParams?: any;
   children?: MenuItem[];
-}
-
-export enum MenuActionBehavior {
-  Emit = 'emit',
-  Route = 'route'
 }
