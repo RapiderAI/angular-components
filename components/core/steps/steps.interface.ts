@@ -1,6 +1,7 @@
 import { IconComponentConfig } from "@rapider/angular-components/icon";
+import { StepStatus } from "./step-status.enum";
 
-export interface Step {
+export interface Steps {
   description?: string;
   icon?: IconComponentConfig;
   status?: StepStatus;
@@ -8,11 +9,4 @@ export interface Step {
   subTitle?: string;
   disabled?: boolean;
   percentage?: number;
-}
-
-export enum StepStatus {
-  Wait = 'wait',
-  Process = 'process',
-  Finish = 'finish',
-  Error = 'error'
 }
