@@ -1,4 +1,4 @@
-export enum DateSplitter {
+export enum DatePickerSplitter {
   Dash = '-',
   Slash = '/',
   Dot = '.'

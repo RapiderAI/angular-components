@@ -14,9 +14,10 @@ import { CommonModule } from '@angular/common';
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox'
 import { TranslateModule } from '@ngx-translate/core';
-import { DateFormat, DatePickerDateMode, DateSplitter } from '@rapider/angular-components/core/date-picker';
+import { DatePickerDateMode, DatePickerSplitter } from '@rapider/angular-components/core/date-picker';
 import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { DateFormat } from '@rapider/angular-components/core/common';
 
 @Component({
   selector: 'rappider-date-picker',
@@ -56,7 +57,7 @@ export class RappiderDatePickerComponent implements ControlValueAccessor, OnInit
   @Input() colorSettings: ColorConfig;
   @Input() typography: TypographyConfig;
   @Input() dateFormat: DateFormat = DateFormat.YearMonthDay;
-  @Input() splitter: DateSplitter = DateSplitter.Dash;
+  @Input() splitter: DatePickerSplitter = DatePickerSplitter.Dash;
   @Input() showTime: boolean;
   @Input() showWeekNumber: boolean;
   @Input() timeRangeMode: boolean;
@@ -123,7 +124,7 @@ export class RappiderDatePickerComponent implements ControlValueAccessor, OnInit
     }
     if (!this.splitter) {
       // (/) as default
-      this.splitter = DateSplitter.Slash;
+      this.splitter = DatePickerSplitter.Slash;
     }
   }
 
