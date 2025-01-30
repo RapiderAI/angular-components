@@ -40,6 +40,7 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text';
 import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
 import { TextMode } from '@rapider/angular-components/core/text';
+import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
 
 
 @Component({
@@ -66,13 +67,18 @@ import { TextMode } from '@rapider/angular-components/core/text';
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     RappiderBlockquoteComponent,
-    // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderInputLabelComponent,
     RappiderCommentComponent,
     RappiderBadgeComponent,
     RappiderInputErrorComponent,
-    RappiderIconTextComponent
+    RappiderIconTextComponent,
+    RappiderAutoCompleteComponent,
+    RappiderStatisticComponent,
+    RappiderCountdownComponent,
+    RappiderModalComponent,
+    RappiderButtonGroupComponent,
+    RappiderCheckboxTableComponent
   ],
   selector: 'app-page',
   template: `
@@ -113,14 +119,13 @@ import { TextMode } from '@rapider/angular-components/core/text';
       <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
       <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
-    -->
+      <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"></rappider-button-group>
+      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>  
+      <rappider-icon-text [items]="items" [iconTextListMode]="iconTextListMode" [iconTextContentMode]="iconTextContentMode"></rappider-icon-text>
+     -->
 
   </div>
-
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-  <rappider-icon-text [items]="items"
-                      [iconTextListMode]="iconTextListMode"
-                      [iconTextContentMode]="iconTextContentMode"></rappider-icon-text>
   </div>
   `,
 })
@@ -155,6 +160,19 @@ export class Page1Component {
   iconTextContentMode: IconTextContentMode = IconTextContentMode.Right;
 
 
+  rows = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Jane', value: 'jane' }
+  ];
+
+  columns = [
+    { key: 'Turkish Airlines', value: 'turkish-airlines' },
+    { key: 'Pegasus', value: 'pegasus' }
+  ];
+
+  check = [
+    { row: 'Alice', column: 'Turkish Airlines' , check: true },
+  ];
 
   comment = {
     comments: [
