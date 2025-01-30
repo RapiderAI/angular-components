@@ -1,0 +1,40 @@
+<div class="section scholar-card"
+     [class]="cardStatus">
+  <div class="profile">
+    <rappider-image *ngIf="profilePhoto"
+                    [source]="profilePhoto?.source"
+                    [width]="profilePhoto?.width"
+                    [height]="profilePhoto?.height"
+                    [placeholder]="profilePhoto?.placeholder"
+                    [fallback]="profilePhoto?.fallback"
+                    [disablePreview]="profilePhoto?.disablePreview"
+                    [alternateText]="profilePhoto?.alternateText"
+                    [borderSettings]="profilePhoto?.borderSettings"
+                    [customSizeSettings]="profilePhoto?.width"
+                    [shadowSettings]="profilePhoto?.shadowSettings"
+                    [marginSettings]="profilePhoto?.marginSettings"
+                    [paddingSettings]="profilePhoto?.paddingSettings"></rappider-image>
+    <div *ngIf="title || content"
+         class="profile-info">
+      <rappider-heading *ngIf="title"
+                        [content]="title.content"
+                        [type]="title.type"></rappider-heading>
+
+      <div *ngIf="content"
+           class="content">
+        <span [innerHtml]="content"></span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="icon"
+       class="info">
+    <nz-badge [nzCount]="iconBadgeCount">
+      <rappider-icon [name]="icon.name"
+                     [size]="icon.size"
+                     [color]="icon.color"
+                     [type]="icon.type"
+                     [theme]="icon.theme"></rappider-icon>
+    </nz-badge>
+  </div>
+</div>
