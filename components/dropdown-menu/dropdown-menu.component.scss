@@ -1,0 +1,20 @@
+.button-dropdown {
+  display: flex;
+  gap: var(--margin-x);
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  padding: var(--margin-x) var(--margin-3x) !important;
+  border: var(--border-size-x) solid var(--primary-border-color)
+}
+
+.label {
+  margin-right: var(--margin-2x);
+}
+
+.dropdown-text {
+  color: var(--text-color);
+  width: max-content;
+}
