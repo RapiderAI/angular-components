@@ -1,0 +1,58 @@
+<div class="monaco-code-editor-container"
+     [style]="getBorderSettings()">
+  <div *ngIf="showToolbar"
+       class="monaco-code-editor-toolbar">
+    <div *ngIf="options?.language !== 'markdown'"> {{options?.language}} </div>
+
+    <!-- <rappider-radio-group *ngIf="options?.language === 'markdown'"
+                          [size]="'small'"
+                          [cssClass]="'editor-tab-button'"
+                          [(ngModel)]="markdownMode"
+                          (valueChange)="onMarkdownPreviewModeChange($event)"
+                          [options]="markDownModeRadioConfig"></rappider-radio-group> -->
+    <div *ngIf="toolbarButtons?.length"
+         class="monaco-code-editor-toolbar-buttons">
+      <rappider-button *ngFor="let toolbarButton of toolbarButtons"
+                       [text]="toolbarButton.text"
+                       [type]="toolbarButton.type"
+                       [icon]="toolbarButton.icon"
+                       [size]="toolbarButton.size"
+                       [transparent]="toolbarButton.transparent"
+                       (confirm)="onToolbarButtonClick(toolbarButton)">
+      </rappider-button>
+    </div>
+  </div>
+  <div [class]="getEditorClass()">
+    <rappider-monaco-editor #editorComponentRef
+                            [(ngModel)]="value"
+                            [pasteItemFunction]="pasteItemFunction"
+                            [autoFormat]="autoFormat"
+                            [showSelectedKeyPath]="showSelectedKeyPath"
+                            [markdownMode]="markdownMode"
+                            [options]="options"
+                            [model]="model"
+                            (init)="onEditorInit($event)"
+                            (customCodeRegions)="onCustomCodeRegionsEmitted($event)"
+                            (selectedKeyFullPathChange)="onSelectedKeyFullPathChange($event)"></rappider-monaco-editor>
+  </div>
+  <div class="monaco-code-editor-footer">
+    <div *ngIf="showSelectedKeyPath"
+         class="full-key-path-section">
+      <p>
+        <b>{{'Location' | translate}}</b>:
+        {{fullKeyPath || 'Select a key from JSON to see the path'}}
+      </p>
+      <i *ngIf="!copyButtonClicked"
+         class="fa-light fa-copy"
+         style="cursor: pointer;"
+         (click)="copyFullKeyPath()"></i>
+      <div *ngIf="copyButtonClicked"
+           class="copy-success-feedback">
+        <i class="fa-regular fa-check"></i>
+        <span>
+          {{'Copied' | translate}}!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

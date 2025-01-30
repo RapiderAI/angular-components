@@ -45,6 +45,8 @@ import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/ke
 import { RappiderButtonListComponent } from '@rapider/angular-components/button-list';
 import { UnorderedListOneComponentConfig } from '@rapider/angular-components/unordered-list-one';
 import { RappiderUnorderedListOneArrayComponent } from '@rapider/angular-components/unordered-list-one-array';
+import { MonacoEditorComponent } from '@rapider/angular-components/monaco-editor/components/monaco-editor';
+import { CodeEditorComponent } from '@rapider/angular-components/monaco-editor';
 
 
 @Component({
@@ -87,6 +89,8 @@ import { RappiderUnorderedListOneArrayComponent } from '@rapider/angular-compone
     RappiderKeyValueDisplayComponent,
     RappiderButtonListComponent,
     RappiderUnorderedListOneArrayComponent,
+    MonacoEditorComponent,
+    CodeEditorComponent
   ],
   selector: 'app-page',
   template: `
@@ -135,7 +139,7 @@ import { RappiderUnorderedListOneArrayComponent } from '@rapider/angular-compone
   </div>
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
 
-      <rappider-unordered-list-one-array [items]="unorderedListOneArray"></rappider-unordered-list-one-array>
+      <rappider-monaco-editor ></rappider-monaco-editor>
 
   </div>
   `,
