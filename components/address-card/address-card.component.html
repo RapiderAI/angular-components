@@ -1,0 +1,71 @@
+<nz-card class="address-card">
+  <div *ngIf="title">
+    <rappider-heading [type]="title.type"
+                      [content]="title.content"></rappider-heading>
+  </div>
+  <div *ngIf="subtitle">
+    <rappider-heading [type]="subtitle.type"
+                      [content]="subtitle.content"></rappider-heading>
+  </div>
+  <div *ngFor="let address of addresses"
+       class="content">
+    <rappider-icon *ngIf="address.icon && address.icon?.name"
+                   class="icon"
+                   [name]="address.icon.name"
+                   [type]="address.icon.type"
+                   [theme]="address.icon.theme"
+                   [color]="address.icon.color"
+                   [size]="address.icon.size"></rappider-icon>
+    <rappider-text [content]="address.content"
+                   [textMode]="address.textMode"
+                   [text]="address.text"
+                   [typography]="address.typography"
+                   [colorSettings]="address.colorSettings"></rappider-text>
+  </div>
+  <div class="button-group">
+    <div *ngFor="let button of buttons; let index">
+      <div *ngIf="button.popconfirmTitle; else noPopconfirm">
+        <rappider-button nz-popconfirm
+                         [text]="button.text"
+                         [type]="button.type"
+                         [shape]="button.shape"
+                         [size]="button.size"
+                         [transparent]="button.transparent"
+                         [loading]="button.loading"
+                         [block]="button.loading"
+                         [disabled]="button.disabled"
+                         [colorType]="button.colorType"
+                         [icon]="button.icon"
+                         [nzPopconfirmTitle]="button.popconfirmTitle"
+                         [formButtonType]="button.formButtonType"
+                         [borderSettings]="button.borderSettings"
+                         [customSizeSettings]="button.customSizeSettings"
+                         [customColorSettings]="button.customColorSettings"
+                         [shadowSettings]="button.shadowSettings"
+                         [paddingSettings]="button.paddingSettings"
+                         [marginSettings]="button.marginSettings"
+                         (nzOnConfirm)="onClickButton(button)"></rappider-button>
+      </div>
+      <ng-template #noPopconfirm>
+        <rappider-button [text]="button.text"
+                         [type]="button.type"
+                         [shape]="button.shape"
+                         [size]="button.size"
+                         [transparent]="button.transparent"
+                         [loading]="button.loading"
+                         [block]="button.loading"
+                         [disabled]="button.disabled"
+                         [colorType]="button.colorType"
+                         [icon]="button.icon"
+                         [formButtonType]="button.formButtonType"
+                         [borderSettings]="button.borderSettings"
+                         [customSizeSettings]="button.customSizeSettings"
+                         [customColorSettings]="button.customColorSettings"
+                         [shadowSettings]="button.shadowSettings"
+                         [paddingSettings]="button.paddingSettings"
+                         [marginSettings]="button.marginSettings"
+                         (click)="onClickButton(button)"></rappider-button>
+      </ng-template>
+    </div>
+  </div>
+</nz-card>
