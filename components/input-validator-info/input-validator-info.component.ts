@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { RappiderDataOrderService } from '@rapider/angular-components/services';
+import { RappiderDataOrderService } from '@rapider/angular-components/core/services';
 import { PatternInformation } from './utils';
 
 
