@@ -1,0 +1,61 @@
+<table class="w-100">
+  <tbody cdkDropList
+         cdkDropListLockAxis="y"
+         (cdkDropListDropped)="drop($event)">
+    <tr *ngFor="let row of value; let rowIndex = index"
+        class="inline-row"
+        cdkDrag
+        [cdkDragDisabled]="!orderable">
+
+      <td *ngIf="orderable && lastItemIconVisibility(rowIndex)">
+        <i class="fas fa-bars cursor-pointer"></i>
+      </td>
+
+      <td *ngIf="value?.length !== 1 && !lastItemIconVisibility(rowIndex) && orderable"
+          style="width: 15px;">
+        <!-- empty column for alignment -->
+      </td>
+
+      <td *ngIf="orderNumbersVisibility">
+        <p><b>{{ rowIndex + 1 }}.</b></p>
+      </td>
+
+      <div class="input-template-wrapper">
+        <td *ngFor="let column of getVisibleColumns(columns); let columnIndex = index"
+            class="w-100">
+          <ng-container *ngIf="column.visible !== false">
+            <rappider-input-template class="w-100"
+                                     [ngModel]="value[rowIndex][column.fieldName]"
+                                     [typeAndFormat]="column.typeAndFormat"
+                                     [showCodemirrorForObjectAndArray]="column.showCodemirrorForObjectAndArray"
+                                     [config]="column.config"
+                                     (blur)="onBlur()"
+                                     (ngModelChange)="onRowDataChange($event, rowIndex, column.fieldName)"></rappider-input-template>
+
+            <div *ngIf="uniqueValueControl(column, value[rowIndex][column.fieldName])">
+              <rappider-input-error [className]="'input-error'"
+                                    [errors]="['This field must be unique.']"></rappider-input-error>
+            </div>
+          </ng-container>
+        </td>
+      </div>
+      <td *ngIf="lastItemIconVisibility(rowIndex)">
+        <i class="fas fa-trash"
+           (click)="removeItem(rowIndex)"></i>
+      </td>
+
+      <td *ngIf="value?.length !== 1 && !lastItemIconVisibility(rowIndex)"
+          style="width: 15px;">
+        <!-- empty column for alignment -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="infoMessage && value?.length <= infoMessageIndex"
+     class="info-message">
+  <rappider-text [content]="infoMessage.content"
+                 [text]="infoMessage.text"
+                 [textMode]="infoMessage.textMode"
+                 [typography]="infoMessage.typography"
+                 [colorSettings]="infoMessage.colorSettings"></rappider-text>
+</div>
