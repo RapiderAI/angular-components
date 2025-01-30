@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
+import { HeadingComponentConfig, RappiderHeadingComponent } from '@rapider/angular-components/heading';
 import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { RappiderParagraphComponent } from '@rapider/angular-components/paragraph';
@@ -20,10 +20,8 @@ import { RappiderRateComponent } from '@rapider/angular-components/rate';
 import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
 import { SelectableOption } from '@rapider/angular-components/core/common';
 import { RappiderProgressComponent } from "@rapider/angular-components/progress";
-import { ColorConfig } from '@rapider/angular-components/core/style';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
@@ -45,6 +43,8 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
 import { RappiderPanelComponent } from '@rapider/angular-components/panel';
 import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/key-value-display';
 import { RappiderButtonListComponent } from '@rapider/angular-components/button-list';
+import { UnorderedListOneComponentConfig } from '@rapider/angular-components/unordered-list-one';
+import { RappiderUnorderedListOneArrayComponent } from '@rapider/angular-components/unordered-list-one-array';
 
 
 @Component({
@@ -86,6 +86,7 @@ import { RappiderButtonListComponent } from '@rapider/angular-components/button-
     RappiderPanelComponent,
     RappiderKeyValueDisplayComponent,
     RappiderButtonListComponent,
+    RappiderUnorderedListOneArrayComponent,
   ],
   selector: 'app-page',
   template: `
@@ -134,13 +135,36 @@ import { RappiderButtonListComponent } from '@rapider/angular-components/button-
   </div>
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
 
-      <rappider-button-list [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]"></rappider-button-list>
+      <rappider-unordered-list-one-array [items]="unorderedListOneArray"></rappider-unordered-list-one-array>
 
   </div>
   `,
 })
 
 export class Page1Component {
+
+  heading: HeadingComponentConfig = {
+    content: "heading name",
+    type: HeadingType.H6
+  };
+
+  icon: IconComponentConfig = {
+    name: 'fa-brands fa-facebook',
+    type: IconType.FontAwesome
+  };
+
+  unorderedListOneArray: UnorderedListOneComponentConfig[] = [
+    {
+      list: ['list1', 'list2', 'list3'],
+      title: this.heading,
+      titleIcon: this.icon
+    },
+    {
+      list: ['list1', 'list2', 'list3'],
+      title: this.heading,
+      titleIcon: this.icon
+    },
+  ]
 
   keyValues = [
     {
@@ -231,11 +255,6 @@ export class Page1Component {
   };
 
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
-  icon: IconComponentConfig = {
-    name: 'fa-brands fa-facebook',
-    type: IconType.FontAwesome
-  };
-
 
   paddingSettings: SpacingConfig = {
     all: '10px'
