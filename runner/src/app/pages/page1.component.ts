@@ -38,10 +38,12 @@ import { RappiderStatisticComponent } from '@rapider/angular-components/statisti
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text';
-import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
+import { IconTextActionBehavior, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
 import { TextMode } from '@rapider/angular-components/core/text';
 import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
 import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table';
+import { RappiderPanelComponent } from '@rapider/angular-components/panel';
+import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/key-value-display';
 
 
 @Component({
@@ -80,6 +82,8 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
     RappiderModalComponent,
     RappiderButtonGroupComponent,
     RappiderCheckboxTableComponent,
+    RappiderPanelComponent,
+    RappiderKeyValueDisplayComponent,
   ],
   selector: 'app-page',
   template: `
@@ -127,11 +131,29 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
 
   </div>
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+
+      <rappider-key-value-display [items]="keyValues"></rappider-key-value-display>
+
   </div>
   `,
 })
 
 export class Page1Component {
+
+  keyValues = [
+    {
+      key: 'key1',
+      value: 'value1'
+    },
+    {
+      key: 'key2',
+      value: 'value1'
+    },
+    {
+      key: 'key2',
+      value: 'value1'
+    },
+  ]
 
   items: IconTextItem[] = [
     {
@@ -172,7 +194,7 @@ export class Page1Component {
   ];
 
   check = [
-    { row: 'Alice', column: 'Turkish Airlines' , check: true },
+    { row: 'Alice', column: 'Turkish Airlines', check: true },
   ];
 
   comment = {
