@@ -37,8 +37,11 @@ import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text';
+import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
+import { TextMode } from '@rapider/angular-components/core/text';
 import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
-import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table/checkbox-table.component';
+
 
 @Component({
   standalone: true,
@@ -69,6 +72,7 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
     RappiderCommentComponent,
     RappiderBadgeComponent,
     RappiderInputErrorComponent,
+    RappiderIconTextComponent,
     RappiderAutoCompleteComponent,
     RappiderStatisticComponent,
     RappiderCountdownComponent,
@@ -116,8 +120,9 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
       <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
       <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"></rappider-button-group>
-      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>                     
-    -->
+      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>  
+      <rappider-icon-text [items]="items" [iconTextListMode]="iconTextListMode" [iconTextContentMode]="iconTextContentMode"></rappider-icon-text>
+     -->
 
   </div>
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
@@ -126,6 +131,33 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
 })
 
 export class Page1Component {
+
+  items: IconTextItem[] = [
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Ghibli',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    },
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Shingeki no Kyojin',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    }
+  ];
+  iconTextListMode: IconTextListMode = IconTextListMode.Horizontal;
+  iconTextContentMode: IconTextContentMode = IconTextContentMode.Right;
 
 
   rows = [
