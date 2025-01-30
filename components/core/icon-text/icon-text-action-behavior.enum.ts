@@ -1,4 +1,4 @@
 export enum IconTextActionBehavior {
-    Route = 'route',
-    Emit = 'emit'
+  Route = 'route',
+  Emit = 'emit',
 }
