@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
-
+import { RappiderButtonGroupComponent } from './button-group.component';
 @NgModule({
   imports: [RappiderButtonGroupComponent],
   exports: [RappiderButtonGroupComponent]
