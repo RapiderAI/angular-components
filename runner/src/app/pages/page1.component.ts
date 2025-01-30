@@ -44,6 +44,7 @@ import { RappiderButtonGroupComponent } from '@rapider/angular-components/button
 import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table';
 import { RappiderPanelComponent } from '@rapider/angular-components/panel';
 import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/key-value-display';
+import { RappiderButtonListComponent } from '@rapider/angular-components/button-list';
 
 
 @Component({
@@ -84,6 +85,7 @@ import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/ke
     RappiderCheckboxTableComponent,
     RappiderPanelComponent,
     RappiderKeyValueDisplayComponent,
+    RappiderButtonListComponent,
   ],
   selector: 'app-page',
   template: `
@@ -132,7 +134,7 @@ import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/ke
   </div>
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
 
-      <rappider-key-value-display [items]="keyValues"></rappider-key-value-display>
+      <rappider-button-list [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]"></rappider-button-list>
 
   </div>
   `,
