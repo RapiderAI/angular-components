@@ -37,6 +37,7 @@ import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
 import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table/checkbox-table.component';
 
 @Component({
@@ -63,12 +64,16 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     RappiderBlockquoteComponent,
-    // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderInputLabelComponent,
     RappiderCommentComponent,
     RappiderBadgeComponent,
     RappiderInputErrorComponent,
+    RappiderAutoCompleteComponent,
+    RappiderStatisticComponent,
+    RappiderCountdownComponent,
+    RappiderModalComponent,
+    RappiderButtonGroupComponent,
     RappiderCheckboxTableComponent
   ],
   selector: 'app-page',
@@ -110,15 +115,12 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
       <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
       <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
+      <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"></rappider-button-group>
+      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>                     
     -->
 
   </div>
-
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-  <rappider-checkbox-table [rows]="rows"
-                           [columns]="columns"
-                           [check]="check"
-                           [checkboxMode]="true"></rappider-checkbox-table>
   </div>
   `,
 })

@@ -1,0 +1,26 @@
+<div *ngIf="buttons"
+     class="button-group">
+  <span *ngFor="let button of buttons">
+    <rappider-button [type]="button.type"
+                     [text]="button.text"
+                     [colorType]="button.colorType"
+                     [icon]="button.icon"
+                     [size]="button.size"
+                     [transparent]="button.transparent"
+                     [loading]="button.loading"
+                     [block]="button.block"
+                     [disabled]="button.disabled"
+                     [colorType]="button.colorType"
+                     [shape]="button.shape"
+                     [popconfirmTitle]="button.popconfirmTitle"
+                     [emitWithoutPopconfirm]="button.emitWithoutPopconfirm"
+                     [formButtonType]="button?.formButtonType"
+                     [borderSettings]="button?.borderSettings"
+                     [customSizeSettings]="button?.customSizeSettings"
+                     [customColorSettings]="button?.customColorSettings"
+                     [shadowSettings]="button?.shadowSettings"
+                     [paddingSettings]="button?.paddingSettings"
+                     [marginSettings]="button?.marginSettings"
+                     (click)="onButtonClick(button)"></rappider-button>
+  </span>
+</div>
