@@ -37,6 +37,10 @@ import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text';
+import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
+import { TextMode } from '@rapider/angular-components/core/text';
+
 
 @Component({
   standalone: true,
@@ -67,11 +71,8 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
     RappiderInputLabelComponent,
     RappiderCommentComponent,
     RappiderBadgeComponent,
-    RappiderInputErrorComponent
-    RappiderAutoCompleteComponent,
-    RappiderStatisticComponent,
-    RappiderCountdownComponent,
-    RappiderModalComponent,
+    RappiderInputErrorComponent,
+    RappiderIconTextComponent
   ],
   selector: 'app-page',
   template: `
@@ -117,11 +118,43 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+  <rappider-icon-text [items]="items"
+                      [iconTextListMode]="iconTextListMode"
+                      [iconTextContentMode]="iconTextContentMode"></rappider-icon-text>
   </div>
   `,
 })
 
 export class Page1Component {
+
+  items: IconTextItem[] = [
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Ghibli',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    },
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Shingeki no Kyojin',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    }
+  ];
+  iconTextListMode: IconTextListMode = IconTextListMode.Horizontal;
+  iconTextContentMode: IconTextContentMode = IconTextContentMode.Right;
+
+
 
   comment = {
     comments: [
