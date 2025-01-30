@@ -1,0 +1,46 @@
+<div class="switch">
+    <ng-container *ngIf="textPosition === 'left'">
+        <rappider-text *ngIf="text"
+                       [textMode]="text?.textMode"
+                       [content]="text?.content"
+                       [text]="text?.text"
+                       [colorSettings]="text?.colorSettings"
+                       [typography]="text?.typography"></rappider-text>
+        <rappider-icon *ngIf="icon"
+                       [name]="icon.name"
+                       [type]="icon.type"
+                       [theme]="icon.theme"
+                       [color]="icon.color"
+                       [size]="icon.size"
+                       [secondColor]="icon.secondColor"
+                       [animation]="icon.animation"
+                       [style]="icon.style"></rappider-icon>
+    </ng-container>
+    <nz-switch [(ngModel)]="value"
+               nz-tooltip
+               [nzTooltipTitle]="tooltipText"
+               [nzCheckedChildren]="checkedChildren"
+               [nzUnCheckedChildren]="unCheckedChildren"
+               [nzDisabled]="disabled"
+               [nzLoading]="loading"
+               [nzSize]="size"
+               (ngModelChange)="onValueChange($event)"></nz-switch>
+    <ng-container *ngIf="textPosition !== 'left'">
+        <rappider-text *ngIf="text"
+                       [textMode]="text?.textMode"
+                       [content]="text?.content"
+                       [text]="text?.text"
+                       [colorSettings]="text?.colorSettings"
+                       [typography]="text?.typography"></rappider-text>
+        <rappider-icon *ngIf="icon"
+                       [name]="icon.name"
+                       [type]="icon.type"
+                       [theme]="icon.theme"
+                       [color]="icon.color"
+                       [size]="icon.size"
+                       [secondColor]="icon.secondColor"
+                       [animation]="icon.animation"
+                       [style]="icon.style"></rappider-icon>
+    </ng-container>
+
+</div>
