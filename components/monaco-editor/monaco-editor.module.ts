@@ -14,12 +14,4 @@ import { CodeEditorComponent } from './code-editor.component';
   ]
 })
 export class RappiderMonacoEditorModule {
-  public static forRoot(config: MonacoEditorConfig = {}): ModuleWithProviders<RappiderMonacoEditorModule> {
-    return {
-      ngModule: RappiderMonacoEditorModule,
-      providers: [
-        { provide: MONACO_EDITOR_CONFIG, useValue: config }
-      ]
-    };
-  }
 }

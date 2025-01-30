@@ -12,6 +12,7 @@ import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular
 import { BorderConfig } from '@rapider/angular-components/core/style';
 import { MonacoEditorModel, MonacoEditorRegion } from './utils/monaco-editor.types';
 import { MONACO_EDITOR_CONFIG } from './utils/monaco-editor.config';
+import { RappiderRadioGroupModule } from '../radio-group';
 
 @Component({
   selector: 'rappider-monaco-code-editor',
@@ -23,7 +24,8 @@ import { MONACO_EDITOR_CONFIG } from './utils/monaco-editor.config';
     TranslateModule,
     RappiderSpinComponent,
     RappiderButtonComponent,
-    MonacoEditorComponent
+    MonacoEditorComponent,
+    RappiderRadioGroupModule
   ],
   standalone: true,
   providers: [{
@@ -33,8 +35,9 @@ import { MONACO_EDITOR_CONFIG } from './utils/monaco-editor.config';
   },
   {
     provide: MONACO_EDITOR_CONFIG, 
-    useValue: { theme: 'vs-dark', language: 'typescript' } // Burada config belirleniyor
-  }]
+    useValue: { theme: 'vs-dark', language: 'typescript' }
+  }
+]
 })
 export class CodeEditorComponent implements OnInit, OnChanges, ControlValueAccessor {
   @ViewChild('editorComponentRef', { static: true }) _editorComponent: MonacoEditorComponent;

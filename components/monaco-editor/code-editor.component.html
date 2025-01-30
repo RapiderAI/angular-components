@@ -4,12 +4,12 @@
        class="monaco-code-editor-toolbar">
     <div *ngIf="options?.language !== 'markdown'"> {{options?.language}} </div>
 
-    <!-- <rappider-radio-group *ngIf="options?.language === 'markdown'"
+    <rappider-radio-group *ngIf="options?.language === 'markdown'"
                           [size]="'small'"
                           [cssClass]="'editor-tab-button'"
                           [(ngModel)]="markdownMode"
                           (valueChange)="onMarkdownPreviewModeChange($event)"
-                          [options]="markDownModeRadioConfig"></rappider-radio-group> -->
+                          [options]="markDownModeRadioConfig"></rappider-radio-group>
     <div *ngIf="toolbarButtons?.length"
          class="monaco-code-editor-toolbar-buttons">
       <rappider-button *ngFor="let toolbarButton of toolbarButtons"
