@@ -6,8 +6,7 @@ import {
   addYears, addDays, addHours, addMinutes
 } from 'date-fns';
 import { CommonModule } from '@angular/common';
-import { HeadingComponentConfig } from '@rapider/angular-components/core/heading';
-import { RappiderHeadingModule } from '@rapider/angular-components/heading';
+import { RappiderHeadingModule, HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { ColorConfig } from '@rapider/angular-components/core/style';

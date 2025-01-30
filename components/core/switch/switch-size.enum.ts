@@ -1,4 +1,4 @@
-export const enum SwitchSize {
+export enum SwitchSize {
   Small = 'small',
   Default = 'default'
 }

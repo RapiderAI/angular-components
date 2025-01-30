@@ -3,7 +3,13 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RappiderTextComponent } from '@rapider/angular-components/text';
-import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
+import {
+  IconTextActionBehavior,
+  IconTextColumnCount,
+  IconTextContentMode,
+  IconTextItem,
+  IconTextListMode,
+} from '@rapider/angular-components/core/icon-text';
 
 
 @Component({
@@ -13,8 +19,8 @@ import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconT
     CommonModule,
     RouterModule,
     RappiderTextComponent,
-    RappiderIconComponent
-    ],
+    RappiderIconComponent,
+  ],
   templateUrl: './icon-text.component.html',
   styleUrls: ['./icon-text.component.scss']
 })

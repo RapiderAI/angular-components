@@ -79,7 +79,7 @@ import { RappiderCheckboxTableComponent } from '@rapider/angular-components/chec
     RappiderCountdownComponent,
     RappiderModalComponent,
     RappiderButtonGroupComponent,
-    RappiderCheckboxTableComponent
+    RappiderCheckboxTableComponent,
   ],
   selector: 'app-page',
   template: `

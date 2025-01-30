@@ -1,7 +1,9 @@
-import { IconTextColumnCount } from '../../core/icon-text/icon-text-column-count.enum';
-import { IconTextContentMode } from '../../core/icon-text/icon-text-content-mode.enum';
-import { IconTextItem } from '../../core/icon-text/icon-text-item.interface';
-import { IconTextListMode } from '../../core/icon-text/icon-text-list-mode.enum';
+import {
+  IconTextListMode,
+  IconTextItem,
+  IconTextContentMode,
+  IconTextColumnCount
+} from '@rapider/angular-components/core/icon-text';
 
 export interface IconTextComponentConfig {
   items: IconTextItem[];

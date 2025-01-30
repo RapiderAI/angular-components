@@ -1,4 +1,4 @@
-export const enum SwitchTextPosition {
+export enum SwitchTextPosition {
     Left = 'left',
     Right = 'right'
 };
