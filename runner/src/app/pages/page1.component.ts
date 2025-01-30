@@ -41,6 +41,7 @@ import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text
 import { IconTextActionBehavior, IconTextColumnCount, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
 import { TextMode } from '@rapider/angular-components/core/text';
 import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
+import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table';
 
 
 @Component({
