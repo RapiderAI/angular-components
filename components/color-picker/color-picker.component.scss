@@ -1,0 +1,37 @@
+.color-picker-input {
+  border: 0 !important;
+  height: 100%;
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+.color-picker-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.selected-color-preview {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: var(--border-size-x) solid var(--primary-border-color);
+}
+
+/* color-picker class is coming from ngx-color-picker package */
+::ng-deep {
+  .color-picker {
+    border: var(--border-size-x) solid var(--primary-border-color) !important;
+    background-color: var(--component-inner-background-color) !important;
+  }
+
+  .color-picker input {
+    color: var(--text-color) !important;
+    background-color: var(--input-background-color) !important;
+  }
+
+  .box div {
+    color: var(--text-color) !important;
+  }
+}

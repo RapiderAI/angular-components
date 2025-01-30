@@ -1,0 +1,32 @@
+<div>
+  <div>
+    <input type="file"
+           id="browse-file"
+           multiple="multiple"
+           class="d-none" />
+
+    <div id="drag-drop-file"
+         class="drag-drop-file-upload">
+      <div class="drag-drop-file-upload-text">
+        <rappider-text [text]="(dragDropFileText?.text || 'Drag & Drop Files Here') | translate"
+                       [content]="dragDropFileText?.content"
+                       [textMode]="dragDropFileText?.textMode"
+                       [typography]="dragDropFileText?.typography"
+                       [colorSettings]="dragDropFileText?.colorSettings"></rappider-text>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-text">
+    <b>{{ 'OR' | translate }}</b>
+  </div>
+
+  <div class="browse-file-upload">
+
+    <rappider-button [type]="uploadFileButtonType || 'default'"
+                     [text]="(uploadFileButtonText || 'Browse File') | translate"
+                     (click)="onFileBrowseOpen()">
+    </rappider-button>
+
+  </div>
+</div>
