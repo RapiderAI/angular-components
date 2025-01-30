@@ -37,6 +37,7 @@ import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
 
 @Component({
   standalone: true,
@@ -67,11 +68,12 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
     RappiderInputLabelComponent,
     RappiderCommentComponent,
     RappiderBadgeComponent,
-    RappiderInputErrorComponent
+    RappiderInputErrorComponent,
     RappiderAutoCompleteComponent,
     RappiderStatisticComponent,
     RappiderCountdownComponent,
     RappiderModalComponent,
+    RappiderButtonGroupComponent
   ],
   selector: 'app-page',
   template: `
@@ -117,6 +119,8 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+  <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"
+  ></rappider-button-group>
   </div>
   `,
 })
