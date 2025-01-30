@@ -18,11 +18,11 @@ import {
 } from '@rapider/angular-components/core/style';
 import { TranslateModule } from '@ngx-translate/core';
 import { TextComponentConfig } from '@rapider/angular-components/text';
-import { HeadingComponentConfig, HeadingType } from '@rapider/angular-components/core/heading';
+import { HeadingType } from '@rapider/angular-components/core/heading';
 import { AlertType, AlertActionConfigPlacement } from '@rapider/angular-components/core/alert';
 import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
 import { RappiderTextComponent } from '@rapider/angular-components/text';
-import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
+import { RappiderHeadingComponent, HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
 
 @Component({

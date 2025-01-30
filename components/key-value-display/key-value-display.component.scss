@@ -1,0 +1,25 @@
+.key-value {
+  display: flex;
+  margin-bottom: var(--margin-2x);
+
+  &:nth-last-of-type(1) {
+    margin-bottom: 0;
+  }
+}
+
+.key {
+  font-weight: var(--font-weight-semibold);
+  ::ng-deep span {
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-text-color);
+  }
+}
+
+.seperator {
+  margin-left: var(--margin-x);
+  color: var(--primary-text-color);
+}
+
+.value {
+  padding-left: var(--padding-x);
+}

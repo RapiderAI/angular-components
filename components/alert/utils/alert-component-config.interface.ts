@@ -1,5 +1,5 @@
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
-import { HeadingComponentConfig } from '@rapider/angular-components/core/heading';
+import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { TextComponentConfig } from '@rapider/angular-components/text';
 import { AlertActionConfigPlacement, AlertType } from '@rapider/angular-components/core/alert';
