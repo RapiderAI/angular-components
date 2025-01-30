@@ -14,7 +14,7 @@ import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
     CommonModule,
     RappiderAvatarComponent,
     RappiderHeadingComponent,
-    RappiderTextComponent
+    RappiderTextComponent,
   ],
   templateUrl: './icon-block.component.html',
   styleUrls: ['./icon-block.component.scss']
