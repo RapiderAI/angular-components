@@ -38,6 +38,7 @@ import { RappiderStatisticComponent } from '@rapider/angular-components/statisti
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
+import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table/checkbox-table.component';
 
 @Component({
   standalone: true,
@@ -63,7 +64,6 @@ import { RappiderButtonGroupComponent } from '@rapider/angular-components/button
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     RappiderBlockquoteComponent,
-    // RappiderBadgeComponent,
     RappiderProgressComponent,
     RappiderInputLabelComponent,
     RappiderCommentComponent,
@@ -73,7 +73,8 @@ import { RappiderButtonGroupComponent } from '@rapider/angular-components/button
     RappiderStatisticComponent,
     RappiderCountdownComponent,
     RappiderModalComponent,
-    RappiderButtonGroupComponent
+    RappiderButtonGroupComponent,
+    RappiderCheckboxTableComponent
   ],
   selector: 'app-page',
   template: `
@@ -114,18 +115,32 @@ import { RappiderButtonGroupComponent } from '@rapider/angular-components/button
       <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
       <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
       <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
+      <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"></rappider-button-group>
+      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>                     
     -->
 
   </div>
-
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-  <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"
-  ></rappider-button-group>
   </div>
   `,
 })
 
 export class Page1Component {
+
+
+  rows = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Jane', value: 'jane' }
+  ];
+
+  columns = [
+    { key: 'Turkish Airlines', value: 'turkish-airlines' },
+    { key: 'Pegasus', value: 'pegasus' }
+  ];
+
+  check = [
+    { row: 'Alice', column: 'Turkish Airlines' , check: true },
+  ];
 
   comment = {
     comments: [
