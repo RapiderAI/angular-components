@@ -37,6 +37,7 @@ import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-
 import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
 import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table/checkbox-table.component';
 
 @Component({
   standalone: true,
@@ -67,11 +68,8 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
     RappiderInputLabelComponent,
     RappiderCommentComponent,
     RappiderBadgeComponent,
-    RappiderInputErrorComponent
-    RappiderAutoCompleteComponent,
-    RappiderStatisticComponent,
-    RappiderCountdownComponent,
-    RappiderModalComponent,
+    RappiderInputErrorComponent,
+    RappiderCheckboxTableComponent
   ],
   selector: 'app-page',
   template: `
@@ -117,11 +115,30 @@ import { RappiderModalComponent } from '@rapider/angular-components/modal';
   </div>
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
+  <rappider-checkbox-table [rows]="rows"
+                           [columns]="columns"
+                           [check]="check"
+                           [checkboxMode]="true"></rappider-checkbox-table>
   </div>
   `,
 })
 
 export class Page1Component {
+
+
+  rows = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Jane', value: 'jane' }
+  ];
+
+  columns = [
+    { key: 'Turkish Airlines', value: 'turkish-airlines' },
+    { key: 'Pegasus', value: 'pegasus' }
+  ];
+
+  check = [
+    { row: 'Alice', column: 'Turkish Airlines' , check: true },
+  ];
 
   comment = {
     comments: [
