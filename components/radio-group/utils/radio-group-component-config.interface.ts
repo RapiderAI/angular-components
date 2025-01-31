@@ -1,6 +1,4 @@
-import { RadioGroupButtonStyle } from './radio-group-button-style.enum';
-import { RadioGroupOptions } from './radio-group-options.interface';
-import { RadioGroupSize } from './radio-group-size.enum';
+import { RadioGroupButtonStyle, RadioGroupOptions, RadioGroupSize } from '@rapider/angular-components/core/radio-group';
 
 export interface RadioGroupComponentConfig {
   options: RadioGroupOptions[];
