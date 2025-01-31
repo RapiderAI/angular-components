@@ -15,6 +15,12 @@ import { NgxExtendedPdfViewerModule, PdfLoadedEvent, ProgressBarEvent, Verbosity
 })
 export class RappiderPdfViewerComponent implements OnInit, OnChanges {
 
+  /**
+   * uri of the pdf
+   *
+   * @type {string}
+   * @memberof RappiderPdfViewerComponent
+   */
   @Input() source: string;
   /**
    * Allows you to put the viewer's SVG files into an arbitrary folder.
