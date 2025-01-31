@@ -1,0 +1,40 @@
+<ng-container *ngIf="isValid; else notValid">
+  <nz-radio-group class="rappider-radio-group"
+                  [(ngModel)]="value"
+                  [nzSize]="size"
+                  [nzName]="title"
+                  [nzDisabled]="disabled"
+                  [nzButtonStyle]="buttonStyle"
+                  [style.gap]="gap"
+                  [ngStyle]="setDirection()"
+                  (ngModelChange)="onValueChange($event)">
+    <ng-container *ngFor="let option of options">
+      <div class="radio"
+           [id]="elementId + '_' + (option.id || option.key || option.value)"
+           [class]="direction === Direction.Vertical ? 'rappider-radio-group-vertical' : 'rappider-radio-group-horizontal'"
+           [ngClass]="cssClass"
+           [ngStyle]="cssStyle"
+           [nzValue]="option.value"
+           nz-tooltip
+           [nzTooltipTitle]="option.tooltip"
+           nz-radio-button>
+        <rappider-icon *ngIf="option.icon && option.icon?.name"
+                       [name]="option.icon.name"
+                       [theme]="option.icon.theme"
+                       [type]="option.icon.type"
+                       [color]="option.icon.color"
+                       [style.font-size]="option?.iconSize"></rappider-icon>
+        <span *ngIf="option.label || option.key"
+              [style.font-size]="option.labelSize">
+          {{ option.label ?? option.key| translate }}
+        </span>
+        <span [innerHTML]="option.customHTML">
+        </span>
+      </div>
+    </ng-container>
+  </nz-radio-group>
+</ng-container>
+
+<ng-template #notValid>
+  {{ setInvalidConfigText() | translate }}
+</ng-template>
