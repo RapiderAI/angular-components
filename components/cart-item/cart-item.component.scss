@@ -1,0 +1,62 @@
+.rappider-cart-item {
+  display: flex;
+}
+
+.details-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.additional-items-area {
+  margin-bottom: var(--margin-3x);
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.additional-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+}
+
+.icon-block {
+  padding: 0px;
+}
+
+.additional-item-button {
+  padding: 0px;
+
+  ::ng-deep {
+    rappider-button {
+      float: right;
+    }
+  }
+}
+
+.additional-items-title {
+  margin-bottom: var(--margin-3x);
+}
+
+.image-area {
+  display: flex;
+  width: 20%;
+  margin-right: var(--margin-4x);
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dropdown-area {
+  margin-bottom: var(--margin-5x);
+}
