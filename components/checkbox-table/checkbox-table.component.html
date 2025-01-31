@@ -1,0 +1,40 @@
+<div class="table-wrapper">
+  <nz-table #basicTable
+            [nzShowPagination]="false"
+            [nzData]="check">
+    <tbody>
+      <td class="title"></td>
+      <ng-container *ngFor="let column of columns">
+        <td class="title"
+            [ngStyle]="{'text-align': columnTitlePlacement}">
+          <rappider-text [text]="column.key">
+          </rappider-text>
+        </td>
+      </ng-container>
+      <tr *ngFor="let row of rows;">
+        <td class="title"
+            [ngStyle]="{'text-align': rowTitlePlacement}">
+          <rappider-text [text]="row.key"></rappider-text>
+        </td>
+        <ng-container *ngFor="let column of columns">
+          <td class="items"
+              [ngStyle]="{'text-align': itemPlacement}">
+            <div *ngIf="checkboxMode; else defaultMode">
+              <label nz-checkbox
+                     [ngModel]="getCheck(row,column,value)?.check"
+                     (ngModelChange)="onCheckboxValueChange(getColumn(row,column),$event)">
+                <rappider-text *ngIf="getColumn(row,column)?.title"
+                               [text]="getColumn(row,column)?.title">
+                </rappider-text>
+              </label>
+            </div>
+            <ng-template #defaultMode>
+              <rappider-text [text]="getColumn(row,column)?.title">
+              </rappider-text>
+            </ng-template>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

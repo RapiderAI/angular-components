@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
+import { HeadingComponentConfig, RappiderHeadingComponent } from '@rapider/angular-components/heading';
 import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { RappiderParagraphComponent } from '@rapider/angular-components/paragraph';
@@ -20,16 +20,32 @@ import { RappiderRateComponent } from '@rapider/angular-components/rate';
 import { RappiderSelectComponent } from '@rapider/angular-components/select';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { SelectComponentConfig } from '@rapider/angular-components/select';
-import { RappiderRadioComponent } from '@rapider/angular-components/radio/radio.component';
 import { SelectableOption } from '@rapider/angular-components/core/common';
 import { RappiderProgressComponent } from "@rapider/angular-components/progress";
-import { ColorConfig } from '@rapider/angular-components/core/style';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { RappiderBlockquoteComponent } from '@rapider/angular-components/blockquote';
+import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label/input-label.component';
 import { RappiderCommentComponent } from '@rapider/angular-components/comment';
+import { RappiderBadgeComponent } from '@rapider/angular-components/badge/badge.component';
+import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
+import { RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-complete'
+import { RappiderStatisticComponent } from '@rapider/angular-components/statistic/statistic.component';
+import { RappiderCountdownComponent } from '@rapider/angular-components/countdown/countdown.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderIconTextComponent } from '@rapider/angular-components/icon-text';
+import { IconTextActionBehavior, IconTextContentMode, IconTextItem, IconTextListMode } from '@rapider/angular-components/core/icon-text';
+import { TextMode } from '@rapider/angular-components/core/text';
+import { RappiderButtonGroupComponent } from '@rapider/angular-components/button-group';
+import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table';
+import { RappiderPanelComponent } from '@rapider/angular-components/panel';
+import { RappiderKeyValueDisplayComponent } from '@rapider/angular-components/key-value-display';
+import { RappiderButtonListComponent } from '@rapider/angular-components/button-list';
+import { UnorderedListOneComponentConfig } from '@rapider/angular-components/unordered-list-one';
+import { RappiderUnorderedListOneArrayComponent } from '@rapider/angular-components/unordered-list-one-array';
+
 
 @Component({
   standalone: true,
@@ -55,9 +71,22 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
     RappiderTextboxComponent,
     RappiderPaginationComponent,
     RappiderBlockquoteComponent,
-    // RappiderBadgeComponent,
     RappiderProgressComponent,
+    RappiderInputLabelComponent,
     RappiderCommentComponent,
+    RappiderBadgeComponent,
+    RappiderInputErrorComponent,
+    RappiderIconTextComponent,
+    RappiderAutoCompleteComponent,
+    RappiderStatisticComponent,
+    RappiderCountdownComponent,
+    RappiderModalComponent,
+    RappiderButtonGroupComponent,
+    RappiderCheckboxTableComponent,
+    RappiderPanelComponent,
+    RappiderKeyValueDisplayComponent,
+    RappiderButtonListComponent,
+    RappiderUnorderedListOneArrayComponent,
   ],
   selector: 'app-page',
   template: `
@@ -88,17 +117,111 @@ import { RappiderCommentComponent } from '@rapider/angular-components/comment';
       <rappider-progress [percent]="90" [showInfo]="true" [status]="'normal'" [type]="'dashboard'" [successPercent]="50" [width]="150" [strokeWidth]="10" [isSuccessPercentVisible]="true" [paddingSettings]="paddingSettings" [marginSettings]="marginSettings"></rappider-progress>
       <rappider-checkbox-list [options]="options"></rappider-checkbox-list>
       <rappider-blockquote [quote]="blockquote.quote" [footer]="blockquote.footer"></rappider-blockquote>
-    -->
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-badge [count]="10" [overflowCount]="9" [showDot]="true" [offset]="5"></rappider-badge>
+      <rappider-input-error [errors]="['error1', 'error2', 'error3']" [colorSettings]="{color: 'blue'}" [typography]="{fontSize:'50px'}"></rappider-input-error>
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-auto-complete [backfill]="true" [dataSource]="['a','au','aut','auto']"></rappider-auto-complete>
+      <rappider-input-label [title]="'i am input label'" [description]="'i am description'" [icon]="{name: 'fa-solid fa-user-group',type: 'FONT_AWESOME'}"></rappider-input-label>
+      <rappider-comment [comments]="comment.comments"></rappider-comment>
+      <rappider-statistic [title]="'Score'" [value]="100" [suffix]="'points'" [icon]="icon"></rappider-statistic>
+      <rappider-countdown [deadline]="'2025-12-31'"></rappider-countdown>
+      <rappider-modal [title]="'modal title'" [visible]="true"></rappider-modal>
+      <rappider-button-group [buttons]="[{text: 'Button1', type: 'primary'}, {text: 'Button2', type: 'default'}]" (buttonClick)="onChange($event)"></rappider-button-group>
+      <rappider-checkbox-table [rows]="rows" [columns]="columns" [check]="check" [checkboxMode]="true"></rappider-checkbox-table>  
+      <rappider-icon-text [items]="items" [iconTextListMode]="iconTextListMode" [iconTextContentMode]="iconTextContentMode"></rappider-icon-text>
+     -->
 
   </div>
-
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-comment [comments]="comment.comments"></rappider-comment>
+
+      <rappider-unordered-list-one-array [items]="unorderedListOneArray"></rappider-unordered-list-one-array>
+
   </div>
   `,
 })
 
 export class Page1Component {
+
+  heading: HeadingComponentConfig = {
+    content: "heading name",
+    type: HeadingType.H6
+  };
+
+  icon: IconComponentConfig = {
+    name: 'fa-brands fa-facebook',
+    type: IconType.FontAwesome
+  };
+
+  unorderedListOneArray: UnorderedListOneComponentConfig[] = [
+    {
+      list: ['list1', 'list2', 'list3'],
+      title: this.heading,
+      titleIcon: this.icon
+    },
+    {
+      list: ['list1', 'list2', 'list3'],
+      title: this.heading,
+      titleIcon: this.icon
+    },
+  ]
+
+  keyValues = [
+    {
+      key: 'key1',
+      value: 'value1'
+    },
+    {
+      key: 'key2',
+      value: 'value1'
+    },
+    {
+      key: 'key2',
+      value: 'value1'
+    },
+  ]
+
+  items: IconTextItem[] = [
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Ghibli',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    },
+    {
+      icon: {
+        name: 'fa-solid fa-wand-magic-sparkles',
+      },
+      text: {
+        text: 'Shingeki no Kyojin',
+        textMode: TextMode.Text
+      },
+      redirectrUrl: '',
+      routeBehavior: IconTextActionBehavior.Route
+    }
+  ];
+  iconTextListMode: IconTextListMode = IconTextListMode.Horizontal;
+  iconTextContentMode: IconTextContentMode = IconTextContentMode.Right;
+
+
+  rows = [
+    { key: 'Alice', value: 'alice' },
+    { key: 'Jane', value: 'jane' }
+  ];
+
+  columns = [
+    { key: 'Turkish Airlines', value: 'turkish-airlines' },
+    { key: 'Pegasus', value: 'pegasus' }
+  ];
+
+  check = [
+    { row: 'Alice', column: 'Turkish Airlines', check: true },
+  ];
 
   comment = {
     comments: [
@@ -132,10 +255,6 @@ export class Page1Component {
   };
 
   html = `<div style="font-size:20px; color:blue">welcome to the showboard</div>`;
-  icon: IconComponentConfig = {
-    name: 'fa-brands fa-facebook',
-    type: IconType.FontAwesome
-  };
 
   paddingSettings: SpacingConfig = {
     all: '10px'

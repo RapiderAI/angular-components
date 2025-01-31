@@ -1,0 +1,36 @@
+.table-wrapper {
+  border-collapse: collapse;
+  border: 1px solid var(--component-header-background-color);
+  border-radius: 0 0 0 0;
+
+  ::ng-deep {
+    .ant-table {
+      overflow: auto;
+    }
+
+    .ant-table-tbody>tr.ant-table-placeholder {
+      display: none;
+      ;
+    }
+  }
+}
+
+.items {
+  border: 1px solid var(--component-header-background-color);
+  padding: var(--padding-x);
+  text-align: center;
+}
+
+.title {
+  background-color: var(--component-header-background-color);
+  border: 1px solid var(--component-header-background-color);
+  padding: var(--padding-x);
+}
+
+.ant-table-tbody > tr:last-child > td:first-child {
+  border-bottom-left-radius: 0;
+}
+
+.ant-table-tbody > tr:last-child > td:last-child {
+  border-bottom-right-radius: 0;
+}

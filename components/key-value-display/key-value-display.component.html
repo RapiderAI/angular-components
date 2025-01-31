@@ -1,0 +1,15 @@
+<ng-container *ngFor="let item of items"
+              class="key-value">
+  <div *ngIf="item.key"
+       class="key-value">
+    <div class="key">
+      <rappider-text [text]="item.key"></rappider-text>
+    </div>
+    <div class="seperator">
+      :
+    </div>
+    <div class="value">
+      <rappider-text [text]="item.value"></rappider-text>
+    </div>
+  </div>
+</ng-container>

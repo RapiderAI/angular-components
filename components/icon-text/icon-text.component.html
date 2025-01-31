@@ -1,0 +1,65 @@
+<ng-container *ngIf="iconTextListMode === IconTextListMode.Vertical;else horizontalTemplate">
+  <div class="row area"
+       [style.gap]="verticalGap">
+
+    <div *ngFor="let item of items"
+         [ngClass]="getBootstrapColumnCssClassName()"
+         [class]="'text-mode-' + iconTextContentMode">
+
+      <div *ngIf="item.icon?.name"
+           [style.width]="item.icon.size"
+           [ngClass]="{'icon': iconTextContentMode === IconTextContentMode.Right}">
+        <rappider-icon [name]="item.icon.name"
+                       [type]="item.icon.type"
+                       [theme]="item.icon.theme"
+                       [color]="item.icon.color"
+                       [size]="item.icon.size"></rappider-icon>
+      </div>
+      <div *ngIf="item.text"
+           class="text">
+        <a [ngClass]="{'link-text-decoration': item.routeBehavior === IconTextActionBehavior.Route}"
+           (click)="onItemClick(item)">
+          <rappider-text [content]="item.text?.content"
+                         [textMode]="item.text?.textMode"
+                         [text]="item.text?.text"
+                         [typography]="item.text?.typography"
+                         [colorSettings]="item.text?.colorSettings"></rappider-text>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #horizontalTemplate>
+  <div class="area list-mode-horizontal">
+
+    <div *ngFor="let item of items"
+         class="icon-text"
+         [ngClass]="'text-mode-' + iconTextContentMode">
+
+      <div *ngIf="item.icon?.name"
+           [ngClass]="{'icon': iconTextContentMode === IconTextContentMode.Right}">
+        <rappider-icon [name]="item.icon.name"
+                       [type]="item.icon.type"
+                       [theme]="item.icon.theme"
+                       [color]="item.icon.color"
+                       [size]="item.icon.size"></rappider-icon>
+      </div>
+      <div *ngIf="item.text"
+           [ngClass]="{'text': iconTextContentMode === IconTextContentMode.Bottom
+         && iconTextListMode === IconTextListMode.Horizontal}"
+           class="text">
+        <a [ngClass]="{'link-text-decoration': item.routeBehavior === IconTextActionBehavior.Route}"
+           (click)="onItemClick(item)">
+          <rappider-text [content]="item.text?.content"
+                         [textMode]="item.text?.textMode"
+                         [text]="item.text?.text"
+                         [typography]="item.text?.typography"
+                         [colorSettings]="item.text?.colorSettings"></rappider-text>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

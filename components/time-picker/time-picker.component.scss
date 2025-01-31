@@ -1,0 +1,36 @@
+:root {
+  --time-picker-font-size: var(--main-font-size);
+  --time-picker-font-weight: var(--font-weight-normal);
+  --time-picker-font-style: unset;
+  --time-picker-text-decoration: unset;
+  --time-picker-text-align: unset;
+  --time-picker-text-shadow: unset;
+  --time-picker-font-family: var(--font-family-primary);
+  --time-picker-font-stretch: unset;
+  --time-picker-text-indent: unset;
+  --time-picker-letter-spacing: unset;
+  --time-picker-line-height: var(--line-height);
+  --time-picker-word-spacing: unset;
+  --time-picker-text-transform: unset;
+  --time-picker-userselect: unset;
+}
+
+.time-picker::ng-deep {
+  .ant-picker-input,
+  input {
+    font-size: var(--time-picker-font-size) !important;
+    font-weight: var(--time-picker-font-weight);
+    font-style: var(--time-picker-font-style);
+    text-decoration: var(--time-picker-text-decoration);
+    text-align: var(--time-picker-text-align);
+    text-shadow: var(--time-picker-text-shadow);
+    font-family: var(--time-picker-font-family);
+    font-stretch: var(--time-picker-font-stretch);
+    text-indent: var(--time-picker-text-indent);
+    letter-spacing: var(--time-picker-letter-spacing);
+    line-height: var(--time-picker-line-height);
+    word-spacing: var(--time-picker-word-spacing);
+    text-transform: var(--time-picker-text-transform);
+    user-select: var(--time-picker-user-select);
+  }
+}

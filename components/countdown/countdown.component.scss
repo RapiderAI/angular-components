@@ -1,0 +1,43 @@
+:root {
+  --countdown-color: var(--text-color);
+  --countdown-background-color: unset;
+
+  --countdown-font-size: var(--main-font-size);
+  --countdown-font-weight: var(--font-weight-normal);
+  --countdown-font-style: unset;
+  --countdown-text-decoration: unset;
+  --countdown-text-align: unset;
+  --countdown-text-shadow: unset;
+  --countdown-font-family: var(--font-family-primary);
+  --countdown-font-stretch: unset;
+  --countdown-text-indent: unset;
+  --countdown-letter-spacing: unset;
+  --countdown-line-height: var(--line-height);
+  --countdown-word-spacing: unset;
+  --countdown-text-transform: unset;
+  --countdown-user-select: unset;
+}
+
+nz-countdown {
+  ::ng-deep {
+    nz-statistic-number {
+      color: var(--countdown-color);
+      background-color: var(--countdown-background-color);
+
+      font-size: var(--countdown-font-size);
+      font-weight: var(--countdown-font-weight);
+      font-style: var(--countdown-font-style);
+      text-decoration: var(--countdown-text-decoration);
+      text-align: var(--countdown-text-align);
+      text-shadow: var(--countdown-text-shadow);
+      font-family: var(--countdown-font-family);
+      font-stretch: var(--countdown-font-stretch);
+      text-indent: var(--countdown-text-indent);
+      letter-spacing: var(--countdown-letter-spacing);
+      line-height: var(--countdown-line-height);
+      word-spacing: var(--countdown-word-spacing);
+      text-transform: var(--countdown-text-transform);
+      user-select: var(--countdown-user-select);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.icon-area {
+  display: inline-block;
+  margin-left: var(--margin-2x);
+}
+
+.title-area {
+  display: inline-block;
+  margin-left: var(--margin-2x);
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-x);
+  margin-bottom: 2px;
+}
+
+.content-area {
+  padding: var(--padding-2x);
+  color: var(--text-color);
+}

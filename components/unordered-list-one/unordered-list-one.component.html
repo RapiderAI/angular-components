@@ -1,0 +1,20 @@
+<div class="unordered-list-one">
+  <div *ngIf="titleIcon"
+       class="icon-area">
+    <rappider-icon [name]="titleIcon.name"
+                   [type]="titleIcon.type"
+                   [theme]="titleIcon.theme"
+                   [color]="titleIcon.color"
+                   [size]="titleIcon.size"></rappider-icon>
+  </div>
+  <div *ngIf="title || list"
+       class="list-area">
+    <rappider-heading [type]="title.type"
+                      [content]="title.content"></rappider-heading>
+    <ul>
+      <li *ngFor="let item of list">
+        <span [innerHTML]="item"></span>
+      </li>
+    </ul>
+  </div>
+</div>
