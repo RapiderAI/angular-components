@@ -1,4 +1,4 @@
-import { IconComponentConfig } from "@rapider/angular-components/icon";
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 
 export interface RadioGroupOptions {
   value: any;
