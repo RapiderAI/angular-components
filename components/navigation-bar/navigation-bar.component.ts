@@ -2,32 +2,17 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-import { DropdownMenuItem } from '../../utils/dropdown-menu/dropdown-menu-item.interface';
-import { MenuMode } from '../../utils/menu/menu-mode.enum';
-import { Menu } from '../../utils/menu/menu.interface';
-import { MenuComponentConfig } from '../../utils/menu/menu-component-config.interface';
-import { IconComponentConfig } from '../../utils/icon/icon-component-config.interface';
-import { ButtonComponentConfig } from '../../utils/button/button-component-config.interface';
-import { InputGroupComponentConfig } from '../../utils/input-group/input-group-component-config.interface';
-import { ImageComponentConfig } from '../../utils/image/image-component-config.interface';
-import { CartPreviewComponentConfig } from '../../utils/cart-preview/cart-preview-component-config.interface';
-import { ButtonWrapper } from '../../utils/button/button-wrapper.interface';
-import { DropdownMenuWrapper } from '../../utils/dropdown-menu/dropdown-menu-wrapper.interface';
-import { DrawerComponentConfig } from '../../utils/drawer/drawer-component-config.interface';
-import { ResponsiveMenuMode } from '../../utils/navigation-bar/responsive-menu-mode.enum';
-
-import { RappiderCartPreviewComponent } from '../cart-preview/cart-preview.component';
-
-import { RappiderButtonComponent } from '@rapider/angular-components/cart-previ';
-import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderDrawerComponent } from '@rapider/angular-components/drawer';
+import { NavigationBarDropdownMenuWrapper, NavigationBarButtonWrapper, NavigationBarResponsiveMenuMode } from '@rapider/angular-components/core/navigation-bar';
+import { DropdownMenuItem } from '@rapider/angular-components/core/dropdown-menu';
+import { MenuMode, Menu } from '@rapider/angular-components/core/menu';
+import { RappiderCartPreviewComponent, CartPreviewComponentConfig } from '@rapider/angular-components/cart-preview';
+import { RappiderButtonComponent, ButtonComponentConfig } from '@rapider/angular-components/button';
+import { RappiderDrawerComponent, DrawerComponentConfig } from '@rapider/angular-components/drawer';
 import { RappiderDropdownMenuComponent } from '@rapider/angular-components/dropdown-menu';
-import { RappiderIconComponent } from '@rapider/angular-components/icon';
-import { RappiderImageComponent } from '@rapider/angular-components/image';
-import { RappiderMenuComponent } from '@rapider/angular-components/menu';
-import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
-
+import { RappiderIconComponent, IconComponentConfig } from '@rapider/angular-components/icon';
+import { RappiderImageComponent, ImageComponentConfig } from '@rapider/angular-components/image';
+import { RappiderMenuComponent, MenuComponentConfig } from '@rapider/angular-components/menu';
+import { RappiderInputGroupComponent, InputGroupComponentConfig } from '@rapider/angular-components/input-group';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
 
@@ -98,17 +83,17 @@ export class RappiderNavigationBarComponent implements OnInit, OnChanges {
   /**
    * Additional buttons for navigation bar
    *
-   * @type {ButtonWrapper[]}
+   * @type {NavigationBarButtonWrapper[]}
    * @memberof NavigationBarComponent
    */
-  @Input() buttons: ButtonWrapper[];
+  @Input() buttons: NavigationBarButtonWrapper[];
   /**
    * Additional dropdowns for navigation bar
    *
-   * @type {DropdownMenuWrapper[]}
+   * @type {NavigationBarDropdownMenuWrapper[]}
    * @memberof NavigationBarComponent
    */
-  @Input() dropdowns: DropdownMenuWrapper[];
+  @Input() dropdowns: NavigationBarDropdownMenuWrapper[];
   /**
    * Toggler icon for collapsed navigation bar
    *
@@ -145,7 +130,7 @@ export class RappiderNavigationBarComponent implements OnInit, OnChanges {
    */
   @Input() isCartVisible: boolean;
   @Input() drawer: DrawerComponentConfig;
-  @Input() responsiveMenuMode: ResponsiveMenuMode;
+  @Input() responsiveMenuMode: NavigationBarResponsiveMenuMode;
 
   @Output() togglerClick = new EventEmitter();
   @Output() menuItemClick = new EventEmitter<Menu>();
@@ -158,7 +143,7 @@ export class RappiderNavigationBarComponent implements OnInit, OnChanges {
   @Output() cartItemButtonClick = new EventEmitter<ButtonComponentConfig>();
 
   responsiveDropdownMenuVisible = false;
-  ResponsiveMenuMode = ResponsiveMenuMode;
+  ResponsiveMenuMode = NavigationBarResponsiveMenuMode;
 
   ngOnInit(): void {
     this.initDefault();
