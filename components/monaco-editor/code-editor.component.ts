@@ -12,7 +12,7 @@ import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular
 import { BorderConfig } from '@rapider/angular-components/core/style';
 import { MonacoEditorModel, MonacoEditorRegion } from './utils/monaco-editor.types';
 import { MONACO_EDITOR_CONFIG } from './utils/monaco-editor.config';
-import { RappiderRadioGroupModule } from '../radio-group';
+import { RappiderRadioGroupComponent } from '@rapider/angular-components/radio-group';
 
 @Component({
   selector: 'rappider-monaco-code-editor',
@@ -25,7 +25,7 @@ import { RappiderRadioGroupModule } from '../radio-group';
     RappiderSpinComponent,
     RappiderButtonComponent,
     MonacoEditorComponent,
-    RappiderRadioGroupModule
+    RappiderRadioGroupComponent
   ],
   standalone: true,
   providers: [{

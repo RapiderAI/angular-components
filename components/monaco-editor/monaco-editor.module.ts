@@ -1,5 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { MONACO_EDITOR_CONFIG, MonacoEditorConfig } from './utils/monaco-editor.config';
+import { NgModule } from '@angular/core';
 import { MonacoEditorComponent } from './components/monaco-editor/monaco-editor.component';
 import { CodeEditorComponent } from './code-editor.component';
 
@@ -13,5 +12,4 @@ import { CodeEditorComponent } from './code-editor.component';
     CodeEditorComponent
   ]
 })
-export class RappiderMonacoEditorModule {
-}
+export class RappiderMonacoEditorModule {}

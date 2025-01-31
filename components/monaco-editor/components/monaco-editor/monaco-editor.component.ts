@@ -53,7 +53,7 @@ let loadPromise: Promise<void>;
   },
   {
     provide: MONACO_EDITOR_CONFIG, 
-    useValue: { theme: 'vs-dark', language: 'typescript' } // Burada config belirleniyor
+    useValue: { theme: 'vs-dark', language: 'typescript' }
   }]
 })
 export class MonacoEditorComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {

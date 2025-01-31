@@ -122,19 +122,12 @@
               {
                 "glob": "**/*",
                 "input": "runner/public"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/monaco-editor",
-                "output": "assets/monaco-editor"
               }
             ],
             "styles": [
-              "runner/src/styles.scss",
-              "node_modules/monaco-editor/min/vs/editor/editor.main.css"
+              "runner/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/monaco-editor/min/vs/loader.js"
             ]
           }
         }
