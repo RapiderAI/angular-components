@@ -1,14 +1,14 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DrawerPlacement } from '@rapider/angular-components/core/drawer';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzDrawerComponent } from 'ng-zorro-antd/drawer';
 
 @Component({
   selector: 'rappider-drawer',
   standalone: true,
   imports: [
     CommonModule,
-    NzDrawerModule,
+    NzDrawerComponent,
   ],
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.component.scss']
@@ -24,7 +24,7 @@ export class RappiderDrawerComponent implements AfterViewInit {
   /* Whether the Drawer dialog is visible or not */
   @Input() visible: boolean;
   /* The placement of the Drawer. */
-  @Input() placement: DrawerPlacement;
+  @Input() placement = DrawerPlacement.Right;
   /* The footer for Drawer. */
   @Input() footer: string;
   /* Whether support press esc to close */
