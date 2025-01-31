@@ -1,0 +1,23 @@
+.card-fourteen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-4x);
+
+  ::ng-deep rappider-icon {
+    font-size: var(--subtext-font-size) !important;
+  }
+}
+
+.title-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-2x);
+}
+
+.additionalSubtitle {
+  display: flex;
+
+  ::ng-deep rappider-icon {
+    margin-right: var(--margin-x);
+  }
+}

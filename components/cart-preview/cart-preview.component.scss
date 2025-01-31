@@ -1,0 +1,34 @@
+.button {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: var(--padding-3x);
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: var(--padding-3x);
+  padding-top: var(--padding-4x);
+}
+
+.cart {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.footer {
+  background-color: var(--inner-layout-background-color);
+}
+
+::ng-deep .cart-dropdown-overlay {
+  max-width: 400px;
+  ::ng-deep .ant-dropdown-menu {
+    padding: 0px;
+  }
+}
+
+.cart-item {
+  ::ng-deep nz-card {
+    margin: 0px;
+  }
+}
