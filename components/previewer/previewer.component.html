@@ -1,0 +1,53 @@
+<rappider-modal [(visible)]="visibility"
+                [title]="modalConfig?.title"
+                [okText]="modalConfig?.okText"
+                [cancelText]="modalConfig?.cancelText"
+                [width]="modalConfig?.width"
+                [fullScreen]="modalConfig?.fullScreen"
+                [okDisabled]="modalConfig?.okDisabled"
+                [cancelDisabled]="modalConfig?.cancelDisabled"
+                [footer]="modalConfig?.footer"
+                [okLoading]="modalConfig?.okLoading"
+                [okDanger]="modalConfig?.okDanger"
+                [mask]="modalConfig?.mask"
+                [maskClosable]="modalConfig?.maskClosable"
+                [className]="modalConfig?.className"
+                [bodyStyle]="modalConfig?.bodyStyle"
+                [closeIconVisibility]="modalConfig?.closeIconVisibility"
+                (okClick)="onSelectClick()"
+                (cancelClick)="closeModalAndClearSelectedTemplate()">
+  <div *ngIf="isPDF && pdfViewerVisibility; else imageTemplate">
+    <rappider-pdf-viewer [source]="source"
+                         [height]="'500px'"></rappider-pdf-viewer>
+  </div>
+  <ng-template #imageTemplate>
+    <div class="image-container">
+      <rappider-image [source]="source">
+      </rappider-image>
+    </div>
+  </ng-template>
+</rappider-modal>
+
+<rappider-button [text]="buttonConfig?.text"
+                 [key]="buttonConfig?.key"
+                 [type]="buttonConfig?.type"
+                 [shape]="buttonConfig?.shape"
+                 [size]="buttonConfig?.size"
+                 [transparent]="buttonConfig?.transparent"
+                 [loading]="buttonConfig?.loading"
+                 [block]="buttonConfig?.block"
+                 [disabled]="buttonConfig?.disabled"
+                 [icon]="buttonConfig?.icon"
+                 [colorType]="buttonConfig?.colorType"
+                 [popconfirmTitle]="buttonConfig?.popconfirmTitle"
+                 [emitWithoutPopconfirm]="buttonConfig?.emitWithoutPopconfirm"
+                 [iconPlacement]="buttonConfig?.iconPlacement"
+                 [formButtonType]="buttonConfig?.formButtonType"
+                 [borderSettings]="buttonConfig?.borderSettings"
+                 [marginSettings]="buttonConfig?.marginSettings"
+                 [paddingSettings]="buttonConfig?.paddingSettings"
+                 [shadowSettings]="buttonConfig?.shadowSettings"
+                 [customColorSettings]="buttonConfig?.customColorSettings"
+                 [customSizeSettings]="buttonConfig?.customSizeSettings"
+                 [tooltipText]="buttonConfig?.tooltipText"
+                 (click)="onSelectButtonClick()"></rappider-button>
