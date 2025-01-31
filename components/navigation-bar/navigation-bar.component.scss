@@ -1,0 +1,108 @@
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  justify-content: var(--navbar-justify-content, space-between);
+  background-color: var(--navbar-background-color);
+  width: 100%;
+}
+
+.brand {
+  padding: var(--padding-4x);
+  white-space: nowrap;
+}
+
+.additional-area {
+  display: flex;
+  align-items: center;
+
+  .dropdowns-area {
+    display: flex;
+    padding: var(--padding-4x);
+    font-size: var(--navbar-dropdown-font-size, var(--font-size-larger, unset));
+    rappider-dropdown-menu {
+      margin: 0px var(--margin-x);
+    }
+
+    ::ng-deep .ant-dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: var(--margin-x);
+      font-size: var(--main-font-size);
+    }
+  }
+
+  .buttons-area {
+    padding: var(--padding-4x);
+    rappider-button {
+      margin: 0px var(--margin-x);
+    }
+  }
+
+  .search-area {
+    padding: var(--padding-4x);
+    margin-left: var(--margin-3x);
+  }
+}
+
+  .dropdown-mode {
+    padding: var(--padding-4x);
+    border: var(--navbar-responsive-border, none);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--navbar-background-color, transparent);
+    width: 100%;
+
+    .collapse-buttons-area {
+      display: flex;
+      align-items: center;
+      justify-content: var(--navbar-responsive-buttons-justify-content, center);
+      flex-wrap: wrap;
+      width: 100%;
+      padding: var(--padding-2x);
+      rappider-button {
+        margin: 0px var(--margin-x);
+        margin-bottom: var(--margin-x);
+      }
+    }
+  }
+
+.toggler {
+  padding: var(--padding-4x);
+  font-size: var(--navbar-toggler-font-size, var(--font-size-larger, unset));
+  cursor: pointer;
+  display: none;
+}
+
+:host::ng-deep ul {
+  border: none;
+}
+
+.menu {
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .menu, .search-area, .buttons-area {
+    display: none;
+  }
+
+  .responsive-menu, .toggler {
+    display: block;
+  }
+}
+
+.drawer-search-area {
+  margin-bottom: var(--margin-4x);
+}
+
+.drawer-menu {
+  margin-bottom: var(--margin-4x);
+}
+
+::ng-deep {
+  .navigation-bar-drawer {
+    ul {
+      background-color: transparent !important;
+    }
+  }
+}

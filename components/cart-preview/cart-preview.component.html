@@ -1,0 +1,82 @@
+<div *ngIf="dropdownButton"
+     class="cart-button">
+  <rappider-button nz-dropdown
+                   [nzTrigger]="triggerType"
+                   [nzDropdownMenu]="menu"
+                   [nzPlacement]="placement"
+                   nzOverlayClassName="cart-dropdown-overlay"
+                   [transparent]="dropdownButton.transparent"
+                   [colorType]="dropdownButton.colorType"
+                   [shape]="dropdownButton.shape"
+                   [type]="dropdownButton.type"
+                   [text]="dropdownButton.text"
+                   [size]="dropdownButton.size"
+                   [icon]="dropdownButton.icon"
+                   [loading]="dropdownButton.loading"
+                   [block]="dropdownButton.block"
+                   [disabled]="dropdownButton.disabled"
+                   [icon]="dropdownButton.icon"
+                   [formButtonType]="dropdownButton?.formButtonType"
+                   [borderSettings]="dropdownButton?.borderSettings"
+                   [customSizeSettings]="dropdownButton?.customSizeSettings"
+                   [customColorSettings]="dropdownButton?.customColorSettings"
+                   [shadowSettings]="dropdownButton?.shadowSettings"
+                   [paddingSettings]="dropdownButton?.paddingSettings"
+                   [marginSettings]="dropdownButton?.marginSettings"
+                   (click)="onDropdownButtonClick(dropdownButton)"></rappider-button>
+</div>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div nz-menu>
+    <div *ngIf="cartItem"
+         class="cart">
+      <div *ngFor="let items of cartItem"
+           class="cart-item">
+        <rappider-cart-item [image]="items.image"
+                            [divider]="items.divider"
+                            [item]="items.item"
+                            [additionalItems]="items.additionalItems"
+                            (buttonClick)="onCartItemButtonClick(items.$event)"></rappider-cart-item>
+      </div>
+    </div>
+    <div class="footer">
+      <div *ngIf="footer && footerContent"
+           class="content">
+        <rappider-text [content]="footer.content"
+                       [textMode]="footer.textMode"
+                       [text]="footer.text"
+                       [typography]="footer.typography"
+                       [colorSettings]="footer.colorSettings"></rappider-text>
+        <rappider-text [content]="footerContent.content"
+                       [textMode]="footerContent.textMode"
+                       [text]="footerContent.text"
+                       [typography]="footerContent.typography"
+                       [colorSettings]="footerContent.colorSettings"></rappider-text>
+      </div>
+      <div *ngIf="buttons"
+           class="button">
+        <div *ngFor="let button of buttons"
+             class="button">
+          <rappider-button [transparent]="button.transparent"
+                           [colorType]="button.colorType"
+                           [shape]="button.shape"
+                           [type]="button.type"
+                           [text]="button.text"
+                           [size]="button.size"
+                           [icon]="button.icon"
+                           [loading]="button.loading"
+                           [block]="button.block"
+                           [disabled]="button.disabled"
+                           [icon]="button.icon"
+                           [formButtonType]="button?.formButtonType"
+                           [borderSettings]="button?.borderSettings"
+                           [customSizeSettings]="button?.customSizeSettings"
+                           [customColorSettings]="button?.customColorSettings"
+                           [shadowSettings]="button?.shadowSettings"
+                           [paddingSettings]="button?.paddingSettings"
+                           [marginSettings]="button?.marginSettings"
+                           (click)="onButtonClick(button)"></rappider-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-dropdown-menu>

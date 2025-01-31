@@ -1,0 +1,16 @@
+.pdf-viewer {
+    ::ng-deep {
+        #toolbarSidebar {
+            width: 100% !important;
+        }
+        #thumbnailView {
+            display: flex;
+            align-items: center;
+            width: 100% !important;
+            flex-direction: column;
+            top: 0px;
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+}

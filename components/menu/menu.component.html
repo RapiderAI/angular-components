@@ -1,0 +1,79 @@
+<div class="menu">
+  <ul class="sider-menu w-100"
+      [style]="setMenuPlacement()"
+      nz-menu
+      [nzMode]="config?.mode"
+      [nzInlineCollapsed]="isCollapsed"
+      [style.backgroundColor]="config?.backgroundColor">
+    <ng-container *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: config?.items }"></ng-container>
+
+    <ng-template class="menu-liste"
+                 #recursiveMenuList
+                 let-menus>
+      <ng-container *ngFor="let menu of menus">
+        <li *ngIf="menu?.children?.length; else menuItem"
+            nz-submenu
+            [nzMenuClassName]="config?.mode === MenuMode.Horizontal ? 'menu-submenu-horizontal' : null"
+            [(nzOpen)]="menu.isExpanded"
+            [nzTitle]="submenuTitle"
+            [nzDisabled]="menu?.disabled || isDisabled"
+            [style]="menu?.style"
+            (nzOpenChange)="openHandler()">
+          <ng-template #submenuTitle>
+            <div class="menu-item-icon-container">
+              <rappider-icon *ngIf="menu?.icon?.name"
+                             class="menu-item-icon"
+                             [name]="menu?.icon?.name"
+                             [theme]="menu?.icon?.theme"
+                             [type]="menu?.icon?.type"
+                             [color]="menu?.icon?.color"
+                             [size]="menu?.icon.size"></rappider-icon>
+              <span *ngIf="showLabels || menu.showLabel"
+                    [style]="menu?.style">{{ menu?.label | translate }}</span>
+              <nz-tag *ngIf="menu?.tag"
+                      class="menu-tag"
+                      [nzColor]="menu?.tagColor">{{menu?.tag}}</nz-tag>
+            </div>
+          </ng-template>
+          <ul>
+            <ng-container *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: menu?.children }"></ng-container>
+          </ul>
+        </li>
+
+        <ng-template #menuItem>
+          <li nz-menu-item
+              nz-tooltip
+              [nzDisabled]="menu?.disabled"
+              [nzSelected]="menu?.selected"
+              [nzPaddingLeft]="getPaddingLeftValue(menu?.level)"
+              [nzTooltipTitle]="menu?.tooltip"
+              nzTooltipPlacement="right"
+              (click)="menuClick($event, menu)">
+            <ng-container *ngIf="menu?.icon && menu.icon?.name">
+              <div class="menu-item-icon-container">
+                <rappider-icon class="menu-item-icon"
+                               [name]="menu?.icon.name"
+                               [theme]="menu?.icon.theme"
+                               [type]="menu?.icon.type"
+                               [color]="menu?.icon.color"
+                               [size]="menu?.icon.size"></rappider-icon>
+                <span *ngIf="showLabels || menu.showLabel"
+                      [style]="menu?.style">{{ menu?.label | translate }}</span>
+                <nz-tag *ngIf="menu?.tag"
+                        class="menu-tag"
+                        [nzColor]="menu?.tagColor">{{menu?.tag}}</nz-tag>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!menu?.icon">
+              <span *ngIf="showLabels"
+                    [style]="menu?.style">{{ menu?.label | translate }}</span>
+              <nz-tag *ngIf="menu?.tag"
+                      class="menu-tag"
+                      [nzColor]="menu?.tagColor">{{menu?.tag}}</nz-tag>
+            </ng-container>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ng-template>
+  </ul>
+</div>
