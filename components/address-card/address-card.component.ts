@@ -6,7 +6,7 @@ import { RappiderTextComponent } from '@rapider/angular-components/text';
 import { HeadingComponentConfig, RappiderHeadingComponent } from '@rapider/angular-components/heading';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
-import { Address } from '@rapider/angular-components/address-card';
+import { Address } from '@rapider/angular-components/core/address-card';
 
 @Component({
   selector: 'rappider-address-card',
