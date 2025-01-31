@@ -4,7 +4,7 @@ import { NzBadgeComponent } from 'ng-zorro-antd/badge';
 import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
 import { ImageComponentConfig, RappiderImageComponent } from '@rapider/angular-components/image';
 import { HeadingComponentConfig, RappiderHeadingComponent } from '@rapider/angular-components/heading';
-import { CardStatus } from '@rapider/angular-components/profile-card-two/utils';
+import { CardStatus } from '@rapider/angular-components/core/profile-card-two';
 
 @Component({
   selector: 'rappider-profile-card-two',
