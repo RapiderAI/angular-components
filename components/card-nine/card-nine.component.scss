@@ -1,0 +1,29 @@
+.card-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: var(--margin-4x);
+  padding: var(--card-padding);
+
+  &:first-child {
+    border: var(--border-size-x) solid var(--primary-border-color);
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.card-nine {
+  display: block;
+}
+
+.content-description {
+  margin-left: var(--margin-2x);
+}
+
+.icon-container {
+  display: block;
+  padding-right: var(--padding-4x);
+  font-size: var(--font-size-large);
+}
