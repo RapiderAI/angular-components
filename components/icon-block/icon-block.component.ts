@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvatarComponentConfig, RappiderAvatarComponent } from '@rapider/angular-components/avatar';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
-import { IconBlockMode } from '@rapider/angular-components/icon-block';
+import { IconBlockMode } from '@rapider/angular-components/core/icon-block';
 import { TextComponentConfig, RappiderTextComponent } from '@rapider/angular-components/text';
 import { RappiderHeadingComponent } from '@rapider/angular-components/heading';
 
