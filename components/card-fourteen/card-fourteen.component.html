@@ -1,0 +1,38 @@
+<div class="card-fourteen">
+  <div *ngIf="additionalSubtitle || title || subtitle"
+       class="title-area">
+    <div *ngIf="additionalSubtitle || additionalSubtitleIcon"
+         class="additionalSubtitle">
+      <rappider-icon *ngIf="additionalSubtitleIcon"
+                     [name]="additionalSubtitleIcon.name"
+                     [type]="additionalSubtitleIcon.type"
+                     [theme]="additionalSubtitleIcon.theme"
+                     [color]="additionalSubtitleIcon.color"
+                     [size]="additionalSubtitleIcon.size"></rappider-icon>
+      <rappider-heading *ngIf="additionalSubtitle"
+                        [type]="additionalSubtitle.type"
+                        [content]="additionalSubtitle.content"></rappider-heading>
+    </div>
+    <div *ngIf="title"
+         class="title">
+      <rappider-heading [type]="title.type"
+                        [content]="title.content"></rappider-heading>
+    </div>
+    <div *ngIf="subtitle"
+         class="subtitle">
+      <rappider-heading [type]="subtitle.type"
+                        [content]="subtitle.content"></rappider-heading>
+    </div>
+  </div>
+
+  <div *ngIf="iconTextItems.items"
+       class="icon-area">
+    <rappider-icon-text [items]="iconTextItems.items"
+                        [iconTextColumnCount]="iconTextItems.iconTextColumnCount"
+                        [iconTextContentMode]="iconTextItems.iconTextContentMode"
+                        [iconTextListMode]="iconTextItems.iconTextListMode"></rappider-icon-text>
+  </div>
+
+  <rappider-html-viewer *ngIf="htmlContent"
+                        [html]="htmlContent"></rappider-html-viewer>
+</div>
