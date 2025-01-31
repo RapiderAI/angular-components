@@ -1,0 +1,22 @@
+.menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: var(--font-size-xx-large);
+}
+
+.text-content {
+    margin-left: var(--margin-2x);
+}
+
+.description {
+    font-size: var(--main-font-size);
+}

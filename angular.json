@@ -65,6 +65,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
                 "input": "node_modules/monaco-editor",
                 "output": "assets/monaco-editor"
               }

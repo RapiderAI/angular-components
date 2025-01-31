@@ -1,0 +1,90 @@
+<div class="input-group">
+  <nz-input-group [nzSuffix]="suffixTemplate"
+                  [nzPrefix]="prefixTemplate"
+                  [nzAddOnBefore]="prefixText"
+                  [nzAddOnAfter]="suffixText">
+    <rappider-textbox class="input-group-textbox"
+                      [(ngModel)]="value"
+                      [placeholder]="textbox?.placeholder"
+                      [type]="textbox?.type"
+                      [mask]="textbox?.mask"
+                      [maskGuide]="textbox?.maskGuide"
+                      [size]="textbox?.size"
+                      [cssStyle]="textbox?.cssStyle"
+                      [cssClass]="textbox?.cssClass"
+                      [disabled]="textbox?.disabled"
+                      [autocomplete]="textbox?.autoComplete"
+                      [mentionSupported]="textbox?.mentionSupported"
+                      [mentionPrefix]="textbox?.mentionPrefix"
+                      [mentionValues]="textbox?.mentionValues"
+                      (blur)="onBlur()"
+                      (enterClick)="onEnterClick()">
+    </rappider-textbox>
+  </nz-input-group>
+
+  <ng-template #prefixTemplate>
+    <rappider-icon *ngIf="prefixIcon && prefixIcon?.name"
+                   [name]="prefixIcon.name"
+                   [type]="prefixIcon.type"
+                   [theme]="prefixIcon.theme"
+                   [color]="prefixIcon.color"
+                   [size]="prefixIcon.size"
+                   [isClickable]="suffixIcon.isClickable"
+                   (iconClick)="onIconClick()"></rappider-icon>
+    <ng-container *ngIf="prefixIcon && prefixButton">
+      &nbsp;
+    </ng-container>
+    <rappider-button *ngIf="prefixButton"
+                     [type]="prefixButton.type"
+                     [shape]="prefixButton.shape"
+                     [text]="prefixButton.text"
+                     [size]="prefixButton.size"
+                     [transparent]="prefixButton.transparent"
+                     [loading]="prefixButton.loading"
+                     [block]="prefixButton.block"
+                     [disabled]="prefixButton.disabled"
+                     [colorType]="prefixButton.colorType"
+                     [formButtonType]="prefixButton?.formButtonType"
+                     [borderSettings]="prefixButton?.borderSettings"
+                     [customSizeSettings]="prefixButton?.customSizeSettings"
+                     [customColorSettings]="prefixButton?.customColorSettings"
+                     [shadowSettings]="prefixButton?.shadowSettings"
+                     [paddingSettings]="prefixButton?.paddingSettings"
+                     [marginSettings]="prefixButton?.marginSettings"
+                     [icon]="prefixButton.icon"
+                     (confirm)="onButtonClick(prefixButton)"></rappider-button>
+  </ng-template>
+
+  <ng-template #suffixTemplate>
+    <rappider-icon *ngIf="suffixIcon && suffixIcon?.name"
+                   [name]="suffixIcon.name"
+                   [type]="suffixIcon.type"
+                   [theme]="suffixIcon.theme"
+                   [color]="suffixIcon.color"
+                   [size]="suffixIcon.size"
+                   [isClickable]="suffixIcon.isClickable"
+                   (iconClick)="onIconClick()"></rappider-icon>
+    <ng-container *ngIf="suffixIcon && suffixButton">
+      &nbsp;
+    </ng-container>
+    <rappider-button *ngIf="suffixButton"
+                     [type]="suffixButton.type"
+                     [shape]="suffixButton.shape"
+                     [text]="suffixButton.text"
+                     [size]="suffixButton.size"
+                     [transparent]="suffixButton.transparent"
+                     [loading]="suffixButton.loading"
+                     [block]="suffixButton.block"
+                     [disabled]="suffixButton.disabled"
+                     [colorType]="suffixButton.colorType"
+                     [formButtonType]="suffixButton?.formButtonType"
+                     [borderSettings]="suffixButton?.borderSettings"
+                     [customSizeSettings]="suffixButton?.customSizeSettings"
+                     [customColorSettings]="suffixButton?.customColorSettings"
+                     [shadowSettings]="suffixButton?.shadowSettings"
+                     [paddingSettings]="suffixButton?.paddingSettings"
+                     [marginSettings]="suffixButton?.marginSettings"
+                     [icon]="suffixButton.icon"
+                     (confirm)="onButtonClick(prefixButton)"></rappider-button>
+  </ng-template>
+</div>

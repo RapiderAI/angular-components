@@ -1,0 +1,19 @@
+<div>
+  <div *ngFor="let patternInfo of patternInfos; let i = index"
+       class="pattern-row">
+    <div *ngIf="patternStatuses"
+         class="pattern-row-icon">
+      <!-- condition provided -->
+      <div *ngIf="patternStatuses[i]">
+        <i class="far fa-check-circle pattern-match"></i>
+      </div>
+      <!-- not condition provided -->
+      <div *ngIf="!patternStatuses[i]">
+        <i class="far fa-times-circle pattern-not-match"></i>
+      </div>
+    </div>
+    <div class="pattern-row-text">
+      {{ patternInfo.message | translate }}
+    </div>
+  </div>
+</div>
