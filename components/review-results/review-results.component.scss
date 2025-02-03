@@ -1,0 +1,14 @@
+.progress-section {
+  width: var(--width-3x);
+  padding-top: var(--margin-4x);
+
+  ::ng-deep {
+    nz-progress {
+      margin-top: var(--margin-2x);
+    }
+
+    .ant-progress-text {
+      font-size: var(--subtext-font-size);
+    }
+  }
+}
