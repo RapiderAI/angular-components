@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild, f
 import { NzConfigService } from 'ng-zorro-antd/core/config';
 
 import { Clipboard } from '@angular/cdk/clipboard';
-import { MonacoEditorComponent } from './components/monaco-editor/monaco-editor.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,9 +9,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { BorderConfig } from '@rapider/angular-components/core/style';
-import { MonacoEditorModel, MonacoEditorRegion } from './utils/monaco-editor.types';
-import { MONACO_EDITOR_CONFIG } from './utils/monaco-editor.config';
 import { RappiderRadioGroupComponent } from '@rapider/angular-components/radio-group';
+import { MonacoEditorComponent } from '@rapider/angular-components/monaco-editor';
+import { MONACO_EDITOR_CONFIG, MonacoEditorModel, MonacoEditorRegion } from '@rapider/angular-components/core/monaco-editor';
 
 @Component({
   selector: 'rappider-monaco-code-editor',

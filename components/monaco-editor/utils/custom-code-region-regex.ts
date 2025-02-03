@@ -1,5 +1,5 @@
 import { FileType } from "./file-type.enum";
-import { customCodeEndRegionHtmlRegex, customCodeEndRegionRegex, customCodeStartRegionHtmlRegex, customCodeStartRegionRegex } from "./monaco-editor.config";
+import { customCodeEndRegionHtmlRegex, customCodeEndRegionRegex, customCodeStartRegionHtmlRegex, customCodeStartRegionRegex } from "@rapider/angular-components/core/monaco-editor";
 
 export const CUSTOM_CODE_REGION_REGEXES = [
   {
