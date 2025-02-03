@@ -6,3 +6,4 @@ export * from './markers.variables';
 export * from './mock.code';
 export * from './monaco-editor-model.interface';
 export * from './monaco-editor-region.interface';
+export * from './monaco-editor-default.config';
