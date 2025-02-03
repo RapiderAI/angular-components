@@ -21,10 +21,10 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RappiderSpinComponent } from '@rapider/angular-components/spin';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { MonacoEditorModel, MonacoEditorRegion } from '../../utils/monaco-editor.types';
+import { MonacoEditorModel, MonacoEditorRegion } from '@rapider/angular-components/core/monaco-editor';
 import { MONACO_EDITOR_CONFIG, MonacoEditorConfig } from '../../utils/monaco-editor.config';
-import { CUSTOM_CODE_REGION_REGEXES } from '../../utils/custom-code-region-regex';
-import { CUSTOM_CODE_REGION_MARKERS } from '../../utils/custom-code-region-marker';
+import { CUSTOM_CODE_REGION_REGEXES } from '@rapider/angular-components/core/monaco-editor';
+import { CUSTOM_CODE_REGION_MARKERS } from '@rapider/angular-components/core/monaco-editor';
 
 // eslint-disable-next-line no-var
 declare var monaco: any;
