@@ -1,0 +1,163 @@
+.icon-picker {
+  display: flex;
+  padding: 0px !important;
+}
+
+ul {
+  background-color: var(--component-header-background-color);
+  height: 100%;
+}
+
+.ant-menu.ant-menu-inline-collapsed {
+  width: 60px;
+}
+
+.icon-picker-body {
+  padding: var(--padding-3x);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  ::ng-deep {
+    .label {
+      padding: 7px 15px !important;
+    }
+
+    input[type="checkbox"]:checked + .label {
+      background: var(--component-header-background-color) !important;
+      color: var(--text-color) !important;
+      border-color: var(--primary-border-color) !important;
+    }
+  }
+}
+
+.header-area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: var(--margin-2x);
+  gap: var(--margin-2x);
+
+  rappider-search {
+    width: 100%;
+  }
+}
+
+.icon-list {
+  max-height: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
+}
+
+.icon-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+i {
+  font-size: 18px;
+  height: 24px;
+  width: 24px;
+  color: var(--text-color);
+}
+
+.selected-icon {
+  display: flex;
+  gap: var(--margin-x);
+  align-items: center;
+}
+
+.icon {
+  height: 45px;
+  padding: var(--padding-2x);
+  border-radius: var(--border-radius-2x);
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-color);
+
+  &:hover {
+    box-shadow: var(--box-shadow);
+  }
+
+  span {
+    font-size: 18px;
+  }
+}
+
+.selected {
+  background-color: var(--focus-color);
+  box-shadow: var(--box-shadow);
+}
+
+.custom-icon-form {
+  width: 100%;
+
+  &::ng-deep {
+    .ant-form-item-control-input-content {
+      display: flex;
+    }
+
+    .ant-form-item-label {
+      width: 20%;
+    }
+
+    label {
+      float: left;
+      text-wrap: wrap;
+      text-align: left;
+    }
+  }
+
+  .form-item {
+    width: 100%;
+    margin-bottom: var(--margin-4x);
+  }
+}
+
+.form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.required {
+  color: var(--danger-color);
+}
+
+.import-icon-preview {
+  width: 100%;
+}
+
+.selected-icon-button {
+  display: flex;
+  gap: var(--margin-x);
+  align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .custom-icon-form {
+    &::ng-deep .ant-form-item-control-input-content {
+      display: block;
+      margin-bottom: var(--margin-x);
+    }
+
+    .ant-form-item-label {
+      width: 100%;
+    }
+  }
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: auto;
+}
