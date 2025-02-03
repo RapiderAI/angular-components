@@ -127,8 +127,7 @@
             "styles": [
               "runner/src/styles.scss"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           }
         }
       }
