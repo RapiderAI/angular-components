@@ -67,20 +67,12 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
                 "output": "/assets/"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/monaco-editor",
-                "output": "assets/monaco-editor"
               }
             ],
             "styles": [
-              "runner/src/styles.scss",
-              "node_modules/monaco-editor/min/vs/editor/editor.main.css"
+              "runner/src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/monaco-editor/min/vs/loader.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -127,8 +119,7 @@
             "styles": [
               "runner/src/styles.scss"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           }
         }
       }
