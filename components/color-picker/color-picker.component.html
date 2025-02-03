@@ -1,0 +1,31 @@
+<!-- Fixme: The color picker dialog overflows the screen. Position has been temporarily set to bottom. -->
+<nz-input-group [nzPrefix]="selectedColorPreviewTemplate">
+  <input class="color-picker-input"
+         [id]="elementId"
+         [(ngModel)]="value"
+         [value]="value"
+         [colorPicker]="value"
+         [ngClass]="cssClass"
+         [ngStyle]="cssStyle"
+         [cpSaveClickOutside]="saveClickOutside || false"
+         [cpOKButton]="okButtonVisible || true"
+         [cpOKButtonText]="okButtonText || 'SHARED.SAVE' | translate"
+         [cpOKButtonClass]="okButtonClass || 'btn btn-primary btn-xs'"
+         [cpCancelButton]="cancelButtonVisible || true"
+         [cpCancelButtonText]="cancelButtonText || 'SHARED.CANCEL' | translate"
+         [cpCancelButtonClass]="cancelButtonClass || 'ant-btn btn-xs'"
+         [mask]="maskedInput()"
+         [patterns]="colorPickerPatterns"
+         [dropSpecialCharacters]="false"
+         cpPosition="bottom"
+         cpPositionOffset="0%"
+         (keypress)="onKeyPress($event)"
+         (colorPickerSelect)="onBlur($event)" />
+</nz-input-group>
+
+<ng-template #selectedColorPreviewTemplate>
+  <div *ngIf="value"
+       class="selected-color-preview"
+       [style.background]="value">
+  </div>
+</ng-template>

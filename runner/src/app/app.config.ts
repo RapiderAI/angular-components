@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -9,6 +9,12 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
+
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
+import { registerLocaleData } from '@angular/common'; 
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -22,6 +28,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideNzIcons(icons),
-    provideTranslateService()
+    provideTranslateService(),
+    { provide: LOCALE_ID, useValue: 'en-US' },
+    { provide: NZ_I18N, useValue: en_US }
   ]
 };

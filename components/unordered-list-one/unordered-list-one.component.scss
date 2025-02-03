@@ -1,0 +1,11 @@
+.unordered-list-one {
+  display: flex;
+  gap: var(--margin-2x);
+  align-items: baseline;
+
+  ul {
+    padding-left: var(--padding-6x);
+    margin-top: var(--margin-2x);
+    margin-bottom: 0px;
+  }
+}

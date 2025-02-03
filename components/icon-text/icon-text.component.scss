@@ -1,0 +1,39 @@
+.area {
+  ::ng-deep rappider-icon {
+    font-size: var(--font-size-x-large);
+  }
+}
+
+.icon {
+  margin-right: var(--margin-2x);
+  text-align: center;
+}
+
+.link-text-decoration:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--text-color);
+}
+
+.list-mode-horizontal {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+
+  .icon-text {
+    margin-right: var(--margin-4x);
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.text-mode-bottom {
+  display: block;
+  margin-bottom: var(--margin-2x);
+}
+
+.text-mode-right {
+  display: flex;
+  align-items: center;
+}

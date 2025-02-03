@@ -1,0 +1,10 @@
+.button-list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button-list-vertical {
+  display: flex;
+  flex-direction: column;
+}

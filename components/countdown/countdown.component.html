@@ -1,0 +1,26 @@
+<div class="countdown">
+  <rappider-heading [type]="title.type"
+                    [content]="title.content"
+                    [typography]="title.typography"
+                    [colorSettings]="title.colorSettings"></rappider-heading>
+  <nz-countdown [nzValue]="deadline"
+                [nzFormat]="format"
+                [nzValueTemplate]="!format ? customTemplate: null"
+                [nzPrefix]="prefix"
+                (nzCountdownFinish)="onCountdownFinish()">
+    <ng-template #customTemplate
+                 let-diff>
+
+      <span *ngIf="yearsDiff > 0 ">{{ yearsDiff }} year </span>
+      <span *ngIf="monthsDiff > 0 ">{{ monthsDiff }} month </span>
+      <span *ngIf="daysDiff > 0 ">{{ daysDiff }} day </span>
+      <span *ngIf="hoursDiff > 0 ">{{ hoursDiff }} hour </span>
+      <span *ngIf="minutesDiff > 0 ">{{ minutesDiff }} minute </span>
+      <span *ngIf="secondsDiff > 0 ">{{ secondsDiff }} second </span>
+      <span>{{ diff | date: 'SSS' }} millisecond</span>
+
+    </ng-template>
+  </nz-countdown>
+
+
+</div>

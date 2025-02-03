@@ -1,0 +1,27 @@
+.input-group-textbox {
+  width: 100%;
+}
+
+:host::ng-deep rappider-textbox {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+:host::ng-deep input {
+  border: none;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.input-group ::ng-deep {
+  .ant-input-affix-wrapper {
+    .ant-input-prefix {
+      margin-right: 0 !important;
+    }
+  }
+}

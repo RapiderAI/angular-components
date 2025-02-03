@@ -1,0 +1,117 @@
+<div>
+  <a *ngIf="dropdownType === DropdownType.Default"
+     nz-dropdown
+     [nzTrigger]="triggerType"
+     [nzDropdownMenu]="menu"
+     [nzPlacement]="placement">
+    <ng-container *ngIf="labelMode === DropdownMenuLabelMode.StaticLabel">
+      <span *ngIf="label"
+            class="dropdown-text">
+        {{ label }}
+      </span>
+      <rappider-icon *ngIf="icon?.name"
+                     [name]="icon.name"
+                     [color]="icon.color"
+                     [theme]="icon.theme"
+                     [type]="icon.type"
+                     [size]="icon.size"></rappider-icon>
+    </ng-container>
+    <ng-container *ngIf="labelMode === DropdownMenuLabelMode.SelectedValue">
+      <rappider-icon *ngIf="findSelectedItem()?.icon?.name"
+                     [name]="findSelectedItem().icon.name"
+                     [color]="findSelectedItem().icon.color"
+                     [theme]="findSelectedItem().icon.theme"
+                     [type]="findSelectedItem().icon.type"
+                     [size]="findSelectedItem().icon.size"></rappider-icon>
+      <span *ngIf="findSelectedItem()"
+            class="label">
+        {{ findSelectedItem().label }}</span>
+      <rappider-icon *ngIf="icon?.name"
+                     [name]="icon.name"
+                     [color]="icon.color"
+                     [theme]="icon.theme"
+                     [type]="icon.type"
+                     [size]="icon.size"></rappider-icon>
+    </ng-container>
+  </a>
+
+  <button *ngIf="dropdownType === DropdownType.Button"
+          nz-button
+          nz-dropdown
+          class="button-dropdown"
+          [nzTrigger]="triggerType"
+          [nzDropdownMenu]="menu"
+          [nzPlacement]="placement">
+    <ng-container *ngIf="labelMode === DropdownMenuLabelMode.StaticLabel">
+      <span *ngIf="label">
+        {{ label }}
+      </span>
+      <rappider-icon *ngIf="icon?.name"
+                     [name]="icon.name"
+                     [color]="icon.color"
+                     [theme]="icon.theme"
+                     [type]="icon.type"
+                     [size]="icon.size"></rappider-icon>
+    </ng-container>
+    <ng-container *ngIf="labelMode === DropdownMenuLabelMode.SelectedValue">
+      <rappider-icon *ngIf="findSelectedItem()?.icon?.name"
+                     [name]="findSelectedItem().icon.name"
+                     [color]="findSelectedItem().icon.color"
+                     [theme]="findSelectedItem().icon.theme"
+                     [type]="findSelectedItem().icon.type"
+                     [size]="findSelectedItem().icon.size"></rappider-icon>
+      <span *ngIf="findSelectedItem()"
+            class="label">
+        {{ findSelectedItem().label }}</span>
+      <rappider-icon *ngIf="icon?.name"
+                     [name]="icon.name"
+                     [color]="icon.color"
+                     [theme]="icon.theme"
+                     [type]="icon.type"
+                     [size]="icon.size"></rappider-icon>
+    </ng-container>
+  </button>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <ng-container *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: items }"></ng-container>
+      <ng-template #recursiveMenuList
+                   let-menus>
+        <ng-container *ngFor="let menu of menus">
+          <div *ngIf="menu.visible !== false"
+               [ngClass]="{'menu-item-borderless': borderless, 'menu-item': !borderless}">
+            <div class="menu-item-icon">
+              <rappider-icon *ngIf="menu.icon && menu.icon?.name"
+                             [name]="menu.icon.name"
+                             [color]="menu.icon.color"
+                             [theme]="menu.icon.theme"
+                             [type]="menu.icon.type"
+                             [size]="menu.icon.size"></rappider-icon>
+            </div>
+            <li *ngIf="menu.items?.length; else menuItem"
+                nz-submenu
+                [nzTitle]="menu.label | translate"
+                (click)="onMenuItemClick($event, menu)">
+              <ul>
+                <ng-container *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: menu.items }"></ng-container>
+              </ul>
+            </li>
+            <ng-template #menuItem>
+              <li *ngIf="menu.popconfirmTitle"
+                  nz-menu-item
+                  nz-popconfirm
+                  [nzPopconfirmTitle]="menu.popconfirmTitle | translate"
+                  [nzOkText]="menu.label| translate"
+                  [nzOkDanger]="menu.popConfirmOkDanger"
+                  (nzOnConfirm)="onMenuItemClick($event, menu)"> {{ menu.label | translate }} </li>
+              <li *ngIf="!menu.popconfirmTitle"
+                  nz-menu-item
+                  (click)="onMenuItemClick($event, menu)"> {{ menu.label | translate }}
+              </li>
+            </ng-template>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ul>
+  </nz-dropdown-menu>
+</div>
