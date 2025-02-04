@@ -1,4 +1,4 @@
-import { ComponentSize } from '../common-utils/component-size.enum';
+import { ComponentSize } from '@rapider/angular-components/core/utils';
 
 export interface CrudFormConfigItemSettings {
   /* Label component size */
