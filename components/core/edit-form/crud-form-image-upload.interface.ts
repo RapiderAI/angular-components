@@ -1,6 +1,6 @@
 
-import { ButtonComponentConfig } from '../button';
-import { ImageComponentConfig } from '../image';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { ImageComponentConfig } from '@rapider/angular-components/image';
 import { CrudFormItem } from './crud-form-item.interface';
 import { CrudFormPreviewerItem } from './crud-form-previewer-item.interface';
 
