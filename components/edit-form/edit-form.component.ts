@@ -26,9 +26,153 @@ import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { CrudFormItemOutputEvent } from '@rapider/angular-components/core/edit-form';
 import { animate, style, transition, trigger } from '@angular/animations';
 
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+
+import { CardSelectorModule } from '@rapider/angular-components/card-selector';
+import { RappiderMonacoEditorComponent } from '@rapider/angular-components/monaco-editor';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb';
+import { RappiderListGridDataInputComponent } from '@rapider/angular-components/list-grid';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
+import { RappiderEditFormConfigInputComponent } from '@rapider/angular-components/edit-form';
+import { RappiderJsonArrayComponent } from '@rapider/angular-components/json-array';
+import { RappiderListComponent } from '@rapider/angular-components/list';
+import { RappiderDimensionSelectComponent } from '@rapider/angular-components/dimension-select';
+import { RappiderListGridConfigInputComponent } from '@rapider/angular-components/list-grid';
+import { RappiderTimePickerComponent } from '@rapider/angular-components/time-picker';
+import { RappiderColorPickerComponent } from '@rapider/angular-components/color-picker';
+import { RappiderTextareaComponent } from '@rapider/angular-components/textarea';
+import { RappiderRichTextEditorComponent } from '@rapider/angular-components/rich-text-editor';
+import { RappiderCodeEditorComponent } from '@rapider/angular-components/code-editor';
+import { RappiderHtmlEditorComponent } from '@rapider/angular-components/html-editor';
+import { RappiderNumberInputComponent } from '@rapider/angular-components/number-input';
+import { RappiderDatePickerComponent } from '@rapider/angular-components/date-picker';
+import { RappiderDatetimePickerComponent } from '@rapider/angular-components/datetime-picker';
+import { RappiderRadioComponent } from '@rapider/angular-components/radio';
+import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
+import { RappiderTagInputComponent } from '@rapider/angular-components/tag-input';
+import { RappiderRateComponent } from '@rapider/angular-components/rate';
+import { RappiderSliderComponent } from '@rapider/angular-components/slider';
+import { RappiderRowFormComponent } from '@rapider/angular-components/row-form';
+import { RappiderStringArrayComponent } from '@rapider/angular-components/string-array';
+import { RappiderIconPickerComponent } from '@rapider/angular-components/icon-picker';
+import { RappiderInputValidatorInfoComponent } from '@rapider/angular-components/input-validator-info';
+import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
+import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label';
+import { RappiderRadioGroupComponent } from '@rapider/angular-components/radio-group';
+import { RappiderInputTemplateComponent } from '@rapider/angular-components/input-template';
+import { RappiderSwitchComponent } from '@rapider/angular-components/switch';
+import { RappiderSpinComponent } from '@rapider/angular-components/spin';
+import { RappiderButtonComponent } from '@rapider/angular-components/button';
+import { RappiderIconComponent } from '@rapider/angular-components/icon';
+import { RappiderRowSelectComponent } from '@rapider/angular-components/row-select';
+import { RappiderInlineRowFormModule } from '@rapider/angular-components/inline-row-form';
+import { RappiderIconPickerTwoComponent } from '@rapider/angular-components/icon-picker-two';
+import { RappiderBorderSettingsComponent } from '@rapider/angular-components/border-settings';
+import { RappiderShadowSettingsComponent } from '@rapider/angular-components/shadow-settings';
+import { RappiderSpacingComponent } from '@rapider/angular-components/spacing';
+import { RappiderGridBuilderComponent } from '@rapider/angular-components/grid-builder';
+import { RappiderPhoneNumberInputComponent } from '@rapider/angular-components/phone-number-input';
+import { RappiderAlertComponent } from '@rapider/angular-components/alert';
+import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
+import { RappiderCheckboxTableComponent } from '@rapider/angular-components/checkbox-table';
+import { RappiderDocumentUploadComponent } from '@rapider/angular-components/document-upload';
+import { RappiderPreviewerComponent } from '@rapider/angular-components/previewer';
+import { RappiderJsonInputComponent } from '@rapider/angular-components/json-input';
+import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
+import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
+import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
+import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
+
 
 @Component({
   selector: 'rappider-crud-view-edit-form',
+  standalone: true,
+  imports: [
+    CommonModule,
+    TranslateModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NzFormModule,
+    NzButtonModule,
+    NzToolTipModule,
+    NzDropDownModule,
+    NzIconModule,
+    DragDropModule,
+    NzTabsModule,
+    NzTagModule,
+    CardSelectorModule,
+    RappiderMonacoEditorComponent.forRoot(monacoEditorConfig),
+    RappiderModalComponent,
+    RappiderBreadcrumbComponent,
+    RappiderListGridDataInputComponent,
+    RappiderTextboxComponent,
+    RappiderEditFormConfigInputComponent,
+    RappiderJsonArrayComponent,
+    RappiderListComponent,
+    RappiderDimensionSelectComponent,
+    RappiderListGridConfigInputComponent,
+    RappiderTimePickerComponent,
+    RappiderColorPickerComponent,
+    RappiderTextareaComponent,
+    RappiderRichTextEditorComponent,
+    RappiderCodeEditorComponent,
+    RappiderHtmlEditorComponent,
+    RappiderNumberInputComponent,
+    RappiderDatePickerComponent,
+    RappiderDatetimePickerComponent,
+    RappiderRadioComponent,
+    RappiderCheckboxComponent,
+    RappiderSelectComponent,
+    RappiderTagInputComponent,
+    RappiderRateComponent,
+    RappiderSliderComponent,
+    RappiderRowFormComponent,
+    RappiderStringArrayComponent,
+    RappiderIconPickerComponent,
+    RappiderInputValidatorInfoComponent,
+    RappiderInputErrorComponent,
+    RappiderInputLabelComponent,
+    RappiderRadioGroupComponent,
+    RappiderRadioGroupComponent,
+    RappiderInputTemplateComponent,
+    RappiderSwitchComponent,
+    RappiderSpinComponent,
+    RappiderButtonComponent,
+    RappiderIconComponent,
+    RappiderRowSelectComponent,
+    RappiderInlineRowFormModule,
+    RappiderIconPickerTwoComponent,
+    RappiderBorderSettingsComponent,
+    RappiderShadowSettingsComponent,
+    RappiderSpacingComponent,
+    RappiderGridBuilderComponent,
+    RappiderPhoneNumberInputComponent,
+    RappiderAlertComponent,
+    RappiderCheckboxListComponent,
+    RappiderAssetPickerComponent,
+    RappiderTreeSelectComponent,
+    RappiderCheckboxTableComponent,
+    RappiderDocumentUploadComponent,
+    RappiderPreviewerComponent,
+    RappiderJsonInputComponent,
+    RappiderInputGroupComponent,
+    RappiderIconPickerWrapperComponent,
+    RappiderListGridComponent,
+    RappiderImageUploadComponent,
+  ],
   templateUrl: './edit-form.component.html',
   styleUrls: ['./edit-form.component.scss'],
   animations: [
