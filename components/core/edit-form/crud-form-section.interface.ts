@@ -1,4 +1,4 @@
-import { HeadingType } from '../heading/heading-type.enum';
+import { HeadingType } from '@rapider/angular-components/core/heading';
 
 export interface CrudFormSection {
   title?: string;
