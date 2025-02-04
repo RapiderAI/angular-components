@@ -7,6 +7,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
+
+
 import {
   SpacingConfig,
   BorderConfig,
@@ -24,6 +26,7 @@ import {
   FormButtonType,
   TooltipPlacement,
   ButtonIconPlacement,
+  PopConfirmPlacement
 } from '@rapider/angular-components/core/button';
 
 @Component({
@@ -92,6 +95,7 @@ export class RappiderButtonComponent implements OnInit, OnChanges {
   @Input() popconfirmOkText: string;
   /* Make pop confirm button type danger */
   @Input() popconfirmOkDanger: boolean;
+  @Input() popconfirmPlacement: PopConfirmPlacement;
   @Input() iconPlacement: ButtonIconPlacement;
   /* the type of button */
   @Input() formButtonType: FormButtonType;
@@ -110,7 +114,7 @@ export class RappiderButtonComponent implements OnInit, OnChanges {
   /* Custom CSS Class */
   @Input() customCssClass?: string;
 
-  ButtonIconPlacement = ButtonIconPlacement;
+  IconPlacement = ButtonIconPlacement;
 
   /* Callback of confirmation */
   @Output() confirm = new EventEmitter<void>();
