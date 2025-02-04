@@ -1,8 +1,8 @@
-import { InputSize } from '../shared/input-size/input-size.enum';
-import { SelectComponentConfig } from '../select';
-import { TextBoxType } from '../textbox/textbox-type.enum';
+import { InputSize } from '@rapider/angular-components/core/style';
+import { SelectComponentConfig } from '@rapider/angular-components/select';
+import { TextBoxType } from '@rapider/angular-components/core/textbox';
 import { CrudFormItem } from './crud-form-item.interface';
-import { TextboxComponentConfig } from '../textbox';
+import { TextboxComponentConfig } from '@rapider/angular-components/textbox';
 
 export interface CrudFormPhoneNumberItem extends CrudFormItem {
   mask?: string;
