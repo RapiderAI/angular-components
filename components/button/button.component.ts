@@ -7,8 +7,6 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
-
-
 import {
   SpacingConfig,
   BorderConfig,
