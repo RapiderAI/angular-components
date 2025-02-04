@@ -1,9 +1,9 @@
-import { ButtonComponentConfig } from '../button';
-import { SelectableOption } from '../form-utils/selectable-option.type';
-import { GrouppedOption } from '../select/groupped-option.interface';
-import { OptionMode } from '../select/select-option-mode.enum';
-import { SelectSettings } from '../select/select-settings.interface';
-import { InputSize } from '../shared';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { SelectableOption } from '@rapider/angular-components/core/form-utils';
+import { GrouppedOption } from '@rapider/angular-components/core/select';
+import { SelectOptionMode } from '@rapider/angular-components/core/select';
+import { SelectSettings } from '@rapider/angular-components/core/select';
+import { InputSize } from '@rapider/angular-components/core/style';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormSelectItem extends CrudFormItem {
@@ -14,5 +14,5 @@ export interface CrudFormSelectItem extends CrudFormItem {
   invalidConfigText?: string;
   disabled?: boolean;
   buttons?: ButtonComponentConfig[];
-  optionMode?: OptionMode;
+  optionMode?: SelectOptionMode;
 }
