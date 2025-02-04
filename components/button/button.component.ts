@@ -114,7 +114,7 @@ export class RappiderButtonComponent implements OnInit, OnChanges {
   /* Custom CSS Class */
   @Input() customCssClass?: string;
 
-  IconPlacement = ButtonIconPlacement;
+  ButtonIconPlacement = ButtonIconPlacement;
 
   /* Callback of confirmation */
   @Output() confirm = new EventEmitter<void>();
