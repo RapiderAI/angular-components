@@ -1,5 +1,5 @@
 import { NzButtonSize } from 'ng-zorro-antd/button';
-import { ButtonShape, ButtonType } from '../button';
+import { ButtonShape, ButtonType } from '@rapider/angular-components/core/button';
 
 export interface CrudFormConfigSubmitButton {
   text?: string;
