@@ -1,5 +1,5 @@
-import { InputSize } from '../../utils/shared/input-size/input-size.enum';
-import { TextBoxType } from '../textbox/textbox-type.enum';
+import { InputSize } from '@rapider/angular-components/core/style';
+import { TextBoxType } from '@rapider/angular-components/core/textbox';
 import { CrudFormItem } from './crud-form-item.interface';
 import { CrudFormMentionItem } from './crud-form-mention-item.interface';
 
