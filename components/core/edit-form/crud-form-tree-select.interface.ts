@@ -1,6 +1,6 @@
-import { NzTreeNode, NzTreeNodeOptions } from 'ng-zorro-antd/tree';
+import { NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 import { CrudFormItem } from './crud-form-item.interface';
-import { InputSize } from '../shared/input-size/input-size.enum';
+import { InputSize } from '@rapider/angular-components/core/style';
 
 export interface CrudFormTreeSelectItem extends CrudFormItem {
   tree?: NzTreeNodeOptions[];
