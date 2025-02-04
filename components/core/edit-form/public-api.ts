@@ -42,3 +42,4 @@ export * from './crud-form-previewer-item.interface';
 export * from './crud-form-phone-number-item.interface';
 export * from './crud-form-alert-item.interface';
 export * from './crud-form-image-upload.interface';
+export * from './crud-form-item-output-event.interface';

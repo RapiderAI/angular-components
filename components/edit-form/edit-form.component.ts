@@ -2,27 +2,28 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter, SimpleChange
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { set, orderBy, groupBy, cloneDeep } from 'lodash';
-import { CrudFormItemMenuItem } from '@rapider/angular-components/utils/edit-form';
-import { ComponentSize } from '../../utils/common-utils/component-size.enum';
-import { CrudFormObjectItem } from '../../utils/edit-form/crud-form-object-item.interface';
-import { CrudFormConfig } from '../../utils/edit-form/crud-form-config.interface';
-import { ActionResponse } from '../../utils/action-utils/action-response.interface';
-import { BreadcrumbOption } from '../../utils/breadcrumb/breadcrumb-option.interface';
-import { FormLayout } from '../../utils/edit-form/form-layout.enum';
-import { CrudViewFormItemType } from '../../utils/edit-form/crud-view-form-item-type.enum';
-import { ActionBehavior } from '../../utils/action-utils/action-behavior.enum';
-import { ActionView } from '../../utils/action-utils/action-view.enum';
-import { FormService } from '../../services/form/form.service';
-import { CrudFormConfigInputChangeReaction } from '../../utils/edit-form/crud-form-config-input-change-reaction.enum';
-import { CrudFormItem } from '../../utils/edit-form/crud-form-item.interface';
+import { CrudFormItemMenuItem } from '@rapider/angular-components/core/edit-form';
+import { ComponentSize } from '@rapider/angular-components/core/utils';
+import { CrudFormObjectItem } from '@rapider/angular-components/core/edit-form';
+import { CrudFormConfig } from '@rapider/angular-components/core/edit-form';
+import { ActionResponse } from '@rapider/angular-components/core/utils';
+import { BreadcrumbOption } from '@rapider/angular-components/core/breadcrumb';
+import { FormLayout } from '@rapider/angular-components/core/edit-form';
+import { CrudViewFormItemType } from '@rapider/angular-components/core/edit-form';
+import { ActionBehavior } from '@rapider/angular-components/core/utils';
+import { ActionView } from '@rapider/angular-components/core/utils';
+import { FormService } from '@rapider/angular-components/core/services';
+import { CrudFormConfigInputChangeReaction } from '@rapider/angular-components/core/edit-form';
+import { CrudFormItem } from '@rapider/angular-components/core/edit-form';
 import { MustMatch } from '../../utils/validator-utils/must-match.validator';
-import { CrudFormButtonItem } from '../../utils/edit-form/crud-form-button-item.interface';
-import { CrudFormValueEmitMode } from '../../utils/edit-form/crud-form-value-emit-mode.enum';
-import { CrudFormLabelFunctionItem } from '../../utils/edit-form/crud-form-label-function.interface';
-import { DynamicDataForSelectBox } from '../../utils/edit-form';
-import { ButtonComponentConfig } from './../../utils/button/button-component-config.interface';
-import { IconComponentConfig, IconType } from '../../utils/icon';
-import { CrudFormItemOutputEvent } from '../../utils/edit-form/crud-form-item-output-event.interface';
+import { CrudFormButtonItem } from '@rapider/angular-components/core/edit-form';
+import { CrudFormValueEmitMode } from '@rapider/angular-components/core/edit-form';
+import { CrudFormLabelFunctionItem } from '@rapider/angular-components/core/edit-form';
+import { DynamicDataForSelectBox } from '@rapider/angular-components/core/edit-form';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { IconType } from '@rapider/angular-components/core/icon';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { CrudFormItemOutputEvent } from '@rapider/angular-components/core/edit-form';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 
@@ -193,7 +194,7 @@ export class RappiderEditFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.config?.currentValue) {
+    if (changes['config']?.currentValue) {
       this.config = cloneDeep(this.config);
       this.transformValidators(this.config);
       /* generate form */
@@ -206,7 +207,7 @@ export class RappiderEditFormComponent implements OnInit, OnChanges {
       this.emitValidity();
     }
 
-    if (changes.data && this.dataForm) {
+    if (changes['data']?.currentValue && this.dataForm) {
       // we don't want to trigger value change action when passing data from the parent component,
       // so we use this flag to avoid value change action
       this.disableEmitFieldChange = true;
@@ -218,7 +219,7 @@ export class RappiderEditFormComponent implements OnInit, OnChanges {
       this.emitValidity();
       this.disableEmitFieldChange = false;
     }
-    if (changes.submitted) {
+    if (changes['submitted']?.currentValue) {
       this.checkAllDataFormFieldErrors();
       this.emitValidity();
     }
