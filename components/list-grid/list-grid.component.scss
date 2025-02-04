@@ -1,0 +1,229 @@
+.list-grid-container {
+  width: 100%;
+}
+
+.title {
+  margin-bottom: var(--margin-4x);
+}
+
+.thumbnail {
+  max-height: 100px;
+  max-width: 100px;
+  border: var(--border-size-x) solid var(--primary-border-color);
+}
+
+.no-image-thumbnail {
+  max-height: 50px;
+  max-width: 50px;
+}
+
+.action-drop-down-menu-item {
+  min-width: 150px;
+}
+
+.action-drop-down-menu-item-row {
+  display: flex;
+  align-items: center;
+}
+
+.grid-toolbar {
+  margin-bottom: var(--margin-2x, 10px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.toolbar-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+
+  &>* {
+    margin-right: var(--margin-2x, 10px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .ant-table-column-title {
+    font-weight: var(--font-weight-medium, 500);
+    font-size: var(--subtitle-font-size, 15px);
+    text-transform: capitalize;
+    /* disable text selection */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .filter-columns-select {
+    width: 200px;
+    overflow: hidden;
+
+    nz-select-top-control {
+      cursor: pointer !important;
+
+      nz-select-item {
+        cursor: pointer;
+      }
+
+      nz-select-search {
+        display: none;
+      }
+    }
+  }
+
+  .filter-columns-placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  .visible-columns-select {
+    .ant-select {
+      .ant-select-selector {
+        .ant-select-selection-item {
+          background-color: var(--input-background-color);
+          border: none;
+        }
+      }
+    }
+
+    .ant-select-selection-item {
+      width: 95%;
+    }
+  }
+
+  .object-type-field {
+    margin-bottom: 0px;
+    max-width: 400px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.list-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 0 var(--margin-2x) 0;
+
+  .list-action:nth-last-of-type(1) {
+    margin-right: 0;
+  }
+
+  .right-list-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .right-list-action {
+      margin-left: var(--margin-2x);
+    }
+  }
+
+  .left-list-actions {
+    display: flex;
+    justify-content: flex-start;
+
+    .left-list-action {
+      margin-right: var(--margin-2x);
+    }
+  }
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.icon-column {
+  font-size: var(--font-size-larger);
+}
+
+/* TABLE ORDER */
+::ng-deep {
+  .cdk-drag-preview {
+    display: table;
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+}
+
+.item-actions {
+  text-align: right;
+}
+
+.no-border {
+  ::ng-deep {
+    .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+      display: none;
+    }
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  max-width: 350px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+rappider-grid-filter {
+  width: 100%;
+}
+
+.table-header {
+  background: var(--table-header-background-color, white);
+}
+
+.list-grid-action-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media only screen and (max-width: 450px),
+screen and (max-height: 920px) {
+  .toolbar-actions {
+    margin-left: 1px;
+
+    .filter-button {
+      margin-bottom: 10px;
+    }
+  }
+
+  .search-area {
+    margin-bottom: 10px;
+  }
+}
+
+.loading {
+  padding-top: var(--padding-2x);
+  // padding-left 1px for spinning icon edges no overflow
+  padding-left: 1px;
+  color: var(--text-color);
+}
+
+.fixed-header {
+  background: var(--table-background-color);
+  color: var(--text-color);
+  z-index: 2 !important;
+}
+
+.fixed-column {
+  z-index: 2 !important;
+}
