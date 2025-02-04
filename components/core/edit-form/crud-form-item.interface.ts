@@ -1,4 +1,4 @@
-import { IconComponentConfig } from '../icon';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { CrudFormItemMenu } from './crud-form-item-menu.interface';
 import { CrudFormItemValidator } from './crud-form-item-validator.interface';
 import { CrudViewFormItemType } from './crud-view-form-item-type.enum';
