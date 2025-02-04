@@ -1,5 +1,5 @@
-import { Action } from '../action-utils/action.interface';
-import { InputSize } from '../../utils/shared/input-size/input-size.enum';
+import { Action } from '@rapider/angular-components/core/utils';
+import { InputSize } from '@rapider/angular-components/core/style';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormButtonItem extends CrudFormItem, Action {
