@@ -1,4 +1,4 @@
-import { SizeConfig } from '../shared';
+import { SizeConfig } from '@rapider/angular-components/core/style';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormMonacoCodeEditorItem extends CrudFormItem {
