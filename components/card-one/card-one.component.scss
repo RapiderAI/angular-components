@@ -1,0 +1,193 @@
+.card-one {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: var(--border-size-x) solid transparent;
+    padding: var(--card-padding);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--component-inner-background-color);
+    border-radius: var(--border-radius-2x);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+
+    &:hover {
+        border: var(--border-size-x) solid var(--primary-border-color);
+        border-radius: var(--border-radius-2x);
+        cursor: pointer;
+    }
+
+    .image-cover {
+        position: relative;
+        margin-bottom: var(--margin-2x);
+        width: 100%;
+        height: var(--default-card-image-container-height);
+        overflow: hidden;
+        border-radius: var(--border-radius-2x);
+
+        .image {
+            height: 100%;
+
+            ::ng-deep {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+
+        .image-overlay {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: var(--padding-2x);
+            box-sizing: border-box;
+
+            .image-buttons {
+                ::ng-deep {
+                    i,
+                    svg {
+                        font-size: var(--main-font-size);
+                    }
+                }
+            }
+
+            .image-overlay-top {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+    }
+
+    .image-overlay-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .rate {
+        margin: var(--margin-x) 0px;
+    }
+
+    .prices-wrapper {
+        margin: var(--margin-x) 0px;
+
+        .final-price {
+            font-size: var(--font-size-large);
+            color: var(--primary-color);
+        }
+
+        .price {
+            margin-right: var(--margin-x);
+            text-decoration: line-through;
+            font-size: var(--font-size-medium);
+            color: var(--text-color);
+        }
+    }
+
+    .additional-tags {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: var(--margin-x) 0px;
+    }
+
+    .additional-buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: var(--margin-x) 0px;
+
+        .additional-button {
+            margin-right: var(--margin-x);
+            margin-bottom: var(--margin-x);
+            width: min-content;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+}
+
+.image-position-top {
+    flex-direction: column;
+
+    .image-cover {
+        margin: 0px 0px var(--margin-2x) 0px;
+    }
+}
+
+.image-position-left {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .image-cover {
+        margin: 0px var(--margin-2x) 0px 0px;
+        width: 25%;
+    }
+}
+
+.image-position-right {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+
+    .image-cover {
+        margin: 0px 0px 0px var(--margin-2x);
+        width: 25%;
+    }
+}
+
+.image-position-bottom {
+    flex-direction: column-reverse;
+
+    .image-cover {
+        margin: var(--margin-2x) 0px 0px 0px;
+    }
+}
+
+.selected-card-icon {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 30px;
+    background: white;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--success-color);
+}
+
+.card-description-wrapper-flex {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-description-wrapper-flex .additional-buttons {
+  margin-top: auto;
+}
