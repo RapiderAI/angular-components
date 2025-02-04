@@ -1,5 +1,5 @@
-import { InputSize } from '../';
-import { SelectableOption } from '../form-utils';
+import { InputSize } from '@rapider/angular-components/core/style';
+import { SelectableOption } from '@rapider/angular-components/core/form-utils';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormRadioItem extends CrudFormItem {
