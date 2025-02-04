@@ -1,5 +1,5 @@
-import { ButtonComponentConfig } from '../button';
-import { ModalComponentConfig } from '../modal';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { ModalComponentConfig } from '@rapider/angular-components/modal';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormPreviewerItem extends CrudFormItem {
