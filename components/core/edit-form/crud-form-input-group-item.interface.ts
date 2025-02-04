@@ -1,6 +1,6 @@
-import { ButtonComponentConfig } from '../button';
-import { IconComponentConfig } from '../icon';
-import { TextboxComponentConfig } from '../textbox';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
+import { TextboxComponentConfig } from '@rapider/angular-components/textbox';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormInputGroupItem extends CrudFormItem {
