@@ -25,7 +25,7 @@ import { MonacoEditorModel, MonacoEditorRegion } from '@rapider/angular-componen
 import { MONACO_EDITOR_CONFIG } from '@rapider/angular-components/core/code-editor';
 import { CUSTOM_CODE_REGION_REGEXES } from '@rapider/angular-components/core/code-editor';
 import { CUSTOM_CODE_REGION_MARKERS } from '@rapider/angular-components/core/code-editor';
-import { CodeEditorComponentConfig } from './utils';
+import { MonacoEditorComponentConfig } from './utils';
 
 // eslint-disable-next-line no-var
 declare var monaco: any;
@@ -146,7 +146,7 @@ export class MonacoEditorComponent implements AfterViewInit, OnDestroy, ControlV
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(
     private zone: NgZone,
-    @Inject(MONACO_EDITOR_CONFIG) private editorConfig: CodeEditorComponentConfig
+    @Inject(MONACO_EDITOR_CONFIG) private editorConfig: MonacoEditorComponentConfig
   ) { }
 
   ngAfterViewInit(): void {

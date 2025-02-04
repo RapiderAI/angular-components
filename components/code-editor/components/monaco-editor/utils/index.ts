@@ -1,1 +1,1 @@
-export * from './code-editor.config';
+export * from './monaco-editor.config';
