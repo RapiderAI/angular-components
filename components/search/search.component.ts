@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AutoComponentConfig, RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-complete';
+import { AutoCompleteComponentConfig, RappiderAutoCompleteComponent } from '@rapider/angular-components/auto-complete';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { SearchButtonClickOutput } from '@rapider/angular-components/core/search';
 
@@ -12,8 +12,8 @@ import { SearchButtonClickOutput } from '@rapider/angular-components/core/search
   styleUrls: ['./search.component.scss']
 })
 export class RappiderSearchComponent {
-  @Input() primarySearchBox: AutoComponentConfig;
-  @Input() secondarySearchBox: AutoComponentConfig;
+  @Input() primarySearchBox: AutoCompleteComponentConfig;
+  @Input() secondarySearchBox: AutoCompleteComponentConfig;
   @Input() searchButton: ButtonComponentConfig;
 
   @Output() primarySearchTextChange = new EventEmitter<string>();
