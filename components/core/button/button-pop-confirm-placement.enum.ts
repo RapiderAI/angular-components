@@ -1,4 +1,4 @@
-export enum PopConfirmPlacement {
+export enum ButtonPopConfirmPlacement {
   TopLeft = 'topLeft',
   Top = 'top',
   TopRight = 'topRight',

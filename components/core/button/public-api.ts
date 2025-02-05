@@ -9,4 +9,4 @@ export * from './button-type-options';
 export * from './button-redirect-mode.enum';
 export * from './button-redirect-target.enum';
 export * from './button-action-behavior.enum';
-export * from './pop-confirm-placement.enum';
+export * from './button-pop-confirm-placement.enum';

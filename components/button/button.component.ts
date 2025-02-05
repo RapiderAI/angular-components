@@ -24,7 +24,7 @@ import {
   FormButtonType,
   TooltipPlacement,
   ButtonIconPlacement,
-  PopConfirmPlacement
+  ButtonPopConfirmPlacement
 } from '@rapider/angular-components/core/button';
 
 @Component({
@@ -93,7 +93,7 @@ export class RappiderButtonComponent implements OnInit, OnChanges {
   @Input() popconfirmOkText: string;
   /* Make pop confirm button type danger */
   @Input() popconfirmOkDanger: boolean;
-  @Input() popconfirmPlacement: PopConfirmPlacement;
+  @Input() popconfirmPlacement: ButtonPopConfirmPlacement;
   @Input() iconPlacement: ButtonIconPlacement;
   /* the type of button */
   @Input() formButtonType: FormButtonType;
