@@ -8,7 +8,11 @@ import {
 } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 
+<<<<<<< HEAD
 export interface AutoComponentConfig {
+=======
+export interface AutoCompleteComponentConfig {
+>>>>>>> a09a61ef2b9c537f441dc5f090c345d9248abe5f
   backfill?: boolean;
   dataSource?: AutocompleteDataSource;
   defaultActiveFirstOption?: boolean;
@@ -24,4 +28,8 @@ export interface AutoComponentConfig {
   paddingSettings?: SpacingConfig;
   marginSettings?: SpacingConfig;
   typographySettings?: TypographyConfig;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a09a61ef2b9c537f441dc5f090c345d9248abe5f
