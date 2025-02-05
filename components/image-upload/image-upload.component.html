@@ -2,7 +2,7 @@
   <input #imageUploadInputElement
          type="file"
          style="display: none"
-         (change)="onFileSelect($event.target.files)">
+         (change)="onFileSelect($event)">
   <div [ngClass]="{'image-container': value, 'empty-image-container': !value}">
     <div class="image-container">
       <rappider-image [source]="value"
