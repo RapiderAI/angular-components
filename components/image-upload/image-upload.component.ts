@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { ImageComponentConfig, RappiderImageComponent } from '@rapider/angular-components/image';
-import { CrudFormPreviewerItem } from '@rapider/angular-components/core/edit-form';
+import { PreviewerComponentConfig } from '@rapider/angular-components/previewer';
 import { ButtonType } from '@rapider/angular-components/core/button';
 import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -49,7 +49,7 @@ export class RappiderImageUploadComponent {
   @Input() uploadButtonVisibility: boolean;
   @Input() isLoading: boolean;
   @Input() uploadButton: ButtonComponentConfig;
-  @Input() previewerConfig: CrudFormPreviewerItem;
+  @Input() previewerConfig: PreviewerComponentConfig;
 
   @Output() fileSelect = new EventEmitter<File>();
 
@@ -117,7 +117,7 @@ export class RappiderImageUploadComponent {
   }
 
   onFileSelect(event: any) {
-    const file: File = event[0];
+    const file: File = event.target.files[0];
     if (
       (file && file.type.startsWith('image/png')) ||
       file.type.startsWith('image/jpeg') ||
