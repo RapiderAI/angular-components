@@ -1,3 +1,3 @@
 export * from './previewer.component';
 export * from './previewer.module';
-export * from './utils';
+export * from './utils/index';
