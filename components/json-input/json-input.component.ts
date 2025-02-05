@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderMonacoEditorComponent } from '@rapider/angular-components/monaco-editor';
+import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
 
 @Component({
   selector: 'rappider-json-input',
@@ -12,7 +12,7 @@ import { RappiderMonacoEditorComponent } from '@rapider/angular-components/monac
     FormsModule,
     ReactiveFormsModule,
     RappiderButtonComponent,
-    RappiderMonacoEditorComponent
+    CodeEditorComponent
   ],
   templateUrl: './json-input.component.html',
   styleUrls: ['./json-input.component.scss'],
