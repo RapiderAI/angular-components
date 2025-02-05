@@ -72,6 +72,10 @@ i {
   display: flex;
   gap: var(--margin-x);
   align-items: center;
+
+  .selected-icon-text {
+    margin-bottom: 0px !important;
+  }
 }
 
 .icon {

@@ -82,8 +82,7 @@
                               [direction]="fontAwesomeIconTypeButtonsConfig.direction"></rappider-checkbox-list>
       <div *ngIf="activeTab === IconType.FontAwesome"
            class="icon-list">
-        <ng-container
-                      *ngFor="let fontAwesomeIcon of getDataWithPagination().values; trackBy: trackItems">
+        <ng-container *ngFor="let fontAwesomeIcon of getDataWithPagination().values; trackBy: trackItems">
 
           <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Solid) || selectedFontAwesomeIconTypes?.length === 0"
                class="icon"
@@ -167,7 +166,7 @@
         <form nz-form
               [formGroup]="customIconForm">
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.TYPE' | translate}}<span class="required">*</span></nz-form-label>
+            <nz-form-label>{{ 'Type' | translate}}<span class="required">*</span></nz-form-label>
             <rappider-radio-group nz-input
                                   class="form-item"
                                   formControlName="type"
@@ -175,46 +174,46 @@
                                   (ngModelChange)="iconTypeOptionsChange($event)"></rappider-radio-group>
           </nz-form-control>
           <nz-form-control *ngIf="customIconForm?.value.type === IconType.FontAwesome">
-            <nz-form-label>{{ 'SHARED.STYLE' | translate}}<span class="required">*</span></nz-form-label>
+            <nz-form-label>{{ 'Style' | translate}}<span class="required">*</span></nz-form-label>
             <rappider-radio-group nz-input
                                   class="form-item"
                                   formControlName="style"
                                   [options]="iconStyleOptions"></rappider-radio-group>
           </nz-form-control>
           <nz-form-control *ngIf="customIconForm?.value.type === IconType.NgZorro">
-            <nz-form-label>{{ 'SHARED.THEME' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Theme' | translate}}</nz-form-label>
             <rappider-radio-group nz-input
                                   class="form-item"
                                   formControlName="theme"
                                   [options]="iconThemeOptions"></rappider-radio-group>
           </nz-form-control>
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.NAME' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Name' | translate}}</nz-form-label>
             <rappider-textbox nz-input
                               class="form-item"
                               formControlName="name"></rappider-textbox>
           </nz-form-control>
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.COLOR' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Color' | translate}}</nz-form-label>
             <rappider-color-picker nz-input
                                    class="form-item"
                                    formControlName="color"></rappider-color-picker>
           </nz-form-control>
           <nz-form-control
                            *ngIf="customIconForm?.value.style === FontAwesomeIconType.Duotone || customIconForm?.value.theme === NgZorroIconTheme.TwoTone">
-            <nz-form-label>{{ 'SHARED.SECOND_COLOR' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Second Color' | translate}}</nz-form-label>
             <rappider-color-picker nz-input
                                    class="form-item"
                                    formControlName="secondColor"></rappider-color-picker>
           </nz-form-control>
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.SIZE' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Size' | translate}}</nz-form-label>
             <rappider-dimension-select nz-input
                                        class="form-item"
                                        formControlName="size"></rappider-dimension-select>
           </nz-form-control>
           <nz-form-control *ngIf="customIconForm?.value.type === IconType.FontAwesome">
-            <nz-form-label>{{ 'SHARED.ANIMATION' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Animation' | translate}}</nz-form-label>
             <rappider-select nz-input
                              class="form-item"
                              formControlName="animation"
@@ -245,13 +244,13 @@
         <form nz-form
               [formGroup]="importIconForm">
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.URL' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'URL' | translate}}</nz-form-label>
             <rappider-textbox nz-input
                               class="form-item"
                               formControlName="name"></rappider-textbox>
           </nz-form-control>
           <nz-form-control>
-            <nz-form-label>{{ 'SHARED.SIZE' | translate}}</nz-form-label>
+            <nz-form-label>{{ 'Size' | translate}}</nz-form-label>
             <rappider-dimension-select nz-input
                                        class="form-item"
                                        formControlName="size"></rappider-dimension-select>
@@ -281,7 +280,7 @@
       <div class="selected-icon">
         <ng-container *ngIf="activeTab === IconType.FontAwesome">
           <i class="{{selectedIcon}}"></i>
-          <p>{{ selectedIcon }}</p>
+          <p class="selected-icon-text">{{ selectedIcon }}</p>
         </ng-container>
 
         <ng-container *ngIf="activeTab === IconType.NgZorro">

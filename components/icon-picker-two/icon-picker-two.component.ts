@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { AutoComponentConfig } from '@rapider/angular-components/auto-complete';
+import { AutoCompleteComponentConfig } from '@rapider/angular-components/auto-complete';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { ButtonColorType, ButtonSize, ButtonType } from '@rapider/angular-components/core/button';
 import { IconComponentConfig, RappiderIconComponent, RappiderIconModule } from '@rapider/angular-components/icon';
@@ -18,8 +18,8 @@ import {
 } from '@rapider/angular-components/core/icon-picker-two';
 import { snakeCase } from 'lodash';
 import { RadioGroupOptions } from '@rapider/angular-components/core/radio-group';
-import { fontAwesomeIconStyleOptionsConfig } from '@rapider/angular-components/core/icon-picker-two/font-awesome-icon-style-option-config';
-import { PaginationComponentConfig, RappiderPaginationModule } from '@rapider/angular-components/pagination';
+import { fontAwesomeIconStyleOptionsConfig } from '@rapider/angular-components/core/icon-picker-two';
+import { PaginationComponentConfig, RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -36,7 +36,6 @@ import { RappiderSearchComponent } from '@rapider/angular-components/search';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { RappiderColorPickerComponent } from '@rapider/angular-components/color-picker';
 import { RappiderDimensionSelectComponent } from '@rapider/angular-components/dimension-select';
-import { RappiderPaginationComponent } from '@rapider/angular-components/pagination';
 
 @Component({
   selector: 'rappider-icon-picker-two',
@@ -80,7 +79,7 @@ export class RappiderIconPickerTwoComponent implements ControlValueAccessor, OnI
   @Output() setSelectIcon = new EventEmitter<IconComponentConfig>();
   @Output() cancelSelectedIcon = new EventEmitter();
 
-  searchBox: AutoComponentConfig = {
+  searchBox: AutoCompleteComponentConfig = {
     placeholder: 'Search icon'
   };
   searchButton: ButtonComponentConfig = {
@@ -300,6 +299,7 @@ export class RappiderIconPickerTwoComponent implements ControlValueAccessor, OnI
     } else if (this.activeTab === IconType.Material) {
       return this.materialIcons;
     }
+    return [];
   }
 
   getDataWithPagination() {
