@@ -1,0 +1,1 @@
+export * from './card-one-component-config.interface';

@@ -8,7 +8,7 @@ import {
 } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 
-export interface AutoComponentConfig {
+export interface AutoCompleteComponentConfig {
   backfill?: boolean;
   dataSource?: AutocompleteDataSource;
   defaultActiveFirstOption?: boolean;
