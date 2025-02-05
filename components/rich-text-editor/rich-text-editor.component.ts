@@ -71,23 +71,14 @@ export class RappiderRichTextEditorComponent implements OnInit, ControlValueAcce
   };
 
   onChange: any = () => {
-    /* TODO: code here */
   };
 
   onTouched: any = () => {
-    /* TODO: code here */
   };
 
 
   ngOnInit(): void {
     this.setEditorSettings();
-    if (this.mentionSupported && this.mentionValues) {
-      // this.pushMentionModule();
-    }
-
-    // Quill.register('modules/imageUploader', ImageUploader);
-
-    // this.pushImageUploaderModule();
   }
 
   /**
