@@ -1,0 +1,114 @@
+<form nz-form
+      nzLayout="vertical"
+      [formGroup]="addressForm">
+  <nz-form-item>
+    <nz-form-label nzRequired
+                   nzFor="country">
+      {{ 'Country' | translate }}
+    </nz-form-label>
+    <nz-form-control [nzErrorTip]="requiredErrorTip">
+      <rappider-textbox formControlName="country"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired
+                   nzFor="street">
+      {{ 'Street' | translate }}
+    </nz-form-label>
+    <nz-form-control [nzErrorTip]="requiredErrorTip">
+      <rappider-textarea formControlName="street"></rappider-textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <div class="form-row">
+    <nz-form-item class="form-column">
+      <nz-form-label nzRequired
+                     nzFor="city">
+        {{ 'City' | translate }}
+      </nz-form-label>
+      <nz-form-control [nzErrorTip]="requiredErrorTip">
+        <rappider-textbox formControlName="city"></rappider-textbox>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="form-column">
+      <nz-form-label nzRequired
+                     nzFor="state">
+        {{ 'State' | translate }}
+      </nz-form-label>
+      <nz-form-control [nzErrorTip]="requiredErrorTip">
+        <rappider-textbox formControlName="state"></rappider-textbox>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+
+  <div class="form-row">
+    <nz-form-item class="form-column">
+      <nz-form-label nzRequired
+                     nzFor="city">
+        {{ 'City' | translate }}
+      </nz-form-label>
+      <nz-form-control [nzErrorTip]="requiredErrorTip">
+        <rappider-textbox formControlName="city"></rappider-textbox>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="form-column">
+      <nz-form-label nzRequired
+                     nzFor="state">
+        {{ 'State' | translate }}
+      </nz-form-label>
+      <nz-form-control [nzErrorTip]="requiredErrorTip">
+        <rappider-textbox formControlName="state"></rappider-textbox>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="form-column">
+      <nz-form-label nzRequired
+                     nzFor="zip">
+        {{ 'Zip' | translate }}
+      </nz-form-label>
+      <nz-form-control [nzErrorTip]="requiredErrorTip">
+        <rappider-textbox formControlName="zip"></rappider-textbox>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <nz-form-item class="submit-button">
+    <rappider-button [text]="submitButton?.text"
+                     [type]="submitButton?.type"
+                     [shape]="submitButton?.shape"
+                     [size]="submitButton?.size"
+                     [transparent]="submitButton?.transparent"
+                     [loading]="submitButton?.loading"
+                     [block]="submitButton?.loading"
+                     [disabled]="submitButton?.disabled"
+                     [colorType]="submitButton?.colorType"
+                     [icon]="submitButton?.icon"
+                     [formButtonType]="submitButton?.formButtonType"
+                     [borderSettings]="submitButton?.borderSettings"
+                     [customSizeSettings]="submitButton?.customSizeSettings"
+                     [customColorSettings]="submitButton?.customColorSettings"
+                     [shadowSettings]="submitButton?.shadowSettings"
+                     [paddingSettings]="submitButton?.paddingSettings"
+                     [marginSettings]="submitButton?.marginSettings"
+                     (click)="submitForm()"></rappider-button>
+  </nz-form-item>
+
+  <nz-form-item class="submit-button">
+    <rappider-button [text]="submitButton?.text"
+                     [type]="submitButton?.type"
+                     [shape]="submitButton?.shape"
+                     [size]="submitButton?.size"
+                     [transparent]="submitButton?.transparent"
+                     [loading]="submitButton?.loading"
+                     [block]="submitButton?.loading"
+                     [disabled]="submitButton?.disabled"
+                     [colorType]="submitButton?.colorType"
+                     [icon]="submitButton?.icon"
+                     (click)="submitForm()"></rappider-button>
+  </nz-form-item>
+
+</form>
+
+<ng-template #requiredErrorTip>
+  {{ 'This field is required.' | translate }}
+</ng-template>

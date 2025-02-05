@@ -1,0 +1,30 @@
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px;
+  
+  .form-column {
+    flex: 0 0 calc(33.333% - 24px);
+    margin: 12px;
+    
+    @media (max-width: 768px) {
+      flex: 0 0 calc(100% - 24px);
+    }
+  }
+}
+
+.submit-button {
+  margin-top: 24px;
+}
+
+:host {
+  display: block;
+  
+  form {
+    width: 100%;
+  }
+  
+  nz-form-item {
+    width: 100%;
+  }
+}
