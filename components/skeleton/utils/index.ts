@@ -1,1 +1,1 @@
-export * from './skeleton-avatar-config.interface';
+export * from './skeleton-avatar-component-config.interface';

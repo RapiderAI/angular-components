@@ -1,11 +1,11 @@
 import { SkeletonAvatarShape, SkeletonSizeAvatar } from "@rapider/angular-components/core/skeleton";
 
-export interface SkeletonAvatarConfig {
+export interface SkeletonAvatarComponentConfig {
   /**
    * Size of the avatar
    *
    * @type {SkeletonAvatarSize}
-   * @memberof SkeletonAvatarConfig
+   * @memberof SkeletonAvatarComponentConfig
    */
   size?: SkeletonSizeAvatar;
 
@@ -13,7 +13,7 @@ export interface SkeletonAvatarConfig {
    * Shape of the avatar
    *
    * @type {SkeletonAvatarShape}
-   * @memberof SkeletonAvatarConfig
+   * @memberof SkeletonAvatarComponentConfig
    */
   shape?: SkeletonAvatarShape;
 }
