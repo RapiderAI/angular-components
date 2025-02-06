@@ -1,5 +1,5 @@
-import { DropdownMenuComponentConfig } from '../dropdown-menu';
-import { IconType } from '../icon';
+import { DropdownMenuComponentConfig } from '@rapider/angular-components/dropdown-menu';
+import { IconType } from '@rapider/angular-components/core/icon';
 
 export const inputSettingsDropdownConfig: DropdownMenuComponentConfig = {
   icon: {

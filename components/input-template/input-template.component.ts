@@ -13,6 +13,7 @@ import { RappiderCheckboxComponent } from '../checkbox';
 import { RappiderNumberInputComponent } from '../number-input';
 import { RappiderDatePickerComponent } from '../date-picker';
 import { RappiderTextboxComponent } from '../textbox';
+import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
 
 @Component({
   selector: 'rappider-input-template',
@@ -26,8 +27,7 @@ import { RappiderTextboxComponent } from '../textbox';
     RappiderDatePickerComponent,
     RappiderNumberInputComponent,
     RappiderCheckboxComponent,
-    // RappiderCodeEditorModule,
-    // RappiderMonacoEditorModule,
+    CodeEditorComponent,
     RappiderSelectComponent,
     RappiderSwitchComponent,
     RappiderDropdownMenuComponent,

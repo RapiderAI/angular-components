@@ -108,10 +108,10 @@
                       *ngIf="(typeAndFormat.type === PropertyType.Array) || (typeAndFormat.type === PropertyType.Object)">
           <div *ngIf="showCodemirrorForObjectAndArray; else defaultTextboxTemplate"
                class="object-and-array-area">
-            <!-- <rappider-monaco-code-editor [(ngModel)]="value"
+            <rappider-monaco-code-editor [(ngModel)]="value"
                                          [autoFormat]="true"
                                          [disabled]="config?.disabled"
-                                         [options]="CODEMIRROR_JSON_SETTINGS"></rappider-monaco-code-editor> -->
+                                         [options]="CODEMIRROR_JSON_SETTINGS"></rappider-monaco-code-editor>
           </div>
         </ng-container>
 
