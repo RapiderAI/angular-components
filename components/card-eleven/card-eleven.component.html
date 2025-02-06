@@ -1,0 +1,40 @@
+<section class="card-eleven">
+  <section>
+    <div *ngIf="additionalContent"
+         class="content">
+      <rappider-paragraph [content]="additionalContent?.content"
+                          [colorSettings]="additionalContent?.colorSettings">
+      </rappider-paragraph>
+    </div>
+  </section>
+  <div *ngFor="let item of contentItems"
+       class="card-section">
+    <section>
+      <div *ngIf="item.text"
+           class="item-text">
+        <rappider-text [content]="item.text.content"
+                       [textMode]="item.text.textMode"
+                       [text]="item.text.text"
+                       [typography]="item.text.typography"
+                       [colorSettings]="item.text.colorSettings"></rappider-text>
+      </div>
+    </section>
+    <section>
+      <div *ngIf="item.badge"
+           class="item-description">
+        <rappider-badge [status]="item?.badge?.status"
+                        [text]="item?.badge?.text"
+                        [title]="item?.badge?.title"
+                        [count]="item?.badge?.count"
+                        [color]="item?.badge?.color"
+                        [dot]="item?.badge?.dot"
+                        [showDot]="item?.badge?.showDot"
+                        [overflowCount]="item?.badge?.overflowCount"
+                        [showZero]="item?.badge?.showZero"
+                        [offset]="item?.badge?.offset"
+                        [paddingSettings]="item.badge.paddingSettings"
+                        [marginSettings]="item.badge.marginSettings"></rappider-badge>
+      </div>
+    </section>
+  </div>
+</section>

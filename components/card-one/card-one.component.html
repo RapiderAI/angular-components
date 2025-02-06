@@ -1,0 +1,594 @@
+<div *ngIf="showPopover; else default"
+     nz-button
+     nz-popover
+     [nzPopoverContent]="nzPopoverImage">
+  <div class="card-one"
+       [ngClass]="setImagePositionClass()"
+       (click)="onCardClick()">
+    <div *ngIf="image && image.source"
+         class="image-cover">
+      <div class="image">
+        <rappider-image [width]="image?.width"
+                        [source]="image?.source"
+                        [placeholder]="image?.placeholder"
+                        [height]="image?.height"
+                        [fallback]="image?.fallback"
+                        [alternateText]="image?.alternateText"
+                        [borderSettings]="image?.borderSettings"
+                        [customSizeSettings]="image?.width"
+                        [shadowSettings]="image?.shadowSettings"
+                        [marginSettings]="image?.marginSettings"
+                        [paddingSettings]="image?.paddingSettings"></rappider-image>
+
+      </div>
+
+      <div class="image-overlay">
+        <div class="image-overlay-top">
+          <div *ngIf="imageTags?.length && imageTags"
+               class="image-tags">
+            <div *ngFor="let tag of imageTags"
+                 class="image-tag">
+              <rappider-tag [text]="tag.text"
+                            [mode]="tag.mode"
+                            [color]="tag.color"
+                            [icon]="tag.icon"
+                            [checked]="tag.checked"
+                            [tooltipText]="tag?.tooltipText"
+                            [tooltipPlacement]="tag?.tooltipPlacement"></rappider-tag>
+            </div>
+            <div class="image-overlay">
+              <div class="image-overlay-top">
+                <div *ngIf="imageTags?.length && imageTags"
+                     class="image-tags">
+                  <div *ngFor="let tag of imageTags"
+                       class="image-tag">
+                    <rappider-tag [text]="tag.text"
+                                  [mode]="tag.mode"
+                                  [color]="tag.color"
+                                  [icon]="tag.icon"
+                                  [checked]="tag.checked"
+                                  [tooltipText]="tag?.tooltipText"
+                                  [tooltipPlacement]="tag?.tooltipPlacement"></rappider-tag>
+                  </div>
+                </div>
+                <div *ngIf="imageButtons?.length && imageButtons"
+                     class="image-buttons">
+                  <div *ngFor="let imageButton of imageButtons"
+                       class="image-button"
+                       [ngStyle]="{'float': imageButtonPlacement === 'horizontal' ? 'left' : 'none'}">
+                    <rappider-button [text]="imageButton.text"
+                                     [type]="imageButton.type"
+                                     [shape]="imageButton.shape"
+                                     [size]="imageButton.size"
+                                     [transparent]="imageButton.transparent"
+                                     [loading]="imageButton.loading"
+                                     [block]="imageButton.loading"
+                                     [disabled]="imageButton.disabled"
+                                     [colorType]="imageButton.colorType"
+                                     [icon]="imageButton.icon"
+                                     [formButtonType]="imageButton?.formButtonType"
+                                     [borderSettings]="imageButton?.borderSettings"
+                                     [customSizeSettings]="imageButton?.customSizeSettings"
+                                     [customColorSettings]="imageButton?.customColorSettings"
+                                     [shadowSettings]="imageButton?.shadowSettings"
+                                     [paddingSettings]="imageButton?.paddingSettings"
+                                     [marginSettings]="imageButton?.marginSettings"
+                                     [tooltipText]="imageButton?.tooltipText"
+                                     (click)="onImageButtonClick(imageButton, $event)"></rappider-button>
+                  </div>
+                </div>
+              </div>
+              <div [class]="avatarPlacement === AvatarPlacement.Bottom ? 'display-none' : null "
+                   class="image-overlay-bottom">
+                <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+                     class="avatar">
+                  <rappider-avatar [iconName]="avatar.iconName"
+                                   [text]="avatar.text"
+                                   [shape]="avatar.shape"
+                                   [imageUrl]="avatar.imageUrl"
+                                   [altText]="avatar.altText"
+                                   [cssStyle]="avatar.cssStyle"
+                                   [size]="avatar.size"
+                                   [borderSettings]="avatar.borderSettings"
+                                   [sizeSettings]="avatar.sizeSettings"
+                                   [colorSettings]="avatar.colorSettings"
+                                   [boxShadowSettings]="avatar.boxShadowSettings"
+                                   [paddingSettings]="avatar.paddingSettings"
+                                   [marginSettings]="avatar.marginSettings"
+                                   [description]="avatar.description"></rappider-avatar>
+                </div>
+                <div *ngIf="avatarButton"
+                     class="image-overlay-bottom-button">
+                  <rappider-button [text]="avatarButton.text"
+                                   [type]="avatarButton.type"
+                                   [shape]="avatarButton.shape"
+                                   [size]="avatarButton.size"
+                                   [transparent]="avatarButton.transparent"
+                                   [loading]="avatarButton.loading"
+                                   [block]="avatarButton.loading"
+                                   [disabled]="avatarButton.disabled"
+                                   [colorType]="avatarButton.colorType"
+                                   [formButtonType]="avatarButton?.formButtonType"
+                                   [borderSettings]="avatarButton?.borderSettings"
+                                   [customSizeSettings]="avatarButton?.customSizeSettings"
+                                   [customColorSettings]="avatarButton?.customColorSettings"
+                                   [shadowSettings]="avatarButton?.shadowSettings"
+                                   [paddingSettings]="avatarButton?.paddingSettings"
+                                   [marginSettings]="avatarButton?.marginSettings"
+                                   [icon]="avatarButton.icon"></rappider-button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-description-wrapper">
+            <div *ngIf="showTitleOnImage && titles?.length && titles"
+                 class="titles">
+              <div *ngFor="let title of titles"
+                   class="title">
+                <rappider-heading [content]="title.content"
+                                  [type]="title.type"></rappider-heading>
+              </div>
+            </div>
+            <div *ngIf="showDescriptionOnImage && descriptions?.length && descriptions"
+                 class="descriptions">
+              <div *ngFor="let description of descriptions"
+                   class="description">
+                <rappider-paragraph [content]="description.content"
+                                    [typography]="description.typography"
+                                    [colorSettings]="description.colorSettings"></rappider-paragraph>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [class]="avatarPlacement === AvatarPlacement.Bottom ? 'display-none' : null "
+             class="image-overlay-bottom">
+          <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+               class="avatar">
+            <rappider-avatar [iconName]="avatar.iconName"
+                             [text]="avatar.text"
+                             [shape]="avatar.shape"
+                             [imageUrl]="avatar.imageUrl"
+                             [altText]="avatar.altText"
+                             [cssStyle]="avatar.cssStyle"
+                             [size]="avatar.size"
+                             [description]="avatar.description"></rappider-avatar>
+          </div>
+          <div *ngIf="avatarButton"
+               class="image-overlay-bottom-button">
+            <rappider-button [text]="avatarButton.text"
+                             [type]="avatarButton.type"
+                             [shape]="avatarButton.shape"
+                             [size]="avatarButton.size"
+                             [transparent]="avatarButton.transparent"
+                             [loading]="avatarButton.loading"
+                             [block]="avatarButton.loading"
+                             [disabled]="avatarButton.disabled"
+                             [colorType]="avatarButton.colorType"
+                             [icon]="avatarButton.icon"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-description-wrapper"
+         [ngClass]="setCardDisplayModeClass()">
+      <div *ngIf="rate"
+           class="rate">
+        <rappider-rate-display [rate]="rate"></rappider-rate-display>
+      </div>
+      <div *ngIf="titles?.length && titles"
+           class="titles">
+        <div *ngFor="let title of titles"
+             class="title">
+          <rappider-heading [content]="title.content"
+                            [type]="title.type"></rappider-heading>
+        </div>
+      </div>
+      <div *ngIf="descriptions?.length && descriptions"
+           class="descriptions">
+        <div *ngFor="let description of descriptions"
+             class="description">
+          <rappider-paragraph [content]="description.content"
+                              [typography]="description.typography"
+                              [colorSettings]="description.colorSettings"></rappider-paragraph>
+        </div>
+      </div>
+      <div *ngIf="price || finalPrice"
+           class="prices-wrapper">
+        <span *ngIf="price"
+              class="price"> {{ price | currency: currency }} </span>
+        <span *ngIf="finalPrice"
+              class="final-price"> {{ finalPrice | currency: currency }}</span>
+      </div>
+      <div *ngIf="additionalTags?.length && additionalTags"
+           class="additional-tags">
+        <div *ngFor="let additionalTag of additionalTags"
+             class="additional-tag">
+          <rappider-tag [text]="additionalTag.text"
+                        [mode]="additionalTag.mode"
+                        [color]="additionalTag.color"
+                        [icon]="additionalTag.icon"
+                        [checked]="additionalTag.checked"></rappider-tag>
+        </div>
+      </div>
+      <div *ngIf="additionalButtons?.length && additionalButtons"
+           class="additional-buttons">
+        <div *ngFor="let additionalButton of additionalButtons"
+             class="additional-button">
+          <rappider-button [text]="additionalButton.text"
+                           [type]="additionalButton.type"
+                           [shape]="additionalButton.shape"
+                           [size]="additionalButton.size"
+                           [transparent]="additionalButton.transparent"
+                           [loading]="additionalButton.loading"
+                           [block]="additionalButton.loading"
+                           [disabled]="additionalButton.disabled"
+                           [colorType]="additionalButton.colorType"
+                           [icon]="additionalButton.icon"
+                           [formButtonType]="additionalButton?.formButtonType"
+                           [borderSettings]="additionalButton?.borderSettings"
+                           [customSizeSettings]="additionalButton?.customSizeSettings"
+                           [customColorSettings]="additionalButton?.customColorSettings"
+                           [shadowSettings]="additionalButton?.shadowSettings"
+                           [paddingSettings]="additionalButton?.paddingSettings"
+                           [marginSettings]="additionalButton?.marginSettings"
+                           [tooltipText]="additionalButton?.tooltipText"
+                           (click)="onAdditionalButtonClick(additionalButton, $event)"></rappider-button>
+        </div>
+      </div>
+      <rappider-divider *ngIf="avatarPlacement === AvatarPlacement.Bottom"
+                        [text]="divider?.text"></rappider-divider>
+      <div [class]="avatarPlacement === AvatarPlacement.Top ? 'display-none' : null "
+           class="image-overlay-bottom">
+        <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+             class="avatar">
+          <rappider-avatar [iconName]="avatar.iconName"
+                           [text]="avatar.text"
+                           [shape]="avatar.shape"
+                           [imageUrl]="avatar.imageUrl"
+                           [altText]="avatar.altText"
+                           [cssStyle]="avatar.cssStyle"
+                           [size]="avatar.size"
+                           [borderSettings]="avatar.borderSettings"
+                           [sizeSettings]="avatar.sizeSettings"
+                           [colorSettings]="avatar.colorSettings"
+                           [boxShadowSettings]="avatar.boxShadowSettings"
+                           [paddingSettings]="avatar.paddingSettings"
+                           [marginSettings]="avatar.marginSettings"
+                           [description]="avatar.description"></rappider-avatar>
+        </div>
+        <div *ngIf="avatarButton"
+             class="image-overlay-bottom-button">
+          <rappider-button [text]="avatarButton.text"
+                           [type]="avatarButton.type"
+                           [shape]="avatarButton.shape"
+                           [size]="avatarButton.size"
+                           [transparent]="avatarButton.transparent"
+                           [loading]="avatarButton.loading"
+                           [block]="avatarButton.loading"
+                           [disabled]="avatarButton.disabled"
+                           [colorType]="avatarButton.colorType"
+                           [formButtonType]="avatarButton?.formButtonType"
+                           [borderSettings]="avatarButton?.borderSettings"
+                           [customSizeSettings]="avatarButton?.customSizeSettings"
+                           [customColorSettings]="avatarButton?.customColorSettings"
+                           [shadowSettings]="avatarButton?.shadowSettings"
+                           [paddingSettings]="avatarButton?.paddingSettings"
+                           [marginSettings]="avatarButton?.marginSettings"
+                           [icon]="avatarButton.icon"></rappider-button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isSelected"
+         class="selected-card-icon">
+      <rappider-icon [name]="selectedCardIcon.name"
+                     [theme]="selectedCardIcon.theme"
+                     [type]="selectedCardIcon.type"
+                     [color]="selectedCardIcon.color"></rappider-icon>
+    </div>
+  </div>
+</div>
+<!-- popover image template -->
+<ng-template #nzPopoverImage>
+  <div class="image">
+    <rappider-image [width]="showPopoverImage?.width"
+                    [source]="showPopoverImage?.source"
+                    [placeholder]="showPopoverImage?.placeholder"
+                    [height]="showPopoverImage?.height"
+                    [fallback]="showPopoverImage?.fallback"
+                    [alternateText]="showPopoverImage?.alternateText"
+                    [borderSettings]="showPopoverImage?.borderSettings"
+                    [customSizeSettings]="showPopoverImage?.width"
+                    [shadowSettings]="showPopoverImage?.shadowSettings"
+                    [marginSettings]="showPopoverImage?.marginSettings"
+                    [paddingSettings]="showPopoverImage?.paddingSettings"></rappider-image>
+
+  </div>
+</ng-template>
+<ng-template #default>
+  <div class="card-one"
+       [ngClass]="setImagePositionClass()"
+       (click)="onCardClick()">
+    <div *ngIf="image && image.source"
+         class="image-cover">
+      <div class="image">
+        <rappider-image [width]="image?.width"
+                        [source]="image?.source"
+                        [placeholder]="image?.placeholder"
+                        [height]="image?.height"
+                        [fallback]="image?.fallback"
+                        [alternateText]="image?.alternateText"
+                        [borderSettings]="image?.borderSettings"
+                        [customSizeSettings]="image?.width"
+                        [shadowSettings]="image?.shadowSettings"
+                        [marginSettings]="image?.marginSettings"
+                        [paddingSettings]="image?.paddingSettings"></rappider-image>
+
+      </div>
+
+      <div class="image-overlay">
+        <div class="image-overlay-top">
+          <div *ngIf="imageTags?.length && imageTags"
+               class="image-tags">
+            <div *ngFor="let tag of imageTags"
+                 class="image-tag">
+              <rappider-tag [text]="tag.text"
+                            [mode]="tag.mode"
+                            [color]="tag.color"
+                            [icon]="tag.icon"
+                            [checked]="tag.checked"
+                            [tooltipText]="tag?.tooltipText"
+                            [tooltipPlacement]="tag?.tooltipPlacement"></rappider-tag>
+            </div>
+            <div class="image-overlay">
+              <div class="image-overlay-top">
+                <div *ngIf="imageTags?.length && imageTags"
+                     class="image-tags">
+                  <div *ngFor="let tag of imageTags"
+                       class="image-tag">
+                    <rappider-tag [text]="tag.text"
+                                  [mode]="tag.mode"
+                                  [color]="tag.color"
+                                  [icon]="tag.icon"
+                                  [checked]="tag.checked"
+                                  [tooltipText]="tag?.tooltipText"
+                                  [tooltipPlacement]="tag?.tooltipPlacement"></rappider-tag>
+                  </div>
+                </div>
+                <div *ngIf="imageButtons?.length && imageButtons"
+                     class="image-buttons">
+                  <div *ngFor="let imageButton of imageButtons"
+                       class="image-button"
+                       [ngStyle]="{'float': imageButtonPlacement === 'horizontal' ? 'left' : 'none'}">
+                    <rappider-button [text]="imageButton.text"
+                                     [type]="imageButton.type"
+                                     [shape]="imageButton.shape"
+                                     [size]="imageButton.size"
+                                     [transparent]="imageButton.transparent"
+                                     [loading]="imageButton.loading"
+                                     [block]="imageButton.loading"
+                                     [disabled]="imageButton.disabled"
+                                     [colorType]="imageButton.colorType"
+                                     [icon]="imageButton.icon"
+                                     [formButtonType]="imageButton?.formButtonType"
+                                     [borderSettings]="imageButton?.borderSettings"
+                                     [customSizeSettings]="imageButton?.customSizeSettings"
+                                     [customColorSettings]="imageButton?.customColorSettings"
+                                     [shadowSettings]="imageButton?.shadowSettings"
+                                     [paddingSettings]="imageButton?.paddingSettings"
+                                     [marginSettings]="imageButton?.marginSettings"
+                                     [tooltipText]="imageButton?.tooltipText"
+                                     (click)="onImageButtonClick(imageButton, $event)"></rappider-button>
+                  </div>
+                </div>
+              </div>
+              <div [class]="avatarPlacement === AvatarPlacement.Bottom ? 'display-none' : null "
+                   class="image-overlay-bottom">
+                <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+                     class="avatar">
+                  <rappider-avatar [iconName]="avatar.iconName"
+                                   [text]="avatar.text"
+                                   [shape]="avatar.shape"
+                                   [imageUrl]="avatar.imageUrl"
+                                   [altText]="avatar.altText"
+                                   [cssStyle]="avatar.cssStyle"
+                                   [size]="avatar.size"
+                                   [borderSettings]="avatar.borderSettings"
+                                   [sizeSettings]="avatar.sizeSettings"
+                                   [colorSettings]="avatar.colorSettings"
+                                   [boxShadowSettings]="avatar.boxShadowSettings"
+                                   [paddingSettings]="avatar.paddingSettings"
+                                   [marginSettings]="avatar.marginSettings"
+                                   [description]="avatar.description"></rappider-avatar>
+                </div>
+                <div *ngIf="avatarButton"
+                     class="image-overlay-bottom-button">
+                  <rappider-button [text]="avatarButton.text"
+                                   [type]="avatarButton.type"
+                                   [shape]="avatarButton.shape"
+                                   [size]="avatarButton.size"
+                                   [transparent]="avatarButton.transparent"
+                                   [loading]="avatarButton.loading"
+                                   [block]="avatarButton.loading"
+                                   [disabled]="avatarButton.disabled"
+                                   [colorType]="avatarButton.colorType"
+                                   [formButtonType]="avatarButton?.formButtonType"
+                                   [borderSettings]="avatarButton?.borderSettings"
+                                   [customSizeSettings]="avatarButton?.customSizeSettings"
+                                   [customColorSettings]="avatarButton?.customColorSettings"
+                                   [shadowSettings]="avatarButton?.shadowSettings"
+                                   [paddingSettings]="avatarButton?.paddingSettings"
+                                   [marginSettings]="avatarButton?.marginSettings"
+                                   [icon]="avatarButton.icon"></rappider-button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-description-wrapper">
+            <div *ngIf="showTitleOnImage && titles?.length && titles"
+                 class="titles">
+              <div *ngFor="let title of titles"
+                   class="title">
+                <rappider-heading [content]="title.content"
+                                  [type]="title.type"></rappider-heading>
+              </div>
+            </div>
+            <div *ngIf="showDescriptionOnImage && descriptions?.length && descriptions"
+                 class="descriptions">
+              <div *ngFor="let description of descriptions"
+                   class="description">
+                <rappider-paragraph [content]="description.content"
+                                    [typography]="description.typography"
+                                    [colorSettings]="description.colorSettings"></rappider-paragraph>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [class]="avatarPlacement === AvatarPlacement.Bottom ? 'display-none' : null "
+             class="image-overlay-bottom">
+          <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+               class="avatar">
+            <rappider-avatar [iconName]="avatar.iconName"
+                             [text]="avatar.text"
+                             [shape]="avatar.shape"
+                             [imageUrl]="avatar.imageUrl"
+                             [altText]="avatar.altText"
+                             [cssStyle]="avatar.cssStyle"
+                             [size]="avatar.size"
+                             [description]="avatar.description"></rappider-avatar>
+          </div>
+          <div *ngIf="avatarButton"
+               class="image-overlay-bottom-button">
+            <rappider-button [text]="avatarButton.text"
+                             [type]="avatarButton.type"
+                             [shape]="avatarButton.shape"
+                             [size]="avatarButton.size"
+                             [transparent]="avatarButton.transparent"
+                             [loading]="avatarButton.loading"
+                             [block]="avatarButton.loading"
+                             [disabled]="avatarButton.disabled"
+                             [colorType]="avatarButton.colorType"
+                             [icon]="avatarButton.icon"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-description-wrapper"
+         [ngClass]="setCardDisplayModeClass()">
+      <div *ngIf="
+         rate"
+           class="rate">
+        <rappider-rate-display [rate]="rate"></rappider-rate-display>
+      </div>
+      <div *ngIf="titles?.length && titles"
+           class="titles">
+        <div *ngFor="let title of titles"
+             class="title">
+          <rappider-heading [content]="title.content"
+                            [type]="title.type"></rappider-heading>
+        </div>
+      </div>
+      <div *ngIf="descriptions?.length && descriptions"
+           class="descriptions">
+        <div *ngFor="let description of descriptions"
+             class="description">
+          <rappider-paragraph [content]="description.content"
+                              [typography]="description.typography"
+                              [colorSettings]="description.colorSettings"></rappider-paragraph>
+        </div>
+      </div>
+      <div *ngIf="price || finalPrice"
+           class="prices-wrapper">
+        <span *ngIf="price"
+              class="price"> {{ price | currency: currency }} </span>
+        <span *ngIf="finalPrice"
+              class="final-price"> {{ finalPrice | currency: currency }}</span>
+      </div>
+      <div *ngIf="additionalTags?.length && additionalTags"
+           class="additional-tags">
+        <div *ngFor="let additionalTag of additionalTags"
+             class="additional-tag">
+          <rappider-tag [text]="additionalTag.text"
+                        [mode]="additionalTag.mode"
+                        [color]="additionalTag.color"
+                        [icon]="additionalTag.icon"
+                        [checked]="additionalTag.checked"></rappider-tag>
+        </div>
+      </div>
+      <div *ngIf="additionalButtons?.length && additionalButtons"
+           class="additional-buttons">
+        <div *ngFor="let additionalButton of additionalButtons"
+             class="additional-button">
+          <rappider-button [text]="additionalButton.text"
+                           [type]="additionalButton.type"
+                           [shape]="additionalButton.shape"
+                           [size]="additionalButton.size"
+                           [transparent]="additionalButton.transparent"
+                           [loading]="additionalButton.loading"
+                           [block]="additionalButton.loading"
+                           [disabled]="additionalButton.disabled"
+                           [colorType]="additionalButton.colorType"
+                           [icon]="additionalButton.icon"
+                           [formButtonType]="additionalButton?.formButtonType"
+                           [borderSettings]="additionalButton?.borderSettings"
+                           [customSizeSettings]="additionalButton?.customSizeSettings"
+                           [customColorSettings]="additionalButton?.customColorSettings"
+                           [shadowSettings]="additionalButton?.shadowSettings"
+                           [paddingSettings]="additionalButton?.paddingSettings"
+                           [marginSettings]="additionalButton?.marginSettings"
+                           [tooltipText]="additionalButton?.tooltipText"
+                           (click)="onAdditionalButtonClick(additionalButton, $event)"></rappider-button>
+        </div>
+      </div>
+      <rappider-divider *ngIf="avatarPlacement === AvatarPlacement.Bottom"
+                        [text]="divider?.text"></rappider-divider>
+      <div [class]="avatarPlacement === AvatarPlacement.Top ? 'display-none' : null "
+           class="image-overlay-bottom">
+        <div *ngIf="avatar?.iconName || avatar?.imageUrl"
+             class="avatar">
+          <rappider-avatar [iconName]="avatar.iconName"
+                           [text]="avatar.text"
+                           [shape]="avatar.shape"
+                           [imageUrl]="avatar.imageUrl"
+                           [altText]="avatar.altText"
+                           [cssStyle]="avatar.cssStyle"
+                           [size]="avatar.size"
+                           [borderSettings]="avatar.borderSettings"
+                           [sizeSettings]="avatar.sizeSettings"
+                           [colorSettings]="avatar.colorSettings"
+                           [boxShadowSettings]="avatar.boxShadowSettings"
+                           [paddingSettings]="avatar.paddingSettings"
+                           [marginSettings]="avatar.marginSettings"
+                           [description]="avatar.description"></rappider-avatar>
+        </div>
+        <div *ngIf="avatarButton"
+             class="image-overlay-bottom-button">
+          <rappider-button [text]="avatarButton.text"
+                           [type]="avatarButton.type"
+                           [shape]="avatarButton.shape"
+                           [size]="avatarButton.size"
+                           [transparent]="avatarButton.transparent"
+                           [loading]="avatarButton.loading"
+                           [block]="avatarButton.loading"
+                           [disabled]="avatarButton.disabled"
+                           [colorType]="avatarButton.colorType"
+                           [formButtonType]="avatarButton?.formButtonType"
+                           [borderSettings]="avatarButton?.borderSettings"
+                           [customSizeSettings]="avatarButton?.customSizeSettings"
+                           [customColorSettings]="avatarButton?.customColorSettings"
+                           [shadowSettings]="avatarButton?.shadowSettings"
+                           [paddingSettings]="avatarButton?.paddingSettings"
+                           [marginSettings]="avatarButton?.marginSettings"
+                           [icon]="avatarButton.icon"></rappider-button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isSelected"
+         class="selected-card-icon">
+      <rappider-icon [name]="selectedCardIcon.name"
+                     [theme]="selectedCardIcon.theme"
+                     [type]="selectedCardIcon.type"
+                     [color]="selectedCardIcon.color"></rappider-icon>
+    </div>
+  </div>
+
+</ng-template>

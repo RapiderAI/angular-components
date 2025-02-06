@@ -1,0 +1,89 @@
+<nz-card>
+  <div *ngIf="profileTag"
+       class="profile-tag">
+    <rappider-tag [text]="profileTag.text"
+                  [mode]="profileTag.mode"
+                  [color]="profileTag.color"
+                  [checked]="profileTag.checked"></rappider-tag>
+    <div *ngIf="iconButton"
+         class="icon-button">
+      <rappider-button [transparent]="iconButton.transparent"
+                       [colorType]="iconButton.colorType"
+                       [shape]="iconButton.shape"
+                       [type]="iconButton.type"
+                       [text]="iconButton.text"
+                       [size]="iconButton.size"
+                       [icon]="iconButton.icon"
+                       [loading]="iconButton.loading"
+                       [block]="iconButton.block"
+                       [disabled]="iconButton.disabled"
+                       [icon]="iconButton.icon"
+                       [formButtonType]="iconButton?.formButtonType"
+                       [borderSettings]="iconButton?.borderSettings"
+                       [customSizeSettings]="iconButton?.customSizeSettings"
+                       [customColorSettings]="iconButton?.customColorSettings"
+                       [shadowSettings]="iconButton?.shadowSettings"
+                       [paddingSettings]="iconButton?.paddingSettings"
+                       [marginSettings]="iconButton?.marginSettings"
+                       (click)="onButtonClick(iconButton)"></rappider-button>
+    </div>
+  </div>
+  <div *ngIf="profilePicture"
+       class="profile-picture">
+    <rappider-icon-block [avatar]="profilePicture.avatar"
+                         [title]="profilePicture.title"
+                         [content]="profilePicture.content"
+                         [mode]="profilePicture.mode"></rappider-icon-block>
+    <hr>
+  </div>
+  <div *ngIf="profileTitle"
+       class="profile-title">
+    <rappider-heading [content]="profileTitle.content"
+                      [type]="profileTitle.type"></rappider-heading>
+  </div>
+  <div *ngIf="additionalContent"
+       class="additional-content">
+    <rappider-text [content]="additionalContent.content"
+                   [textMode]="additionalContent.textMode"
+                   [text]="additionalContent.text"
+                   [typography]="additionalContent.typography"
+                   [colorSettings]="additionalContent.colorSettings"></rappider-text>
+  </div>
+  <div *ngIf="icons"
+       class="icons">
+    <rappider-icon-and-menu-list [items]="icons.items"
+                                 [title]="icons.title"
+                                 [button]="icons.button"
+                                 [buttonActionBehavior]="icons.buttonActionBehavior"
+                                 [buttonRedirectUrl]="icons.buttonRedirectUrl"></rappider-icon-and-menu-list>
+  </div>
+  <div *ngIf="tags"
+       class="tags">
+    <div *ngFor="let tag of tags">
+      <rappider-tag [text]="tag.text"
+                    [mode]="tag.mode"
+                    [color]="tag.color"
+                    [checked]="tag.checked"></rappider-tag>
+    </div>
+  </div>
+  <div *ngIf="images"
+       class="images">
+    <div *ngFor="let image of images">
+      <div class="image">
+        <rappider-divider [type]="divider"
+                          [text]="dividerComponentConfig?.text"></rappider-divider>
+        <rappider-image [width]="image?.width"
+                        [source]="image?.source"
+                        [placeholder]="image?.placeholder"
+                        [height]="image?.height"
+                        [fallback]="image?.fallback"
+                        [alternateText]="image?.alternateText"
+                        [borderSettings]="image?.borderSettings"
+                        [customSizeSettings]="image?.width"
+                        [shadowSettings]="image?.shadowSettings"
+                        [marginSettings]="image?.marginSettings"
+                        [paddingSettings]="image?.paddingSettings"></rappider-image>
+      </div>
+    </div>
+  </div>
+</nz-card>

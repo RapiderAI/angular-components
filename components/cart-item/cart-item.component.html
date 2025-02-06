@@ -1,0 +1,124 @@
+<nz-card>
+  <div class="rappider-cart-item">
+    <div *ngIf="image && image.source"
+         class="image-area">
+      <rappider-image [source]="image?.source"
+                      [width]="image?.width"
+                      [alternateText]="image?.alternateText"
+                      [placeholder]="image?.placeholder"
+                      [height]="image?.height"
+                      [fallback]="image?.fallback"
+                      [borderSettings]="image?.borderSettings"
+                      [customSizeSettings]="image?.width"
+                      [shadowSettings]="image?.shadowSettings"
+                      [marginSettings]="image?.marginSettings"
+                      [paddingSettings]="image?.paddingSettings"></rappider-image>
+    </div>
+
+    <div *ngIf="item"
+         class="content-area">
+      <div *ngIf="item.title?.content || item.additionalContent?.content || item.button?.text"
+           class="title-area">
+        <div>
+          <rappider-heading *ngIf="item.title"
+                            [content]="item.title.content"
+                            [type]="item.title.type"></rappider-heading>
+          <rappider-paragraph *ngIf="item.paragraphContent"
+                              [content]="item?.paragraphContent?.content"
+                              [colorSettings]="item?.paragraphContent?.colorSettings"></rappider-paragraph>
+        </div>
+
+        <div *ngIf="item.additionalContent?.content || item.button?.text">
+          <rappider-heading *ngIf="item.additionalContent"
+                            class="price-area"
+                            [content]="item.additionalContent.content"
+                            [type]="item.additionalContent.type"></rappider-heading>
+
+          <div *ngIf="item.button"
+               class="details-button">
+            <rappider-button [text]="item.button.text"
+                             [type]="item.button.type"
+                             [shape]="item.button.shape"
+                             [size]="item.button.size"
+                             [icon]="item.button.icon"
+                             [transparent]="item.button.transparent"
+                             [loading]="item.button.loading"
+                             [block]="item.button.block"
+                             [disabled]="item.button.disabled"
+                             [colorType]="item.button.colorType"
+                             [formButtonType]="item.button?.formButtonType"
+                             [borderSettings]="item.button?.borderSettings"
+                             [customSizeSettings]="item.button?.customSizeSettings"
+                             [customColorSettings]="item.button?.customColorSettings"
+                             [shadowSettings]="item.button?.shadowSettings"
+                             [paddingSettings]="item.button?.paddingSettings"
+                             [marginSettings]="item.button?.marginSettings"
+                             (click)="onButtonClick(item.button)"></rappider-button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="item.panels"
+           class="dropdown-area">
+        <rappider-accordion [panels]="item.panels"
+                            [bordered]="item.bordered"
+                            [collapseIconPosition]="item.collapseIconPosition"
+                            [borderSettings]="item?.borderSettings"
+                            [sizeSettings]="item?.sizeSettings"
+                            [colorSettings]="item?.colorSettings"
+                            [boxShadowSettings]="item?.boxShadowSettings"
+                            [paddingSettings]="item?.paddingSettings"
+                            [marginSettings]="item?.marginSettings"></rappider-accordion>
+      </div>
+
+      <div *ngIf="!item.panels">
+        <rappider-divider [type]="divider"
+                          [text]="divider?.text"></rappider-divider>
+      </div>
+
+      <div *ngIf="additionalItemsTitle?.content"
+           class="additional-items-title">
+        <rappider-heading [type]="additionalItemsTitle.type"
+                          [content]="additionalItemsTitle.content"></rappider-heading>
+      </div>
+
+      <div *ngFor="let item of additionalItems"
+           class="additional-items-area">
+        <div class="row additional-items">
+          <div *ngIf="item.iconBlock"
+               class="col-lg-10 col-md-12 icon-block">
+            <rappider-icon-block [avatar]="item.iconBlock.avatar"
+                                 [title]="item.iconBlock.title"
+                                 [content]="item.iconBlock.content"
+                                 [mode]="item.iconBlock.mode"></rappider-icon-block>
+          </div>
+
+          <div *ngIf="item.button"
+               class="col-lg-2 col-md-12 additional-item-button">
+            <rappider-button [text]="item.button.text"
+                             [type]="item.button.type"
+                             [shape]="item.button.shape"
+                             [size]="item.button.size"
+                             [icon]="item.button.icon"
+                             [transparent]="item.button.transparent"
+                             [loading]="item.button.loading"
+                             [block]="item.button.block"
+                             [disabled]="item.button.disabled"
+                             [colorType]="item.button.colorType"
+                             [formButtonType]="item.button?.formButtonType"
+                             [borderSettings]="item.button?.borderSettings"
+                             [customSizeSettings]="item.button?.customSizeSettings"
+                             [customColorSettings]="item.button?.customColorSettings"
+                             [shadowSettings]="item.button?.shadowSettings"
+                             [paddingSettings]="item.button?.paddingSettings"
+                             [marginSettings]="item.button?.marginSettings"
+                             (click)="onButtonClick(item.button)"></rappider-button>
+          </div>
+        </div>
+        <rappider-divider *ngIf="divider"
+                          [type]="divider"
+                          [text]="divider?.text"></rappider-divider>
+      </div>
+    </div>
+  </div>
+</nz-card>
