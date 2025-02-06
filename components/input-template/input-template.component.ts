@@ -5,14 +5,14 @@ import { inputSettingsDropdownConfig, InputSettingsDropdownOptions, PropertyForm
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { RappiderTagComponent } from '../tag';
-import { RappiderDropdownMenuComponent } from '../dropdown-menu';
-import { RappiderSwitchComponent } from '../switch';
-import { RappiderSelectComponent } from '../select';
-import { RappiderCheckboxComponent } from '../checkbox';
-import { RappiderNumberInputComponent } from '../number-input';
-import { RappiderDatePickerComponent } from '../date-picker';
-import { RappiderTextboxComponent } from '../textbox';
+import { RappiderTagComponent } from '@rapider/angular-components/tag';
+import { RappiderDropdownMenuComponent } from '@rapider/angular-components/dropdown-menu';
+import { RappiderSwitchComponent } from '@rapider/angular-components/switch';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
+import { RappiderCheckboxComponent } from '@rapider/angular-components/checkbox';
+import { RappiderNumberInputComponent } from '@rapider/angular-components/number-input';
+import { RappiderDatePickerComponent } from '@rapider/angular-components/date-picker';
+import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
 
 @Component({
