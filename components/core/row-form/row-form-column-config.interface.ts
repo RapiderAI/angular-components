@@ -1,8 +1,8 @@
-import { SelectableOption } from "../form-utils";
-import { SelectSettings } from "../select";
-import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from "../shared";
-import { SwitchSize } from "../switch";
-import { TextComponentConfig } from "../text";
+import { SelectableOption } from "@rapider/angular-components/core/common";
+import { SelectSettings } from "@rapider/angular-components/core/select";
+import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from "@rapider/angular-components/core/style";
+import { SwitchSize } from "@rapider/angular-components/core/switch";
+import { TextComponentConfig } from "@rapider/angular-components/text";
 
 export interface RowFormColumnConfig {
   mask?: string;

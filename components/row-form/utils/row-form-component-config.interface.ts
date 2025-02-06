@@ -1,9 +1,9 @@
-import { ButtonComponentConfig } from '../button';
-import { TextboxComponentConfig } from '../textbox';
-import { RowFormColumn } from './row-form-column.interface';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { TextboxComponentConfig } from '@rapider/angular-components/textbox';
+import { RowFormColumn } from '@rapider/angular-components/core/row-form';
 
-export interface RowFormConfig {
-  orderable?: boolean; /* allow to drag drop row item in order to order the item */
+export interface RowFormComponentConfig {
+  orderable?: boolean;
   addButtonVisible?: boolean;
   addButton?: ButtonComponentConfig;
   columns?: RowFormColumn[];

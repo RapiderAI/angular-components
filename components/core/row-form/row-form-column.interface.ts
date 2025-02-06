@@ -1,5 +1,5 @@
-import { CrudFormItemValidator } from '../edit-form/crud-form-item-validator.interface';
-import { InputTemplateTypeAndFormat } from '../input-template';
+import { CrudFormItemValidator } from '@rapider/angular-components/core/edit-form';
+import { InputTemplateTypeAndFormat } from '@rapider/angular-components/core/input-template';
 import { RowFormColumnConfig } from './row-form-column-config.interface';
 
 export interface RowFormColumn {

@@ -21,6 +21,8 @@ import { RappiderTextboxComponent, TextboxComponentConfig } from '@rapider/angul
 import { RowFormColumn } from '@rapider/angular-components/core/row-form';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { FormService } from '@rapider/angular-components/core/services';
+import { RappiderInputTemplateComponent } from '@rapider/angular-components/input-template';
+import { UniqueValidator } from '@rapider/angular-components/core/validators';
 
 @Component({
   selector: 'rappider-row-form',
@@ -35,7 +37,7 @@ import { FormService } from '@rapider/angular-components/core/services';
     NzInputModule,
     NzButtonModule,
     RappiderInputErrorComponent,
-    // RappiderInputTemplateModule,
+    RappiderInputTemplateComponent,
     NzPopconfirmModule,
     RappiderButtonComponent,
     RappiderTextComponent,
@@ -315,13 +317,14 @@ export class RappiderRowFormComponent implements OnInit, OnChanges, OnDestroy, C
           return 'This field must be unique';
         } else {
           const validators = this.columns.find(column => column.fieldName === fieldName)?.validators;
-          const existingValidator = validators.find(validator => validator.errorKey === errorKey);
+          const existingValidator = validators?.find(validator => validator.errorKey === errorKey);
           if (existingValidator) {
             return existingValidator.errorMessage;
           }
         }
+        return '';
       }).filter(e => e);
-    }
+    }    
 
     return errorMessages;
   }
