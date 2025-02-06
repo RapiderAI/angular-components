@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IconComponentConfig, RappiderIconComponent } from '@rapider/angular-components/icon';
 import { IconType } from '@rapider/angular-components/core/icon';
-import { RappiderButtonComponent } from '../button';
-import { ButtonType } from '../core/button/button-type.enum';
+import { RappiderButtonComponent } from '@rapider/angular-components/button';
+import { ButtonType } from '@rapider/angular-components/core/button';
 
 @Component({
   selector: 'rappider-email-viewer',
