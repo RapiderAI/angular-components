@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -9,6 +9,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
+import { NgxStripeModule } from 'ngx-stripe';
 
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
 import { registerLocaleData } from '@angular/common'; 
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideNzIcons(icons),
     provideTranslateService(),
     { provide: LOCALE_ID, useValue: 'en-US' },
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },
+    // importProvidersFrom(NgxStripeModule.forRoot(environment['stripePublishableKey'])) need environment
   ]
 };
