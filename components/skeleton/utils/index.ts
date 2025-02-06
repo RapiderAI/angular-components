@@ -1,1 +1,0 @@
-export * from './skeleton-avatar-component-config.interface';
