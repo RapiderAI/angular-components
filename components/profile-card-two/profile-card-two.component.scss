@@ -1,0 +1,29 @@
+.scholar-card {
+  display: flex;
+  justify-content: space-between;
+  min-width: 500px;
+  transition: 0.3s;
+  border: none;
+
+  &:hover {
+    box-shadow: var(--box-shadow);
+  }
+}
+
+.profile {
+  display: flex;
+  gap: var(--margin-3x);
+}
+
+.success {
+  background-color: #00c9a71a;
+}
+
+.warning {
+  background-color: #f443361f;
+}
+
+.none {
+  background-color: var(--section-background-color);
+  border: var(--border-size-x) solid var(--primary-border-color);
+}

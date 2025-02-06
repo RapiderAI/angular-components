@@ -1,0 +1,19 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: var(--margin-3x) 0px;
+}
+
+.icon {
+  margin-right: var(--margin-2x);
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  padding-top: var(--margin-2x);
+  rappider-button {
+    margin-right: var(--margin-x);
+  }
+}

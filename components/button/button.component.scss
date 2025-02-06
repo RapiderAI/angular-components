@@ -181,6 +181,28 @@
   }
 }
 
+.ant-btn-link {
+  color: var(--link-color);
+  background-color: transparent;
+  border: 0px;
+  padding: 0px;
+  height: 0px;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: var(--link-hover-color);
+  }
+
+  &:active {
+    background-color: var(--link-color);
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
 .button-icon-right {
   display: flex;
   flex-direction: row-reverse;

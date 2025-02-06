@@ -1,0 +1,98 @@
+<section class="title-bar">
+  <div class="main-area">
+    <div *ngIf="mainTitle"
+         class="main-title">
+      <rappider-heading [content]="mainTitle.content"
+                        [type]="mainTitle.type"></rappider-heading>
+    </div>
+
+    <!-- ----------------------------------------------------------------------------------------- -->
+    <!-- BREADCRUMB -->
+    <div *ngIf="options?.length && displayBreadcrumb"
+         class="breadcrumb-area">
+      <rappider-icon *ngIf="actionIcon && actionIcon?.name"
+                     [name]="actionIcon.name"
+                     [type]="actionIcon.type"
+                     [theme]="actionIcon.theme"
+                     [color]="actionIcon.color"
+                     [size]="actionIcon.size"
+                     (click)="onActionIconClick()"></rappider-icon>
+      <rappider-breadcrumb [options]="options"
+                           [cssStyle]="cssStyle"
+                           (optionClick)="onOptionClick($event)">
+      </rappider-breadcrumb>
+    </div>
+    <!-- / BREADCRUMB -->
+    <!-- ----------------------------------------------------------------------------------------- -->
+  </div>
+  <div class="bar-buttons">
+    <!-- ----------------------------------------------------------------------------------------- -->
+
+    <!-- RADIO BUTTONS -->
+    <div *ngIf="radioButtonSettings">
+      <rappider-radio [options]="radioButtonSettings"
+                      [showOptionsAsButtons]="true"
+                      (valueChange)="onRadioButtonValueChange($event)">
+
+      </rappider-radio>
+    </div>
+    <!-- BUTTONS -->
+    <ng-container *ngFor="let actionButton of actionButtons">
+      <rappider-button *ngIf="actionButton?.visible !== false"
+                       [text]="actionButton.text"
+                       [type]="actionButton.type"
+                       [shape]="actionButton.shape"
+                       [size]="actionButton.size"
+                       [transparent]="actionButton.transparent"
+                       [loading]="actionButton.loading"
+                       [block]="actionButton.loading"
+                       [disabled]="actionButton.disabled"
+                       [colorType]="actionButton.colorType"
+                       [icon]="actionButton.icon"
+                       [emitWithoutPopconfirm]="actionButton.emitWithoutPopconfirm"
+                       [popconfirmTitle]="actionButton.popconfirmTitle"
+                       [formButtonType]="actionButton?.formButtonType"
+                       [borderSettings]="actionButton?.borderSettings"
+                       [customSizeSettings]="actionButton?.customSizeSettings"
+                       [customColorSettings]="actionButton?.customColorSettings"
+                       [shadowSettings]="actionButton?.shadowSettings"
+                       [paddingSettings]="actionButton?.paddingSettings"
+                       [marginSettings]="actionButton?.marginSettings"
+                       [tooltipText]="actionButton?.tooltipText"
+                       [tooltipPlacement]="actionButton?.tooltipPlacement"
+                       (confirm)="onClickActionButton(actionButton)"></rappider-button>
+    </ng-container>
+    <!-- / BUTTONS -->
+    <!-- ----------------------------------------------------------------------------------------- -->
+
+    <div class="title-bar-right">
+      <div *ngIf="switchSettings"
+           class="title-bar-right-item">
+        <rappider-switch nz-tooltip
+                         [nzTooltipTitle]="switchSettings?.tooltipText"
+                         [ngModel]="switchChecked"
+                         [text]="switchSettings?.text"
+                         [size]="switchSettings?.size"
+                         [textPosition]="switchSettings?.textPosition"
+                         (valueChange)="onSwitchValueChanged($event)"></rappider-switch>
+      </div>
+
+      <!-- ----------------------------------------------------------------------------------------- -->
+      <!-- MENU -->
+      <div *ngIf="dropdownMenu"
+           class="title-bar-right-item">
+        <rappider-dropdown-menu [items]="dropdownMenu?.items"
+                                [label]="dropdownMenu?.label"
+                                [icon]="dropdownMenu?.icon"
+                                [triggerType]="dropdownMenu?.triggerType"
+                                [placement]="dropdownMenu?.placement"
+                                [labelMode]="dropdownMenu?.labelMode"
+                                (menuItemClick)="onMenuItemClick($event)"></rappider-dropdown-menu>
+      </div>
+
+      <!-- / MENU -->
+      <!-- ----------------------------------------------------------------------------------------- -->
+
+    </div>
+  </div>
+</section>

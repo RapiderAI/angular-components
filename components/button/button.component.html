@@ -23,6 +23,7 @@
           [disabled]="disabled"
           [class]="colorType + customCssClass ? ' ' + customCssClass : ''"
           [type]="formButtonType || 'button'"
+          [nzPopconfirmPlacement]="popconfirmPlacement"
           [style.border-top]="borderSettings?.borderTop + ' ' + borderSettings?.borderStyle"
           [style.border-right]="borderSettings?.borderRight + ' ' + borderSettings?.borderStyle"
           [style.border-bottom]="borderSettings?.borderBottom + ' ' + borderSettings?.borderStyle"

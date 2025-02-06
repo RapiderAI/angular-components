@@ -1,0 +1,18 @@
+.search {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: var(--margin-4x);
+
+  ::ng-deep rappider-auto-complete{
+    width: 100%;
+  }
+}
+
+.block-search-button {
+  width: 100%;
+}
+
+.search-button {
+  width: auto;
+}

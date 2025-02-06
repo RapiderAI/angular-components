@@ -1,0 +1,13 @@
+<nz-input-group class="dimension-select"
+                nzCompact>
+  <rappider-number-input [(ngModel)]="number"
+                         [disabled]="disabled"
+                         (blur)="onBlur()"
+                         (ngModelChange)="numberOrTypeValueChange()"></rappider-number-input>
+  <rappider-select [(ngModel)]="type"
+                   [options]="selectOptions"
+                   [settings]="selectSettings"
+                   [disabled]="disabled"
+                   (blur)="onBlur()"
+                   (ngModelChange)="numberOrTypeValueChange()"></rappider-select>
+</nz-input-group>

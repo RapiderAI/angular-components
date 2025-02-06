@@ -1,0 +1,26 @@
+<div>
+  <div *ngIf="title"
+       class="header-section">
+    <rappider-heading [type]="title.type"
+                      [content]="title.content"></rappider-heading>
+  </div>
+  <div *ngIf="rate"
+       class="rate-section">
+    <rappider-rate-display [rate]="rate"></rappider-rate-display>&nbsp;
+  </div>
+  <div *ngIf="progresses"
+       class="progress-section">
+    <rappider-progress *ngFor="let progress of progresses"
+                       [percent]="progress?.percent"
+                       [type]="progress?.type"
+                       [status]="progress?.status"
+                       [showInfo]="progress?.showInfo"
+                       [successPercent]="progress?.successPercent"
+                       [size]="progress?.size"
+                       [width]="progress?.width"
+                       [strokeWidth]="progress?.strokeWidth"
+                       [colorSettings]="progress?.colorSettings"
+                       [marginSettings]="progress?.marginSettings"
+                       [paddingSettings]="progress?.paddingSettings"></rappider-progress>
+  </div>
+</div>

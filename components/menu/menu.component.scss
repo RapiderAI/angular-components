@@ -1,0 +1,45 @@
+[nz-menu] {
+  width: 240px;
+}
+
+.menu {
+  width: 100%;
+
+  ::ng-deep {
+    .anticon {
+      vertical-align: baseline !important;
+    }
+
+    .ant-menu-horizontal {
+      display: flex;
+    }
+  }
+}
+
+.menu-item-icon-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--padding-2x);
+
+  .menu-item-icon {
+    display: flex;
+    align-items: center;
+    line-height: 36px;
+    padding-right: var(--padding-x);
+  }
+}
+
+.menu-tag {
+  float: right;
+  position: absolute;
+  right: 0px;
+  top: 11px;
+  font-size: x-small;
+  padding: 3px 5px;
+  line-height: 10px;
+}
+
+::ng-deep .menu-submenu-horizontal {
+  width: fit-content;
+}
