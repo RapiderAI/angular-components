@@ -1,0 +1,12 @@
+<div class="click-to-dial"
+     (click)="status && dial()"
+     [ngClass]="{'hover-enabled': status}">
+  <rappider-icon [name]="status ? 'fas fa-phone' : 'fas fa-phone-slash'"
+                 class="dial-icon">
+  </rappider-icon>
+  <rappider-button [disabled]="!status"
+                   [type]="'link'"
+                   [iconPlacement]="'left'"
+                   [text]="displayValue">
+  </rappider-button>
+</div>
