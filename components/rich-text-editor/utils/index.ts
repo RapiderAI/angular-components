@@ -1,1 +1,1 @@
-export * from './rich-text-editor-config.interface';
+export * from './rich-text-editor-component-config.interface';
