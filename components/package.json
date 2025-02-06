@@ -16,7 +16,8 @@
     "ngx-mask": "^19.0.6",
     "ngx-extended-pdf-viewer": "^22.3.9",
     "marked": "^15.0.6",
-    "monaco-editor": "^0.52.2"
+    "monaco-editor": "^0.52.2",
+    "@antv/g2": "^5.2.10"
   },
   "dependencies": {
     "tslib": "^2.3.0"
