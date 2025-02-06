@@ -1,4 +1,5 @@
-import { PropertyType, PropertyFormat } from '@rapider/angular-components/core/input-template';
+import { PropertyFormat } from "./property-format";
+import { PropertyType } from "./property-type.enum";
 
 export interface InputTemplateTypeAndFormat {
     type: PropertyType;

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { inputSettingsDropdownConfig, InputSettingsDropdownOptions, PropertyFormat, PropertyType, SupportedFormats, SupportedTypes } from '@rapider/angular-components/core/input-template';
+import { inputSettingsDropdownConfig, InputSettingsDropdownOptions, InputTemplateTypeAndFormat, PropertyFormat, PropertyType, SupportedFormats, SupportedTypes } from '@rapider/angular-components/core/input-template';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -13,7 +13,6 @@ import { RappiderNumberInputComponent } from '@rapider/angular-components/number
 import { RappiderDatePickerComponent } from '@rapider/angular-components/date-picker';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
-import { InputTemplateTypeAndFormat } from './utils';
 
 @Component({
   selector: 'rappider-input-template',
