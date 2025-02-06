@@ -1,0 +1,17 @@
+<div class="transfer">
+  <nz-transfer
+    [(ngModel)]="value"
+    [nzDataSource]="list"
+    [nzDisabled]="disabled"
+    [nzTitles]="titles"
+    [nzSelectedKeys]="selectedKeys"
+    [nzShowSelectAll]="isSelectAllButtonVisible"
+    [nzShowSearch]="isSearchable"
+    [nzSearchPlaceholder]="placeholder"
+    [nzNotFoundContent]="notFoundText"
+    [nzTargetKeys]="key"
+    [nzCanMove]="canMove"
+    (nzChange)="onValueChange($event)"
+    (nzSelectChange)="onSelectChange($event)">
+  </nz-transfer>
+</div>
