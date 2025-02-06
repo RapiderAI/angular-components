@@ -1,0 +1,149 @@
+<!-- DEFAULT TEMPLATE CONTAINER -->
+<div class="input-template-component">
+  <nz-input-group [nzAddOnAfter]="isInputOptionsVisible ? inputOptionsTemplate : null">
+    <div class="input-area">
+      <ng-template #defaultTextboxTemplate>
+        <rappider-textbox [(ngModel)]="value"
+                          [mask]="config?.mask"
+                          [borderSettings]="config?.borderSettings"
+                          [sizeSettings]="config?.sizeSettings"
+                          [colorSettings]="config?.colorSettings"
+                          [boxShadowSettings]="config?.boxShadowSettings"
+                          [paddingSettings]="config?.paddingSettings"
+                          [marginSettings]="config?.marginSettings"
+                          [disabled]="config?.disabled"
+                          (blur)="onBlur()"
+                          [placeholder]="config?.placeholder"></rappider-textbox>
+      </ng-template>
+
+      <ng-template #nullTemplate>
+        <div class="null-tag">
+          <rappider-tag [text]="{text: 'Null'}"></rappider-tag>
+        </div>
+      </ng-template>
+
+      <ng-container *ngIf="!isTypeAndFormatSupported; else supportedTemplates">
+        <ng-container
+                      *ngTemplateOutlet="typeAndFormat?.type === PropertyType.Null ? nullTemplate : defaultTextboxTemplate">
+        </ng-container>
+      </ng-container>
+
+      <ng-template #supportedTemplates>
+        <!-- NULL TEMPLATE CONTAINER -->
+        <ng-container *ngIf="typeAndFormat.type === PropertyType.Null">
+          <ng-container *ngTemplateOutlet="nullTemplate"></ng-container>
+        </ng-container>
+
+        <!-- STRING TEMPLATE CONTAINER -->
+        <div *ngIf="typeAndFormat.type === PropertyType.String">
+          <ng-container *ngIf="!typeAndFormat.format || typeAndFormat.format === PropertyFormat.UUID">
+            <rappider-textbox [(ngModel)]="value"
+                              [mask]="config?.mask"
+                              [borderSettings]="config?.borderSettings"
+                              [sizeSettings]="config?.sizeSettings"
+                              [colorSettings]="config?.colorSettings"
+                              [boxShadowSettings]="config?.boxShadowSettings"
+                              [paddingSettings]="config?.paddingSettings"
+                              [marginSettings]="config?.marginSettings"
+                              [disabled]="config?.disabled"
+                              (blur)="onBlur()"
+                              [placeholder]="config?.placeholder"></rappider-textbox>
+          </ng-container>
+
+          <ng-container *ngIf="typeAndFormat.format === PropertyFormat.DateTime">
+            <rappider-date-picker [(ngModel)]="value"
+                                  [borderSettings]="config?.borderSettings"
+                                  [customSizeSettings]="config?.customSizeSettings"
+                                  [shadowSettings]="config?.shadowSettings"
+                                  [marginSettings]="config?.marginSettings"
+                                  [disabled]="config?.disabled"
+                                  (blur)="onBlur()"
+                                  [paddingSettings]="config?.paddingSettings"></rappider-date-picker>
+          </ng-container>
+        </div>
+
+        <!-- NUMBER TEMPLATE CONTAINER -->
+        <div *ngIf="typeAndFormat.type === PropertyType.Integer || typeAndFormat.type === PropertyType.Number">
+          <ng-container *ngIf="!typeAndFormat.format">
+            <rappider-number-input [(ngModel)]="value"
+                                   [borderSettings]="config?.borderSettings"
+                                   [marginSettings]="config?.marginSettings"
+                                   [paddingSettings]="config?.paddingSettings"
+                                   [shadowSettings]="config?.shadowSettings"
+                                   [sizeSettings]="config?.sizeSettings"
+                                   [colorSettings]="config?.colorSettings"
+                                   [cssClass]="config?.cssClass"
+                                   [disabled]="config?.disabled"
+                                   [cssStyle]="config?.cssStyle"
+                                   (blur)="onBlur()"></rappider-number-input>
+          </ng-container>
+
+          <ng-container *ngIf="typeAndFormat.format === PropertyFormat.DateTime">
+            <rappider-date-picker [(ngModel)]="value"
+                                  [borderSettings]="config?.borderSettings"
+                                  [customSizeSettings]="config?.customSizeSettings"
+                                  [shadowSettings]="config?.shadowSettings"
+                                  [marginSettings]="config?.marginSettings"
+                                  [disabled]="config?.disabled"
+                                  [paddingSettings]="config?.paddingSettings"
+                                  (blur)="onBlur()"></rappider-date-picker>
+          </ng-container>
+        </div>
+
+        <!-- BOOLEAN TEMPLATE CONTAINER -->
+        <ng-container *ngIf="typeAndFormat.type === PropertyType.Boolean">
+          <div class="checkbox-area">
+            <rappider-switch [(ngModel)]="value"
+                             [text]="config?.text"
+                             [size]="config?.size"
+                             [disabled]="config?.disabled"
+                             [loading]="config?.loading"
+                             (blur)="onBlur()"></rappider-switch>
+            <p class="switch-value">{{ value }}</p>
+          </div>
+        </ng-container>
+
+        <!-- ARRAY - OBJECT TEMPLATE -->
+        <ng-container
+                      *ngIf="(typeAndFormat.type === PropertyType.Array) || (typeAndFormat.type === PropertyType.Object)">
+          <div *ngIf="showCodemirrorForObjectAndArray; else defaultTextboxTemplate"
+               class="object-and-array-area">
+            <rappider-monaco-code-editor [(ngModel)]="value"
+                                         [autoFormat]="true"
+                                         [disabled]="config?.disabled"
+                                         [options]="CODEMIRROR_JSON_SETTINGS"></rappider-monaco-code-editor>
+          </div>
+        </ng-container>
+
+        <!-- DATE TYPE TEMPLATE -->
+        <ng-container *ngIf="typeAndFormat.type === PropertyType.Date">
+          <rappider-date-picker [(ngModel)]="value"
+                                [borderSettings]="config?.borderSettings"
+                                [customSizeSettings]="config?.customSizeSettings"
+                                [shadowSettings]="config?.shadowSettings"
+                                [marginSettings]="config?.marginSettings"
+                                [disabled]="config?.disabled"
+                                [paddingSettings]="config?.paddingSettings"></rappider-date-picker>
+        </ng-container>
+
+        <!-- SELECT TYPE TEMPLATE -->
+        <ng-container *ngIf="typeAndFormat.type === PropertyType.Enum">
+          <rappider-select [(ngModel)]="value"
+                           [options]="config?.options"
+                           [settings]="config?.settings"
+                           [disabled]="config?.disabled"
+                           [placeholder]="config?.placeholder"
+                           (blur)="onBlur()"></rappider-select>
+        </ng-container>
+      </ng-template>
+    </div>
+  </nz-input-group>
+
+  <ng-template #inputOptionsTemplate>
+    <div class="actions-dropdown">
+      <rappider-dropdown-menu [items]="inputSettingsDropdownConfig.items"
+                              [icon]="inputSettingsDropdownConfig.icon"
+                              (menuItemClick)="onInputSettingsDropdownItemClick($event)"></rappider-dropdown-menu>
+    </div>
+  </ng-template>
+</div>
