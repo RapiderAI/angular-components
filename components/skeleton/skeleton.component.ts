@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SkeletonAvatarShape, SkeletonType, SkeletonElementSize, SkeletonElementButtonShape } from '@rapider/angular-components/core/skeleton';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +8,8 @@ import { CommonModule } from '@angular/common';
   selector: 'rappider-skeleton',
   templateUrl: './skeleton.component.html',
   imports:[
-    CommonModule
+    CommonModule,
+    NzSkeletonModule
   ],
   standalone: true,
   styleUrls: ['./skeleton.component.scss']
