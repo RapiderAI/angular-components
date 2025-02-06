@@ -17,7 +17,9 @@
     "ngx-extended-pdf-viewer": "^22.3.9",
     "ngx-quill": "^27.0.0",
     "quill": "^2.0.3",
-    "quill-mention": "^6.0.2"
+    "quill-mention": "^6.0.2",
+    "marked": "^15.0.6",
+    "monaco-editor": "^0.52.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
