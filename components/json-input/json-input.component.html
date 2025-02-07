@@ -1,0 +1,11 @@
+<div style="height: 300px;">
+  <rappider-monaco-code-editor [ngModel]="localeValue"
+                               [autoFormat]="true"
+                               [options]="editorOptions"
+                               (ngModelChange)="onCodemirrorValueChange($event)">
+  </rappider-monaco-code-editor>
+</div>
+<div class="code-mirror-save-button">
+  <rappider-button text="Save"
+                   (click)="onCodemirrorSave()"></rappider-button>
+</div>

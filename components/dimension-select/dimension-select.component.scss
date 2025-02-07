@@ -1,0 +1,28 @@
+.dimension-select {
+  display: flex;
+  ::ng-deep {
+    rappider-number-input {
+      width: 100%;
+      .ant-input-number {
+        border-radius: var(--border-radius-x) 0px 0px var(--border-radius-x);
+        height: 2.5625rem;
+      }
+    }
+
+    rappider-select {
+      margin-left: 1px;
+      .ant-select-selector {
+        border-radius: 0px var(--border-radius-x) var(--border-radius-x) 0px !important;
+        height: 2.5625rem !important;
+      }
+    }
+
+    rappider-textbox {
+      width: 100%;
+      .ant-input {
+        border-radius: var(--border-radius-x) 0px 0px var(--border-radius-x);
+        height: 2.5625rem;
+      }
+    }
+  }
+}
