@@ -1,0 +1,16 @@
+.title-area {
+  margin-bottom: var(--margin-3x);
+}
+
+.titles {
+  margin-bottom: var(--margin-x);
+
+  &:last-child {
+    margin: 0px;
+  }
+}
+
+.tag-list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+}

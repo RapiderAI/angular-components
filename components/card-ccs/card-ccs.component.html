@@ -1,0 +1,123 @@
+<nz-card nzHoverable
+         [nzCover]="coverTemplate"
+         [nzActions]="[firstActionTemplate, secondActionTemplate, thirdActionTemplate]"
+         (click)="itemClicked()">
+  <div class="card-content-container">
+    <ng-container *ngIf="colorBand">
+      <div class="color-band"
+           [style.background-color]="colorBand"></div>
+    </ng-container>
+    <div class="card-content">
+      <ng-container *ngIf="title">
+        <rappider-heading [content]="title.content"
+                          [type]="title.type"></rappider-heading>
+      </ng-container>
+      <div (mousedown)="itemClicked()">
+        <ng-container *ngFor="let subtitle of subtitles">
+          <rappider-heading [content]="subtitle.content"
+                            [colorSettings]="subtitle.colorSettings"
+                            [type]="subtitle.type"></rappider-heading>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="description">
+        <rappider-text [content]="description.content"
+                       [textMode]="description.textMode"
+                       [text]="description.text"
+                       [typography]="description.typography"
+                       [colorSettings]="description.colorSettings"></rappider-text>
+      </ng-container>
+    </div>
+  </div>
+  <div *ngIf="selected"
+       class="selected-card-icon">
+    <rappider-icon [name]="selectedCardIcon.name"
+                   [theme]="selectedCardIcon.theme"
+                   [type]="selectedCardIcon.type"
+                   [color]="selectedCardIcon.color"></rappider-icon>
+  </div>
+</nz-card>
+
+<ng-template #coverTemplate>
+  <ng-container *ngIf="image">
+    <rappider-image class="cover-img"
+                    [source]="image?.source"
+                    [width]="image?.width"
+                    [height]="image?.height"
+                    [placeholder]="image?.placeholder"
+                    [alternateText]="image?.alternateText"
+                    [fallback]="image?.fallback"
+                    [disablePreview]="image?.disablePreview"
+                    [borderSettings]="image?.borderSettings"
+                    [shadowSettings]="image?.shadowSettings"
+                    [marginSettings]="image?.marginSettings"
+                    [paddingSettings]="image?.paddingSettings"
+                    [customSizeSettings]="image?.customSizeSettings"></rappider-image>
+  </ng-container>
+  <ng-container *ngIf="!image && thumbnailTemplate">
+    <ng-container *ngTemplateOutlet="thumbnailTemplate"></ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #firstActionTemplate>
+  <ng-container *ngIf="firstActionButton">
+    <rappider-button [tooltipText]="firstActionButton.tooltipText"
+                     [transparent]="firstActionButton.transparent"
+                     [colorType]="firstActionButton.colorType"
+                     [shape]="firstActionButton.shape"
+                     [type]="firstActionButton.type"
+                     [text]="firstActionButton.text"
+                     [size]="firstActionButton.size"
+                     [icon]="firstActionButton.icon"
+                     [loading]="firstActionButton.loading"
+                     [block]="firstActionButton.block"
+                     [disabled]="firstActionButton.disabled"
+                     [icon]="firstActionButton.icon"
+                     [emitWithoutPopconfirm]="firstActionButton.emitWithoutPopconfirm"
+                     [popconfirmTitle]="firstActionButton.popconfirmTitle"
+                     [tooltipText]="firstActionButton.tooltipText"
+                     (confirm)="actionClicked(firstActionButton)"
+                     (click)="$event?.stopPropagation()"></rappider-button>
+  </ng-container>
+</ng-template>
+<ng-template #secondActionTemplate>
+  <ng-container *ngIf="secondActionButton">
+    <rappider-button [transparent]="secondActionButton.transparent"
+                     [colorType]="secondActionButton.colorType"
+                     [shape]="secondActionButton.shape"
+                     [type]="secondActionButton.type"
+                     [text]="secondActionButton.text"
+                     [size]="secondActionButton.size"
+                     [icon]="secondActionButton.icon"
+                     [loading]="secondActionButton.loading"
+                     [block]="secondActionButton.block"
+                     [disabled]="secondActionButton.disabled"
+                     [icon]="secondActionButton.icon"
+                     [emitWithoutPopconfirm]="secondActionButton.emitWithoutPopconfirm"
+                     [popconfirmTitle]="secondActionButton.popconfirmTitle"
+                     [tooltipText]="secondActionButton.tooltipText"
+                     (confirm)="actionClicked(secondActionButton)"
+                     (click)="$event?.stopPropagation()"></rappider-button>
+  </ng-container>
+</ng-template>
+<ng-template #thirdActionTemplate>
+  <ng-container *ngIf="thirdActionButton">
+    <rappider-button [transparent]="thirdActionButton.transparent"
+                     [colorType]="thirdActionButton.colorType"
+                     [shape]="thirdActionButton.shape"
+                     [type]="thirdActionButton.type"
+                     [text]="thirdActionButton.text"
+                     [size]="thirdActionButton.size"
+                     [icon]="thirdActionButton.icon"
+                     [loading]="thirdActionButton.loading"
+                     [block]="thirdActionButton.block"
+                     [disabled]="thirdActionButton.disabled"
+                     [icon]="thirdActionButton.icon"
+                     [emitWithoutPopconfirm]="thirdActionButton.emitWithoutPopconfirm"
+                     [popconfirmTitle]="thirdActionButton.popconfirmTitle"
+                     [popconfirmOkText]="thirdActionButton.popconfirmOkText"
+                     [popconfirmOkDanger]="thirdActionButton.popconfirmOkDanger"
+                     [tooltipText]="thirdActionButton.tooltipText"
+                     (confirm)="actionClicked(thirdActionButton)"
+                     (click)="$event?.stopPropagation()"></rappider-button>
+  </ng-container>
+</ng-template>

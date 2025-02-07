@@ -1,0 +1,1 @@
+export * from './crud-form-item-validator.interface';

@@ -1,0 +1,1 @@
+export * from './search-button-click-output.interface';

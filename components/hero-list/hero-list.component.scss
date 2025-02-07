@@ -1,0 +1,25 @@
+.hero-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-list-header {
+  margin-bottom: var(--margin-5x);
+}
+
+.titles {
+  margin-bottom: var(--margin-x);
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.item-area {
+  display: flex;
+
+  @media only screen and (max-width: 900px) {
+    flex-wrap: wrap;
+  }
+}
