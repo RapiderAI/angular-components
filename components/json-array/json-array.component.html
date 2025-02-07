@@ -1,0 +1,76 @@
+<div class="json-array">
+  <div class="radio-group">
+    <rappider-radio-group [options]="radioGroupComponentConfig.options"
+                          [size]="radioGroupComponentConfig.size"
+                          [(ngModel)]="componentOption"
+                          (ngModelChange)="onComponentOptionChange($event)"></rappider-radio-group>
+  </div>
+
+  <ng-container *ngIf="componentOption === ComponentOption.GridView">
+    <section *ngIf="value?.length else JsonArrayEmptyList"
+             class="grid-view">
+      <rappider-list-grid [config]="JSON_ARRAY_LIST_GRID_CONFIG"
+                          [data]="value"
+                          (columnActionClick)="itemActionClick($event)"
+                          (orderChange)="onOrderChange($event)">
+      </rappider-list-grid>
+    </section>
+    <!-- add button -->
+    <div>
+      <rappider-button *ngIf="button"
+                       class="default-button"
+                       [type]="button.type"
+                       [shape]="button.shape"
+                       [text]="button.text"
+                       [size]="button.size"
+                       [transparent]="button.transparent"
+                       [loading]="button.loading"
+                       [block]="button.block"
+                       [disabled]="button.disabled"
+                       [colorType]="button.colorType"
+                       [icon]="button.icon"
+                       (click)="addNewJson()"></rappider-button>
+    </div>
+    <rappider-modal [(visible)]="isModalVisible"
+                    [title]="titleTemplate"
+                    [fullScreen]="true"
+                    (cancelClick)="closeJsonArrayModal()"
+                    (okClick)="onValueChange()">
+      <rappider-spin [spinning]="!openCodemirror">
+        <div style="height:300px">
+          <rappider-monaco-code-editor *ngIf="openCodemirror && componentOption === ComponentOption.GridView && codeEditorVisible"
+                                       [(ngModel)]="currentValue"
+                                       [autoFormat]="true"
+                                       [options]="JSON_CODEMIRROR_SETTINGS"></rappider-monaco-code-editor>
+        </div>
+      </rappider-spin>
+
+      <ng-template #titleTemplate>
+        <div class="modal-title">
+          {{ modalTitle | translate }}
+        </div>
+      </ng-template>
+    </rappider-modal>
+  </ng-container>
+
+  <ng-template #JsonArrayEmptyList>
+    <rappider-list-grid [config]="JSON_ARRAY_EMPTY_LIST_CONFIG"></rappider-list-grid>
+  </ng-template>
+
+  <ng-container *ngIf="componentOption === ComponentOption.CodeMirror">
+    <rappider-spin [spinning]="!openCodemirror">
+      <div style="height: 300px;">
+        <rappider-monaco-code-editor *ngIf="openCodemirror && componentOption === this.ComponentOption.CodeMirror"
+                                     [ngModel]="localeValue"
+                                     [autoFormat]="true"
+                                     [options]="JSON_CODEMIRROR_SETTINGS"
+                                     (ngModelChange)="onCodemirrorValueChange($event)"></rappider-monaco-code-editor>
+      </div>
+      <div class="code-mirror-save-button">
+        <rappider-button text="SHARED.SAVE"
+                         (click)="onCodemirrorSave()"></rappider-button>
+      </div>
+    </rappider-spin>
+  </ng-container>
+
+</div>
