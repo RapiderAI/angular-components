@@ -1,7 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { CarouselEffect } from '@rapider/angular-components/core/carousel';
 import { CommonModule } from '@angular/common';
-import { NzCarouselComponent } from 'ng-zorro-antd/carousel';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { RappiderTextComponent } from '../text';
 
 @Component({
@@ -9,7 +9,7 @@ import { RappiderTextComponent } from '../text';
   templateUrl: './carousel.component.html',
   imports:[
     CommonModule,
-    NzCarouselComponent,
+    NzCarouselModule,
     RappiderTextComponent
   ],
   standalone: true,
