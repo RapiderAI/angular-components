@@ -2,7 +2,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
 import { CarouselEffect } from '@rapider/angular-components/core/carousel';
 import { CommonModule } from '@angular/common';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
-import { RappiderTextComponent } from '../text';
+import { RappiderTextComponent } from '@rapider/angular-components/text';
 
 @Component({
   selector: 'rappider-carousel',
