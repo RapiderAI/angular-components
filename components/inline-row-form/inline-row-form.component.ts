@@ -19,6 +19,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-components/text';
+import { RappiderInputTemplateComponent } from '@rapider/angular-components/input-template';
+import { RowFormColumn } from '@rapider/angular-components/core/row-form';
 
 @Component({
   selector: 'rappider-inline-row-form',
@@ -33,7 +35,7 @@ import { RappiderTextComponent, TextComponentConfig } from '@rapider/angular-com
     NzInputModule,
     NzButtonModule,
     RappiderInputErrorComponent,
-    // RappiderInputTemplateModule,
+    RappiderInputTemplateComponent,
     RappiderButtonComponent,
     RappiderTextComponent
   ],
