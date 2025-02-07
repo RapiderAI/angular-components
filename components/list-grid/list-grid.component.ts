@@ -36,7 +36,8 @@ import { Action, ActionBehavior, ActionResponse, ActionView, HorizontalPosition 
 import { CRUD_TABLE_DEFAULT_PAGINATION, CrudTableViewColumn, CrudTableViewConfig, CrudViewColumnType, FieldValueChangeOutput, OrderChangeOutput, crudTableDefaultItemActionsLength } from '../core/list-grid';
 import { DropdownMenuItem } from '../core/dropdown-menu';
 import { MenuActionBehavior } from '../core/menu';
-import { RappiderPaginationService, TemplatingService } from '../core/services';
+import { RappiderPaginationService, TemplatingService } from '@rapider/angular-components/core/services';
+import { RappiderInputTemplateComponent } from '@rapider/angular-components/input-template';
 
 
 @Component({
@@ -71,7 +72,7 @@ import { RappiderPaginationService, TemplatingService } from '../core/services';
     NzCollapseComponent,
     RappiderDividerComponent,
     RappiderRadioGroupComponent,
-    // RappiderInputTemplateComponent,
+    RappiderInputTemplateComponent,
     // RappiderTagListComponent
   ],
   standalone: true,

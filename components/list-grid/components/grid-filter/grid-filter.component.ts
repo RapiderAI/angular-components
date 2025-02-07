@@ -1,8 +1,9 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DatePickerComponentConfig } from '../../../../utils/date-picker/date-picker-component-config.interface';
+import { DatePickerComponentConfig } from '@rapider/angular-components/date-picker';
 import { cloneDeep } from 'lodash';
-import { CrudViewColumnType, IconType } from '../../../../utils';
+import { IconType } from '@rapider/angular-components/core/icon';
+import { CrudViewColumnType } from '@rapider/angular-components/core/list-grid';
 import { booleanValueOptions } from './utils/boolean-dropdown-options';
 import { booleanConditions, dateConditions, numberConditions, stringConditions } from './utils/dropdown-items';
 import { filterSupportedColumnTypes } from './utils/filter-supported-column-types';
