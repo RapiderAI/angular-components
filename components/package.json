@@ -14,7 +14,13 @@
     "ngx-lottie": "^13.0.0",
     "ngx-color-picker": "^17.0.0",
     "ngx-mask": "^19.0.6",
-    "ngx-extended-pdf-viewer": "^22.3.9"
+    "ngx-extended-pdf-viewer": "^22.3.9",
+    "ngx-quill": "^27.0.0",
+    "quill": "^2.0.3",
+    "quill-mention": "^6.0.2",
+    "marked": "^15.0.6",
+    "monaco-editor": "^0.52.2",
+    "swiper": "^11.2.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"

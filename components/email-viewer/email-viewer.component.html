@@ -1,0 +1,14 @@
+<div class="email-viewer"
+     (click)="onMailToClick()">
+  <rappider-icon *ngIf="showIcon"
+                 [name]="icon?.name"
+                 [type]="icon?.type">
+  </rappider-icon>
+
+  <rappider-button class="email-link"
+                   [type]="ButtonType.Link"
+                   [icon]="icon"
+                   [text]="labelVisibility && label ? label : email">
+  </rappider-button>
+
+</div>

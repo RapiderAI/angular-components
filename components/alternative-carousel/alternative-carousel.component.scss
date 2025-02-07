@@ -1,0 +1,23 @@
+.alternative-carousel {
+  ::ng-deep {
+    .swiper-button-prev {
+      color: var(--primary-color);
+      left: 0px;
+    }
+
+    .swiper-button-next {
+      color: var(--primary-color);
+      right: 0px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--primary-color) !important;
+    }
+
+    .swiper-horizontal >
+    .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+      bottom: 0px;
+    }
+
+  }
+}

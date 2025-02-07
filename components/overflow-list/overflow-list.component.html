@@ -1,0 +1,53 @@
+<div class="overflow-list-container">
+  <!-- Overflow Menu (if collapse from start) -->
+  <ng-container *ngIf="collapseFrom === OverFlowCollapseFrom.Start && overflowItems.length">
+    <div class="overflow-menu">
+      <rappider-dropdown-menu [items]="getDropdownItems()"
+                              [icon]="ellipsisIcon"
+                              [placement]="'bottomLeft'"
+                              (itemClick)="onOverflowItemClick($event)">
+      </rappider-dropdown-menu>
+      <i class="fa-regular fa-chevron-right separator"></i>
+    </div>
+  </ng-container>
+
+  <!-- Visible Items -->
+  <div class="visible-items">
+    <ng-container *ngFor="let item of visibleItems; let last = last">
+      <!-- Regular Item -->
+      <ng-container *ngIf="!renderCurrentBreadcrumbAsInput || !last">
+        <div class="list-item"
+             (click)="onItemClick(item)">
+          <i *ngIf="showIcons"
+             class="fa-regular"
+             [class.fa-folder]="isFolder(item)"
+             [class.fa-file]="!isFolder(item)">
+          </i>
+          <span class="item-text">{{ item }}</span>
+        </div>
+        <i class="fa-regular fa-chevron-right separator"
+           *ngIf="!last"></i>
+      </ng-container>
+
+      <!-- Input (if enabled and last item) -->
+      <ng-container *ngIf="renderCurrentBreadcrumbAsInput && last && collapseFrom === OverFlowCollapseFrom.Start">
+        <rappider-textbox [ngModel]="currentInputValue"
+                          (ngModelChange)="onInputChange($event)"
+                          class="breadcrumb-input">
+        </rappider-textbox>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <!-- Overflow Menu (if collapse from end) -->
+  <ng-container *ngIf="collapseFrom === OverFlowCollapseFrom.End && overflowItems.length">
+    <div class="overflow-menu">
+      <i class="fa-regular fa-chevron-right separator"></i>
+      <rappider-dropdown-menu [items]="getDropdownItems()"
+                              [icon]="ellipsisIcon"
+                              [placement]="'bottomRight'"
+                              (itemClick)="onOverflowItemClick($event)">
+      </rappider-dropdown-menu>
+    </div>
+  </ng-container>
+</div>

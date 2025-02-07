@@ -1,0 +1,52 @@
+<div class="hero-list">
+  <div class="hero-list-header">
+    <div *ngIf="titles"
+         class="title-area">
+      <div *ngFor="let title of titles"
+           class="titles">
+        <rappider-heading [type]="title.type"
+                          [content]="title.content"></rappider-heading>
+      </div>
+    </div>
+
+    <div *ngIf="button"
+         class="button">
+      <rappider-button [iconPlacement]="button.iconPlacement"
+                       [block]="button.block"
+                       [colorType]="button.colorType"
+                       [disabled]="button.disabled"
+                       [icon]="button.icon"
+                       [key]="button.key"
+                       [loading]="button.loading"
+                       [shape]="button.shape"
+                       [size]="button.size"
+                       [text]="button.text"
+                       [type]="button.type"
+                       [transparent]="button.transparent"
+                       [formButtonType]="button?.formButtonType"
+                       [borderSettings]="button?.borderSettings"
+                       [customSizeSettings]="button?.customSizeSettings"
+                       [customColorSettings]="button?.customColorSettings"
+                       [shadowSettings]="button?.shadowSettings"
+                       [paddingSettings]="button?.paddingSettings"
+                       [marginSettings]="button?.marginSettings"
+                       (confirm)="onButtonConfirm()"></rappider-button>
+    </div>
+  </div>
+
+  <div class="item-area"
+       [style.gap]="gap">
+    <div *ngFor="let item of items"
+         class="item"
+         (click)="onCardConfirm()">
+      <rappider-hero [backgroundImage]="item.backgroundImage"
+                     [button]="item.button"
+                     [content]="item.content"
+                     [lineBackgroundColor]="item.lineBackgroundColor"
+                     [lineWidth]="item.lineWidth"
+                     [title]="item.title"
+                     [horizontalContentPlacement]="item.horizontalContentPlacement"
+                     [verticalContentPlacement]="item.verticalContentPlacement"></rappider-hero>
+    </div>
+  </div>
+</div>
