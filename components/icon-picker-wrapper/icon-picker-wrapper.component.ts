@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, forwardRef } from '@angular/core';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
-import { IconPickerTwoComponent } from '@rapider/angular-components/icon-picker-two';
+import { RappiderIconPickerTwoComponent } from '@rapider/angular-components/icon-picker-two';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
