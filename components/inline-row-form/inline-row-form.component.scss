@@ -1,0 +1,53 @@
+.inline-row {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-5x);
+  margin-bottom: var(--margin-5x);
+
+  &:last-child {
+    margin-bottom: var(--margin-3x)
+  }
+
+  i {
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  b {
+    color: var(--text-color);
+  }
+
+  .input-template-wrapper {
+    width: 100%;
+    display: flex;
+    gap: var(--margin-4x);
+  }
+
+  ::ng-deep {
+    .ant-select-selector {
+      // input height value of ng-zorro
+      height: 30.59px;
+    }
+  }
+}
+
+.input-error{
+  position: absolute;
+}
+
+@media only screen and (max-width: 576px) {
+  .input-template-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--margin-x);
+  }
+
+  .inline-row {
+    border-bottom: var(--border-size-x) solid var(--primary-border-color);
+    padding-bottom: var(--padding-3x);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
