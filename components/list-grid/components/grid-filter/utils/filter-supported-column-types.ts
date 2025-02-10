@@ -1,4 +1,4 @@
-import { CrudViewColumnType } from '../../../../../utils';
+import { CrudViewColumnType } from "@rapider/angular-components/core/list-grid";
 
 export const filterSupportedColumnTypes = [
   CrudViewColumnType.DateTime,

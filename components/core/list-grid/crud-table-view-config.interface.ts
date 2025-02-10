@@ -1,11 +1,11 @@
-import { Action } from '../action-utils/action.interface';
-import { InputSize } from '../../utils/shared/input-size/input-size.enum';
-import { HeadingComponentConfig } from '../heading';
+import { Action } from '@rapider/angular-components/core/action-utils';
+import { DateFormat } from '@rapider/angular-components/core/common';
+import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { CrudTableViewColumn } from './crud-table-view-column.interface';
 import { CrudViewConfig } from './crud-view-config.interface';
 import { ListGridOrder } from './list-grid-order.interface';
 import { ListGridScroll } from './list-grid-scroll.interface';
-import { DateFormat } from '../date-picker';
+import { InputSize } from '@rapider/angular-components/core/style';
 
 export interface CrudTableViewConfig extends CrudViewConfig {
   dateFormat?: DateFormat;

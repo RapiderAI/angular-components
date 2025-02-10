@@ -1,6 +1,6 @@
-import { CrudViewColumnType } from '../../../../../utils';
+import { CrudViewColumnType } from '@rapider/angular-components/core/list-grid';
 import { lowerCase } from 'lodash';
-import * as moment from 'moment-timezone';
+import moment from 'moment-timezone';
 
 /* if you're changin the values of the other conditions which are commons, please also change here */
 export enum CommonCondition {
@@ -114,6 +114,7 @@ export function booleanCondition(data: any[], filteredValue: boolean, fieldName:
   } else {
     return data.filter(item => item[fieldName] === filteredValue);
   }
+  return [];
 }
 
 export const conditionMapping: any = [

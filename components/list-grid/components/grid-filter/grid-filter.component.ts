@@ -1,18 +1,42 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePickerComponentConfig } from '@rapider/angular-components/date-picker';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { CrudViewColumnType } from '@rapider/angular-components/core/list-grid';
 import { booleanValueOptions } from './utils/boolean-dropdown-options';
 import { booleanConditions, dateConditions, numberConditions, stringConditions } from './utils/dropdown-items';
 import { filterSupportedColumnTypes } from './utils/filter-supported-column-types';
 import { FilterValue } from './utils/filter-value.interface';
-import { CommonCondition, conditionMapping, DateCondition, NumberCondition, StringCondition } from './utils/operations';
+import { CommonCondition, conditionMapping, NumberCondition } from './utils/operations';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { RappiderButtonComponent } from '@rapider/angular-components/button';
+import { RappiderDividerComponent } from '@rapider/angular-components/divider';
+import { RappiderIconComponent } from '@rapider/angular-components/icon';
+import { RappiderRadioGroupComponent } from '@rapider/angular-components/radio-group';
+import { RappiderSelectComponent } from '@rapider/angular-components/select';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
+
 @Component({
   selector: 'rappider-grid-filter',
   templateUrl: './grid-filter.component.html',
   styleUrls: ['./grid-filter.component.scss'],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    FormsModule,
+    NzDropDownModule,
+    RappiderIconComponent,
+    RappiderButtonComponent,
+    RappiderSelectComponent,
+    NzCollapseModule,
+    RappiderDividerComponent,
+    RappiderRadioGroupComponent
+  ],
+  standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

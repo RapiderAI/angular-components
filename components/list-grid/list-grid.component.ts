@@ -3,16 +3,19 @@ import moment from 'moment-timezone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, KeyValue } from '@angular/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { cloneDeep, orderBy, get, isObject } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
+import orderBy from 'lodash/orderBy';
+import get from 'lodash/get';
+import isObject from 'lodash/isObject';
 import { ColumnFilter } from './components/grid-filter/utils/column-filter.interface';
-import { NzTableComponent, NzTableQueryParams } from 'ng-zorro-antd/table';
+import { NzTableComponent, NzTableModule, NzTableQueryParams } from 'ng-zorro-antd/table';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
-import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzButtonComponent, NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzPopconfirmComponent } from 'ng-zorro-antd/popconfirm';
-import { NzPopoverComponent } from 'ng-zorro-antd/popover';
-import { NzSelectComponent } from 'ng-zorro-antd/select';
+import { NzPopconfirmComponent, NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzPopoverComponent, NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzSelectComponent, NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagComponent } from 'ng-zorro-antd/tag';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
@@ -35,9 +38,10 @@ import { RouterModule } from '@angular/router';
 import { Action, ActionBehavior, ActionResponse, ActionView, HorizontalPosition } from '../core/action-utils';
 import { CRUD_TABLE_DEFAULT_PAGINATION, CrudTableViewColumn, CrudTableViewConfig, CrudViewColumnType, FieldValueChangeOutput, OrderChangeOutput, crudTableDefaultItemActionsLength } from '../core/list-grid';
 import { DropdownMenuItem } from '../core/dropdown-menu';
-import { MenuActionBehavior } from '../core/menu';
 import { RappiderPaginationService, TemplatingService } from '@rapider/angular-components/core/services';
 import { RappiderInputTemplateComponent } from '@rapider/angular-components/input-template';
+import { RappiderTagListComponent } from '@rapider/angular-components/tag-list';
+import { GridFilterComponent } from './components/grid-filter/grid-filter.component';
 
 
 @Component({
@@ -49,12 +53,12 @@ import { RappiderInputTemplateComponent } from '@rapider/angular-components/inpu
     DragDropModule,
     RouterModule,
     FormsModule,
-    NzButtonComponent,
+    NzButtonModule,
     NzInputModule,
-    NzPopconfirmComponent,
-    NzPopoverComponent,
-    NzSelectComponent,
-    NzTableComponent,
+    NzPopconfirmModule,
+    NzPopoverModule,
+    NzSelectModule,
+    NzTableModule,
     NzTagComponent,
     NzDropDownModule,
     NzDividerComponent,
@@ -73,7 +77,12 @@ import { RappiderInputTemplateComponent } from '@rapider/angular-components/inpu
     RappiderDividerComponent,
     RappiderRadioGroupComponent,
     RappiderInputTemplateComponent,
-    // RappiderTagListComponent
+    RappiderTagListComponent,
+    GridFilterComponent
+  ],
+  providers: [
+    RappiderPaginationService,
+    TemplatingService
   ],
   standalone: true,
   styleUrls: ['./list-grid.component.scss']
