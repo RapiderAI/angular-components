@@ -4,7 +4,7 @@ import { CodeMirrorSettings } from '@rapider/angular-components/core/codemirror'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
-import { RappiderCodeEditorComponent } from '@rapider/angular-components/code-editor';
+import { RappiderCodeEditorComponent } from '@rapider/angular-components/code-editor-wrapper';
 
 @Component({
   selector: 'rappider-code-editor-input-form',
