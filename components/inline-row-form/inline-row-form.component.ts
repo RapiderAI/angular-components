@@ -9,7 +9,6 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { isEmpty } from 'lodash';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -129,6 +128,12 @@ export class RappiderInlineRowFormComponent implements OnInit, ControlValueAcces
   }
 
   filterFormData(formData: any[]) {
+    function isEmpty(value: any): boolean {
+      return value === null || value === undefined || 
+             (typeof value === 'string' && value.trim() === '') ||
+             (Array.isArray(value) && value.length === 0) ||
+             (typeof value === 'object' && Object.keys(value).length === 0);
+    }
     const hasValue = formData.some(item => !isEmpty(item));
 
     if (hasValue) {
