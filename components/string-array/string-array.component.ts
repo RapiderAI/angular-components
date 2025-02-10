@@ -3,6 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TextComponentConfig } from '@rapider/angular-components/text';
+import { RowFormColumn } from '@rapider/angular-components/core/row-form';
+import { RappiderInlineRowFormComponent } from '@rapider/angular-components/inline-row-form';
+import { PropertyType } from '@rapider/angular-components/core/input-template';
 
 @Component({
   selector: 'rappider-string-array',
@@ -11,7 +14,7 @@ import { TextComponentConfig } from '@rapider/angular-components/text';
   imports:[
     CommonModule,
     FormsModule,
-    // RappiderInlineRowFormComponent
+    RappiderInlineRowFormComponent
   ],
   standalone: true,
   providers: [
