@@ -1,0 +1,200 @@
+<ng-container *ngIf="!editMode">
+  <div *ngFor="let val of value"
+       class="row-form-data-list">
+    <!-- columns area -->
+    <ng-container *ngFor="let column of columns">
+      <div *ngIf="column.visible !== false"
+           class="row-form-data-input">
+        <rappider-textbox [ngModel]="val[column.fieldName]"
+                          [disabled]="true"
+                          [type]="textboxConfig?.type"
+                          [mask]="textboxConfig?.mask"
+                          [maskGuide]="textboxConfig?.maskGuide"
+                          [cssStyle]="textboxConfig?.cssStyle"
+                          [cssClass]="textboxConfig?.cssClass"
+                          [mentionSupported]="textboxConfig?.mentionSupported"
+                          [mentionPrefix]="textboxConfig?.mentionPrefix"
+                          [mentionValues]="textboxConfig?.mentionValues"
+                          [size]="textboxConfig?.size"
+                          [borderSettings]="textboxConfig?.borderSettings"
+                          [sizeSettings]="textboxConfig?.sizeSettings"
+                          [colorSettings]="textboxConfig?.colorSettings"
+                          [boxShadowSettings]="textboxConfig?.boxShadowSettings"
+                          [paddingSettings]="textboxConfig?.paddingSettings"
+                          [marginSettings]="textboxConfig?.marginSettings"></rappider-textbox>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- edit button -->
+  <div *ngIf="!editMode">
+    <rappider-button [text]="editButton?.text || 'Edit'"
+                     [key]="editButton?.key"
+                     [type]="editButton?.type"
+                     [shape]="editButton?.shape"
+                     [size]="editButton?.size"
+                     [transparent]="editButton?.transparent"
+                     [loading]="editButton?.loading"
+                     [block]="editButton?.block"
+                     [disabled]="editButton?.disabled"
+                     [icon]="editButton?.icon"
+                     [colorType]="editButton?.colorType"
+                     [popconfirmTitle]="editButton?.popconfirmTitle"
+                     [emitWithoutPopconfirm]="editButton?.emitWithoutPopconfirm"
+                     [iconPlacement]="editButton?.iconPlacement"
+                     [formButtonType]="editButton?.formButtonType"
+                     [borderSettings]="editButton?.borderSettings"
+                     [marginSettings]="editButton?.marginSettings"
+                     [paddingSettings]="editButton?.paddingSettings"
+                     [shadowSettings]="editButton?.shadowSettings"
+                     [customColorSettings]="editButton?.customColorSettings"
+                     [customSizeSettings]="editButton?.customSizeSettings"
+                     (click)="onEditButtonClick()"></rappider-button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="form && editMode">
+
+  <!-- form -->
+  <form [formGroup]="form">
+
+    <!-- rows -->
+    <ng-container formArrayName="rows">
+      <div cdkDropList
+           cdkDropListLockAxis="y"
+           (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let rowForm of getRowsFormArray().controls; let rowIndex = index"
+             cdkDrag
+             [formGroupName]="rowIndex"
+             [cdkDragDisabled]="!orderable"
+             class="list-item">
+
+          <!-- drag & drop button -->
+          <div *ngIf="orderable"
+               class="row-button">
+            <a>
+              <i class="fas fa-bars"></i>
+            </a>
+          </div>
+
+          <!-- columns area -->
+          <ng-container *ngFor="let column of columns">
+            <div *ngIf="column.visible !== false"
+                 class="input-container"
+                 [ngClass]="getErrorsByFieldName(rowIndex, column.fieldName) ? 'unvalid-form-item' : '' ">
+              <rappider-select [grouppedOptions]="column.selectConfig.grouppedOptions"
+                               [placeholder]="column.selectConfig.placeholder"
+                               [settings]="column.selectConfig.settings"
+                               [cssStyle]="column.selectConfig.cssStyle"
+                               [cssClass]="column.selectConfig.cssClass"
+                               [invalidConfigText]="column.selectConfig.invalidConfigText"
+                               [disabled]="column.selectConfig.disabled"
+                               [loading]="column.selectConfig.loading"
+                               [buttons]="column.selectConfig.buttons"
+                               [dropdownMatchSelectWidth]="column.selectConfig.dropdownMatchSelectWidth"
+                               [dropdownClassName]="column.selectConfig.dropdownClassName"
+                               [borderSettings]="column.selectConfig.borderSettings"
+                               [sizeSettings]="column.selectConfig.sizeSettings"
+                               [colorSettings]="column.selectConfig.colorSettings"
+                               [boxShadowSettings]="column.selectConfig.boxShadowSettings"
+                               [paddingSettings]="column.selectConfig.paddingSettings"
+                               [marginSettings]="column.selectConfig.marginSettings"
+                               [formControlName]="column.fieldName"
+                               (ngModelChange)="onRowDataChange(rowIndex)"
+                               (blur)="onBlur()"></rappider-select>
+              <div *ngIf="getErrorsByFieldName(rowIndex, column.fieldName)?.unique">
+                <rappider-input-error [errors]="['This field must be unique.']"></rappider-input-error>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- remove button -->
+          <div class="row-button">
+            <a (click)="removeListItem(rowIndex)">
+              <i class="far fa-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <!-- add button -->
+        <div *ngIf="addButtonVisible">
+          <rappider-button [text]="addButton?.text"
+                           [key]="addButton?.key"
+                           [type]="addButton?.type"
+                           [shape]="addButton?.shape"
+                           [size]="addButton?.size"
+                           [transparent]="addButton?.transparent"
+                           [loading]="addButton?.loading"
+                           [block]="addButton?.block"
+                           [disabled]="addButton?.disabled"
+                           [icon]="addButton?.icon || {name:'fas fa-plus'}"
+                           [colorType]="addButton?.colorType"
+                           [popconfirmTitle]="addButton?.popconfirmTitle"
+                           [emitWithoutPopconfirm]="addButton?.emitWithoutPopconfirm"
+                           [iconPlacement]="addButton?.iconPlacement"
+                           [formButtonType]="addButton?.formButtonType"
+                           [borderSettings]="addButton?.borderSettings"
+                           [marginSettings]="addButton?.marginSettings"
+                           [paddingSettings]="addButton?.paddingSettings"
+                           [shadowSettings]="addButton?.shadowSettings"
+                           [customColorSettings]="addButton?.customColorSettings"
+                           [customSizeSettings]="addButton?.customSizeSettings"
+                           (click)="insertListItem()"></rappider-button>
+        </div>
+        <div class="form-footer-right-side">
+          <rappider-button [text]="cancelButton?.text || 'Cancel' | translate"
+                           [key]="cancelButton?.key"
+                           [type]="cancelButton?.type"
+                           [shape]="cancelButton?.shape"
+                           [size]="cancelButton?.size"
+                           [transparent]="cancelButton?.transparent"
+                           [loading]="cancelButton?.loading"
+                           [block]="cancelButton?.block"
+                           [disabled]="cancelButton?.disabled"
+                           [icon]="cancelButton?.icon"
+                           [colorType]="cancelButton?.colorType"
+                           [popconfirmTitle]="cancelButton?.popconfirmTitle"
+                           [emitWithoutPopconfirm]="cancelButton?.emitWithoutPopconfirm"
+                           [iconPlacement]="cancelButton?.iconPlacement"
+                           [formButtonType]="cancelButton?.formButtonType"
+                           [borderSettings]="cancelButton?.borderSettings"
+                           [marginSettings]="cancelButton?.marginSettings"
+                           [paddingSettings]="cancelButton?.paddingSettings"
+                           [shadowSettings]="cancelButton?.shadowSettings"
+                           [customColorSettings]="cancelButton?.customColorSettings"
+                           [customSizeSettings]="cancelButton?.customSizeSettings"
+                           (click)="onRevertChanges()"></rappider-button>
+
+          <div class="submit-button">
+            <rappider-button type="submit"
+                             [text]="saveButton?.text || 'Save' | translate"
+                             [type]="saveButton?.type || 'primary'"
+                             [key]="saveButton?.key"
+                             [shape]="saveButton?.shape"
+                             [size]="saveButton?.size"
+                             [transparent]="saveButton?.transparent"
+                             [loading]="saveButton?.loading"
+                             [block]="saveButton?.block"
+                             [disabled]="saveButton?.disabled"
+                             [icon]="saveButton?.icon"
+                             [colorType]="saveButton?.colorType"
+                             [popconfirmTitle]="saveButton?.popconfirmTitle"
+                             [emitWithoutPopconfirm]="saveButton?.emitWithoutPopconfirm"
+                             [iconPlacement]="saveButton?.iconPlacement"
+                             [formButtonType]="saveButton?.formButtonType"
+                             [borderSettings]="saveButton?.borderSettings"
+                             [marginSettings]="saveButton?.marginSettings"
+                             [paddingSettings]="saveButton?.paddingSettings"
+                             [shadowSettings]="saveButton?.shadowSettings"
+                             [customColorSettings]="saveButton?.customColorSettings"
+                             [customSizeSettings]="saveButton?.customSizeSettings"
+                             (click)="onFormSubmit()"></rappider-button>
+          </div>
+        </div>
+      </div>
+
+    </ng-container>
+  </form>
+</ng-container>
