@@ -1,7 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
-import { CodeMirrorSettings } from '@rapider/angular-components/core/codemirror';
 import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
 import { CommonModule } from '@angular/common';
 

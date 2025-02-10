@@ -7,7 +7,8 @@ import { SelectableOption } from '@rapider/angular-components/core/common';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { SwitchComponentConfig } from '@rapider/angular-components/switch';
 import { CommonModule } from '@angular/common';
-import { RappiderTitleBarComponent } from '../title-bar';
+import { RappiderTitleBarComponent } from '@rapider/angular-components/title-bar';
+import { RappiderToolbarComponent } from '@rapider/angular-components/toolbar';
 
 @Component({
   selector: 'rappider-title-toolbar',
@@ -43,7 +44,7 @@ export class RappiderTitleToolbarComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.mapTitleBreadcrumbOptionsToLabel(changes.['options']?.currentValue);
+    this.mapTitleBreadcrumbOptionsToLabel(changes['options']?.currentValue);
   }
 
   mapTitleBreadcrumbOptionsToLabel(value: any) {
