@@ -7,9 +7,10 @@ import { RichTextEditorTheme } from '@rapider/angular-components/core/rich-text-
 import { RichTextEditorType } from '@rapider/angular-components/core/rich-text-editor';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RappiderModalComponent } from '../modal/modal.component';
-import { RappiderCodeEditorComponent } from '../code-editor/code-editor.component';
-import { RappiderRichTextEditorComponent } from '../rich-text-editor/rich-text-editor.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderCodeEditorComponent } from '@rapider/angular-components/code-editor-wrapper';
+import { RappiderRichTextEditorComponent } from '@rapider/angular-components/rich-text-editor';
+
 
 
 @Component({
