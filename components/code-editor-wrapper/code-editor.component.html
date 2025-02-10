@@ -1,0 +1,42 @@
+<div class="code-editor">
+  <div *ngIf="title || additionalButtons?.length"
+       class="code-editor-toolbar">
+    <div *ngIf="title"
+         class="code-editor-title">
+      <pre>{{ title }}</pre>
+    </div>
+    <div *ngIf="additionalButtons?.length"
+         class="code-editor-additional-buttons">
+      <div *ngFor="let additionalButton of additionalButtons"
+           class="additional-button">
+        <rappider-button [key]="additionalButton.key"
+                         [type]="additionalButton.type"
+                         [shape]="additionalButton.shape"
+                         [text]="additionalButton.text"
+                         [size]="additionalButton.size"
+                         [transparent]="additionalButton.transparent"
+                         [loading]="additionalButton.loading"
+                         [block]="additionalButton.block"
+                         [disabled]="additionalButton.disabled"
+                         [colorType]="additionalButton.colorType"
+                         [icon]="additionalButton.icon"
+                         [popconfirmTitle]="additionalButton.popconfirmTitle"
+                         [emitWithoutPopconfirm]="additionalButton.emitWithoutPopconfirm"
+                         [iconPlacement]="additionalButton.iconPlacement"
+                         [formButtonType]="additionalButton?.formButtonType"
+                         [borderSettings]="additionalButton?.borderSettings"
+                         [customSizeSettings]="additionalButton?.customSizeSettings"
+                         [customColorSettings]="additionalButton?.customColorSettings"
+                         [shadowSettings]="additionalButton?.shadowSettings"
+                         [paddingSettings]="additionalButton?.paddingSettings"
+                         [marginSettings]="additionalButton?.marginSettings"
+                         (confirm)="onAdditionalButtonClick(additionalButton)"></rappider-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="monaco-editor">
+    <rappider-monaco-code-editor [(ngModel)]="value"
+                                 [options]="settings"></rappider-monaco-code-editor>
+  </div>
+</div>
