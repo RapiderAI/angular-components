@@ -1,0 +1,53 @@
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--padding-2x, 10px) var(--padding-4x, 20px);
+  margin-bottom: var(--margin-2x, 10px);
+
+  .main-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin-2x);
+  }
+
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-title {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .breadcrumb-area {
+    display: flex;
+    align-items: center;
+
+    rappider-icon {
+      font-size: var(--font-size-large);
+      cursor: pointer;
+      margin-right: var(--margin-2x);
+      color: var(--text-color);
+    }
+  }
+
+  .title-bar-right {
+    display: flex;
+    align-items: center;
+
+    .title-bar-right-item:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  .bar-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--margin-x);
+    align-items: center;
+  }
+}

@@ -1,0 +1,15 @@
+::ng-deep {
+  .ql-bubble {
+    border: 1px solid #ddd;
+  }
+}
+
+.feedback-text {
+  width: 100%;
+  text-align: right;
+}
+
+.quill-editor {
+  height: var(--height-2x);
+  width: 100%;
+}

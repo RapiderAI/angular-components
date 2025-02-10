@@ -1,0 +1,68 @@
+.overflow-list-container {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-x);
+
+  .visible-items {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-x);
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: var(--margin-x);
+      cursor: pointer;
+      padding: 0 var(--padding-2x);
+
+      i, .item-text {
+        color: var(--text-color);
+      }
+
+      &:hover {
+        i, .item-text {
+          color: var(--primary-hover-color);
+        }
+      }
+    }
+
+    .separator {
+      color: var(--secondary-text-color);
+    }
+  }
+
+  .overflow-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-x);
+
+    .separator {
+      color: var(--secondary-text-color);
+    }
+
+    .overflow-start-menu-dropdown {
+      padding-right: var(--padding-x);
+    }
+
+    .overflow-end-menu-dropdown {
+      padding-left: var(--padding-x);
+    }
+
+    ::ng-deep {
+      .ant-dropdown-trigger {
+        padding: var(--padding-x);
+      }
+    }
+  }
+
+  .overflow-indicator {
+    color: var(--text-color-secondary);
+    cursor: default;
+  }
+
+  .breadcrumb-input {
+    padding-left: var(--padding-2x);
+  }
+}

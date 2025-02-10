@@ -1,0 +1,26 @@
+<div class="drawer">
+  <nz-drawer [nzTitle]="title"
+             [nzClosable]="closable"
+             [nzCloseIcon]="closeIcon"
+             [nzCloseOnNavigation]="closeOnNavigation"
+             [nzMask]="mask"
+             [nzMaskClosable]="maskClosable"
+             [nzMaskStyle]="maskStyle"
+             [nzBodyStyle]="bodyStyle"
+             [nzOffsetX]="offsetX"
+             [nzOffsetY]="offsetY"
+             [nzWrapClassName]="wrapClassName"
+             [nzZIndex]="zIndex"
+             [nzWidth]="width"
+             [nzHeight]="height"
+             [(nzVisible)]="visible"
+             [nzPlacement]="placement"
+             [nzFooter]="footer"
+             [nzKeyboard]="keyboard"
+             (nzOnClose)="onClose()"
+             (nzVisibleChange)="onVisibleChange($event)">
+    <ng-container *nzDrawerContent>
+      <ng-content></ng-content>
+    </ng-container>
+  </nz-drawer>
+</div>
