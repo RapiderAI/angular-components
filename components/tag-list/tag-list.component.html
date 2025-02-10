@@ -1,0 +1,19 @@
+<div class="tag-list">
+  <div *ngIf="titles"
+       class="title-area">
+    <div *ngFor="let title of titles"
+         class="titles">
+      <rappider-heading [type]="title.type"
+                        [content]="title.content"></rappider-heading>
+    </div>
+  </div>
+
+  <div [class]=" 'tag-list-' +  directionMode">
+    <div *ngFor="let item of items">
+      <rappider-tag [mode]="item.mode"
+                    [checked]="item.checked"
+                    [color]="item.color"
+                    [text]="item.text"></rappider-tag>
+    </div>
+  </div>
+</div>
