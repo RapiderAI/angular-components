@@ -1,0 +1,31 @@
+pre {
+  margin-bottom: 0;
+  padding: var(--padding-3x);
+  color: var(--primary-text-color);
+  font-size: var(--h6-font-size);
+}
+
+.code-editor-toolbar {
+  border-bottom: var(--border-size-x) solid var(--primary-border-color);
+  background-color: var(--component-header-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.code-editor-additional-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: var(--margin-2x);
+}
+
+.code-editor {
+
+  .monaco-editor {
+    height: var(--height-12x);
+    background-color: var(--component-header-background-color);
+
+
+  }
+}
