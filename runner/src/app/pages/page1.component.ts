@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RappiderDrawerComponent } from '@rapider/angular-components/drawer';
 import { RappiderClickToDialComponent } from '@rapider/angular-components/click-to-dial';
-import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
 
 @Component({
   standalone: true,
@@ -11,7 +10,7 @@ import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/
     FormsModule,
     RouterModule,
     RappiderDrawerComponent,
-    RappiderIconPickerWrapperComponent
+    RappiderClickToDialComponent
   ],
   selector: 'app-page',
   template: `
@@ -20,7 +19,7 @@ import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/
 
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-icon-picker-wrapper></rappider-icon-picker-wrapper>
+    <rappider-click-to-dial [status]="true" [value]="'3434343434'" [showMaskTyped]="true" [mask]="'000-000-0000'"></rappider-click-to-dial>
   </div>
   `,
 })
