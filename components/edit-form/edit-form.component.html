@@ -1481,47 +1481,6 @@
             class="form-item-divider">
       </ng-container>
 
-      <!-- DATE TIME PICKER COMPONENT -->
-      <ng-container *ngIf="item.type === ComponentTypes.DateTimePicker">
-        <nz-form-item>
-
-          <!-- label -->
-          <ng-container *ngTemplateOutlet="label;context:{
-          title: item.title,
-          icon: item.labelIcon,
-          iconTooltipTitle: item.labelIconTooltipTitle,
-          menu: item.menu,
-          size: labelComponentSize,
-          required: item.showRequiredSign,
-          colon: item.showColonSign,
-          hint: item.hint,
-          formLayout: formLayout,
-          labelDescription: item.labelDescription
-        }"></ng-container>
-
-          <!-- component -->
-          <nz-form-control [nzXs]="inputComponentSize?.xs"
-                           [nzSm]="inputComponentSize?.sm"
-                           [nzMd]="inputComponentSize?.md"
-                           [nzLg]="inputComponentSize?.lg"
-                           [nzXl]="inputComponentSize?.xl"
-                           [nzXXl]="inputComponentSize?.xxl"
-                           [nzExtra]="item.description"
-                           [nzValidateStatus]="errors?.length ? 'error' : null"
-                           [nzErrorTip]="errorsTemplate">
-            <rappider-datetime-picker rappiderUnwrapTag
-                                      [elementId]="item.fieldName"
-                                      [formControlName]="item.fieldName"
-                                      [minSelectableDate]="item.minSelectableDate"
-                                      [maxSelectableDate]="item.maxSelectableDate"
-                                      (blur)="onFieldBlur(item.fieldName)"
-                                      (ngModelChange)="onFieldValueChange(item, $event)"></rappider-datetime-picker>
-          </nz-form-control>
-        </nz-form-item>
-        <hr *ngIf="dividerMode"
-            class="form-item-divider">
-      </ng-container>
-
       <!-- RADIO COMPONENT -->
       <ng-container *ngIf="item.type === ComponentTypes.Radio">
         <nz-form-item>
