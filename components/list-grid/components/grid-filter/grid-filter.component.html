@@ -1,0 +1,188 @@
+<a nz-dropdown
+   nzTrigger="click"
+   [(nzVisible)]="dropdownVisibility"
+   [nzDropdownMenu]="content">
+  <rappider-icon [name]="filterIconConfig.name"
+                 [color]="value.condition || value.filterValue ? 'var(--primary-color)' : 'var(--text-color)'"
+                 (click)="toggleDropdown($event)"></rappider-icon>
+</a>
+
+<nz-dropdown-menu #content="nzDropdownMenu">
+  <div class="filterDropdown">
+    <div *ngIf="value"
+         class="filter-container">
+      <ng-container *ngIf="columnType === CrudViewColumnType.Number">
+        <div class="wrapper">
+          <nz-collapse nzGhost="true">
+            <nz-collapse-panel nzHeader="Filter by condition">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-select [(ngModel)]="value.condition"
+                                   [options]="numberConditions"
+                                   placeholder="Select Condition"
+                                   (ngModelChange)="onConditionChange()"></rappider-select>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <nz-collapse-panel nzHeader="Filter by value">
+            <div class="filter-wrapper">
+              <div class="input">
+                <rappider-number-input [(ngModel)]="value.filterValue"
+                                       (ngModelChange)="onConditionChange()"></rappider-number-input>
+              </div>
+              <div class="remove-filter-icon">
+                <rappider-button [type]="removeFilterButtonConfig.type"
+                                 [icon]="removeFilterButtonConfig.icon"
+                                 (click)="removeFilter()">
+                </rappider-button>
+              </div>
+            </div>
+          </nz-collapse-panel>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="columnType === CrudViewColumnType.Text ||
+    columnType === CrudViewColumnType.Link || !isTypeSupportedForFilter()">
+        <div class="wrapper">
+          <nz-collapse nzGhost="true">
+            <nz-collapse-panel nzHeader="Filter by condition">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-select [(ngModel)]="value.condition"
+                                   [options]="stringConditions"
+                                   placeholder="Select Condition"
+                                   (ngModelChange)="onConditionChange()"></rappider-select>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+            <nz-collapse-panel nzHeader="Filter by value">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-textbox [(ngModel)]="value.filterValue"
+                                    placeholder="Search"
+                                    (ngModelChange)="onConditionChange()"></rappider-textbox>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="columnType === CrudViewColumnType.Boolean">
+        <div class="wrapper">
+          <nz-collapse nzGhost="true">
+            <nz-collapse-panel nzHeader="Filter by condition">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-radio-group [(ngModel)]="value.condition"
+                                        [options]="booleanConditions"
+                                        (ngModelChange)="onConditionChange()"></rappider-radio-group>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+            <nz-collapse-panel nzHeader="Filter by value">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-radio-group [(ngModel)]="value.condition"
+                                        [options]="booleanValueOptions"
+                                        (ngModelChange)="onConditionChange()"></rappider-radio-group>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="columnType === CrudViewColumnType.Date">
+        <div class="wrapper">
+          <nz-collapse nzGhost="true">
+            <nz-collapse-panel nzHeader="Filter by condition">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-select [(ngModel)]="value.condition"
+                                   placeholder="Search Condition"
+                                   [options]="dateConditions"
+                                   (ngModelChange)="onConditionChange()"></rappider-select>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+            <nz-collapse-panel nzHeader="Filter by value"
+                               [nzActive]="activeTab"
+                               (nzActiveChange)="changeActiveTabStatus()">
+              <div class="filter-wrapper">
+                <div class="input">
+                  <rappider-date-picker *ngIf="activeTab"
+                                        [(ngModel)]="value.filterValue"
+                                        (ngModelChange)="onConditionChange()"></rappider-date-picker>
+                </div>
+                <div class="remove-filter-icon">
+                  <rappider-button [type]="removeFilterButtonConfig.type"
+                                   [icon]="removeFilterButtonConfig.icon"
+                                   (click)="removeFilter()">
+                  </rappider-button>
+                </div>
+              </div>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div class="remove-filter-button">
+          <a nz-button
+             nzType="link"
+             nzDanger
+             (click)="removeFilter()">
+            Clear all
+          </a>
+        </div>
+      </ng-container>
+      <div class="filter-footer">
+        <rappider-divider></rappider-divider>
+        <div class="footer-buttons">
+          <rappider-button [text]="cancelButtonConfig.text"
+                           [type]="cancelButtonConfig.type"
+                           [size]="cancelButtonConfig.size"
+                           (click)="removeFilter(); toggleDropdown($event)"></rappider-button>
+          <rappider-button [text]="OkButtonConfig.text"
+                           [type]="OkButtonConfig.type"
+                           [size]="OkButtonConfig.size"
+                           (click)="toggleDropdown($event)"></rappider-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-dropdown-menu>

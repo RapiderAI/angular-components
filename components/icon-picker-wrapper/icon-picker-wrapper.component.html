@@ -1,0 +1,22 @@
+<div class="button-group">
+  <rappider-button *ngIf="getModalButtonConfig().changeButton"
+                   [text]="getModalButtonConfig().changeButton.text"
+                   [icon]="getModalButtonConfig().changeButton.icon"
+                   size="small"
+                   (confirm)="handleIconPickerModalVisibility(true)"></rappider-button>
+
+  <rappider-button *ngIf="getModalButtonConfig().deleteButton"
+                   [text]="getModalButtonConfig().deleteButton.text"
+                   [icon]="getModalButtonConfig().deleteButton.icon"
+                   size="small"
+                   (confirm)="onDeleteIcon()"></rappider-button>
+</div>
+<rappider-modal [(visible)]="iconPickerModalVisibility"
+                [footer]="null"
+                title="Select Icon"
+                className="icon-picker-modal">
+  <rappider-icon-picker-two *ngIf="iconPickerModalVisibility"
+                            [ngModel]="value"
+                            (setSelectIcon)="onSelectedIcon($event)"
+                            (cancelSelectedIcon)="handleIconPickerModalVisibility(false)"></rappider-icon-picker-two>
+</rappider-modal>

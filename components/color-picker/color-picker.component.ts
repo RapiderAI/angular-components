@@ -2,7 +2,6 @@ import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/cor
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -13,16 +12,15 @@ import { ColorPickerModule } from 'ngx-color-picker';
   selector: 'rappider-color-picker',
   templateUrl: './color-picker.component.html',
   styleUrls: ['./color-picker.component.scss'],
-  imports:[
+  imports: [
     CommonModule,
     FormsModule,
-    RappiderButtonComponent,
     NzInputModule,
     ColorPickerModule,
     TranslateModule,
     NgxMaskDirective
   ],
-  standalone:true,
+  standalone: true,
   providers: [
     provideNgxMask(),
     {
