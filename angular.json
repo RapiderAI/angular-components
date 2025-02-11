@@ -80,9 +80,7 @@
               "node_modules/quill/dist/quill.bubble.css",
               "node_modules/monaco-editor/min/vs/editor/editor.main.css"
             ],
-            "scripts": [
-              "node_modules/monaco-editor/min/vs/loader.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -134,5 +132,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
