@@ -1,0 +1,99 @@
+<ng-container *ngIf="value">
+  <div class="single-border-input">
+    <label>Border</label>
+    <div class="auto">
+      <rappider-textbox [(ngModel)]="value.border"
+                        [disabled]="borderIndividualSidesVisible"
+                        placeholder="1px solid gray"
+                        (ngModelChange)="triggerValueChange()"></rappider-textbox>
+      <rappider-button type="link"
+                       [icon]="borderIndividualSidesVisible ? unlockedIcon : lockedIcon"></rappider-button>
+      <rappider-switch nz-tooltip
+                       nzTooltipTitle="Switch to enable border setting details"
+                       [ngModel]="borderIndividualSidesVisible"
+                       (valueChange)="switchValueChange($event, 'width')"></rappider-switch>
+    </div>
+  </div>
+
+  <div *ngIf="borderIndividualSidesVisible"
+       class="many-border-inputs">
+    <div class="border-top-input">
+      <label>Top</label>
+      <rappider-dimension-select [(ngModel)]="value.borderTop"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-right-input">
+      <label>Right</label>
+      <rappider-dimension-select [(ngModel)]="value.borderRight"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-bottom-input">
+      <label>Bottom</label>
+      <rappider-dimension-select [(ngModel)]="value.borderBottom"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-left-input">
+      <label>Left</label>
+      <rappider-dimension-select [(ngModel)]="value.borderLeft"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="single-input">
+      <label>Color</label>
+      <rappider-color-picker [(ngModel)]="value.borderColor"
+                             (ngModelChange)="triggerValueChange()"></rappider-color-picker>
+    </div>
+
+    <div class="single-input">
+      <label>Style</label>
+      <rappider-select [options]="borderStyleOptions.options"
+                       [(ngModel)]="value.borderStyle"
+                       (ngModelChange)="triggerValueChange()"></rappider-select>
+    </div>
+  </div>
+
+  <div class="single-input">
+    <label>Radius</label>
+    <div class="auto">
+      <rappider-dimension-select [(ngModel)]="value.borderRadius"
+                                 [disabled]="radiusIndividualBordersVisible"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+      <rappider-button type="link"
+                       [icon]="radiusIndividualBordersVisible ? unlockedIcon : lockedIcon"></rappider-button>
+      <rappider-switch nz-tooltip
+                       nzTooltipTitle="Switch to enable border radius setting details"
+                       [ngModel]="radiusIndividualBordersVisible"
+                       (valueChange)="switchValueChange($event, 'radius')"></rappider-switch>
+    </div>
+  </div>
+
+  <div *ngIf="radiusIndividualBordersVisible"
+       class="many-border-inputs">
+    <div class="border-radius-top-input">
+      <label>Top Left</label>
+      <rappider-dimension-select [(ngModel)]="value.borderTopLeftRadius"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-radius-right-input">
+      <label>Top Right</label>
+      <rappider-dimension-select [(ngModel)]="value.borderTopRightRadius"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-radius-bottom-input">
+      <label>Bottom Left</label>
+      <rappider-dimension-select [(ngModel)]="value.borderBottomLeftRadius"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+
+    <div class="border-radius-left-input">
+      <label>Bottom Right</label>
+      <rappider-dimension-select [(ngModel)]="value.borderBottomRightRadius"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+  </div>
+</ng-container>
