@@ -13,7 +13,7 @@ import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
 import { InputGroupComponentConfig } from '@rapider/angular-components/input-group';
 import { IconType } from '@rapider/angular-components/core/icon';
 import { TemplatingService } from '@rapider/angular-components/core/services';
-import { NzUploadComponent, NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzUploadComponent, NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { CommonModule } from '@angular/common';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -21,14 +21,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import * as Papa from 'papaparse';
 import * as jsonata from 'jsonata';
-import { RappiderInputGroupComponent } from '../input-group';
-import { RappiderCardCcsComponent } from '../card-ccs';
+import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
+import { RappiderCardCcsComponent } from '@rapider/angular-components/card-ccs';
 import { FormsModule } from '@angular/forms';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzAlertComponent } from 'ng-zorro-antd/alert';
-import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { RappiderListGridComponent } from '../list-grid/list-grid.component';
+import { NzAlertComponent, NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzButtonComponent, NzButtonModule } from 'ng-zorro-antd/button';
 import { RappiderTitleToolbarComponent } from '@rapider/angular-components/title-toolbar';
+import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
 
 export enum ComponentActions {
   ImportData = 'importData',
@@ -47,9 +47,9 @@ export enum ComponentActions {
     RappiderCardCcsComponent,
     FormsModule,
     NzGridModule,
-    NzAlertComponent,
-    NzUploadComponent,
-    NzButtonComponent,
+    NzAlertModule,
+    NzUploadModule,
+    NzButtonModule,
     NzIconModule,
     NzModalModule
   ],
@@ -263,7 +263,7 @@ export class RappiderListWrapperComponent implements OnInit, OnChanges {
     this.listGridListActionDropdownItemClick.emit(item);
   }
 
-  onListGridColumnActionClick(actionData: { action: Action; data: any }): void {
+  onListGridColumnActionClick(actionData) {
     if (actionData.action?.behavior === ActionBehavior.Route) {
       this.redirectToUrlByAction(actionData.action, actionData.data);
     }

@@ -1,4 +1,4 @@
-import { Action } from '@rapider/angular-components/core/action-utils';
+import { Action } from '@rapider/angular-components/core/action';
 import { DateFormat } from '@rapider/angular-components/core/common';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { CrudTableViewColumn } from './crud-table-view-column.interface';

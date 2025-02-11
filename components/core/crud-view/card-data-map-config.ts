@@ -1,4 +1,4 @@
-import { Action, ActionBehavior } from '@rapider/angular-components/core/action-utils';
+import { Action, ActionBehavior } from '@rapider/angular-components/core/action';
 
 /* eslint-disable @typescript-eslint/ban-types */
 export interface CardDataMapConfig {

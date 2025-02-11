@@ -1,13 +1,11 @@
 /* eslint-disable no-shadow */
-import { NzButtonType } from 'ng-zorro-antd/button';
-import { ButtonType, IconPlacement } from '../button';
-import { IconSet } from '../icon-utils/icon-set.interface';
-import { IconComponentConfig } from '../icon/icon-component-config.interface';
+import { ButtonType, ButtonIconPlacement } from '@rapider/angular-components/core/button';
+import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { ActionBehavior } from './action-behavior.enum';
 import { ActionView } from './action-view.enum';
+import { DropdownMenuComponentConfig } from '@rapider/angular-components/dropdown-menu';
 import { HorizontalPosition } from './horizontal-position.enum';
-import { DropdownMenuComponentConfig, DropdownMenuItem } from '../dropdown-menu';
-import { PopConfirmPlacement } from '../button/pop-confirm-placement.enum';
+
 
 export enum RedirectUrlMode {
   /* navigates to absolute path */
@@ -20,8 +18,8 @@ export interface Action {
   name?: string;
   text?: string;
   buttonType?: ButtonType;
-  icon?: IconComponentConfig | IconSet;
-  iconPlacement?: IconPlacement;
+  icon?: IconComponentConfig | any;
+  iconPlacement?: ButtonIconPlacement;
   view?: ActionView;
   behavior: ActionBehavior;
   actions?: Action[];
@@ -37,10 +35,10 @@ export interface Action {
   disabled?: boolean;
   popconfirmTitle?: string;
   emitWithoutPopconfirm?: boolean;
-  popconfirmCancelText?: string;
-  popconfirmOkText?: string;
-  popconfirmOkDanger?: boolean;
-  popconfirmPlacement?: PopConfirmPlacement;
+  popConfirmCancelText?: string;
+  popConfirmOkText?: string;
+  popConfirmOkDanger?: boolean;
+  popconfirmPlacement?: any;
   tooltipText?: string;
   data?: any;
   redirectTarget?: string;
