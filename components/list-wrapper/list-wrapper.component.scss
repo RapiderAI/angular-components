@@ -1,0 +1,67 @@
+.card-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: var(--padding-2x, 10px);
+
+  .item-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--margin-2x);
+  }
+
+  .item-card {
+    flex: 1;
+    overflow: hidden;
+    min-width: var(--width-5x);
+    max-width: var(--width-8x);
+  }
+}
+
+:host {
+  ::ng-deep {
+    .card-content {
+      padding: var(--card-padding);
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      rappider-heading {
+
+        /* title, forcing to h5 */
+        h2 {
+          font-size: var(--h5-font-size) !important;
+          font-weight: 600;
+        }
+
+        h6 {
+          font-size: 0.75rem !important;
+        }
+      }
+    }
+
+    .ant-card-cover {
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .ant-card-hoverable {
+      margin: 0px;
+    }
+
+    .ant-btn-link {
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+.no-data {
+  width: 100%;
+}
+
+.cards-search-container {
+  width: 100%;
+  padding: var(--padding-2x);
+}
