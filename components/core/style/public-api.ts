@@ -4,6 +4,7 @@ export * from './spacing-config.interface';
 export * from './size-config.interface';
 export * from './box-shadow-config.interface';
 export * from './box-shadow-type.enum';
+export * from './shadow-type.enum';
 export * from './color-config.interface';
 export * from './compute-border-styles.function';
 export * from './input-size.enum';

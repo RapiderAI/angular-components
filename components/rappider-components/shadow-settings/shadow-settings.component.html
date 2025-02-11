@@ -1,0 +1,57 @@
+<ng-container *ngIf="value">
+  <div class="single-input">
+    <label>Box Shadow</label>
+    <div class="auto">
+      <rappider-textbox [(ngModel)]="value.boxShadow"
+                        placeholder="1px 1px 1px 1px gray"
+                        [disabled]="individualSidesVisible"
+                        (valueChange)="triggerValueChange()"></rappider-textbox>
+      <rappider-button type="link"
+                       [icon]="individualSidesVisible ? unlockedIcon : lockedIcon"></rappider-button>
+      <rappider-switch nz-tooltip
+                       [nzTooltipTitle]="(individualSidesVisible ? uncheckedSwitchTooltipTitle : checkedSwitchTooltipTitle )| translate"
+                       [ngModel]="individualSidesVisible"
+                       (valueChange)="switchValueChange()"></rappider-switch>
+    </div>
+  </div>
+
+  <ng-container *ngIf="individualSidesVisible">
+    <div class="many-inputs">
+      <div class="horizontal">
+        <label>Horizontal Length</label>
+        <rappider-dimension-select [(ngModel)]="value.horizontalLength"
+                                   (valueChange)="triggerValueChange()"></rappider-dimension-select>
+      </div>
+
+      <div class="vertical">
+        <label>Vertical Length</label>
+        <rappider-dimension-select [(ngModel)]="value.verticalLength"
+                                   (valueChange)="triggerValueChange()"></rappider-dimension-select>
+      </div>
+
+      <div class="blur">
+        <label>Blur Radius</label>
+        <rappider-dimension-select [(ngModel)]="value.boxShadowBlur"
+                                   (valueChange)="triggerValueChange()"></rappider-dimension-select>
+      </div>
+
+      <div class="spread">
+        <label>Spread Radius</label>
+        <rappider-dimension-select [(ngModel)]="value.boxShadowSpread"
+                                   (valueChange)="triggerValueChange()"></rappider-dimension-select>
+      </div>
+
+    </div>
+    <div class="single-input">
+      <label>Shadow Color</label>
+      <rappider-color-picker [(ngModel)]="value.shadowColor"
+                             (valueChange)="triggerValueChange()"></rappider-color-picker>
+    </div>
+  </ng-container>
+
+  <div class="inset">
+    <label>Inset</label>
+    <rappider-switch [(ngModel)]="value.inset"
+                     (valueChange)="triggerValueChange()"></rappider-switch>
+  </div>
+</ng-container>
