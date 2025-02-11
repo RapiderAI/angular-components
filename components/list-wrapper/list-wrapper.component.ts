@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { CrudTableViewConfig, CrudViewColumnType } from '../../utils/list-grid';
-// import { CardDataMapConfig, ItemActions, ListMode } from '../crud-view';
+import { CrudTableViewConfig, CrudViewColumnType } from '@rapider/angular-components/core/list-grid';
+import { CardDataMapConfig, ItemActions, ListMode } from '@rapider/angular-components/core/crud-view';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { Action, ActionBehavior, RedirectUrlMode } from '@rapider/angular-components/core/action';
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { ButtonType } from '@rapider/angular-components/core/button';
-// import { ActionButtonConfig } from '@rapider/angular-components/core/button';
 import { DropdownMenuComponentConfig } from '@rapider/angular-components/dropdown-menu';
 import { SwitchComponentConfig } from '@rapider/angular-components/switch';
 import { BreadcrumbOption } from 'ng-zorro-antd/breadcrumb';
@@ -28,6 +27,8 @@ import { FormsModule } from '@angular/forms';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { RappiderListGridComponent } from '../list-grid/list-grid.component';
+import { RappiderTitleToolbarComponent } from '@rapider/angular-components/title-toolbar';
 
 export enum ComponentActions {
   ImportData = 'importData',
@@ -39,7 +40,7 @@ export enum ComponentActions {
   templateUrl: './list-wrapper.component.html',
   imports:[
     CommonModule,
-    // RappiderListGridModule,
+    RappiderListGridComponent,
     RappiderTitleToolbarComponent,
     RappiderInputGroupComponent,
     NzEmptyModule,
@@ -152,7 +153,7 @@ export class RappiderListWrapperComponent implements OnInit, OnChanges {
   importedEntities: any[] = [];
   listGridConfigForImportData: CrudTableViewConfig;
   defaultPreviewTableMaxHeight = '200px';
-  importDataButton: ActionButtonConfig = {
+  importDataButton: any = {
     key: 'importData',
     text: this.importDataConfig?.importButtonText || 'Import Data',
     icon: {
@@ -280,7 +281,7 @@ export class RappiderListWrapperComponent implements OnInit, OnChanges {
     }
   }
 
-  onTitleBarActionButtonClick(action: ButtonComponentConfig) {
+  onTitleBarActionButtonClick(action) {
     // Actions that are controlled by this component
     if (action?.key === ComponentActions.ImportData) {
       console.log('Import Data');
