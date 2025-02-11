@@ -1,0 +1,42 @@
+.filter-container {
+  padding: var(--padding-3x);
+  border-radius: var(--border-radius-2x);
+  background-color: var(--section-background-color);
+  box-shadow: var(--box-shadow);
+  min-width: 320px;
+}
+
+.wrapper::ng-deep {
+  .ant-collapse {
+    border: none;
+    background-color: unset;
+    font-size: var(--main-font-size);
+  }
+  .ant-collapse-header {
+    padding: var(--padding-2x) 0;
+  }
+  .ant-collapse > .ant-collapse-item {
+    border-bottom: none;
+  }
+  .ant-picker {
+    width: 100%;
+  }
+}
+
+.filter-wrapper {
+  width: 100%;
+  display: flex;
+  gap: var(--margin-2x);
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+}
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--margin-2x);
+}

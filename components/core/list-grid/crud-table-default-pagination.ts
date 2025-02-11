@@ -1,0 +1,4 @@
+export const CRUD_TABLE_DEFAULT_PAGINATION = {
+    ACTIVE_PAGE_NUMBER: 1,
+    PAGE_SIZE: 10
+};
