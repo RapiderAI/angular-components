@@ -1,0 +1,29 @@
+<!-- EDIT AS HTML MODAL -->
+<rappider-modal [(visible)]="customHTMLEditModalVisible"
+                title="Edit HTML"
+                [fullScreen]="true"
+                (okClick)="onHTMLValueEdit()"
+                (cancelClick)="onCustomHTMLEditModalClose()">
+  <rappider-code-editor [(ngModel)]="customHTMLValue"
+                        [settings]="CODE_MIRROR_SETTINGS">
+  </rappider-code-editor>
+</rappider-modal>
+
+<!-- EDIT AS HTML BUTTON -->
+<div class="edit-as-html-button">
+  <a href="javascript:"
+     (click)="onCustomHTMLEditModalOpen()">
+    Edit As HTML
+  </a>
+</div>
+
+<!-- RICH TEXT EDITOR -->
+<rappider-rich-text-editor [(ngModel)]="value"
+                           [placeholder]="placeholder"
+                           [theme]="RichTextEditorTheme.Snow"
+                           [editorType]="RichTextEditorType.Advanced"
+                           [ngClass]="cssClass"
+                           [ngStyle]="cssStyle"
+                           (ngModelChange)="onValueChange($event)"
+                           (blur)="onBlur($event)">
+</rappider-rich-text-editor>

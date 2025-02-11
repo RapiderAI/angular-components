@@ -1,0 +1,9 @@
+<rappider-inline-row-form [ngModel]="mappedValue"
+                          [columns]="CONFIG_COLUMNS"
+                          [orderable]="orderable"
+                          [orderNumbersVisibility]="orderNumbersVisibility"
+                          [infoMessage]="infoMessage"
+                          [infoMessageIndex]="infoMessageIndex"
+                          (ngModelChange)="onValueChange($event)"
+                          (rowDelete)="onRowDelete($event)"
+                          (blur)="onBlur()"></rappider-inline-row-form>
