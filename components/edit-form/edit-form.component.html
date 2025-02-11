@@ -2065,43 +2065,6 @@
             class="form-item-divider">
       </ng-container>
 
-      <!-- ICON PICKER COMPONENT -->
-      <ng-container *ngIf="item.type === ComponentTypes.IconPicker">
-        <nz-form-item>
-
-          <!-- label -->
-          <ng-container *ngTemplateOutlet="label;context:{
-          title: item.title,
-          icon: item.labelIcon,
-          iconTooltipTitle: item.labelIconTooltipTitle,
-          menu: item.menu,
-          size: labelComponentSize,
-          required: item.showRequiredSign,
-          colon: item.showColonSign,
-          hint: item.hint,
-          formLayout: formLayout,
-          labelDescription: item.labelDescription
-        }"></ng-container>
-
-          <!-- component -->
-          <nz-form-control [nzXs]="inputComponentSize?.xs"
-                           [nzSm]="inputComponentSize?.sm"
-                           [nzMd]="inputComponentSize?.md"
-                           [nzLg]="inputComponentSize?.lg"
-                           [nzXl]="inputComponentSize?.xl"
-                           [nzXXl]="inputComponentSize?.xxl"
-                           [nzExtra]="item.description"
-                           [nzValidateStatus]="errors?.length ? 'error' : null"
-                           [nzErrorTip]="errorsTemplate">
-            <rappider-icon-picker rappiderUnwrapTag
-                                  [formControlName]="item.fieldName"
-                                  (ngModelChange)="onFieldValueChange(item, $event)"></rappider-icon-picker>
-          </nz-form-control>
-        </nz-form-item>
-        <hr *ngIf="dividerMode"
-            class="form-item-divider">
-      </ng-container>
-
       <!-- RADIO GROUP COMPONENT -->
       <ng-container *ngIf="item.type === ComponentTypes.RadioGroup">
         <nz-form-item>

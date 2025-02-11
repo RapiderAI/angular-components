@@ -67,7 +67,6 @@ import { RappiderRateComponent } from '@rapider/angular-components/rate';
 import { RappiderSliderComponent } from '@rapider/angular-components/slider';
 import { RappiderRowFormComponent } from '@rapider/angular-components/row-form';
 import { RappiderStringArrayComponent } from '@rapider/angular-components/string-array';
-import { RappiderIconPickerComponent } from '@rapider/angular-components/icon-picker';
 import { RappiderInputValidatorInfoComponent } from '@rapider/angular-components/input-validator-info';
 import { RappiderInputErrorComponent } from '@rapider/angular-components/input-error';
 import { RappiderInputLabelComponent } from '@rapider/angular-components/input-label';
@@ -94,7 +93,6 @@ import { RappiderJsonInputComponent } from '@rapider/angular-components/json-inp
 import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
 import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
 import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
-import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
 
 
 @Component({
