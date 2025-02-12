@@ -1,0 +1,118 @@
+rappider-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  gap: 20%
+}
+
+rappider-input-group {
+  width: 80%;
+}
+
+.filter-columns-select {
+  width: 20%;
+}
+
+.filter-columns-placeholder {
+  display: flex;
+  align-items: center;
+}
+
+rappider-select {
+  width: 20%;
+}
+
+.loading-wrapper {
+  color: var(--text-color);
+  // padding-left 1px for spinning icon edges no overflow
+  padding-left: 1px;
+  position: absolute;
+}
+
+.footer-wrapper {
+  position: relative;
+}
+
+.pagination-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+}
+
+.first-class-of-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-5x);
+
+  ::ng-deep {
+    rappider-card-one {
+      height: 100% !important;
+    }
+
+    .card-one .image-cover {
+      display: none;
+    }
+
+    .card-one {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+rappider-card-one {
+  flex-basis: calc(25% - var(--margin-4x));
+  box-sizing: border-box;
+}
+
+hr {
+  border: none;
+  height: var(--border-size-2x);
+  background-color: var(--primary-text-color);
+  margin: var(--margin-3x) 0;
+}
+
+.card-one-list-section {
+  display: flex;
+}
+
+.tree-filter-wrapper {
+  width: 15%;
+}
+
+.card-one-list-wrapper {
+  width: 85%;
+}
+
+.buttons{
+  display: flex;
+  gap: var(--margin-2x);
+}
+
+.button-and-select-wrapper {
+  display: flex;
+  width: 25%;
+  gap: var(--margin-2x);
+  ::ng-deep{
+    rappider-select{
+      width: 100%;
+    }
+
+    rappider-input-group{
+      width: 70%;
+    }
+    .search-filter{
+      gap: 10%;
+    }
+    .button{
+      height: var(--margin-7x);
+    }
+  }
+}

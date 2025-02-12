@@ -30,6 +30,7 @@
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
     "angularx-qrcode": "^19.0.0",
+    "fuse.js": "^7.1.0",
     "jsonata": "^2.0.6",
     "marked": "^15.0.6",
     "moment": "^2.30.1",
