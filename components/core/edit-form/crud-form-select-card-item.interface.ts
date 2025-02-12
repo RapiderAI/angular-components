@@ -1,7 +1,7 @@
-import { ButtonComponentConfig } from '../button';
-import { CardsConfig } from '../cards/card-config.interface';
-import { ModalComponentConfig } from '../modal/modal-config.interface';
-import { TextComponentConfig } from '../text';
+import { ButtonComponentConfig } from '@rapider/angular-components/button';
+import { CardsConfig } from '@rapider/angular-components/cards';
+import { ModalComponentConfig } from '@rapider/angular-components/modal';
+import { TextComponentConfig } from '@rapider/angular-components/text';
 import { CrudFormItem } from './crud-form-item.interface';
 
 export interface CrudFormSelectCardItem extends CrudFormItem {

@@ -1,4 +1,4 @@
-import { RichTextEditorTheme, RichTextEditorType } from '../rich-text-editor';
+import { RichTextEditorTheme, RichTextEditorType } from '@rapider/angular-components/core/rich-text-editor';
 import { CrudFormItem } from './crud-form-item.interface';
 import { CrudFormMentionItem } from './crud-form-mention-item.interface';
 
