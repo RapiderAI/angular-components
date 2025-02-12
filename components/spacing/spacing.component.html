@@ -1,0 +1,41 @@
+<div *ngIf="value">
+  <div class="single-input">
+    <label>All Sides</label>
+    <div class="auto">
+      <rappider-textbox [(ngModel)]="value.all"
+                        placeholder="10px"
+                        [disabled]="switchChecked"
+                        (ngModelChange)="triggerValueChange()"></rappider-textbox>
+      <rappider-button type="link"
+                       [icon]="switchChecked ? unlockedIcon : lockedIcon"></rappider-button>
+      <rappider-switch nz-tooltip
+                       nzTooltipTitle="Switch to enable settings details"
+                       [ngModel]="switchChecked"
+                       (valueChange)="switchValueChange()"></rappider-switch>
+    </div>
+  </div>
+
+  <div *ngIf="switchChecked"
+       class="many-inputs">
+    <div class="top">
+      <label>Top</label>
+      <rappider-dimension-select [(ngModel)]="value.top"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+    <div class="right">
+      <label>Right</label>
+      <rappider-dimension-select [(ngModel)]="value.right"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+    <div class="bottom">
+      <label>Bottom</label>
+      <rappider-dimension-select [(ngModel)]="value.bottom"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+    <div class="left">
+      <label>Left</label>
+      <rappider-dimension-select [(ngModel)]="value.left"
+                                 (ngModelChange)="triggerValueChange()"></rappider-dimension-select>
+    </div>
+  </div>
+</div>

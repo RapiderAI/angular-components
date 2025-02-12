@@ -1,0 +1,32 @@
+rappider-dimension-select {
+  width: 100%;
+}
+
+rappider-textbox {
+  width: 100%;
+}
+
+.auto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--margin-4x);
+}
+
+.many-inputs {
+  margin: var(--margin-4x) 0 var(--margin-4x) 0;
+  display: grid;
+  column-gap: var(--margin-2x);
+  row-gap: var(--margin-2x);
+  grid-template-columns: auto auto;
+}
+
+@media only screen and (max-width: 300px) {
+  .many-inputs {
+    grid-template-columns: auto;
+  }
+
+  .auto {
+    flex-wrap: wrap;
+  }
+}
