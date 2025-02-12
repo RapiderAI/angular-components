@@ -1,0 +1,191 @@
+<div cdkDropList
+     (cdkDropListDropped)="drop($event)">
+  <section *ngFor="let actionItem of value; let i = index"
+           cdkDrag
+           class="config-edit-area">
+    <ng-container *ngIf="editedIndex === i; else descriptionTmpl">
+      <div class="form-area">
+        <div class="config-input-area">
+          <div class="control-area">
+            <div class="label">
+              Name:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.name"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Text:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.text"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Behavior:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempActionItem.behavior"
+                               [options]="behaviorSelectOptions"></rappider-select>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Button Type:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempActionItem.buttonType"
+                               [options]="buttonTypeSelectOptions"></rappider-select>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              View:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempActionItem.view"
+                               [options]="viewSelectOptions"></rappider-select>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Redirect Url:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.redirectUrl"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Disabled:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempActionItem.disabled"></rappider-switch>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Tooltip Text:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.tooltipText"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Emit Without Popconfirm:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempActionItem.emitWithoutPopconfirm"></rappider-switch>
+            </div>
+          </div>
+          <div *ngIf="!tempActionItem.emitWithoutPopconfirm"
+               class="control-area">
+            <div class="label">
+              Popconfirm Title:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.popconfirmTitle"></rappider-textbox>
+            </div>
+          </div>
+          <div *ngIf="!tempActionItem.emitWithoutPopconfirm"
+               class="control-area">
+            <div class="label">
+              Popconfirm Ok Text:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.popConfirmOkText"></rappider-textbox>
+            </div>
+          </div>
+          <div *ngIf="!tempActionItem.emitWithoutPopconfirm"
+               class="control-area">
+            <div class="label">
+              Popconfirm Cancel Text:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempActionItem.popConfirmCancelText"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Icon:
+            </div>
+            <div class="input">
+              <rappider-icon-picker-wrapper [(ngModel)]="tempActionItem.icon"></rappider-icon-picker-wrapper>
+            </div>
+          </div>
+          <div *ngIf="!tempActionItem.emitWithoutPopconfirm"
+               class="control-area">
+            <div class="label">
+              Popconfirm Placement:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempActionItem.popconfirmPlacement"
+                               [options]="popConfirmPlacementTypeSelectableOption"></rappider-select>
+            </div>
+          </div>
+        </div>
+        <div class="button-area">
+          <div class="save-button">
+            <rappider-button text="Save"
+                             type="primary"
+                             (click)="onSave()"></rappider-button>
+          </div>
+          &nbsp;
+          <div class="cancel-button">
+            <rappider-button *ngIf="!isFirstInitialize"
+                             text="Cancel"
+                             (click)="onEditCancel()"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #descriptionTmpl>
+      <div class="short-description">
+        <div class="drag-icon">
+          <i class="fa-regular fa-grip-lines"></i>
+        </div>
+        <div class="description">
+          <ng-container *ngIf="actionItem.name">
+            <span><b>Name:</b></span> {{actionItem.name}}
+            <ng-container *ngIf="actionItem.text">
+              ,
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="actionItem.text">
+            <span><b>Text:</b></span> {{actionItem.text}}
+            <ng-container *ngIf="actionItem.behavior">
+              ,
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="actionItem.behavior">
+            <span><b>Behavior:</b></span> {{ActionBehavior[actionItem.behavior]}}
+          </ng-container>
+        </div>
+      </div>
+      <div class="delete-edit-buttons">
+        <div class="edit-button">
+          <rappider-button [icon]="editButtonIconConfig"
+                           size="small"
+                           (click)="onEditItemClick(i)"></rappider-button>
+        </div>
+        &nbsp;
+        <div>
+          <rappider-button [icon]="deleteButtonIconConfig"
+                           size="small"
+                           popconfirmTitle="Are you sure to delete this item?"
+                           [emitWithoutPopconfirm]="false"
+                           (confirm)="onDeleteItemClick(i)">
+          </rappider-button>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</div>
+
+<small *ngIf="hasAddError"
+       class="error">You're already adding an action. Please save before adding a new one.</small>
+<rappider-button text="Add Action"
+                 (click)="addAction()"></rappider-button>

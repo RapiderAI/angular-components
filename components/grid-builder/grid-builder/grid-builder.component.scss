@@ -1,0 +1,20 @@
+.content-area {
+	display: flex;
+	gap: var(--margin-4x);
+	padding: 0;
+}
+
+.form-control-area {
+	margin-bottom: var(--margin-3x, 15px);
+}
+
+.label {
+	border-bottom: var(--border-size-x) solid var(--primary-border-color);
+	margin-bottom: var(--margin-2x, 10px);
+	width: 100%;
+}
+
+.form-area {
+	border-bottom: var(--border-size-x) solid var(--primary-border-color);
+	margin-bottom: var(--margin-4x, 20px);
+}

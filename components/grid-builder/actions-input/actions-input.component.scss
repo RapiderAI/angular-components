@@ -1,0 +1,74 @@
+.short-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.label {
+  font-size: var(--main-font-size);
+  font-weight: bolder;
+}
+
+.input {
+  flex-basis: 70%;
+}
+
+.error {
+  color: var(--danger-color);
+}
+
+.control-area {
+  margin-bottom: var(--margin-2x, 10px);
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+}
+
+.control-area-inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-edit-buttons {
+  display: flex;
+}
+
+.config-edit-area {
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3x, 15px);
+  padding-left: var(--padding-3x, 15px);
+  padding-right: var(--padding-3x, 15px);
+  justify-content: space-between;
+}
+
+.drag-icon {
+  display: flex;
+  align-items: center;
+  margin-right: var(--margin-2x, 10px);
+}
+
+.drop-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-input-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-area {
+  margin-top: var(--margin-3x, 15px);
+  width: 100%;
+}
+
+rappider-button {
+  padding: 0px;
+}

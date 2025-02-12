@@ -1,0 +1,118 @@
+<div cdkDropList
+     (cdkDropListDropped)="drop($event)">
+  <section *ngFor="let configItem of value; let i = index"
+           cdkDrag
+           class="config-edit-area">
+    <ng-container *ngIf="editedIndex === i; else descriptionTmpl">
+      <div class="form-area">
+        <div class="config-input-area">
+          <div class="control-area">
+            <div class="label">
+              Title:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudViewItem.title"></rappider-textbox>
+              <small *ngIf="tempValueSubmitted && !tempCrudViewItem.title"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Field Name:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudViewItem.fieldName"></rappider-textbox>
+              <small *ngIf="!isFieldNameUnique() && tempValueSubmitted"
+                     class="error">
+                *Field Name must be unique.
+              </small>
+              <br>
+              <small *ngIf="tempValueSubmitted && !tempCrudViewItem.fieldName"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Type:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempCrudViewItem.type"
+                               [options]="typeSelectOptions"></rappider-select>
+              <small *ngIf="tempValueSubmitted && !tempCrudViewItem.type"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Visible:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudViewItem.visible"></rappider-switch>
+            </div>
+          </div>
+          <div *ngIf="tempCrudViewItem.type === CrudViewColumnType.InputTemplate"
+               class="control-area">
+            <div class="label">
+              Input Template Type:
+            </div>
+            <div class="input">
+              <rappider-select [(ngModel)]="tempCrudViewItem.inputTemplateType"
+                               [options]="inputTemplateTypeSelectOptions"></rappider-select>
+              <small *ngIf="tempValueSubmitted && !tempCrudViewItem.inputTemplateType"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+        </div>
+        <div class="button-area">
+          <div class="save-button">
+            <rappider-button text="Save"
+                             type="primary"
+                             (click)="onSave()"></rappider-button>
+          </div>
+          &nbsp;
+          <div class="cancel-button">
+            <rappider-button *ngIf="!isFirstInitialize"
+                             text="Cancel"
+                             (click)="onEditCancel()"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #descriptionTmpl>
+      <div class="short-description">
+        <div class="drag-icon">
+          <i class="fa-regular fa-grip-lines"></i>
+        </div>
+        <div class="description">
+          <span><b>Title:</b></span> {{configItem.title}},
+          <span><b>Field Name:</b></span> {{configItem.fieldName}},
+          <span><b>Type:</b></span> {{configItem.type}}
+          <span><b>Visible:</b></span> {{configItem.visible}}
+        </div>
+      </div>
+      <div class="delete-edit-buttons">
+        <div class="edit-button">
+          <rappider-button [icon]="editButtonIconConfig"
+                           size="small"
+                           (click)="onEditItemClick(i)"></rappider-button>
+        </div>
+        &nbsp;
+        <div>
+          <rappider-button [icon]="deleteButtonIconConfig"
+                           size="small"
+                           popconfirmTitle="Are you sure to delete this item?"
+                           [emitWithoutPopconfirm]="false"
+                           (confirm)="onDeleteItemClick(i)">
+          </rappider-button>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</div>
+
+<small *ngIf="hasAddError"
+       class="error">You're already adding an item. Please save before adding a new one.</small>
+<div class="mb-3">
+  <rappider-button text="Add Column"
+                   (click)="addColumn()"></rappider-button>
+</div>

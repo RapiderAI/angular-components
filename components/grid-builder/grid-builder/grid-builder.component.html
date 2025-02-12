@@ -1,0 +1,231 @@
+<rappider-modal title="Edit Grid Config"
+								[visible]="isEditModalVisible"
+								okText="Save Grid Config"
+								cancelText="Cancel"
+								fullScreen="true"
+								(okClick)="onGridConfigSave()"
+								(cancelClick)="onCancel()">
+	<div class="container-fluid content-area">
+		<div class="grid-display col-4 pt-2">
+			<h6> Table Preview </h6>
+			<hr>
+			<br>
+			<rappider-list-grid [data]="populatedData"
+													[config]="tempValue"></rappider-list-grid>
+		</div>
+		<div class="form-area col-8">
+			<nz-tabset>
+				<nz-tab nzTitle="Title">
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Content:
+								</b>
+							</span>
+						</div>
+						<rappider-textbox [(ngModel)]="tempValue.title.content"
+															(ngModelChange)="onItemsChange()"></rappider-textbox>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Type:
+								</b>
+							</span>
+						</div>
+						<rappider-select [(ngModel)]="tempValue.title.type"
+														 [options]="headingTypeOptions"
+														 (ngModelChange)="onItemsChange()"></rappider-select>
+					</div>
+
+				</nz-tab>
+				<nz-tab nzTitle="Columns">
+					<rappider-grid-builder-columns [(ngModel)]="tempValue.columns"
+																				 (ngModelChange)="onColumnsChange()"
+																				 (populatedDataChange)="onPopulatedDataChange($event)"></rappider-grid-builder-columns>
+				</nz-tab>
+				<nz-tab nzTitle="Grid Settings">
+          					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Searchable:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.searchable"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div *ngIf="tempValue.searchable"
+                class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									 Search Field:
+								</b>
+							</span>
+						</div>
+                <rappider-string-array [(ngModel)]="tempValue.multipleSearchFields"
+                                       (ngModelChange)="onItemsChange()"></rappider-string-array>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Selectable:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.selectable"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+          <div *ngIf="tempValue.selectable"
+                         class="form-control-area">
+                      <div class="label">
+                        <span>
+                          <b>
+                            Enable Multiple Selection:
+                          </b>
+                        </span>
+                      </div>
+                      <rappider-switch [(ngModel)]="tempValue.enableMultipleSelection"
+                                       (ngModelChange)="onItemsChange()"></rappider-switch>
+          </div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Selectable Column Visibility:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.columnVisibilitySelectable"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Size:
+								</b>
+							</span>
+						</div>
+						<rappider-select [(ngModel)]="tempValue.size"
+														 [options]="inputSizeOptions"
+														 (ngModelChange)="onItemsChange()"></rappider-select>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Date Format:
+								</b>
+							</span>
+						</div>
+						<rappider-select [(ngModel)]="tempValue.dateFormat"
+														 [options]="dateFormatOptions"
+														 (ngModelChange)="onItemsChange()"></rappider-select>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Search Placeholder:
+								</b>
+							</span>
+						</div>
+						<rappider-textbox [(ngModel)]="tempValue.searchPlaceholder" (ngModelChange)="onItemsChange()"></rappider-textbox>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Orderable:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.orderable"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Show Pagination:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.showPagination"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div *ngIf="tempValue.showPagination"
+							 class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Page Size:
+								</b>
+							</span>
+						</div>
+						<rappider-number-input [(ngModel)]="tempValue.pageSize"
+																	 (ngModelChange)="onItemsChange()"></rappider-number-input>
+					</div>
+					<div *ngIf="tempValue.showPagination"
+							 class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Front Pagination:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.nzFrontPagination"
+																	 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Filterable:
+								</b>
+							</span>
+						</div>
+						<rappider-switch [(ngModel)]="tempValue.filterable"
+														 (ngModelChange)="onItemsChange()"></rappider-switch>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span>
+								<b>
+									Length of Item Actions:
+								</b>
+							</span>
+						</div>
+						<rappider-number-input [(ngModel)]="tempValue.itemActionsLength"
+																	 (ngModelChange)="onItemsChange()"></rappider-number-input>
+					</div>
+					<div class="form-control-area">
+						<div class="label">
+							<span><b>Scroll</b></span>
+						</div>
+						<rappider-textarea [(ngModel)]="tempValue.scroll"
+															 (ngModelChange)="onItemsChange()"></rappider-textarea>
+					</div>
+				</nz-tab>
+				<nz-tab nzTitle="List Actions">
+					<rappider-actions-input [(ngModel)]="tempValue.listActions"
+																	(ngModelChange)="onItemsChange()"></rappider-actions-input>
+				</nz-tab>
+				<nz-tab nzTitle="Item Actions">
+					<rappider-actions-input [(ngModel)]="tempValue.itemActions"
+																	(ngModelChange)="onItemsChange()"></rappider-actions-input>
+				</nz-tab>
+			</nz-tabset>
+		</div>
+	</div>
+</rappider-modal>
+
+<rappider-button text="Edit Grid Config"
+								 (click)="openEditModal()"></rappider-button>

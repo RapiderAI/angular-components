@@ -7,3 +7,4 @@ export * from './box-shadow-type.enum';
 export * from './color-config.interface';
 export * from './compute-border-styles.function';
 export * from './input-size.enum';
+export * from './button-type-select-options';
