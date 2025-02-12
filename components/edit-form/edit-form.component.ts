@@ -40,7 +40,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { CardSelectorModule } from '@rapider/angular-components/card-selector';
-import { RappiderMonacoEditorComponent } from '@rapider/angular-components/code-editor';
+import { RappiderMonacoEditorModule } from '@rapider/angular-components/code-editor';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb';
 import { RappiderListGridDataInputComponent } from '@rapider/angular-components/list-grid';
@@ -111,7 +111,7 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     NzTabsModule,
     NzTagModule,
     CardSelectorModule,
-    RappiderMonacoEditorComponent.forRoot(monacoEditorConfig),
+    RappiderMonacoEditorModule.forRoot(monacoEditorConfig),
     RappiderModalComponent,
     RappiderBreadcrumbComponent,
     RappiderListGridDataInputComponent,
