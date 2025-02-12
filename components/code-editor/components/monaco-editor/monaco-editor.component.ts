@@ -19,8 +19,6 @@ import { marked } from 'marked';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { RappiderSpinComponent } from '@rapider/angular-components/spin';
-import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { MonacoEditorModel, MonacoEditorRegion } from '@rapider/angular-components/core/code-editor';
 import { MONACO_EDITOR_CONFIG } from '@rapider/angular-components/core/code-editor';
 import { CUSTOM_CODE_REGION_REGEXES } from '@rapider/angular-components/core/code-editor';
@@ -43,8 +41,6 @@ let loadPromise: Promise<void>;
     CommonModule,
     FormsModule,
     TranslateModule,
-    RappiderSpinComponent,
-    RappiderButtonComponent
   ],
   standalone: true,
   providers: [{
