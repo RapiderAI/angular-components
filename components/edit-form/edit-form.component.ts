@@ -39,7 +39,7 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
-import { CardSelectorModule } from '@rapider/angular-components/card-selector';
+import { CardSelectorComponent } from '@rapider/angular-components/card-selector';
 import { RappiderMonacoEditorModule } from '@rapider/angular-components/code-editor';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb';
@@ -78,10 +78,6 @@ import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RappiderRowSelectComponent } from '@rapider/angular-components/row-select';
 import { RappiderInlineRowFormModule } from '@rapider/angular-components/inline-row-form';
 import { RappiderIconPickerTwoComponent } from '@rapider/angular-components/icon-picker-two';
-import { RappiderBorderSettingsComponent } from '@rapider/angular-components/border-settings';
-import { RappiderShadowSettingsComponent } from '@rapider/angular-components/shadow-settings';
-import { RappiderSpacingComponent } from '@rapider/angular-components/spacing';
-import { RappiderGridBuilderComponent } from '@rapider/angular-components/grid-builder';
 import { RappiderPhoneNumberInputComponent } from '@rapider/angular-components/phone-number-input';
 import { RappiderAlertComponent } from '@rapider/angular-components/alert';
 import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
@@ -92,6 +88,15 @@ import { RappiderJsonInputComponent } from '@rapider/angular-components/json-inp
 import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
 import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
 import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
+import { RappiderCheckboxListComponent } from '../checkbox-list/checkbox-list.component';
+import { RappiderTreeSelectComponent } from '../tree-select/tree-select.component';
+import { RappiderAssetPickerComponent } from '../asset-picker/asset-picker.component';
+const monacoEditorConfig = {
+  baseUrl: 'assets',
+  defaultOptions: { scrollBeyondLastLine: false },
+  onMonacoLoad: () => {
+  }
+};
 
 
 @Component({
@@ -110,7 +115,7 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     DragDropModule,
     NzTabsModule,
     NzTagModule,
-    CardSelectorModule,
+    CardSelectorComponent,
     RappiderMonacoEditorModule.forRoot(monacoEditorConfig),
     RappiderModalComponent,
     RappiderBreadcrumbComponent,
@@ -129,7 +134,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderHtmlEditorComponent,
     RappiderNumberInputComponent,
     RappiderDatePickerComponent,
-    RappiderDatetimePickerComponent,
     RappiderRadioComponent,
     RappiderCheckboxComponent,
     RappiderSelectComponent,
@@ -138,7 +142,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderSliderComponent,
     RappiderRowFormComponent,
     RappiderStringArrayComponent,
-    RappiderIconPickerComponent,
     RappiderInputValidatorInfoComponent,
     RappiderInputErrorComponent,
     RappiderInputLabelComponent,
@@ -152,10 +155,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderRowSelectComponent,
     RappiderInlineRowFormModule,
     RappiderIconPickerTwoComponent,
-    RappiderBorderSettingsComponent,
-    RappiderShadowSettingsComponent,
-    RappiderSpacingComponent,
-    RappiderGridBuilderComponent,
     RappiderPhoneNumberInputComponent,
     RappiderAlertComponent,
     RappiderCheckboxListComponent,

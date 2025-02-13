@@ -1,0 +1,38 @@
+.page-template-selector {
+  ::ng-deep {
+    .card-one {
+      padding: 0px;
+      justify-content: flex-start;
+      border: 1px solid var(--primary-border-color);
+    }
+
+    .image-cover {
+      border-radius: var(--border-radius-2x) var(--border-radius-2x) 0px 0px !important;
+      height: 400px !important;
+    }
+
+    .card-description-wrapper {
+      padding: var(--padding-2x) var(--padding-4x);
+    }
+  }
+
+  .input-group {
+    margin-bottom: var(--margin-2x);
+  }
+
+  .page-template-list {
+    max-height: calc(var(--modal-max-height) - 200px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: var(--padding-4x);
+  }
+}
+
+.select-button-area {
+  display: flex;
+  align-items: center;
+}
+
+rappider-text {
+  padding-right: var(--padding-2x);
+}

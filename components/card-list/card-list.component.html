@@ -1,0 +1,61 @@
+<div *ngFor="let item of data"
+     class="card-item">
+  <nz-card class="card"
+           [nzLoading]="loading"
+           [nzHoverable]="true"
+           nzSize="medium"
+           (click)="onCardClick(item)">
+
+    <nz-card-meta [nzAvatar]="avatarArea"
+                  [nzTitle]="titleArea"
+                  [nzDescription]="descriptionArea">
+    </nz-card-meta>
+
+    <ng-template #avatarArea>
+      <nz-avatar *ngIf="item.avatar"
+                 [nzSrc]=item.avatar></nz-avatar>
+    </ng-template>
+    <ng-template #titleArea>
+      <div *ngIf="item.title"
+           class="title"
+           [ngClass]="item.titleClass">
+        <rappider-heading [content]="item.title?.content"
+                          [type]="item.title?.type"></rappider-heading>
+      </div>
+      <div *ngIf="item.subTitle"
+           class="sub-title">
+        <rappider-heading [content]="item.subTitle?.content"
+                          [type]="item.subTitle?.type"></rappider-heading>
+      </div>
+      <div *ngIf="item.date"
+           class="date">
+        {{ item.date | formatDate }}
+      </div>
+    </ng-template>
+    <ng-template #descriptionArea>
+      <div *ngFor="let additionalSubTitle of item.additionalSubTitles"
+           class="additional-sub-titles">
+        <div class="icon"><i [ngClass]="additionalSubTitle.icon"></i></div>
+        {{ additionalSubTitle.content | translate }}
+      </div>
+    </ng-template>
+
+    <div *ngIf="item.buttons?.length"
+         class="button-area">
+      <!-- nzType="flex" is deprecated -->
+      <div nz-row
+           nzType="flex"
+           nzJustify="start">
+        <div *ngFor="let button of item.buttons; let i = index"
+             nz-col
+             [nzSpan]="button?.properties?.width"
+             [ngClass]="button.class"
+             (click)="onButtonClick(button)">
+          <button class="btn btn-link card-button">
+            {{ button.title | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+</div>
