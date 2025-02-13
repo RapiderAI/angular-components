@@ -23,7 +23,6 @@ const antDesignIcons = AllIcons as {
 };
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
-// AppConfig fonksiyonu
 export async function getAppConfig(configService: ConfigService): Promise<ApplicationConfig> {
   await configService.loadConfig();
 

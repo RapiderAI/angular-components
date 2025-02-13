@@ -5,14 +5,13 @@ import { ConfigService } from './app/services/stripe-config.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { importProvidersFrom } from '@angular/core';
 
-// bootstrapApplication ile uygulamayı başlatıyoruz
 bootstrapApplication(AppComponent, {
   providers: [
-    ConfigService, // ConfigService'i burada sağlıyoruz
+    ConfigService,
     {
-      provide: 'APP_CONFIG', // 'APP_CONFIG' adında bir sağlayıcı belirliyoruz
-      useFactory: (configService: ConfigService) => getAppConfig(configService), // configService kullanarak config alıyoruz
-      deps: [ConfigService], // ConfigService bağımlılığı
+      provide: 'APP_CONFIG',
+      useFactory: (configService: ConfigService) => getAppConfig(configService),
+      deps: [ConfigService],
     },
     importProvidersFrom(TranslateModule.forRoot()), 
   ]
