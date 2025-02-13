@@ -1,0 +1,19 @@
+.transfer {
+  &::ng-deep {
+    .ant-transfer-list-header {
+      background-color: var( --section-background-color, var(--component-header-background-color));
+      color: var(--text-color);
+    }
+
+    .ant-checkbox-disabled + span {
+      color: var(--disabled-text-color);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+
+    .ant-input-affix-wrapper .anticon,
+    .anticon svg {
+      color: var(--text-color);
+    }
+  }
+}

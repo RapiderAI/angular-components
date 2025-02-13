@@ -1,0 +1,32 @@
+.click-to-dial {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  rappider-button {
+    ::ng-deep {
+      display: inline-flex;
+      width: auto;
+
+      .text {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &.hover-enabled:hover {
+    rappider-button {
+      ::ng-deep {
+        .text {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .dial-icon {
+    margin-right: var(--margin-x);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+}

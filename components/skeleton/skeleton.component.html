@@ -1,0 +1,28 @@
+<nz-skeleton *ngIf="skeletonType === SkeletonType.Default"
+             [nzActive]="active"
+             [nzAvatar]="avatarConfig"
+             [nzLoading]="loading"
+             [nzParagraph]="showParagraph"
+             [nzTitle]="showTitle"
+             [nzRound]="round"></nz-skeleton>
+
+<nz-skeleton-element *ngIf="skeletonType === SkeletonType.Button"
+                     nzType="button"
+                     [nzActive]="active"
+                     [nzSize]="elementSize"
+                     [nzShape]="buttonShape"></nz-skeleton-element>
+
+<nz-skeleton-element *ngIf="skeletonType === SkeletonType.Avatar"
+                     nzType="avatar"
+                     [nzActive]="active"
+                     [nzSize]="elementSize"
+                     [nzShape]="avatarShape"></nz-skeleton-element>
+
+<nz-skeleton-element *ngIf="skeletonType === SkeletonType.Input"
+                     nzType="input"
+                     [nzActive]="active"
+                     [nzSize]="elementSize"></nz-skeleton-element>
+
+<nz-skeleton-element *ngIf="skeletonType === SkeletonType.Image"
+                     nzType="image"
+                     [nzActive]="active"></nz-skeleton-element>

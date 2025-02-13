@@ -1,0 +1,14 @@
+.phone-number-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--margin-x);
+}
+
+.select {
+  width: 25%;
+}
+
+.textbox {
+  width: 75%;
+}

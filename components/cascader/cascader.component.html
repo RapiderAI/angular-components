@@ -1,0 +1,16 @@
+<div class="cascader-element">
+  <nz-cascader [nzOptions]="options"
+               [nzPlaceHolder]="placeholder"
+               [nzDisabled]="disabled"
+               [nzShowSearch]="showSearch"
+               [nzAllowClear]="allowClear"
+               [nzSize]="size"
+               [nzExpandTrigger]="expandTrigger"
+               [nzChangeOnSelect]="changeOnSelect"
+               [nzBackdrop]="backdrop"
+               [nzValueProperty]="valueProperty"
+               [nzChangeOn]="changeOn"
+               [nzLabelRender]="labelRender"
+               (ngModelChange)=" onValueChange ($event)">
+  </nz-cascader>
+</div>
