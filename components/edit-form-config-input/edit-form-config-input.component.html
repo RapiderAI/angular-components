@@ -1,0 +1,180 @@
+<!-- Edit Button-->
+<rappider-button transparent="true"
+                 type="primary"
+                 [text]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_FORM' | translate"
+                 (click)="onEditFormButtonClick()"></rappider-button>
+
+<!-- Edit Modal-->
+<rappider-modal [(visible)]="editFormConfigInputVisible"
+                [title]="titleTemplate"
+                [fullScreen]="true"
+                (cancelClick)="hideEditFormModal()"
+                (okClick)="onEditFormConfigSubmit()">
+
+  <!-- Modal Title Template-->
+  <ng-template #titleTemplate>
+    <div class="title">
+      {{ 'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_FORM' | translate }}
+    </div>
+  </ng-template>
+
+  <div *ngIf="isDefaultValuesAdded">
+    <!-- Items-->
+    <div class="form-item">
+      <rappider-input-label title="items">
+      </rappider-input-label>
+    </div>
+    <div>
+      <rappider-json-array [previewFieldNames]="itemsPreviewFieldNames"
+                           [(ngModel)]="items"
+                           (ngModelChange)="onItemsChange()"></rappider-json-array>
+    </div>
+
+    <!-- Form Layout -->
+    <div class="form-item">
+      <rappider-input-label title="Form Layout">
+      </rappider-input-label>
+    </div>
+    <div>
+      <rappider-select [options]="formLayoutOptions"
+                       [(ngModel)]="formLayout"
+                       [settings]="SINGLE_SELECT_SETTINGS"
+                       (ngModelChange)="onFormLayoutChange($event)"></rappider-select>
+    </div>
+
+    <!-- Input Change Reaction-->
+    <div class="form-item">
+      <div class="input-reaction-label">
+        <rappider-input-label
+                              [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.INPUT_CHANGE_REACTION' | translate">
+        </rappider-input-label>
+      </div>
+      <div class="pop-over">
+        <button nz-button
+                nz-popover
+                [nzPopoverContent]="popoverTemplate"
+                [nzPopoverTitle]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_FORM_CHANGE_REACTION' | translate"
+                nzPopoverPlacement="top"
+                nzType="text">
+          <i class="far fa-question-circle"></i>
+        </button>
+      </div>
+      <!-- Popover Template -->
+      <ng-template #popoverTemplate>
+        {{ 'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.CHANGE_REACTION_DESCRIPTION' | translate }}
+      </ng-template>
+    </div>
+    <div>
+      <rappider-select [options]="inputChangeReactions"
+                       [(ngModel)]="inputChangeReaction"
+                       [settings]="SINGLE_SELECT_SETTINGS"
+                       (ngModelChange)="onInputChangeReactionChange()"></rappider-select>
+    </div>
+
+    <!-- Submit Button Settings -->
+    <div class="form-item">
+      <rappider-input-label
+                            [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.SUBMIT_BUTTON_SETTINGS' | translate">
+      </rappider-input-label>
+    </div>
+    <div>
+      <button nz-button
+              class="default-button"
+              (click)="openEditSubmitButtonSettingsModal()">
+        <div class="icon">
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="description">
+          {{ 'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_SUBMIT_BUTTON' | translate }}
+        </div>
+      </button>
+    </div>
+
+    <!-- Item Settings-->
+    <div class="form-item">
+      <rappider-input-label [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.ITEM_SETTINGS' | translate">
+      </rappider-input-label>
+    </div>
+    <div>
+      <button nz-button
+              class="default-button"
+              (click)="openItemSettingsModal()">
+        <div class="icon">
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="description">
+          {{ 'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_ITEM_SETTINGS' | translate }}
+        </div>
+      </button>
+    </div>
+
+    <!-- Validators -->
+    <div class="form-item">
+      <rappider-input-label [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.VALIDATORS' | translate">
+      </rappider-input-label>
+    </div>
+    <div>
+      <rappider-json-array [previewFieldNames]="validatorsPreviewFieldNames"
+                           [(ngModel)]="validators"
+                           (ngModelChange)="onValidatorsChange()"></rappider-json-array>
+    </div>
+
+    <!-- Item Settings Modal-->
+    <rappider-modal [(visible)]="itemSettingsModalVisible"
+                    [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_ITEM' | translate"
+                    [fullScreen]="true"
+                    (cancelClick)="closeItemSettingsModal()"
+                    (okClick)="onItemSettingsChange()">
+      <rappider-code-editor [(ngModel)]="itemSettings"
+                            [settings]="JSON_CODEMIRROR_SETTINGS"></rappider-code-editor>
+    </rappider-modal>
+  </div>
+
+  <!-- Submit Button Settings Modal -->
+  <rappider-modal [(visible)]="editSubmitButtonSettingsModalVisible"
+                  [title]="submitButtonTitle"
+                  (cancelClick)="handleCancel()"
+                  (okClick)="onSubmitButtonSettingsChange()">
+    <div class="form-item">
+      <rappider-input-label [title]="'SHARED.TEXT' | translate"></rappider-input-label>
+    </div>
+
+    <ng-template #submitButtonTitle>
+      <div class="title">
+        {{ 'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_SUBMIT_BUTTON_SETTINGS' | translate }}
+      </div>
+    </ng-template>
+
+    <div>
+      <rappider-textbox [(ngModel)]="submitButton.text">
+      </rappider-textbox>
+    </div>
+
+    <div class="form-item">
+      <rappider-input-label [title]="'SHARED.VISIBLE' | translate"></rappider-input-label>
+    </div>
+
+    <div>
+      <rappider-checkbox [(ngModel)]="submitButton.visible"
+                         [text]="submitButton?.visible || false"
+                         [borderSettings]="checkbox?.borderSettings"
+                         [text]="checkbox?.text"
+                         [customSizeSettings]="checkbox?.customSizeSettings"
+                         [shadowSettings]="checkbox?.shadowSettings"
+                         [marginSettings]="checkbox?.marginSettings"
+                         [paddingSettings]="checkbox?.paddingSettings"></rappider-checkbox>
+    </div>
+
+    <!-- Item Sizes -->
+    <div class="form-item">
+      <rappider-input-label [title]="'SHARED.SIZE' | translate">
+      </rappider-input-label>
+    </div>
+
+    <div>
+      <rappider-select [options]="inputSizes"
+                       [(ngModel)]="submitButton.size"
+                       [settings]="SINGLE_SELECT_SETTINGS"></rappider-select>
+    </div>
+  </rappider-modal>
+</rappider-modal>

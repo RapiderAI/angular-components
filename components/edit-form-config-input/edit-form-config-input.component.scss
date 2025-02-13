@@ -1,0 +1,30 @@
+.form-item {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 1.286rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.input-reaction-label {
+  display: inline-block;
+}
+
+.pop-over {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.description {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.title {
+  font-size: var(--modal-title-font-size);
+}
