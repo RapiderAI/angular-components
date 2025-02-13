@@ -1,0 +1,47 @@
+<div class="control-buttons">
+    <rappider-button [text]="getModalButtonConfig().text"
+                     [icon]="getModalButtonConfig().icon"
+                     size="extra-small"
+                     (confirm)="handleAssetPickerModalVisibility(true)"></rappider-button>
+    <rappider-button *ngIf="value"
+                     size="extra-small"
+                     nz-tooltip
+                     nzTooltipTitle="Preview Selected Asset"
+                     [icon]="previewModalButtonConfig.icon"
+                     (confirm)="handlePreviewModalVisibility(true)"></rappider-button>
+    <rappider-button *ngIf="value"
+                     size="extra-small"
+                     nz-tooltip
+                     nzTooltipTitle="Delete Asset"
+                     [icon]="removeSelectedAssetButtonConfig.icon"
+                     (confirm)="removeSelectedAsset()"></rappider-button>
+</div>
+
+<rappider-modal [(visible)]="assetPickerModalVisibility"
+                [footer]="null"
+                [fullScreen]="true"
+                [closeIconVisibility]="false"
+                className="asset-picker-modal">
+    <rappider-asset-browser *ngIf="assetPickerModalVisibility"
+                            [basePath]="basePath"
+                            [folderTree]="folderTree"
+                            [headerButtons]="headerButtons"
+                            [detailFooterButtons]="detailFooterButtons"
+                            [headerButtonVisibilityFunction]="headerButtonVisibilityFunction"
+                            [detailFooterButtonVisibilityFunction]="detailFooterButtonVisibilityFunction"
+                            (folderExpand)="onFolderExpand($event)"
+                            (folderSelect)="onFolderSelect($event)"
+                            (activeFolderChange)="onActiveFolderChange($event)"
+                            (selectedItemChange)="onSelectedItemChange($event)"
+                            (headerButtonClick)="onHeaderButtonClick($event)"
+                            (detailFooterButtonClick)="onDetailFooterButtonClick($event)"></rappider-asset-browser>
+</rappider-modal>
+
+<rappider-modal [(visible)]="previewModalVisibility"
+                [footer]="null"
+                className="asset-picker-modal">
+    <div class="image-preview-wrapper">
+        <img width="50%"
+             [src]="value">
+    </div>
+</rappider-modal>
