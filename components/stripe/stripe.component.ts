@@ -16,9 +16,8 @@ import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RappiderNumberInputComponent } from '@rapider/angular-components/number-input';
-// import { RappiderTagInputComponent } from '@rapider/angular-components/tag-input';
+import { RappiderTagInputComponent } from '@rapider/angular-components/tag-input';
 import { RappiderAlertComponent } from '@rapider/angular-components/alert';
-import { RappiderTagInputComponent } from '../tag-input/tag-input.component'; // will be fix
 import { NgxStripeModule } from 'ngx-stripe';
 
 @Component({
