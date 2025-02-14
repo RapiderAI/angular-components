@@ -1,5 +1,5 @@
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
-import { CardsConfig } from '@rapider/angular-components/cards';
+import { CardsConfig } from '@rapider/angular-components/core/cards';
 import { ModalComponentConfig } from '@rapider/angular-components/modal';
 import { TextComponentConfig } from '@rapider/angular-components/text';
 import { CrudFormItem } from './crud-form-item.interface';
