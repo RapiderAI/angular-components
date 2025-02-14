@@ -1,0 +1,13 @@
+<div class="list">
+  <div *ngIf="searchable"
+       class="search-area">
+    <rappider-textbox [(ngModel)]="searchText"
+                      (ngModelChange)="onSearch()"></rappider-textbox>
+  </div>
+
+  <div class="scrollable-container"
+       [style.height]=" getListHeight() + 'px'">
+    <rappider-card-list [data]="listToDisplay"
+                        (cardClick)="onItemClick($event)"></rappider-card-list>
+  </div>
+</div>
