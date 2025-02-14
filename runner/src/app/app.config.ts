@@ -9,7 +9,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
-import { NgxStripeModule } from 'ngx-stripe';
+import { NgxStripeModule, StripeElementsService } from 'ngx-stripe';
 
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -25,8 +25,10 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
 export async function getAppConfig(configService: ConfigService): Promise<ApplicationConfig> {
-  await configService.loadConfig();
+  // await configService.loadConfig();
+  const stripeKey = configService.getStripeKey(); // Burada key alıyoruz
 
+  console.log('Stripe Key Loaded:', stripeKey); // Debug log
   return {
     providers: [
       provideHttpClient(),
@@ -37,7 +39,13 @@ export async function getAppConfig(configService: ConfigService): Promise<Applic
       provideTranslateService(),
       { provide: LOCALE_ID, useValue: 'en-US' },
       { provide: NZ_I18N, useValue: en_US },
-      ...RappiderStripeModule.forRoot(configService.getStripeKey()).providers
+      { provide: 'STRIPE_CLIENT_SECRET', useValue: stripeKey }, // ✅ BURAYA EKLEDİK
+      ...RappiderStripeModule.forRoot(stripeKey).providers,
+      {
+        provide: 'STRIPE_CLIENT_SECRET', 
+        useFactory: () => stripeKey,
+      },
+      { provide: ConfigService, useValue: configService }
     ]
   };
 }

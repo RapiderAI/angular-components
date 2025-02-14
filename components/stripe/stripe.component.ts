@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Optional, Output, ViewChild, importProvidersFrom, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
-import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
+import { DocumentRef, LazyStripeAPILoader, NGX_STRIPE_VERSION, STRIPE_OPTIONS, STRIPE_PUBLISHABLE_KEY, StripeElementsService, StripePaymentElementComponent, StripeService, WindowRef } from 'ngx-stripe';
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { StripeFormField } from '@rapider/angular-components/core/stripe';
 import { AlertType } from '@rapider/angular-components/core/alert';
@@ -106,8 +106,12 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     private stripeService: StripeService,
-    @Optional() @Inject('STRIPE_CLIENT_SECRET') public clientSecret: string
-  ) { }
+    @Inject('STRIPE_CLIENT_SECRET') public stripeClientSecret: string,
+    @Inject(STRIPE_PUBLISHABLE_KEY) public stripePublishableKey: string
+  ) { 
+    console.log('Component Stripe Client Secret:', this.stripeClientSecret); // Debug Log
+    console.log('Component Stripe Client Secret:', this.stripeClientSecret); // Debug Log
+  }
 
   ngOnInit(): void {
     this.buildForm();
