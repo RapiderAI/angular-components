@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
 import { StripePaymentElementComponent, StripeService } from 'ngx-stripe';
@@ -57,7 +57,6 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
     }
   };
   @Input() data: any;
-  @Input() clientSecret: string;
   @Input() nameFieldVisibility: boolean;
   @Input() cityFieldVisibility: boolean;
   @Input() emailFieldVisibility: boolean;
@@ -106,7 +105,8 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
 
   constructor(
     private formBuilder: FormBuilder,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    @Optional() @Inject('STRIPE_CLIENT_SECRET') public clientSecret: string
   ) { }
 
   ngOnInit(): void {

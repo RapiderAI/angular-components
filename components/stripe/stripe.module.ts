@@ -6,4 +6,13 @@ import { RappiderStripeComponent } from './stripe.component';
   imports: [RappiderStripeComponent],
   exports: [RappiderStripeComponent]
 })
-export class RappiderStripeModule { }
+export class RappiderStripeModule {
+  static forRoot(clientSecret: string) {
+    return {
+      ngModule: RappiderStripeModule,
+      providers: [
+        { provide: 'STRIPE_CLIENT_SECRET', useValue: clientSecret },
+      ],
+    };
+  }
+}

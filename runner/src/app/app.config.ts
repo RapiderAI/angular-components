@@ -11,10 +11,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { NgxStripeModule } from 'ngx-stripe';
 
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
-import { registerLocaleData } from '@angular/common'; 
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ConfigService } from './services/stripe-config.service';
+import { RappiderStripeModule } from '@rapider/angular-components/stripe/stripe.module';
 
 registerLocaleData(en);
 
@@ -36,7 +37,7 @@ export async function getAppConfig(configService: ConfigService): Promise<Applic
       provideTranslateService(),
       { provide: LOCALE_ID, useValue: 'en-US' },
       { provide: NZ_I18N, useValue: en_US },
-      importProvidersFrom(NgxStripeModule.forRoot(configService.getStripeKey()))
+      ...RappiderStripeModule.forRoot(configService.getStripeKey()).providers
     ]
   };
 }
