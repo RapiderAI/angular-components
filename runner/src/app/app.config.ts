@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -9,43 +9,27 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
-import { NgxStripeModule, StripeElementsService } from 'ngx-stripe';
 
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
+import { registerLocaleData } from '@angular/common'; 
 import en from '@angular/common/locales/en';
-import { ConfigService } from './services/stripe-config.service';
-import { RappiderStripeModule } from '@rapider/angular-components/stripe/stripe.module';
 
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 
-export async function getAppConfig(configService: ConfigService): Promise<ApplicationConfig> {
-  // await configService.loadConfig();
-  const stripeKey = configService.getStripeKey(); // Burada key alıyoruz
-
-  console.log('Stripe Key Loaded:', stripeKey); // Debug log
-  return {
-    providers: [
-      provideHttpClient(),
-      provideZoneChangeDetection({ eventCoalescing: true }),
-      provideRouter(routes),
-      provideAnimations(),
-      provideNzIcons(icons),
-      provideTranslateService(),
-      { provide: LOCALE_ID, useValue: 'en-US' },
-      { provide: NZ_I18N, useValue: en_US },
-      { provide: 'STRIPE_CLIENT_SECRET', useValue: stripeKey }, // ✅ BURAYA EKLEDİK
-      ...RappiderStripeModule.forRoot(stripeKey).providers,
-      {
-        provide: 'STRIPE_CLIENT_SECRET', 
-        useFactory: () => stripeKey,
-      },
-      { provide: ConfigService, useValue: configService }
-    ]
-  };
-}
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideAnimations(),
+    provideNzIcons(icons),
+    provideTranslateService(),
+    { provide: LOCALE_ID, useValue: 'en-US' },
+    { provide: NZ_I18N, useValue: en_US }
+  ]
+};

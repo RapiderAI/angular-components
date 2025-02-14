@@ -1,9 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { getAppConfig } from './app/app.config';
 import { ConfigService } from './app/services/stripe-config.service';
-import { TranslateModule } from '@ngx-translate/core';
-import { importProvidersFrom } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { DocumentRef, LazyStripeAPILoader, NGX_STRIPE_VERSION, STRIPE_OPTIONS, STRIPE_PUBLISHABLE_KEY, StripeElementsService, StripeService, WindowRef } from 'ngx-stripe';
 
