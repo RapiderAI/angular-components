@@ -1,5 +1,4 @@
-{{stripeClientSecret|json}}
-<rappider-alert *ngIf="infoAlertVisibility && !stripeClientSecret"
+<rappider-alert *ngIf="infoAlertVisibility && !clientSecret"
                 [title]="alertComponentConfig.title"
                 [type]="alertComponentConfig.type"
                 [showIcon]="alertComponentConfig.showIcon"
@@ -7,7 +6,7 @@
 <nz-skeleton [nzLoading]="paymentIntentLoading"
              [nzActive]="true"></nz-skeleton>
 <form nz-form
-      *ngIf="stripeClientSecret"
+      *ngIf="clientSecret"
       [formGroup]="paymentElementForm"
       (ngSubmit)="onPaymentFormSubmit()">
 
@@ -85,7 +84,7 @@
   <nz-form-control class="form-element stripe">
     <ngx-stripe-payment [appearance]="appearance"
                         [options]="cardOptions"
-                        [clientSecret]="stripeClientSecret">
+                        [clientSecret]="clientSecret">
     </ngx-stripe-payment>
   </nz-form-control>
 
