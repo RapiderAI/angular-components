@@ -1,0 +1,60 @@
+.list-item {
+  display: flex;
+  margin-bottom: var(--margin-2x);
+  align-items: center;
+  gap: var(--margin-2x);
+
+  .input-container {
+    flex: 1;
+  }
+}
+
+.row-form-data-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--margin-2x);
+
+  .row-form-data-input {
+    flex: 1;
+  }
+}
+
+.row-form-input-template {
+  ::ng-deep {
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      height: var(--text-input-height);
+    }
+  }
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .default-button {
+    display: flex;
+    align-items: center;
+    padding: var(--margin-3x) var(--margin-4x);
+    justify-content: center;
+    width: auto;
+
+    p {
+      margin-left: var(--margin-x);
+    }
+  }
+
+  .form-footer-right-side {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-x);
+  }
+
+}
+
+.unvalid-form-item {
+  input {
+    border: 1px solid var(--danger-color);
+  }
+}

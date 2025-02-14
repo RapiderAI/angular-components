@@ -1,0 +1,114 @@
+<rappider-title-toolbar [mainTitle]="mainTitleConfig"
+                        [displayToolbar]="displayToolbar"
+                        [displayToolbarBackButton]="displayToolbarBackButton"
+                        [displayBreadcrumb]="displayBreadCrumb"
+                        [options]="breadCrumbOptions"
+                        [titleBarActionButtons]="titleBarActionButtons"
+                        [titleBarActionMenu]="titleBarActionMenu"
+                        [titleBarSwitchSettings]="titleBarSwitchSettings"
+                        [titleBarRadioButtonSettings]="titleBarRadioButtonSettings"
+                        (titleBarRadioButtonClick)="onTitleBarRadioButtonClick($event)"
+                        (titleBarActionButtonClick)="onTitleBarActionButtonClick($event)">
+</rappider-title-toolbar>
+
+<ng-container *ngIf="!isDataLoading">
+  <!-- GRID mode -->
+  <ng-container *ngIf="listMode === ListMode.Grid">
+    <section class="grid-list-container">
+      <rappider-list-grid [config]="listGridConfig"
+                          [data]="data"
+                          [loading]="isDataLoading"
+                          [borderless]="isListGridBorderless"
+                          [redirectUrlData]="redirectUrlData"
+                          (listActionClick)="onListActionClick($event)"
+                          (listActionDropdownItemClick)="onListGridListActionDropdownItemClick($event)"
+                          (columnActionClick)="onListGridColumnActionClick($event)"></rappider-list-grid>
+    </section>
+  </ng-container>
+
+  <!-- CARD mode -->
+  <ng-container *ngIf="listMode === ListMode.Card">
+    <section class="card-list-container">
+      <!-- Search for cards -->
+      <div class="cards-search-container">
+        <rappider-input-group [(ngModel)]="cardListSearchText"
+                              [textbox]="cardSearchInputConfig.textbox"
+                              [suffixIcon]="cardSearchInputConfig.suffixIcon"
+                              (ngModelChange)="onSearchValueChange($event)"></rappider-input-group>
+      </div>
+      <nz-empty *ngIf="!filteredDataForCardMode || !filteredDataForCardMode?.length"
+                nzNotFoundImage="simple"
+                class="no-data"></nz-empty>
+
+      <div class="item-cards">
+        <div *ngFor="let item of filteredDataForCardMode; let i = index"
+             class="item-card">
+          <rappider-card-ccs [colorBand]="item?.color"
+                             [title]="{content: item[cardListConfig?.titleFieldName] || item.title || item.name, type:'h3'}"
+                             [image]="item.image"
+                             [subtitles]="item.subtitles || []"
+                             [description]="item[cardListConfig?.descriptionFieldName] || item.description"
+                             [secondActionButton]="cardListConfig?.editItemActionButton"
+                             [thirdActionButton]="cardListConfig?.deleteItemActionButton"
+                             (actionClick)="onCardViewActionClick($event, item)"
+                             (itemSelect)="onCardViewItemSelected(item)">
+          </rappider-card-ccs>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+
+  <nz-modal [(nzVisible)]="isImportDataModalVisible"
+            [nzOkText]="importDataConfig?.okText || 'OK'"
+            [nzCancelText]="importDataConfig?.cancelText || 'Cancel'"
+            [nzTitle]="importDataConfig?.title || 'Import Data'"
+            [nzWidth]="'80%'"
+            (nzOnCancel)="onImportDataCancelled()"
+            (nzOnOk)="onImportDataSubmitted()">
+    <ng-container *nzModalContent>
+
+
+      <section class="crud-bulk-import">
+        <nz-alert nzType="info"
+                  [nzMessage]="importDataConfig?.helpTitle"
+                  [nzDescription]="importDataDescription"
+                  nzShowIcon>
+        </nz-alert>
+        <ng-template #importDataDescription>
+          <div>
+            <div *ngIf="importDataConfig?.helpDescription"
+                 [innerHTML]="importDataConfig?.helpDescription">
+            </div>
+            <br>
+            <button nz-button
+                    nzType="default"
+                    (click)="downloadCSVTemplate()">Download the CSV Template</button>
+
+          </div>
+        </ng-template>
+        <br>
+        <nz-upload nzType="drag"
+                   [(nzFileList)]="importedFileList"
+                   [nzBeforeUpload]="beforeUpload"
+                   nzAccept=".csv">
+          <p class="ant-upload-drag-icon">
+            <span nz-icon
+                  nzType="inbox"></span>
+          </p>
+          <button nz-button
+                  nzType="text">
+            <p class="ant-upload-text">Click here or drag file to this area to upload csv file to import data</p>
+          </button>
+        </nz-upload>
+      </section>
+
+      <section *ngIf="importedEntities?.length"
+               class="import-preview-container">
+        <rappider-list-grid [config]="listGridConfigForImportData"
+                            [data]="importedEntities"></rappider-list-grid>
+      </section>
+
+
+
+    </ng-container>
+  </nz-modal>

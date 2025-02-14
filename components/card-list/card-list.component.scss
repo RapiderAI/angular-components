@@ -1,0 +1,66 @@
+:host::ng-deep {
+  .ant-card-body {
+    padding: 0;
+  }
+
+  .ant-card-meta {
+    padding: var(--card-padding);
+  }
+
+  .ant-card-meta-detail {
+    margin-bottom: 0px !important;
+  }
+
+  .ant-card-meta-title {
+    margin-bottom: 0px !important;
+  }
+
+  .card-item {
+    margin-bottom: var(--margin-2x) !important;
+
+    &:nth-last-of-type(1) {
+      margin-bottom: 0 !important;
+    }
+
+    .card {
+      width: 100%;
+      background-color: var(--alternative-background-color);
+
+      .title {
+        font-weight: var(--font-weight-bold);
+        color: var(--alternative-text-color);
+        font-size: var(--title-font-size);
+      }
+
+      .sub-title {
+        font-size: var(--main-font-size);
+        color: var(--alternative-text-color);
+      }
+
+      .date {
+        color: var(--alternative-text-color);
+        font-size: var(--main-font-size);
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      min-width: 15px;
+      text-align: center;
+    }
+
+    .button-area {
+      width: 100%;
+      padding: var(--padding-2x) 0;
+      background-color: var(--alternative-background-color);
+      border-top: var(--border-size-x) solid var(--primary-border-color);
+
+      .card-button {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
