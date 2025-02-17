@@ -48,7 +48,7 @@ export const VALIDATORS_PATTERN_CONFIG: CrudTableViewConfig = {
   ],
   itemActions: [
     {
-      text: 'SHARED.EDIT',
+      text: 'Edit',
       name: 'edit',
       icon: { name: 'far fa-edit' },
       behavior: ActionBehavior.Emit

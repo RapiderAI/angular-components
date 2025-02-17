@@ -5,17 +5,17 @@ export const CALENDAR_FORM_CONFIG: CrudFormConfig = {
     items: [
         {
             fieldName: 'title',
-            title: 'SHARED.TITLE',
+            title: 'Title',
             type: CrudViewFormItemType.TextBox
         },
         {
             fieldName: 'description',
-            title: 'SHARED.DESCRIPTION',
+            title: 'Description',
             type: CrudViewFormItemType.TextArea
         },
         <CrudFormSelectItem>{
             fieldName: 'eventType',
-            title: 'SHARED.EVENT_TYPE',
+            title: 'Event Type',
             type: CrudViewFormItemType.Select,
             options: [
                 {
@@ -38,22 +38,22 @@ export const CALENDAR_FORM_CONFIG: CrudFormConfig = {
         },
         {
             fieldName: 'starts',
-            title: 'SHARED.STARTS',
+            title: 'Starts',
             type: CrudViewFormItemType.DateTimePicker
         },
         {
             fieldName: 'ends',
-            title: 'SHARED.ENDS',
+            title: 'Ends',
             type: CrudViewFormItemType.DateTimePicker
         },
         {
             fieldName: 'location',
-            title: 'SHARED.LOCATION',
+            title: 'Location',
             type: CrudViewFormItemType.TextBox
         },
         {
             fieldName: 'invites',
-            title: 'SHARED.INVITES',
+            title: 'Invites',
             type: CrudViewFormItemType.StringArray
         }
     ],
