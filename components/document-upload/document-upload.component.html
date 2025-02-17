@@ -1,0 +1,20 @@
+<input type="file"
+       #fileInput
+       style="display: none"
+       (change)="onFileSelected($event)" />
+<div class="document-upload">
+       <div class="browse-file">
+              <rappider-button
+                            [elementId]="elementId"
+                            [text]="browseFileText"
+                               (click)="openFileInput()">
+              </rappider-button>
+
+       </div>
+       <div *ngIf="value"
+            class="preview-file">
+              <rappider-previewer [source]="source"
+                                  [modalConfig]="previewerConfig?.modalConfig"
+                                  [buttonConfig]="previewerConfig?.buttonConfig"></rappider-previewer>
+       </div>
+</div>

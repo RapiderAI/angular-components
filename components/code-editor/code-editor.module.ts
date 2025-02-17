@@ -6,4 +6,4 @@ import { CodeEditorComponent } from './code-editor.component';
   imports: [CodeEditorComponent],
   exports: [CodeEditorComponent]
 })
-export class RappiderMonacoEditorModule {}
+export class RappiderCodeEditorModule { }

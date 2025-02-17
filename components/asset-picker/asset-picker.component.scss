@@ -1,0 +1,22 @@
+::ng-deep {
+    .asset-picker-modal {
+        .ant-modal-body {
+            padding: 0px !important;
+            height: 100% !important;
+        }
+    }
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-x);
+}
+
+.image-preview-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}

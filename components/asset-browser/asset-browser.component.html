@@ -1,0 +1,225 @@
+<div class="asset-browser">
+    <div class="left-sidebar">
+        <h6 class="left-sidebar-heading">
+            {{'Folder Tree' | translate}}
+        </h6>
+        <nz-tree #nzTreeComponent
+                 nzShowIcon
+                 [nzData]="folderTree"
+                 [nzMultiple]="false"
+                 [nzExpandedIcon]="expandSwitchIconTemplate"
+                 (nzClick)="onFolderSelect($event)"
+                 (nzExpandChange)="onFolderExpand($event)"></nz-tree>
+        <ng-template #expandSwitchIconTemplate
+                     let-node
+                     let-origin="origin">
+            <rappider-icon *ngIf="node.origin.loading"
+                           class="expand-switch-icon"
+                           name="loading"
+                           type="NG_ZORRO"></rappider-icon>
+            <rappider-icon *ngIf="!node.origin.loading"
+                           class="expand-switch-icon"
+                           [name]="node.isExpanded ? 'folder-open' : 'folder'"
+                           type="NG_ZORRO"></rappider-icon>
+        </ng-template>
+    </div>
+    <div class="main-layout-wrapper">
+        <div class="header-wrapper">
+            <div class="breadcrumb-area">
+                <nz-breadcrumb>
+                    <ng-container *ngFor="let item of breadcrumbItems">
+                        <nz-breadcrumb-item (click)="navigateToFolder(item)">
+                            {{item.title}}
+                        </nz-breadcrumb-item>
+                    </ng-container>
+                </nz-breadcrumb>
+            </div>
+            <div class="header-buttons">
+                <ng-container *ngFor="let headerButton of headerButtons">
+                    <rappider-button *ngIf="headerButtonVisibilityFunction(headerButton.key, selectedItem, activeFolder)"
+                                     [key]="headerButton.key"
+                                     [type]="headerButton.type"
+                                     [shape]="headerButton.shape"
+                                     [text]="headerButton.text"
+                                     [size]="headerButton.size"
+                                     [transparent]="headerButton.transparent"
+                                     [loading]="headerButton.loading"
+                                     [block]="headerButton.block"
+                                     [disabled]="headerButton.disabled"
+                                     [colorType]="headerButton.colorType"
+                                     [icon]="headerButton.icon"
+                                     [popconfirmTitle]="headerButton.popconfirmTitle"
+                                     [emitWithoutPopconfirm]="headerButton.emitWithoutPopconfirm"
+                                     [iconPlacement]="headerButton.iconPlacement"
+                                     [formButtonType]="headerButton?.formButtonType"
+                                     [borderSettings]="headerButton?.borderSettings"
+                                     [customSizeSettings]="headerButton?.customSizeSettings"
+                                     [customColorSettings]="headerButton?.customColorSettings"
+                                     [shadowSettings]="headerButton?.shadowSettings"
+                                     [paddingSettings]="headerButton?.paddingSettings"
+                                     [marginSettings]="headerButton?.marginSettings"
+                                     (confirm)="onHeaderButtonClick(headerButton)"></rappider-button>
+                </ng-container>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="main-content-area"
+                 [ngClass]="selectedItem ? 'main-content-area-with-item-details': null"
+                 (click)="onContentSelectCancel($event)">
+                <ng-container *ngTemplateOutlet="folderContentTemplate"></ng-container>
+            </div>
+            <div *ngIf="selectedItem"
+                 class="selected-item-detail-area">
+                <ng-container *ngTemplateOutlet="selectedItemDetailTemplate"></ng-container>
+                <div class="selected-item-detail-footer">
+                    <ng-container *ngFor="let detailFooterButton of detailFooterButtons">
+                        <rappider-button *ngIf="detailFooterButtonVisibilityFunction(detailFooterButton.key, selectedItem, activeFolder)"
+                                         [key]="detailFooterButton.key"
+                                         [type]="detailFooterButton.type"
+                                         [shape]="detailFooterButton.shape"
+                                         [text]="detailFooterButton.text"
+                                         [size]="detailFooterButton.size"
+                                         [transparent]="detailFooterButton.transparent"
+                                         [loading]="detailFooterButton.loading"
+                                         [block]="detailFooterButton.block"
+                                         [disabled]="detailFooterButton.disabled"
+                                         [colorType]="detailFooterButton.colorType"
+                                         [icon]="detailFooterButton.icon"
+                                         [popconfirmTitle]="detailFooterButton.popconfirmTitle"
+                                         [emitWithoutPopconfirm]="detailFooterButton.emitWithoutPopconfirm"
+                                         [iconPlacement]="detailFooterButton.iconPlacement"
+                                         [formButtonType]="detailFooterButton?.formButtonType"
+                                         [borderSettings]="detailFooterButton?.borderSettings"
+                                         [customSizeSettings]="detailFooterButton?.customSizeSettings"
+                                         [customColorSettings]="detailFooterButton?.customColorSettings"
+                                         [shadowSettings]="detailFooterButton?.shadowSettings"
+                                         [paddingSettings]="detailFooterButton?.paddingSettings"
+                                         [marginSettings]="detailFooterButton?.marginSettings"
+                                         (confirm)="onDetailFooterButtonClick(detailFooterButton)"></rappider-button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #folderContentTemplate>
+    <ng-container *ngIf="activeFolder">
+        <ng-container *ngFor="let item of activeFolder.children">
+            <div class="active-folder-content"
+                 [ngClass]="selectedItem?.key === item.key ? 'active-content' : ''"
+                 (click)="onContentSelect($event,item.origin)">
+                <div class="active-folder-content-icon">
+                    <img width="100%"
+                         height="100%"
+                         [src]="folderPlaceholderIconPath">
+                </div>
+                <div class="active-folder-content-name">
+                    {{item.origin.name}}
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of activeFolder.origin.files">
+            <div class="active-folder-content"
+                 [ngClass]="selectedItem?.id === item.id ? 'active-content' : ''"
+                 (click)="onContentSelect($event,item)">
+                <div class="active-folder-content-icon">
+                    <ng-container *ngIf="imageFileTypes.includes(item.type); else defaultFileIconTemplate">
+                        <img width="100%"
+                             height="100%"
+                             [src]="basePath + '/project-files/get-file-content/' + item?.id">
+                    </ng-container>
+                </div>
+                <div class="active-folder-content-name">
+                    {{item.title || item.name}}
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</ng-template>
+
+<ng-template #selectedItemDetailTemplate>
+    <div class="selected-item-detail-template">
+        <div class="selected-item-icon">
+            <!-- File Icons -->
+            <ng-container *ngIf="selectedItem.isLeaf">
+                <ng-container *ngIf="imageFileTypes.includes(selectedItem.type); else defaultFileIconTemplate">
+                    <img width="100%"
+                         height="100%"
+                         [src]="basePath + '/project-files/get-file-content/' + selectedItem?.id">
+                </ng-container>
+            </ng-container>
+            <!-- Folder Icon -->
+            <ng-container *ngIf="!selectedItem.isLeaf">
+                <img width="100%"
+                     height="100%"
+                     [src]="folderPlaceholderIconPath">
+            </ng-container>
+        </div>
+        <hr>
+        <div class="selected-item-informations">
+            <div class="selected-item-name-wrapper">
+                <h4 class="selected-item-name-text">
+                    {{selectedItem.title}}
+                </h4>
+            </div>
+            <div class="selected-item-type-and-size-wrapper">
+                <h6 class="selected-item-type-and-size-text">
+                    {{selectedItem.isLeaf ? selectedItem.type : 'Folder'}}
+                    |
+                    {{
+                    selectedItem.size ?
+                    (selectedItem.size / 1024 / 1024 | number:'.1-2') + 'MB'
+                    : 'Size couldn\'t be calculated'
+                    }}
+                </h6>
+            </div>
+            <div class="selected-item-additional-informations">
+                <hr *ngIf="selectedItem.createdDate">
+                <div *ngIf="selectedItem.createdDate"
+                     class="selected-item-additional-information-item">
+                    <h6 class="additional-information-key">
+                        {{'Created Date' | translate}}
+                    </h6>
+                    <h6 class="additional-information-value">
+                        {{selectedItem.createdDate | date:'medium'}}
+                    </h6>
+                </div>
+                <hr *ngIf="selectedItem.updatedDate">
+                <div *ngIf="selectedItem.updatedDate"
+                     class="selected-item-additional-information-item">
+                    <h6 class="additional-information-key">
+                        {{'Modified' | translate}}
+                    </h6>
+                    <h6 class="additional-information-value">
+                        {{ (selectedItem.updatedDate | date:'medium') ?? '---'}}
+                    </h6>
+                </div>
+                <hr *ngIf="selectedItem.createdBy">
+                <div *ngIf="selectedItem.createdBy"
+                     class="selected-item-additional-information-item">
+                    <h6 class="additional-information-key">
+                        {{'Created By' | translate}}
+                    </h6>
+                    <h6 class="additional-information-value">
+                        {{selectedItem.createdBy ?? '---'}}
+                    </h6>
+                </div>
+                <hr *ngIf="selectedItem.updatedBy">
+                <div *ngIf="selectedItem.updatedBy"
+                     class="selected-item-additional-information-item">
+                    <h6 class="additional-information-key">
+                        {{'Updated By' | translate}}
+                    </h6>
+                    <h6 class="additional-information-value">
+                        {{selectedItem.updatedBy ?? '---'}}
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #defaultFileIconTemplate>
+    <i class="fa-thin fa-file content-icon-center content-detail-icon-font-size"></i>
+</ng-template>

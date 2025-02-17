@@ -1,0 +1,321 @@
+<div class="icon-picker section">
+  <div class="wrapper">
+    <ul nz-menu
+        nzMode="inline"
+        [nzInlineCollapsed]="isCollapsed">
+
+      <li nz-menu-item
+          nz-tooltip
+          [nzSelected]="activeTab === IconType.FontAwesome"
+          (click)="activeTabChange(IconType.FontAwesome)">
+        <span nz-icon
+              nz-tooltip
+              nzTooltipPlacement="right"
+              nzTooltipTitle="Font Awesome"
+              nzType="flag"></span>
+        <span>Font Awesome</span>
+      </li>
+      <li nz-menu-item
+          nz-tooltip
+          [nzSelected]="activeTab === IconType.NgZorro"
+          (click)="activeTabChange(IconType.NgZorro)">
+        <span nz-icon
+              nz-tooltip
+              nzTooltipPlacement="right"
+              nzTooltipTitle="Ng Zorro"
+              nzType="ant-design"></span>
+        <span>Ng Zorro</span>
+      </li>
+      <li nz-menu-item
+          nz-tooltip
+          [nzSelected]="activeTab === IconType.Material"
+          (click)="activeTabChange(IconType.Material)">
+        <span nz-icon
+              nz-tooltip
+              nzTooltipPlacement="right"
+              nzTooltipTitle="Material"
+              nzType="google"></span>
+        <span>Material</span>
+      </li>
+      <li nz-menu-item
+          nz-tooltip
+          [nzSelected]="activeTab === IconType.CustomIcon"
+          (click)="activeTabChange(IconType.CustomIcon)">
+        <span nz-icon
+              nz-tooltip
+              nzTooltipPlacement="right"
+              nzTooltipTitle="Custom"
+              nzType="edit"></span>
+        <span>Custom Icon</span>
+      </li>
+      <li nz-menu-item
+          nz-tooltip
+          [nzSelected]="activeTab === IconType.ImportIcon"
+          (click)="activeTabChange(IconType.ImportIcon)">
+        <span nz-icon
+              nz-tooltip
+              nzTooltipPlacement="right"
+              nzTooltipTitle="Import"
+              nzType="import"></span>
+        <span>Import Icon</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="icon-picker-body">
+    <div class="header-area">
+      <button nz-button
+              nzType="default"
+              (click)="toggleCollapsed()">
+        <span nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+      </button>
+      <rappider-search *ngIf="activeTab !== IconType.CustomIcon && activeTab !== IconType.ImportIcon"
+                       [primarySearchBox]="searchBox"
+                       [searchButton]="searchButton"
+                       (primarySearchTextChange)="onSearchTextChange($event)"></rappider-search>
+    </div>
+    <ng-container>
+      <rappider-checkbox-list *ngIf="activeTab === IconType.FontAwesome"
+                              [(ngModel)]="selectedFontAwesomeIconTypes"
+                              [options]="fontAwesomeIconTypeButtonsConfig.options"
+                              [direction]="fontAwesomeIconTypeButtonsConfig.direction"></rappider-checkbox-list>
+      <div *ngIf="activeTab === IconType.FontAwesome"
+           class="icon-list">
+        <ng-container *ngFor="let fontAwesomeIcon of getDataWithPagination().values; trackBy: trackItems">
+
+          <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Solid) || selectedFontAwesomeIconTypes?.length === 0"
+               class="icon"
+               [ngClass]="'fa-solid ' + fontAwesomeIcon === selectedIcon ? 'selected' : ''"
+               (click)="selectIcon('fa-solid ' + fontAwesomeIcon)">
+            <i class="fa-solid {{fontAwesomeIcon}}"></i>
+          </div>
+          <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Regular) || selectedFontAwesomeIconTypes?.length === 0"
+               class="icon"
+               [ngClass]="'fa-regular ' + fontAwesomeIcon === selectedIcon ? 'selected' : ''"
+               (click)="selectIcon('fa-regular ' + fontAwesomeIcon)">
+            <i class="fa-regular {{fontAwesomeIcon}}"></i>
+          </div>
+          <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Light) || selectedFontAwesomeIconTypes?.length === 0"
+               class="icon"
+               [ngClass]="'fa-light ' + fontAwesomeIcon === selectedIcon ? 'selected' : ''"
+               (click)="selectIcon('fa-light ' + fontAwesomeIcon)">
+            <i class="fa-light {{fontAwesomeIcon}}"></i>
+          </div>
+          <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Thin) || selectedFontAwesomeIconTypes?.length === 0"
+               class="icon"
+               [ngClass]="'fa-thin ' + fontAwesomeIcon === selectedIcon ? 'selected' : ''"
+               (click)="selectIcon('fa-thin ' + fontAwesomeIcon)">
+            <i class="fa-thin {{fontAwesomeIcon}}"></i>
+          </div>
+          <div *ngIf="selectedFontAwesomeIconTypes?.includes(FontAwesomeIconType.Duotone) || selectedFontAwesomeIconTypes?.length === 0"
+               class="icon"
+               [ngClass]="'fa-duotone ' + fontAwesomeIcon === selectedIcon ? 'selected' : ''"
+               (click)="selectIcon('fa-duotone ' + fontAwesomeIcon)">
+            <i class="fa-duotone {{fontAwesomeIcon}}"></i>
+          </div>
+        </ng-container>
+      </div>
+
+      <rappider-checkbox-list *ngIf="activeTab === IconType.NgZorro"
+                              [(ngModel)]="selectedNgZorroIconThemeOptions"
+                              [options]="ngZorroIconTypeButtonsConfig.options"
+                              [direction]="ngZorroIconTypeButtonsConfig.direction"></rappider-checkbox-list>
+      <div *ngIf="activeTab === IconType.NgZorro"
+           class="icon-list">
+        <ng-container *ngFor="let ngZorroIcon of getDataWithPagination().values; trackBy: trackItems">
+          <div *ngIf="selectedNgZorroIconThemeOptions?.includes(NgZorroIconTheme.Outline) || !selectedNgZorroIconThemeOptions?.length"
+               class="icon"
+               [ngClass]="ngZorroIcon === selectedIcon && selectedNgZorroIconTheme === NgZorroIconTheme.Outline ? 'selected' : ''"
+               (click)="selectIcon(ngZorroIcon, NgZorroIconTheme.Outline)">
+            <span nz-icon
+                  [nzType]="ngZorroIcon"
+                  nzTheme="outline"></span>
+          </div>
+          <div *ngIf="selectedNgZorroIconThemeOptions?.includes(NgZorroIconTheme.Fill) || !selectedNgZorroIconThemeOptions?.length"
+               class="icon"
+               [ngClass]="ngZorroIcon === selectedIcon && selectedNgZorroIconTheme === NgZorroIconTheme.Fill ? 'selected' : ''"
+               (click)="selectIcon(ngZorroIcon, NgZorroIconTheme.Fill)">
+            <span nz-icon
+                  [nzType]="ngZorroIcon"
+                  nzTheme="fill"></span>
+          </div>
+          <div *ngIf="selectedNgZorroIconThemeOptions?.includes(NgZorroIconTheme.TwoTone) || !selectedNgZorroIconThemeOptions?.length"
+               class="icon"
+               [ngClass]="ngZorroIcon === selectedIcon && selectedNgZorroIconTheme === NgZorroIconTheme.TwoTone ? 'selected' : ''"
+               (click)="selectIcon(ngZorroIcon, NgZorroIconTheme.TwoTone)">
+            <span nz-icon
+                  [nzType]="ngZorroIcon"
+                  nzTheme="twotone"></span>
+          </div>
+        </ng-container>
+      </div>
+
+      <div *ngIf="activeTab === IconType.Material"
+           class="icon-list">
+        <div *ngFor="let materialIcon of getDataWithPagination().values; trackBy: trackItems"
+             class="icon"
+             [ngClass]="materialIcon === selectedIcon ? 'selected' : ''"
+             (click)="selectIcon(materialIcon)">
+          <mat-icon>{{ materialIcon }}</mat-icon>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === IconType.CustomIcon"
+           class="custom-icon-form">
+        <form nz-form
+              [formGroup]="customIconForm">
+          <nz-form-control>
+            <nz-form-label>{{ 'Type' | translate}}<span class="required">*</span></nz-form-label>
+            <rappider-radio-group nz-input
+                                  class="form-item"
+                                  formControlName="type"
+                                  [options]="iconTypeOptions"
+                                  (ngModelChange)="iconTypeOptionsChange($event)"></rappider-radio-group>
+          </nz-form-control>
+          <nz-form-control *ngIf="customIconForm?.value.type === IconType.FontAwesome">
+            <nz-form-label>{{ 'Style' | translate}}<span class="required">*</span></nz-form-label>
+            <rappider-radio-group nz-input
+                                  class="form-item"
+                                  formControlName="style"
+                                  [options]="iconStyleOptions"></rappider-radio-group>
+          </nz-form-control>
+          <nz-form-control *ngIf="customIconForm?.value.type === IconType.NgZorro">
+            <nz-form-label>{{ 'Theme' | translate}}</nz-form-label>
+            <rappider-radio-group nz-input
+                                  class="form-item"
+                                  formControlName="theme"
+                                  [options]="iconThemeOptions"></rappider-radio-group>
+          </nz-form-control>
+          <nz-form-control>
+            <nz-form-label>{{ 'Name' | translate}}</nz-form-label>
+            <rappider-textbox nz-input
+                              class="form-item"
+                              formControlName="name"></rappider-textbox>
+          </nz-form-control>
+          <nz-form-control>
+            <nz-form-label>{{ 'Color' | translate}}</nz-form-label>
+            <rappider-color-picker nz-input
+                                   class="form-item"
+                                   formControlName="color"></rappider-color-picker>
+          </nz-form-control>
+          <nz-form-control
+                           *ngIf="customIconForm?.value.style === FontAwesomeIconType.Duotone || customIconForm?.value.theme === NgZorroIconTheme.TwoTone">
+            <nz-form-label>{{ 'Second Color' | translate}}</nz-form-label>
+            <rappider-color-picker nz-input
+                                   class="form-item"
+                                   formControlName="secondColor"></rappider-color-picker>
+          </nz-form-control>
+          <nz-form-control>
+            <nz-form-label>{{ 'Size' | translate}}</nz-form-label>
+            <rappider-dimension-select nz-input
+                                       class="form-item"
+                                       formControlName="size"></rappider-dimension-select>
+          </nz-form-control>
+          <nz-form-control *ngIf="customIconForm?.value.type === IconType.FontAwesome">
+            <nz-form-label>{{ 'Animation' | translate}}</nz-form-label>
+            <rappider-select nz-input
+                             class="form-item"
+                             formControlName="animation"
+                             [options]="iconAnimationOptions.options"></rappider-select>
+          </nz-form-control>
+        </form>
+        <hr>
+        <div class="icon-preview">
+          <div class="selected-icon">
+            <rappider-icon [name]="customIconForm?.value.name"
+                           [animation]="customIconForm?.value.animation"
+                           [style]="customIconForm?.value.style"
+                           [color]="customIconForm?.value.color"
+                           [secondColor]="customIconForm?.value.secondColor"
+                           [size]="customIconForm?.value.size"></rappider-icon>
+          </div>
+          <div class="selected-icon-button">
+            <rappider-button [text]="okButton.text"
+                             [type]="okButton.type"
+                             [size]="okButton.size"
+                             (confirm)="onCustomIconSubmit()"></rappider-button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === IconType.ImportIcon"
+           class="custom-icon-form">
+        <form nz-form
+              [formGroup]="importIconForm">
+          <nz-form-control>
+            <nz-form-label>{{ 'URL' | translate}}</nz-form-label>
+            <rappider-textbox nz-input
+                              class="form-item"
+                              formControlName="name"></rappider-textbox>
+          </nz-form-control>
+          <nz-form-control>
+            <nz-form-label>{{ 'Size' | translate}}</nz-form-label>
+            <rappider-dimension-select nz-input
+                                       class="form-item"
+                                       formControlName="size"></rappider-dimension-select>
+          </nz-form-control>
+        </form>
+        <hr>
+        <div class="icon-preview">
+          <div class="selected-icon">
+            <img class="import-icon-preview"
+                 [src]="importIconForm?.value.name"
+                 [style.width]="importIconForm?.value.size"
+                 [style.height]="importIconForm?.value.size" />
+          </div>
+          <div class="selected-icon-button">
+            <rappider-button [text]="okButton.text"
+                             [type]="okButton.type"
+                             [size]="okButton.size"
+                             (confirm)="onImportIconSubmit()"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <hr *ngIf="selectedIcon">
+    <div *ngIf="selectedIcon"
+         class="icon-preview">
+      <div class="selected-icon">
+        <ng-container *ngIf="activeTab === IconType.FontAwesome">
+          <i class="{{selectedIcon}}"></i>
+          <p class="selected-icon-text">{{ selectedIcon }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="activeTab === IconType.NgZorro">
+          <span nz-icon
+                [nzType]="selectedIcon"
+                [nzTheme]="selectedNgZorroIconTheme"></span>
+          <p>{{ selectedIcon }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="activeTab === IconType.Material">
+          <mat-icon>
+            {{ selectedIcon }}
+          </mat-icon>
+          <p>{{ selectedIcon }}</p>
+        </ng-container>
+      </div>
+
+      <div class="selected-icon-button">
+        <rappider-button [text]="cancelButton.text"
+                         [type]="cancelButton.type"
+                         [size]="cancelButton.size"
+                         [colorType]="cancelButton.colorType"
+                         (confirm)="onCancelButtonClick()"></rappider-button>
+        <rappider-button [text]="okButton.text"
+                         [type]="okButton.type"
+                         [size]="okButton.size"
+                         (confirm)="onOkButtonClick()"></rappider-button>
+      </div>
+    </div>
+    <div class="pagination-wrapper">
+      <rappider-pagination [pageIndex]="paginationConfig?.pageIndex"
+                           [total]="getDataWithPagination()?.total"
+                           [pageSize]="paginationConfig?.pageSize"
+                           (pageIndexChange)="onPageIndexChange($event)"></rappider-pagination>
+    </div>
+  </div>
+
+</div>
