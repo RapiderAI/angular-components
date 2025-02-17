@@ -1,4 +1,4 @@
-import { ActionBehavior } from '../action-utils/action-behavior.enum';
+import { ActionBehavior } from '@rapider/angular-components/core/action';
 import { CrudTableViewConfig } from '../list-grid/crud-table-view-config.interface';
 
 export const JSON_ARRAY_LIST_GRID_CONFIG: CrudTableViewConfig = {

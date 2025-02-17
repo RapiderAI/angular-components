@@ -7,12 +7,12 @@ export const RADIO_GROUP_COMPONENT_CONFIG: RadioGroupComponentConfig = {
   options: [
     {
       value: JsonArrayComponentOption.GridView,
-      label: 'CRUD_VIEW_MODULE.JSON_ARRAY_COMPONENT.GRID_VIEW',
+      label: 'Grid View',
       labelSize: InputSize.Small
     },
     {
       value: JsonArrayComponentOption.CodeMirror,
-      label: 'CRUD_VIEW_MODULE.JSON_ARRAY_COMPONENT.CODE_MIRROR',
+      label: 'Code Mirror',
       labelSize: InputSize.Small
     }
   ],

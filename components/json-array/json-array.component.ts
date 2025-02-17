@@ -1,31 +1,31 @@
 import { Component, forwardRef, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { JsonArrayComponentOption } from '../../utils';
+import { JsonArrayComponentOption } from '@rapider/angular-components/core/json-array';
 import { cloneDeep } from 'lodash';
-import { RappiderDataOrderService,NotificationService } from '@rapider/angular-components/core/services';
+import { RappiderDataOrderService, NotificationService } from '@rapider/angular-components/core/services';
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
-import { RADIO_GROUP_COMPONENT_CONFIG,JSON_ARRAY_LIST_GRID_CONFIG,JSON_ARRAY_EMPTY_LIST_CONFIG } from '@rapider/angular-components/core/json-array';
-import { CrudViewColumnType } from '../../utils/list-grid/crud-view-column-type.enum';
-import { OrderChangeOutput } from '../../utils/list-grid/order-change-output.interface';
+import { RADIO_GROUP_COMPONENT_CONFIG, JSON_ARRAY_LIST_GRID_CONFIG, JSON_ARRAY_EMPTY_LIST_CONFIG } from '@rapider/angular-components/core/json-array';
+import { CrudViewColumnType, OrderChangeOutput } from '@rapider/angular-components/core/list-grid';
 import { CommonModule } from '@angular/common';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { RappiderModalComponent } from '../modal';
-import { CodeEditorComponent } from '../code-editor';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
 import { TranslateModule } from '@ngx-translate/core';
-import { RappiderButtonComponent } from '../button';
-import { RappiderRadioGroupComponent } from '../radio-group';
-import { RappiderSpinComponent } from '../spin';
+import { RappiderButtonComponent } from '@rapider/angular-components/button';
+import { RappiderRadioGroupComponent } from '@rapider/angular-components/radio-group';
+import { RappiderSpinComponent } from '@rapider/angular-components/spin';
+import { RappiderListGridModule } from '@rapider/angular-components/list-grid';
 
 @Component({
   selector: 'rappider-json-array',
   templateUrl: './json-array.component.html',
-  imports:[
+  imports: [
     CommonModule,
     FormsModule,
     NzButtonComponent,
     RappiderModalComponent,
     CodeEditorComponent,
-    // RappiderListGridModule,
+    RappiderListGridModule,
     TranslateModule,
     ReactiveFormsModule,
     RappiderButtonComponent,
@@ -344,7 +344,7 @@ export class RappiderJsonArrayComponent implements OnInit, OnChanges, ControlVal
       this.value = JSON.parse(this.localeValue);
       this.notificationService.createNotification(
         'success',
-        'SHARED.SUCCESSFUL',
+        'Successful',
         'Json Saved Successfully'
       );
     } catch (error) {

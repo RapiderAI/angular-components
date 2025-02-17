@@ -1,4 +1,4 @@
-import { CrudTableViewConfig, CrudViewColumnType } from '@rappider/rappider-components/utils';
+import { CrudTableViewConfig, CrudViewColumnType } from '@rapider/angular-components/core/list-grid';
 
 export const JSON_ARRAY_EMPTY_LIST_CONFIG: CrudTableViewConfig = {
   searchable: false,
