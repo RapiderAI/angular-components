@@ -4,4 +4,3 @@ export * from './notification/notification.service';
 export * from './templating/templating.service';
 export * from './pagination/pagination.service';
 export * from './format-date/index';
-
