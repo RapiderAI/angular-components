@@ -18,23 +18,24 @@ import {
 } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { CommonModule } from '@angular/common';
-import { NzCalendarComponent } from 'ng-zorro-antd/calendar';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import { RappiderBadgeComponent } from '@rapider/angular-components/badge';
-import { NzPopoverComponent } from 'ng-zorro-antd/popover';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderIconComponent } from '@rapider/angular-components/icon';
+import { RappiderEditFormModule } from '@rapider/angular-components/edit-form';
 
 @Component({
   selector: 'rappider-calendar',
   templateUrl: './calendar.component.html',
   imports:[
     CommonModule,
-    NzCalendarComponent,
+    NzCalendarModule,
     FormsModule,
     RappiderBadgeComponent,
-    NzPopoverComponent,
+    NzPopoverModule,
     RappiderButtonComponent,
-    // RappiderEditFormModule,
+    RappiderEditFormModule,
     RappiderIconComponent
   ],
   standalone: true,

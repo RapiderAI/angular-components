@@ -1,4 +1,3 @@
-import { EditFormComponentConfig } from '../form-card';
 import { EventStatus } from './calendar-event-status.enum';
 
 export interface CalendarEvent {
