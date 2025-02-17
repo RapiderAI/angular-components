@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { formatDateLongUS } from '@rapider/angular-components/core/utils/common-utils/functions';
+import { formatDateLongUS } from '@rapider/angular-components/core/services';
 
 @Pipe({
   name: 'formatDate'
