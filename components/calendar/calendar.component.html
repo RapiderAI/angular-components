@@ -1,0 +1,149 @@
+<div class="calender"
+     [style.border]="borderSettings?.border"
+     [style.border-top]="borderSettings?.borderTop + ' ' + borderSettings?.borderStyle"
+     [style.border-right]="borderSettings?.borderRight + ' ' + borderSettings?.borderStyle"
+     [style.border-bottom]="borderSettings?.borderBottom + ' ' + borderSettings?.borderStyle"
+     [style.border-left]="borderSettings?.borderLeft + ' ' + borderSettings?.borderStyle"
+     [style.border-radius]="borderSettings?.borderRadius"
+     [style.border-top-left-radius]="borderSettings?.borderTopLeftRadius"
+     [style.border-top-right-radius]="borderSettings?.borderTopRightRadius"
+     [style.border-bottom-left-radius]="borderSettings?.borderBottomLeftRadius"
+     [style.border-bottom-right-radius]="borderSettings?.borderBottomRightRadius"
+     [style.border-color]="borderSettings?.borderColor"
+     [style.border-style]="borderSettings?.borderStyle"
+     [style.width]="sizeSettings?.width"
+     [style.height]="sizeSettings?.height"
+     [style.min-width]="sizeSettings?.minWidth"
+     [style.min-height]="sizeSettings?.minHeight"
+     [style.max-width]="sizeSettings?.maxWidth"
+     [style.max-height]="sizeSettings?.maxHeight"
+     [style.color]="colorSettings?.color"
+     [style.background-color]="colorSettings?.backgroundColor"
+     [style.boxShadow]="boxShadowSettings?.boxShadow"
+     [style.padding]="paddingSettings?.all"
+     [style.margin]="marginSettings?.all"
+     [style.fontSize]="typographySettings?.fontSize"
+     [style.fontWeight]="typographySettings?.fontWeight"
+     [style.fontStyle]="typographySettings?.fontStyle"
+     [style.textDecoration]="typographySettings?.textDecoration"
+     [style.textAlign]="typographySettings?.textAlign"
+     [style.textShadow]="typographySettings?.textShadow"
+     [style.fontFamily]="typographySettings?.fontFamily"
+     [style.fontStretch]="typographySettings?.fontStretch"
+     [style.textIndent]="typographySettings?.textIndent"
+     [style.letterSpacing]="typographySettings?.letterSpacing"
+     [style.lineHeight]="typographySettings?.lineHeight"
+     [style.wordSpacing]="typographySettings?.wordSpacing"
+     [style.textTransform]="typographySettings?.textTransform"
+     [style.userSelect]="typographySettings?.userSelect">
+  <nz-calendar [(ngModel)]="value"
+               [(nzMode)]="mode"
+               [nzFullscreen]="isFullscreen"
+               (nzSelectChange)="onValueChange($event)">
+    <ul *nzDateCell="let date"
+        class="events">
+
+      <!-- CREATE EVENT -->
+      <div class="cell-overlay-for-create-event"
+           [(nzPopoverVisible)]="createEventPopoverVisibilities[date.toDateString()]"
+           [nzPopoverContent]="createEventTemplate"
+           nz-popover
+           nzPopoverTrigger="null"
+           (dblclick)="openCreateEventPopover(date)">
+        <ng-template #createEventTemplate>
+          <div class="event-form">
+            <div class="close-button">
+              <rappider-button [type]="'link'"
+                               [icon]="{'name': 'fa-solid fa-close','color':'black'}"
+                               (click)="closeCreateEventPopover(date)"></rappider-button>
+            </div>
+            <div class="form-content">
+              <rappider-crud-view-edit-form [config]="formConfig"
+                                            [data]="{starts: date}"
+                                            (formSubmit)="createEvent($event,date)">
+              </rappider-crud-view-edit-form>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-- /CREATE EVENT -->
+
+      <!-- CALENDER EVENTS -->
+      <ng-container *ngFor="let calendarEvent of calendarEvents">
+        <li *ngIf="isDateBetween(date, calendarEvent.starts, calendarEvent.ends)"
+            [ngClass]="'event-'+ calendarEvent.eventType"
+            [(nzPopoverVisible)]="calendarEvent.popoverVisibility"
+            [nzPopoverContent]="eventDetailTemplate"
+            nz-popover
+            nzPopoverTrigger="null"
+            (click)="openEventDetailPopover(calendarEvent)">
+          <rappider-badge [status]="calendarEvent.eventType"
+                          [text]="calendarEvent.title"
+                          [paddingSettings]="calendarEvent.paddingSettings"
+                          [marginSettings]="calendarEvent.marginSettings"></rappider-badge>
+        </li>
+        <ng-template #eventDetailTemplate>
+          <div *ngIf="!calendarEvent.updateEventMode"
+               class="content-template">
+            <div class="p-4 float-right">
+              <rappider-button [type]="'link'"
+                               [icon]="{'name': 'fa-solid fa-close','color':'black'}"
+                               (click)="closeEventDetailPopover(calendarEvent)"></rappider-button>
+            </div>
+            <div class="content-body">
+              <rappider-badge [status]="calendarEvent.eventType"
+                              [text]="calendarEvent.title"
+                              [paddingSettings]="calendarEvent.paddingSettings"
+                              [marginSettings]="calendarEvent.marginSettings"></rappider-badge>
+              <div class="event-date">
+                <p>{{ calendarEvent.starts }}</p>
+                <p *ngIf="calendarEvent.ends">•</p>
+                <p>{{ calendarEvent.ends }}</p>
+              </div>
+              <hr>
+              <div class="event-details">
+                <div class="event-detail">
+                  <rappider-icon [name]="'fa-regular fa-bars-sort'"></rappider-icon>
+                  <p>{{ calendarEvent.description }}</p>
+                </div>
+
+                <div class="event-detail">
+                  <rappider-icon [name]="'fa-solid fa-location-dot'"></rappider-icon>
+                  <a href="{{ calendarEvent.location }}"
+                     target="_blank">
+                    {{ calendarEvent.location }}</a>
+                </div>
+
+                <div class="event-detail">
+                  <rappider-icon [name]="'fa-solid fa-user'"></rappider-icon>
+                  <p>{{ calendarEvent.invites }}</p>
+                </div>
+              </div>
+              <hr>
+              <rappider-button [type]="'default'"
+                               [text]="'Edit'"
+                               [icon]="{'name': 'fa-solid fa-edit'}"
+                               (click)="openUpdateEventMode(calendarEvent)"></rappider-button>
+            </div>
+          </div>
+          <div *ngIf="calendarEvent.updateEventMode"
+               class="event-form">
+            <div class="close-button">
+              <rappider-button [type]="'link'"
+                               [icon]="{'name': 'fa-solid fa-close','color':'black'}"
+                               (click)="cancelUpdateEventMode(calendarEvent)"></rappider-button>
+            </div>
+            <div class="form-content">
+              <rappider-crud-view-edit-form [config]="formConfig"
+                                            [data]="calendarEvent"
+                                            (formSubmit)="submitUpdateEventForm($event, calendarEvent)">
+              </rappider-crud-view-edit-form>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+      <!-- /CALENDER EVENTS -->
+
+    </ul>
+  </nz-calendar>
+</div>

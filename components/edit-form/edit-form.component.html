@@ -185,7 +185,7 @@
                 (okClick)="onObjectFieldEditModalSubmit()"
                 okText="Save">
   <ng-template #objectFieldEditModalTitle>
-    {{ 'SHARED.EDIT' | translate }} {{ objectFieldEditModal.activeBreadcrumbOption?.label }}
+    {{ 'Edit' | translate }} {{ objectFieldEditModal.activeBreadcrumbOption?.label }}
   </ng-template>
 
   <div class="object-field-edit-modal">
@@ -262,7 +262,7 @@
             <button nz-button
                     nzType="default"
                     (click)="onObjectFormItemEditClick(item)">
-              <i class="far fa-edit"></i> &nbsp; {{ 'SHARED.EDIT' | translate }} {{ item.title }}
+              <i class="far fa-edit"></i> &nbsp; {{ 'Edit' | translate }} {{ item.title }}
             </button>
           </div>
         </nz-form-control>
