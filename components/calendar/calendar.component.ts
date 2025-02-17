@@ -1,21 +1,7 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  forwardRef,
-  OnInit,
-  OnChanges
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef, OnInit, OnChanges } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from '@angular/forms';
-import { CalendarEvent,CalendarMode,CALENDAR_FORM_CONFIG } from '@rapider/angular-components/core/calendar';
-import {
-  BorderConfig,
-  BoxShadowConfig,
-  ColorConfig,
-  SizeConfig,
-  SpacingConfig
-} from '@rapider/angular-components/core/style';
+import { CalendarEvent, CalendarMode, CALENDAR_FORM_CONFIG } from '@rapider/angular-components/core/calendar';
+import { BorderConfig, BoxShadowConfig, ColorConfig, SizeConfig, SpacingConfig } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
 import { CommonModule } from '@angular/common';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
@@ -28,7 +14,7 @@ import { RappiderEditFormModule } from '@rapider/angular-components/edit-form';
 @Component({
   selector: 'rappider-calendar',
   templateUrl: './calendar.component.html',
-  imports:[
+  imports: [
     CommonModule,
     NzCalendarModule,
     FormsModule,

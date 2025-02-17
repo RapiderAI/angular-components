@@ -1,14 +1,8 @@
 import { TemplateRef } from '@angular/core';
-import { CalendarMode } from './calendar-mode.enum';
-import {
-  BorderConfig,
-  BoxShadowConfig,
-  ColorConfig,
-  SizeConfig,
-  SpacingConfig,
-  TypographyConfig,
-} from '../shared';
-import { CalendarEvent } from './calendar-event.interface';
+import { CalendarMode } from '@rapider/angular-components/core/calendar';
+import { SpacingConfig, BorderConfig, SizeConfig, BoxShadowConfig, ColorConfig } from '@rapider/angular-components/core/style';
+import { CalendarEvent } from '@rapider/angular-components/core/calendar';
+import { TypographyConfig } from '@rapider/angular-components/core/typography';
 
 export interface CalendarComponentConfig {
   mode?: CalendarMode;

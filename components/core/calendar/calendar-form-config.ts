@@ -1,5 +1,5 @@
 import { ButtonType } from '../button';
-import { CrudFormConfig, CrudFormConfigInputChangeReaction, CrudFormSelectItem, CrudFormValueEmitMode, CrudViewFormItemType } from '../edit-form';
+import { CrudFormConfig, CrudFormConfigInputChangeReaction, CrudFormSelectItem, CrudFormValueEmitMode, CrudViewFormItemType } from '@rapider/angular-components/core/edit-form';
 
 export const CALENDAR_FORM_CONFIG: CrudFormConfig = {
     items: [
