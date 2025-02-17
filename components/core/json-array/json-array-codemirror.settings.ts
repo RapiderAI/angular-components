@@ -1,6 +1,4 @@
-import { CodeMirrorMode } from '../codemirror/codemirror-mode.enum';
-import { CodeMirrorSettings } from '../codemirror/codemirror-settings.interface';
-import { CodeMirrorTheme } from '../codemirror/codemirror-theme.enum';
+import { CodeMirrorTheme, CodeMirrorSettings, CodeMirrorMode } from '@rapider/angular-components/core/codemirror';
 
 export const JSON_CODEMIRROR_SETTINGS: CodeMirrorSettings = {
   mode: { name: CodeMirrorMode.Javascript, json: true },

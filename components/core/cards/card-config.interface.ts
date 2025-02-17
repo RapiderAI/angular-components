@@ -1,5 +1,5 @@
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
-import { ItemPerRow } from '../card-one-list/item-per-row.enum';
+import { ItemPerRow } from '@rapider/angular-components/core/card-one-list';
 import { CardOneComponentConfig } from '@rapider/angular-components/card-one';
 import { MenuConfig } from '@rapider/angular-components/core/menu';
 import { PaginationComponentConfig } from '@rapider/angular-components/pagination';

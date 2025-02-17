@@ -88,9 +88,9 @@ import { RappiderJsonInputComponent } from '@rapider/angular-components/json-inp
 import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
 import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
 import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
-import { RappiderCheckboxListComponent } from '../checkbox-list/checkbox-list.component';
-import { RappiderTreeSelectComponent } from '../tree-select/tree-select.component';
-import { RappiderAssetPickerComponent } from '../asset-picker/asset-picker.component';
+import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
+import { RappiderTreeSelectComponent } from '@rapider/angular-components/tree-select';
+import { RappiderAssetPickerComponent } from '@rapider/angular-components/asset-picker';
 const monacoEditorConfig = {
   baseUrl: 'assets',
   defaultOptions: { scrollBeyondLastLine: false },

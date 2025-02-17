@@ -1,12 +1,11 @@
 import { Component, EventEmitter, forwardRef, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { cloneDeep } from 'lodash';
-import { buttonTypeSelectOptions } from '../../../../utils/shared/button/button-type-select-options';
-import { ButtonType } from '../../../../utils/button/button-type.enum';
-import { CrudFormConfigInputChangeReaction } from '../../../../utils/edit-form/crud-form-config-input-change-reaction.enum';
-import { CrudFormConfig } from '../../../../utils/edit-form/crud-form-config.interface';
-import { FormLayout } from '../../../../utils/edit-form/form-layout.enum';
-import { SINGLE_NOT_SEARCHABLE_SELECT_SETTINGS } from '../../../../utils/select/single-not-searchable-select.settings';
+import { buttonTypeSelectOptions } from ';
+import { ButtonType } from '@rapider/angular-components/core/button';
+import { CrudFormConfig, CrudFormConfigInputChangeReaction } from '@rapider/angular-components/core/edit-form';
+import { FormLayout } from '@rapider/angular-components/core/edit-form';
+import { SINGLE_NOT_SEARCHABLE_SELECT_SETTINGS } from '@rapider/angular-components/core/select';
 import { defaultCrudViewFormConfig } from './defaults/default-form-config';
 import { sizeSelectOptions } from './defaults/size-select-options';
 

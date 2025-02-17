@@ -1,4 +1,4 @@
-import { InputSize } from '../../../../../utils/shared/input-size/input-size.enum';
+import { InputSize } from '@rapider/angular-components/core/style';
 
 export const sizeSelectOptions = [
   {

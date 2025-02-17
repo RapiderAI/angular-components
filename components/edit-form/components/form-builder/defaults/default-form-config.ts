@@ -1,8 +1,6 @@
-import { ButtonType } from '../../../../../utils/button/button-type.enum';
-import { CrudFormConfigInputChangeReaction } from '../../../../../utils/edit-form/crud-form-config-input-change-reaction.enum';
-import { CrudFormConfigSubmitButton } from '../../../../../utils/edit-form/crud-form-config-submit-button.interface';
-import { CrudFormConfig } from '../../../../../utils/edit-form/crud-form-config.interface';
-import { FormLayout } from '../../../../../utils/edit-form/form-layout.enum';
+import { ButtonType } from '@rapider/angular-components/core/button';
+import { CrudFormConfig, CrudFormConfigInputChangeReaction } from '@rapider/angular-components/core/edit-form';
+import { CrudFormConfigSubmitButton, FormLayout } from '@rapider/angular-components/core/edit-form';
 
 export const defaultSubmitButtonConfig: CrudFormConfigSubmitButton = {
 	text: 'Save',

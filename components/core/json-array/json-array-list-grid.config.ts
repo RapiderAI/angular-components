@@ -1,5 +1,5 @@
 import { ActionBehavior } from '@rapider/angular-components/core/action';
-import { CrudTableViewConfig } from '../list-grid/crud-table-view-config.interface';
+import { CrudTableViewConfig } from '@rapider/angular-components/core/list-grid';
 
 export const JSON_ARRAY_LIST_GRID_CONFIG: CrudTableViewConfig = {
   defaultSearchField: 'title',
