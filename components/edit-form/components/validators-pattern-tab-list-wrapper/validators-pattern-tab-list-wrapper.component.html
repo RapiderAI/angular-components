@@ -1,0 +1,30 @@
+<nz-tabset nzType="card"
+            nzAnimated="true"
+            nzTabPosition="top"
+            nzSize="default"
+            [nzSelectedIndex]="'0'"
+            class="card-container">
+    <nz-tab *ngFor="let validator of ['Validators']"
+                    [nzTitle]="validator">
+        <rappider-list-grid [loading]="loading"
+                            [config]="validatorsPatternConfig"
+                            [data]="value"
+                            (columnActionClick)="onColumnActionClick($event)"
+                            (listActionClick)="openCreateValidatorsPatternModal()"></rappider-list-grid>
+    </nz-tab>
+</nz-tabset>
+<rappider-modal [(visible)]="validatorsPatternModal.visible"
+                [title]="validatorsPatternModal.title | translate"
+                [okText]="'SHARED.SAVE' | translate"
+                [cancelText]="'SHARED.CANCEL' | translate"
+                width="40%"
+                (okClick)="onValidatorsPatternModalSubmit()"
+                (cancelClick)="closeValidatorsPatternModal()">
+    <rappider-crud-view-edit-form *ngIf="validatorsPatternModal.visible"
+                                    [config]="validatorsPatternFormConfig"
+                                    [submitted]="validatorsPatternModal.isSubmitted"
+                                    [data]="validatorsPatternModal.data"
+                                    (validityChange)="onValidatorsPatternDataValidityChange($event)"
+                                    (formValueChange)="onValidatorsPatternModalDataChange($event)"
+                                    (fieldValueChange)="onValidatorsPatternFieldValueChange($event)"></rappider-crud-view-edit-form>
+</rappider-modal>

@@ -1,0 +1,113 @@
+<rappider-title-toolbar *ngIf="title"
+                        [mainTitle]="title?.mainTitle"
+                        [options]="title?.options"></rappider-title-toolbar>
+
+<section>
+  <div class="search-filter">
+    <rappider-input-group [(ngModel)]="searchText"
+                          [textbox]="inputGroupConfig?.textbox"
+                          [suffixIcon]="inputGroupConfig?.suffixIcon">
+    </rappider-input-group>
+    <ng-container>
+      <div [ngClass]="{'button-and-select-wrapper': selectConfig.visibility !== false}">
+        <div *ngIf="buttons" class="buttons">
+          <div *ngFor="let button of buttons" [ngStyle]="{'float': 'left'}">
+              <rappider-button [text]="button.text"
+                              [type]="button.type"
+                              [shape]="button.shape"
+                              [size]="button.size"
+                              [transparent]="button.transparent"
+                              [loading]="button.loading"
+                              [block]="button.loading"
+                              [disabled]="button.disabled"
+                              [colorType]="button.colorType"
+                              [icon]="button.icon"
+                              [formButtonType]="button?.formButtonType"
+                              [borderSettings]="button?.borderSettings"
+                              [customSizeSettings]="button?.customSizeSettings"
+                              [customColorSettings]="button?.customColorSettings"
+                              [shadowSettings]="button?.shadowSettings"
+                              [paddingSettings]="button?.paddingSettings"
+                              [marginSettings]="button?.marginSettings"
+                              [tooltipText]="button?.tooltipText"
+                              (click)="onTopButtonsClick(button)"></rappider-button>
+          </div>
+        </div>
+        <rappider-select *ngIf="selectConfig.visibility !== false" [options]="selectConfig?.options"
+                        [settings]="selectConfig?.settings"
+                        [placeholder]="selectConfig?.placeholder"
+                        (valueChange)="onSelectedTagsChange($event)"></rappider-select>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<section [ngClass]="{'card-one-list-section': menuConfig?.items?.length}">
+  <div *ngIf="menuConfig?.items?.length" class="tree-filter-wrapper">
+    <rappider-menu [config]="menuConfig"
+                   (menuItemClick)="onMenuItemClick($event)"></rappider-menu>
+  </div>
+  <div [ngClass]="{'card-one-list-wrapper': menuConfig?.items?.length}">
+    <div *ngIf="topSectionCards?.length" class="first-class-of-card-list" [ngStyle]="{'height': topSectionHeight}">
+      <ng-container *ngFor="let item of topSectionCards">
+        <rappider-card-one [data]="item.data"
+                           [image]="item.image"
+                           [imageTags]="item.imageTags"
+                           [imageButtons]="item.imageButtons"
+                           [imageButtonPlacement]="item?.imageButtonPlacement"
+                           [rate]="item.rate"
+                           [titles]="item.titles"
+                           [currency]="item.currency"
+                           [finalPrice]="item.finalPrice"
+                           [price]="item.price"
+                           [additionalTags]="item.additionalTags"
+                           [additionalButtons]="item.additionalButtons"
+                           [descriptions]="item.descriptions"
+                           [avatar]="item.avatar"
+                           [avatarButton]="item.avatarButton"
+                           [avatarPlacement]="item.avatarPlacement"
+                           [isSelected]="item.isSelected"
+                           [selectedCardIcon]="item.selectedCardIcon"
+                           [showTitleOnImage]="showTitleOnImage"
+                           [showDescriptionOnImage]="showDescriptionOnImage"
+                           [showPopover]="showPopover"
+                           [showPopoverImage]="showPopoverImage"
+                           (cardClick)="onTopSectionCardClick($event, item)"></rappider-card-one>
+      </ng-container>
+    </div>
+    <hr *ngIf="topSectionCards?.length">
+
+    <rappider-card-one-list [items]="getDataWithPagination()"
+                            [itemCountPerRow]="itemCountPerRow"
+                            [showTitleOnImage]="showTitleOnImage"
+                            [showDescriptionOnImage]="showDescriptionOnImage"
+                            [showPopover]="showPopover"
+                            [showPopoverImage]="showPopoverImage"
+                            [maxHeight]="bottomSectionHeight"
+                            (imageButtonClick)="onImageButtonClick($event)"
+                            (avatarButtonClick)="onAvatarButtonClick($event)"
+                            (cardClick)="onCardClick($event)"></rappider-card-one-list>
+  </div>
+</section>
+<div class="footer-wrapper">
+  <div *ngIf="isLoading"
+       class="loading-wrapper">
+    <span nz-icon
+          nzType="loading"
+          nzTheme="outline"></span>
+    <span> {{loadingMessage | translate}}</span>
+  </div>
+  <div class="pagination-wrapper">
+    <rappider-pagination [pageIndex]="paginationConfig?.pageIndex"
+                         [total]="isDynamicPagination ? paginationConfig?.total : getDisplayedData()?.length"
+                         [pageSize]="paginationConfig?.pageSize"
+                         [showTotal]="rangeTemplate"
+                         (pageIndexChange)="onPageIndexChange($event)"></rappider-pagination>
+    <ng-template #rangeTemplate
+                 let-range="range"
+                 let-total>
+      {{ range[0] }}-{{ range[1] }} of {{ isDynamicPagination ? paginationConfig?.total : getDisplayedData()?.length }}
+      items
+    </ng-template>
+  </div>
+</div>

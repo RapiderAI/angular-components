@@ -1,0 +1,7 @@
+<section>
+  <!-- BACK BUTTON -->
+  <rappider-button *ngIf="displayBackButton"
+                   [text]="toolbarConfig.text | translate"
+                   [icon]="toolbarConfig.icon"
+                   (click)="onToolbarBackButtonClick()"></rappider-button>
+</section>

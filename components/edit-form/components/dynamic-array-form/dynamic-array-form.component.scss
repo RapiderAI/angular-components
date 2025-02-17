@@ -1,0 +1,19 @@
+.grid-view {
+  max-width: fit-content;
+  max-height: var(--json-array-max-height);
+  overflow: scroll;
+  padding: 0px !important;
+
+  ::ng-deep {
+    .ant-table {
+      overflow: visible;
+    }
+  }
+}
+
+.generated-form ::ng-deep {
+
+  nz-form-item {
+    flex-wrap: nowrap;
+  }
+}

@@ -1,0 +1,21 @@
+::ng-deep {
+  .icon-picker-modal {
+    width: 45%;
+    .icon-picker {
+      border: none;
+    }
+    .ant-modal-body {
+      padding: 0px !important;
+      height: auto !important;
+      overflow: hidden;
+    }
+    .ant-modal-content {
+      height: auto !important;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    gap: var(--margin-2x)
+  }
+}
