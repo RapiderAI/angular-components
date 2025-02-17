@@ -268,7 +268,7 @@ export class RappiderEditFormConfigInputComponent implements OnInit, ControlValu
       this.value.itemSettings = JSON.parse(this.itemSettings);
       this.itemSettingsModalVisible = false;
     } catch (error) {
-      this.notificationService.createNotification('error', 'SHARED.ERROR', 'CRUD_VIEW_MODULE.JSON_ARRAY_COMPONENT.WRONG_JSON_FORMAT');
+      this.notificationService.createNotification('error', 'Error', 'CRUD_VIEW_MODULE.JSON_ARRAY_COMPONENT.WRONG_JSON_FORMAT');
     }
   }
 
