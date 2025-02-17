@@ -1,0 +1,40 @@
+<div class="dynamic-array-form">
+  <section class="grid-view">
+    <rappider-list-grid [config]="FORM_ARRAY_LIST_GRID_CONFIG"
+                        [data]="value"
+                        (columnActionClick)="itemActionClick($event)"
+                        (orderChange)="onOrderChange($event)">
+    </rappider-list-grid>
+  </section>
+
+  <div>
+    <rappider-button class="default-button"
+                     [type]="addNewItemButton.type"
+                     [shape]="addNewItemButton.shape"
+                     [text]="addNewItemButton.text"
+                     [size]="addNewItemButton.size"
+                     [transparent]="addNewItemButton.transparent"
+                     [loading]="addNewItemButton.loading"
+                     [block]="addNewItemButton.block"
+                     [disabled]="addNewItemButton.disabled"
+                     [colorType]="addNewItemButton.colorType"
+                     [icon]="addNewItemButton.icon"
+                     (click)="addNewJson()"></rappider-button>
+  </div>
+
+  <div *ngFor="let modal of modalStack; let i = index">
+    <rappider-modal [(visible)]="modal.isModalVisible"
+                    [title]="modal.title"
+                    [fullScreen]="true"
+                    (cancelClick)="closeJsonArrayModal(i)"
+                    (okClick)="onValueChange(i)">
+      <div class="generated-form">
+        <rappider-crud-view-edit-form [config]="modal.config"
+                                      [data]="formData"
+                                      (formValueChange)="onFormValueChange($event, i)"
+                                      (objectModalOpen)="onObjectFieldModalOpen($event, i)">
+        </rappider-crud-view-edit-form>
+      </div>
+    </rappider-modal>
+  </div>
+</div>

@@ -40,16 +40,16 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { CardSelectorComponent } from '@rapider/angular-components/card-selector';
-import { RappiderMonacoEditorComponent } from '@rapider/angular-components/code-editor';
+import { RappiderMonacoEditorModule } from '@rapider/angular-components/code-editor';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb';
-import { RappiderListGridDataInputComponent } from '@rapider/angular-components/list-grid';
+import { RappiderListGridDataInputComponent } from '@rapider/angular-components/list-grid-data-input';
 import { RappiderTextboxComponent } from '@rapider/angular-components/textbox';
-import { RappiderEditFormConfigInputComponent } from '@rapider/angular-components/edit-form';
+import { RappiderEditFormConfigInputComponent } from '@rapider/angular-components/edit-form-config-input';
 import { RappiderJsonArrayComponent } from '@rapider/angular-components/json-array';
 import { RappiderListComponent } from '@rapider/angular-components/list';
 import { RappiderDimensionSelectComponent } from '@rapider/angular-components/dimension-select';
-import { RappiderListGridConfigInputComponent } from '@rapider/angular-components/list-grid';
+import { RappiderListGridConfigInputComponent } from '@rapider/angular-components/list-grid-config-input';
 import { RappiderTimePickerComponent } from '@rapider/angular-components/time-picker';
 import { RappiderColorPickerComponent } from '@rapider/angular-components/color-picker';
 import { RappiderTextareaComponent } from '@rapider/angular-components/textarea';
@@ -78,10 +78,6 @@ import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { RappiderRowSelectComponent } from '@rapider/angular-components/row-select';
 import { RappiderInlineRowFormModule } from '@rapider/angular-components/inline-row-form';
 import { RappiderIconPickerTwoComponent } from '@rapider/angular-components/icon-picker-two';
-import { RappiderBorderSettingsComponent } from '@rapider/angular-components/border-settings';
-import { RappiderShadowSettingsComponent } from '@rapider/angular-components/shadow-settings';
-import { RappiderSpacingComponent } from '@rapider/angular-components/spacing';
-import { RappiderGridBuilderComponent } from '@rapider/angular-components/grid-builder';
 import { RappiderPhoneNumberInputComponent } from '@rapider/angular-components/phone-number-input';
 import { RappiderAlertComponent } from '@rapider/angular-components/alert';
 import { RappiderImageUploadComponent } from '@rapider/angular-components/image-upload';
@@ -92,6 +88,15 @@ import { RappiderJsonInputComponent } from '@rapider/angular-components/json-inp
 import { RappiderInputGroupComponent } from '@rapider/angular-components/input-group';
 import { RappiderIconPickerWrapperComponent } from '@rapider/angular-components/icon-picker-wrapper';
 import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
+import { RappiderCheckboxListComponent } from '../checkbox-list/checkbox-list.component';
+import { RappiderTreeSelectComponent } from '../tree-select/tree-select.component';
+import { RappiderAssetPickerComponent } from '../asset-picker/asset-picker.component';
+const monacoEditorConfig = {
+  baseUrl: 'assets',
+  defaultOptions: { scrollBeyondLastLine: false },
+  onMonacoLoad: () => {
+  }
+};
 
 
 @Component({
@@ -111,7 +116,7 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     NzTabsModule,
     NzTagModule,
     CardSelectorComponent,
-    RappiderMonacoEditorComponent.forRoot(monacoEditorConfig),
+    RappiderMonacoEditorModule.forRoot(monacoEditorConfig),
     RappiderModalComponent,
     RappiderBreadcrumbComponent,
     RappiderListGridDataInputComponent,
@@ -129,7 +134,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderHtmlEditorComponent,
     RappiderNumberInputComponent,
     RappiderDatePickerComponent,
-    RappiderDatetimePickerComponent,
     RappiderRadioComponent,
     RappiderCheckboxComponent,
     RappiderSelectComponent,
@@ -138,7 +142,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderSliderComponent,
     RappiderRowFormComponent,
     RappiderStringArrayComponent,
-    RappiderIconPickerComponent,
     RappiderInputValidatorInfoComponent,
     RappiderInputErrorComponent,
     RappiderInputLabelComponent,
@@ -152,10 +155,6 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
     RappiderRowSelectComponent,
     RappiderInlineRowFormModule,
     RappiderIconPickerTwoComponent,
-    RappiderBorderSettingsComponent,
-    RappiderShadowSettingsComponent,
-    RappiderSpacingComponent,
-    RappiderGridBuilderComponent,
     RappiderPhoneNumberInputComponent,
     RappiderAlertComponent,
     RappiderCheckboxListComponent,
