@@ -1,0 +1,152 @@
+{{publishableKey|json}}
+<rappider-alert *ngIf="infoAlertVisibility && !clientSecret"
+                [title]="alertComponentConfig.title"
+                [type]="alertComponentConfig.type"
+                [showIcon]="alertComponentConfig.showIcon"
+                [closeable]="alertComponentConfig.closeable"></rappider-alert>
+<nz-skeleton [nzLoading]="paymentIntentLoading"
+             [nzActive]="true"></nz-skeleton>
+<form nz-form
+      *ngIf="clientSecret"
+      [formGroup]="paymentElementForm"
+      (ngSubmit)="onPaymentFormSubmit()">
+
+  <!-- Name -->
+  <nz-form-item *ngIf="nameFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'Name' | translate }}
+    </nz-form-label>
+    <nz-form-control class="form-element"
+                     appearance="fill">
+      <rappider-textbox formControlName="name"
+                        placeholder="Jane Doe"
+                        autofocus="true"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- E-mail -->
+  <nz-form-item *ngIf="emailFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'E-mail' | translate }}
+    </nz-form-label>
+    <nz-form-control class="form-element"
+                     appearance="fill"
+                     [nzErrorTip]="mailFieldErrorTemplates">
+      <rappider-textbox nz-input
+                        type="email"
+                        formControlName="email"
+                        placeholder="janedoe@mail.com"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Address -->
+  <nz-form-item *ngIf="addressFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'Address' | translate }}
+    </nz-form-label>
+    <nz-form-control class="form-element"
+                     appearance="fill">
+      <rappider-textbox formControlName="address"
+                        placeholder="Address"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- ZIP Code -->
+  <nz-form-item *ngIf="zipcodeFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'Zip Code' | translate }}
+    </nz-form-label>
+    <nz-form-control class="form-element"
+                     appearance="fill">
+      <rappider-textbox mask="0000000"
+                        formControlName="zipcode"
+                        placeholder="00000"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- City -->
+  <nz-form-item *ngIf="cityFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'City' | translate }}
+    </nz-form-label>
+    <nz-form-control class="form-element"
+                     appearance="fill">
+      <rappider-textbox formControlName="city"
+                        placeholder="City"></rappider-textbox>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Stripe -->
+  <nz-form-control class="form-element stripe">
+    <ngx-stripe-payment [appearance]="appearance"
+                        [options]="cardOptions"
+                        [clientSecret]="clientSecret">
+    </ngx-stripe-payment>
+  </nz-form-control>
+
+  <!-- Promotion Code -->
+  <nz-form-item *ngIf="promotionCodeFieldVisibility"
+                class="form-item">
+    <nz-form-label class="form-label">
+      {{ 'Promotion Code' | translate }}
+    </nz-form-label>
+    <div class="promotion-code">
+      <nz-form-control class="form-element"
+                       appearance="fill">
+        <rappider-tag-input [(ngModel)]="promotionCodes"
+                            formControlName="promotionCode"
+                            placeholder="Enter Code"
+                            [multipleSelection]="allowMultiplePromotionCode"></rappider-tag-input>
+      </nz-form-control>
+      <nz-form-control class="apply-button">
+        <rappider-button [text]="applyCodeButton.text || 'Apply'"
+                         [block]="applyCodeButton.block"
+                         [disabled]="applyCodeButton.disabled"
+                         [icon]="applyCodeButton.icon"
+                         [iconPlacement]="applyCodeButton.iconPlacement"
+                         [loading]="applyCodeButton.loading"
+                         [colorType]="applyCodeButton.colorType"
+                         [borderSettings]="applyCodeButton.borderSettings"
+                         [customColorSettings]="applyCodeButton.customColorSettings"
+                         [customSizeSettings]="applyCodeButton.customSizeSettings"
+                         [shape]="applyCodeButton.shape"
+                         [size]="applyCodeButton.size"
+                         [tooltipText]="applyCodeButton.tooltipText"
+                         (confirm)="applyPromotionCode()"></rappider-button>
+      </nz-form-control>
+    </div>
+  </nz-form-item>
+
+  <!-- Submit Button -->
+  <nz-form-item *ngIf="submitButton">
+    <nz-form-control>
+      <button nz-button
+              type="submit"
+              [nzLoading]="loading"
+              [nzShape]="submitButton.shape"
+              [nzSize]="submitButton.size"
+              [nzGhost]="submitButton.transparent"
+              [nzLoading]="submitButton.loading"
+              [disabled]="submitButton.disabled"
+              [nzBlock]="submitButton.block"
+              [nzType]="submitButton.type">
+        <rappider-icon *ngIf="submitButton.icon"
+                       [name]="submitButton.icon.name"></rappider-icon>
+        {{ submitButton.text }}
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Error Templates -->
+  <ng-template #mailFieldErrorTemplates>
+    <small>
+      - {{ 'The input is not valid E-mail' | translate }}
+      <br />
+    </small>
+  </ng-template>
+</form>

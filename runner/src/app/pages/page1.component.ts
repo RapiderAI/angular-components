@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RappiderDrawerComponent } from '@rapider/angular-components/drawer';
 import { RappiderClickToDialComponent } from '@rapider/angular-components/click-to-dial';
+import { RappiderStripeComponent } from '@rapider/angular-components/stripe/stripe.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @Component({
   standalone: true,
@@ -10,8 +12,9 @@ import { RappiderClickToDialComponent } from '@rapider/angular-components/click-
     FormsModule,
     RouterModule,
     RappiderDrawerComponent,
-    RappiderClickToDialComponent
-  ],
+    RappiderClickToDialComponent,
+    RappiderStripeComponent
+    ],
   selector: 'app-page',
   template: `
 
@@ -19,7 +22,8 @@ import { RappiderClickToDialComponent } from '@rapider/angular-components/click-
 
 
   <div style="border: 1px solid black; padding: 30px; margin: 5px;">
-    <rappider-click-to-dial [status]="true" [value]="'3434343434'" [showMaskTyped]="true" [mask]="'000-000-0000'"></rappider-click-to-dial>
+    <!-- <rappider-click-to-dial [status]="true" [value]="'3434343434'" [showMaskTyped]="true" [mask]="'000-000-0000'"></rappider-click-to-dial> -->
+  <rappider-stripe></rappider-stripe>
   </div>
   `,
 })
