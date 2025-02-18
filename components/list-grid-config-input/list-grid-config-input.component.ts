@@ -6,7 +6,7 @@ import { Action } from '@rapider/angular-components/core/action';
 import { CheckboxComponentConfig, RappiderCheckboxComponent } from '@rapider/angular-components/checkbox';
 import { InputSize } from '@rapider/angular-components/core/style';
 import { HeadingComponentConfig } from '@rapider/angular-components/heading';
-import { LIST_GRID_CONFIG_INPUT } from '@rapider/angular-components/list-grid';
+import { LIST_GRID_CONFIG_INPUT } from '@rapider/angular-components/core/list-grid';
 import { CrudTableViewColumn } from '@rapider/angular-components/core/list-grid';
 import { CrudTableViewConfig } from '@rapider/angular-components/core/list-grid';
 import { SINGLE_NOT_SEARCHABLE_SELECT_SETTINGS } from '@rapider/angular-components/core/select';
