@@ -3,7 +3,6 @@ import { ActionBehavior } from './action-behavior.enum';
 import { ActionView } from './action-view.enum';
 import { HorizontalPosition } from './horizontal-position.enum';
 import { ButtonType, ButtonIconPlacement } from '@rapider/angular-components/core/button';
-import { IconSet } from '@rapider/angular-components/core/utils/icon-utils';
 import { IconComponentConfig } from '@rapider/angular-components/icon';
 import { DropdownMenuComponentConfig } from '@rapider/angular-components/dropdown-menu';
 import { TooltipPlacement } from '@rapider/angular-components/core/button';
@@ -19,7 +18,7 @@ export interface Action {
   name?: string;
   text?: string;
   buttonType?: ButtonType;
-  icon?: IconComponentConfig | IconSet;
+  icon?: IconComponentConfig | any;
   iconPlacement?: ButtonIconPlacement;
   view?: ActionView;
   behavior: ActionBehavior;

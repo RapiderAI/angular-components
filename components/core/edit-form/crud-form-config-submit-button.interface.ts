@@ -12,4 +12,6 @@ export interface CrudFormConfigSubmitButton {
   disabled?: boolean;
   danger?: boolean;
   loading?: boolean;
+  icon?: any;
+  iconPlacement?: any;
 }

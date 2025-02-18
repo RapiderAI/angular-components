@@ -1,6 +1,4 @@
-import { CrudFormConfig } from 'libs/components/src/lib/utils/edit-form';
-
-export const DYNAMIC_EDIT_FORM_CONFIG: CrudFormConfig = {
+export const DYNAMIC_EDIT_FORM_CONFIG: any = {
   items: [],
   submitButton: { visible: false }
 };

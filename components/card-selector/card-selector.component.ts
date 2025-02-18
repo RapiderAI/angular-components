@@ -8,7 +8,7 @@ import { CardSelector } from './utils/card-selector.interface';
 import { CommonModule } from '@angular/common';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
 import { RappiderTextComponent } from '@rapider/angular-components/text';
-import { RappiderCardsComponent } from '@rapider/angular-components/card-one';
+import { RappiderCardsComponent } from '@rapider/angular-components/cards';
 
 @Component({
   selector: 'rappider-card-selector',
