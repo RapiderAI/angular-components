@@ -2,19 +2,29 @@ import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleCh
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { cloneDeep } from 'lodash';
 import { DYNAMIC_EDIT_FORM_CONFIG } from './configs/dynamic-edit-form.config';
-import { RappiderDataOrderService } from 'libs/components/src/lib/services';
-import { ButtonComponentConfig } from 'libs/components/src/lib/utils/button';
-import { JSON_ARRAY_LIST_GRID_CONFIG } from 'libs/components/src/lib/utils/json-array';
-import { CrudViewColumnType, OrderChangeOutput } from 'libs/components/src/lib/utils/list-grid';
-import { CrudFormItem } from 'libs/components/src/lib/utils/edit-form';
-import { IconType } from 'libs/components/src/lib/utils/icon';
-import { StringUtilityService } from 'libs/shared/src/lib/services/string-utility-service/string-utility.service';
+import { RappiderDataOrderService } from '@rapider/angular-components/core/services';
+import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
+import { JSON_ARRAY_LIST_GRID_CONFIG } from '@rapider/angular-components/core/json-array';
+import { CrudViewColumnType, OrderChangeOutput } from '@rapider/angular-components/core/list-grid';
+import { CrudFormItem } from '@rapider/angular-components/core/edit-form';
+import { IconType } from '@rapider/angular-components/core/icon';
+import { StringUtilityService } from '@rapider/angular-components/core/services';
+import { RappiderEditFormComponent } from '../../edit-form.component';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
+import { RappiderListGridComponent } from '@rapider/angular-components/list-grid';
 
 
 @Component({
   selector: 'rappider-dynamic-array-form',
   templateUrl: './dynamic-array-form.component.html',
   styleUrls: ['./dynamic-array-form.component.scss'],
+  standalone:true,
+  imports:[
+    RappiderEditFormComponent,
+    RappiderModalComponent,
+    RappiderButtonComponent,
+    RappiderListGridComponent
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -90,10 +100,10 @@ export class RappiderDynamicArrayFormComponent implements OnChanges {
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dynamicFormInputs) {
+    if (changes['dynamicFormInputs']) {
       this.setPreviewFieldNames();
     }
-    if (changes.defaultInputs) {
+    if (changes['defaultInputs']) {
       this.setValue();
     }
   }

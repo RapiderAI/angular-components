@@ -40,7 +40,6 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { CardSelectorComponent } from '@rapider/angular-components/card-selector';
-import { RappiderMonacoEditorModule } from '@rapider/angular-components/code-editor';
 import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderBreadcrumbComponent } from '@rapider/angular-components/breadcrumb';
 import { RappiderListGridDataInputComponent } from '@rapider/angular-components/list-grid-data-input';
@@ -91,6 +90,9 @@ import { RappiderListGridComponent } from '@rapider/angular-components/list-grid
 import { RappiderCheckboxListComponent } from '@rapider/angular-components/checkbox-list';
 import { RappiderTreeSelectComponent } from '@rapider/angular-components/tree-select';
 import { RappiderAssetPickerComponent } from '@rapider/angular-components/asset-picker';
+import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
+import { RappiderDynamicArrayFormComponent } from './components/dynamic-array-form/dynamic-array-form.component';
+
 const monacoEditorConfig = {
   baseUrl: 'assets',
   defaultOptions: { scrollBeyondLastLine: false },
@@ -116,7 +118,6 @@ const monacoEditorConfig = {
     NzTabsModule,
     NzTagModule,
     CardSelectorComponent,
-    RappiderMonacoEditorModule.forRoot(monacoEditorConfig),
     RappiderModalComponent,
     RappiderBreadcrumbComponent,
     RappiderListGridDataInputComponent,
@@ -131,6 +132,7 @@ const monacoEditorConfig = {
     RappiderTextareaComponent,
     RappiderRichTextEditorComponent,
     RappiderCodeEditorComponent,
+    CodeEditorComponent,
     RappiderHtmlEditorComponent,
     RappiderNumberInputComponent,
     RappiderDatePickerComponent,
@@ -153,6 +155,7 @@ const monacoEditorConfig = {
     RappiderButtonComponent,
     RappiderIconComponent,
     RappiderRowSelectComponent,
+    RappiderDynamicArrayFormComponent,
     RappiderInlineRowFormModule,
     RappiderIconPickerTwoComponent,
     RappiderPhoneNumberInputComponent,
@@ -457,7 +460,11 @@ export class RappiderEditFormComponent implements OnInit, OnChanges {
       });
       return this.formBuilder.group(formData);
     }
+    
+    // If no crudFormItems are passed or it's empty, return an empty form group or throw an error.
+    return this.formBuilder.group({});  // Return an empty form group as a fallback
   }
+  
 
   /* TODO: move validator functions to validator service */
   generateFormGroupValidators() {
@@ -720,9 +727,12 @@ export class RappiderEditFormComponent implements OnInit, OnChanges {
 
   getDynamicDataForSelectbox(fieldName: string) {
     if (this.dynamicDataForSelectBox?.length) {
-      return this.dynamicDataForSelectBox?.find(dynamicData => dynamicData.fieldName === fieldName)?.options;
+      const dynamicData = this.dynamicDataForSelectBox.find(data => data.fieldName === fieldName);
+      return dynamicData ? dynamicData.options : [];
     }
+    return [];
   }
+  
 
   /**
    * You can use this function to route component events. ex: (close)="onItemOutputEvent('close', $event)"

@@ -119,9 +119,9 @@
                 </div>
             </div>
         </ng-container>
-        <ng-container *ngFor="let item of activeFolder.origin.files">
+        <ng-container *ngFor="let item of activeFolder.origin['files']">
             <div class="active-folder-content"
-                 [ngClass]="selectedItem?.id === item.id ? 'active-content' : ''"
+                 [ngClass]="selectedItem?.['id'] === item.id ? 'active-content' : ''"
                  (click)="onContentSelect($event,item)">
                 <div class="active-folder-content-icon">
                     <ng-container *ngIf="imageFileTypes.includes(item.type); else defaultFileIconTemplate">
@@ -143,10 +143,10 @@
         <div class="selected-item-icon">
             <!-- File Icons -->
             <ng-container *ngIf="selectedItem.isLeaf">
-                <ng-container *ngIf="imageFileTypes.includes(selectedItem.type); else defaultFileIconTemplate">
+                <ng-container *ngIf="imageFileTypes.includes(selectedItem['type']); else defaultFileIconTemplate">
                     <img width="100%"
                          height="100%"
-                         [src]="basePath + '/project-files/get-file-content/' + selectedItem?.id">
+                         [src]="basePath + '/project-files/get-file-content/' + selectedItem?.['id']">
                 </ng-container>
             </ng-container>
             <!-- Folder Icon -->
@@ -165,54 +165,54 @@
             </div>
             <div class="selected-item-type-and-size-wrapper">
                 <h6 class="selected-item-type-and-size-text">
-                    {{selectedItem.isLeaf ? selectedItem.type : 'Folder'}}
+                    {{selectedItem.isLeaf ? selectedItem['type'] : 'Folder'}}
                     |
                     {{
-                    selectedItem.size ?
-                    (selectedItem.size / 1024 / 1024 | number:'.1-2') + 'MB'
+                    selectedItem['size'] ?
+                    (selectedItem['size'] / 1024 / 1024 | number:'.1-2') + 'MB'
                     : 'Size couldn\'t be calculated'
                     }}
                 </h6>
             </div>
             <div class="selected-item-additional-informations">
-                <hr *ngIf="selectedItem.createdDate">
-                <div *ngIf="selectedItem.createdDate"
+                <hr *ngIf="selectedItem['createdDate']">
+                <div *ngIf="selectedItem['createdDate']"
                      class="selected-item-additional-information-item">
                     <h6 class="additional-information-key">
                         {{'Created Date' | translate}}
                     </h6>
                     <h6 class="additional-information-value">
-                        {{selectedItem.createdDate | date:'medium'}}
+                        {{selectedItem['createdDate'] | date:'medium'}}
                     </h6>
                 </div>
-                <hr *ngIf="selectedItem.updatedDate">
-                <div *ngIf="selectedItem.updatedDate"
+                <hr *ngIf="selectedItem['updatedDate']">
+                <div *ngIf="selectedItem['updatedDate']"
                      class="selected-item-additional-information-item">
                     <h6 class="additional-information-key">
                         {{'Modified' | translate}}
                     </h6>
                     <h6 class="additional-information-value">
-                        {{ (selectedItem.updatedDate | date:'medium') ?? '---'}}
+                        {{ (selectedItem['updatedDate'] | date:'medium') ?? '---'}}
                     </h6>
                 </div>
-                <hr *ngIf="selectedItem.createdBy">
-                <div *ngIf="selectedItem.createdBy"
+                <hr *ngIf="selectedItem['createdBy']">
+                <div *ngIf="selectedItem['createdBy']"
                      class="selected-item-additional-information-item">
                     <h6 class="additional-information-key">
                         {{'Created By' | translate}}
                     </h6>
                     <h6 class="additional-information-value">
-                        {{selectedItem.createdBy ?? '---'}}
+                        {{selectedItem['createdBy'] ?? '---'}}
                     </h6>
                 </div>
-                <hr *ngIf="selectedItem.updatedBy">
-                <div *ngIf="selectedItem.updatedBy"
+                <hr *ngIf="selectedItem['updatedBy']">
+                <div *ngIf="selectedItem['updatedBy']"
                      class="selected-item-additional-information-item">
                     <h6 class="additional-information-key">
                         {{'Updated By' | translate}}
                     </h6>
                     <h6 class="additional-information-value">
-                        {{selectedItem.updatedBy ?? '---'}}
+                        {{selectedItem['updatedBy'] ?? '---'}}
                     </h6>
                 </div>
             </div>

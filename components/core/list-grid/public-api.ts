@@ -14,3 +14,5 @@ export * from './crud-table-default-pagination';
 export * from './list-grid-scroll.interface';
 export * from './crud-table-tag-item';
 export * from './crud-table-tag-item-settings';
+export * from './list-grid-data-input-data-type.enum';
+export * from './list-grid-config-input.config';

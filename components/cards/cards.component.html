@@ -9,7 +9,7 @@
                           [suffixIcon]="inputGroupConfig?.suffixIcon">
     </rappider-input-group>
     <ng-container>
-      <div [ngClass]="{'button-and-select-wrapper': selectConfig.visibility !== false}">
+      <div [ngClass]="{'button-and-select-wrapper': selectConfig['visibility'] !== false}">
         <div *ngIf="buttons" class="buttons">
           <div *ngFor="let button of buttons" [ngStyle]="{'float': 'left'}">
               <rappider-button [text]="button.text"
@@ -33,7 +33,7 @@
                               (click)="onTopButtonsClick(button)"></rappider-button>
           </div>
         </div>
-        <rappider-select *ngIf="selectConfig.visibility !== false" [options]="selectConfig?.options"
+        <rappider-select *ngIf="selectConfig['visibility'] !== false" [options]="selectConfig?.options"
                         [settings]="selectConfig?.settings"
                         [placeholder]="selectConfig?.placeholder"
                         (valueChange)="onSelectedTagsChange($event)"></rappider-select>
