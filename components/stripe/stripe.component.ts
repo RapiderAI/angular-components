@@ -4,7 +4,6 @@ import { StripeCardElementOptions } from '@stripe/stripe-js';
 import { STRIPE_PUBLISHABLE_KEY, StripePaymentElementComponent, StripeService } from 'ngx-stripe';
 import { ButtonComponentConfig } from '@rapider/angular-components/button';
 import { StripeFormField } from '@rapider/angular-components/core/stripe';
-import { AlertType } from '@rapider/angular-components/core/alert';
 import { HeadingType } from '@rapider/angular-components/core/heading';
 import { CommonModule } from '@angular/common';
 import { RappiderButtonComponent } from '@rapider/angular-components/button';
@@ -57,6 +56,7 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
     }
   };
   @Input() data: any;
+  @Input() clientSecret: string;
   @Input() nameFieldVisibility: boolean;
   @Input() cityFieldVisibility: boolean;
   @Input() emailFieldVisibility: boolean;
@@ -89,7 +89,7 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
     }
   };
   alertComponentConfig: any = {
-    type: AlertType.Warning,
+    type: 'warning',
     showIcon: true,
     closeable: true,
     title: {
@@ -106,11 +106,9 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     private stripeService: StripeService,
-    @Inject('STRIPE_CLIENT_SECRET') public clientSecret: string,
-    @Inject(STRIPE_PUBLISHABLE_KEY) public stripePublishableKey: string
+    @Inject(STRIPE_PUBLISHABLE_KEY) public publishableKey: string
   ) { 
-    console.log('Component Stripe Client Secret:', this.clientSecret); // Debug Log
-    console.log('Component Stripe Client Secret:', this.clientSecret); // Debug Log
+    console.log('Component Stripe Client Secret:', this.publishableKey);
   }
 
   ngOnInit(): void {
@@ -172,3 +170,4 @@ export class RappiderStripeComponent implements OnInit, OnChanges {
     this.promotionCodeButtonClick.emit(this.promotionCodes);
   }
 }
+
