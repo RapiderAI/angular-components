@@ -13,6 +13,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; 
 import { registerLocaleData } from '@angular/common'; 
 import en from '@angular/common/locales/en';
+import { DocumentRef, LazyStripeAPILoader, NGX_STRIPE_VERSION, STRIPE_OPTIONS, STRIPE_PUBLISHABLE_KEY, StripeElementsService, StripeService, WindowRef } from 'ngx-stripe';
 
 registerLocaleData(en);
 
@@ -30,31 +31,13 @@ export const appConfig: ApplicationConfig = {
     provideNzIcons(icons),
     provideTranslateService(),
     { provide: LOCALE_ID, useValue: 'en-US' },
-    { provide: NZ_I18N, useValue: en_US }
-  ]
-};
-
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { ConfigService } from './app/services/stripe-config.service';
-import { provideHttpClient } from '@angular/common/http';
-import { DocumentRef, LazyStripeAPILoader, NGX_STRIPE_VERSION, STRIPE_OPTIONS, STRIPE_PUBLISHABLE_KEY, StripeElementsService, StripeService, WindowRef } from 'ngx-stripe';
-
-bootstrapApplication(AppComponent, {
-  providers: [
-    { provide: ConfigService, useClass: ConfigService }, // ConfigService sağlayıcısını ekliyoruz
+    { provide: NZ_I18N, useValue: en_US },
     provideHttpClient(),
     StripeService,
     { provide: NGX_STRIPE_VERSION, useValue: '1.0' },
     {
-      provide: 'STRIPE_CLIENT_SECRET',
-      useFactory: (configService: ConfigService) => configService.getStripeKey(),
-      deps: [ConfigService],
-    },
-    {
       provide: STRIPE_PUBLISHABLE_KEY,
-      useFactory: (configService: ConfigService) => configService.getStripeKey(),
-      deps: [ConfigService],
+      useValue:'pi_3JdDdrY2wyK5pM_secret_FXh1J5BxL'
     },
     {
       provide: STRIPE_OPTIONS,
@@ -68,4 +51,4 @@ bootstrapApplication(AppComponent, {
     DocumentRef,
     StripeElementsService
   ]
-});
+};
