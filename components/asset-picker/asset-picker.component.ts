@@ -7,9 +7,9 @@ import { folderPlaceholderIconPath, imageFileTypes } from '@rapider/angular-comp
 import { ButtonComponentConfig, RappiderButtonComponent } from '@rapider/angular-components/button';
 import { ButtonSize, ButtonType } from '@rapider/angular-components/core/button';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { RappiderModalComponent } from '../modal';
+import { RappiderModalComponent } from '@rapider/angular-components/modal';
 import { RappiderAssetBrowserComponent } from '@rapider/angular-components/asset-browser';
-import { RappiderIconComponent } from '../icon';
+import { RappiderIconComponent } from '@rapider/angular-components/icon';
 import { CommonModule } from '@angular/common';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
@@ -216,7 +216,7 @@ export class RappiderAssetPickerComponent implements OnInit {
 
   onDetailFooterButtonClick(event: ButtonComponentConfig) {
     if (event.key === 'select-item') {
-      this.value = `${this.basePath}/project-files/get-file-content/` + this.selectedItem.id;
+      this.value = `${this.basePath}/project-files/get-file-content/` + this.selectedItem['id'];
       this.handleAssetPickerModalVisibility(false);
     }
     this.detailFooterButtonClick.emit(event);

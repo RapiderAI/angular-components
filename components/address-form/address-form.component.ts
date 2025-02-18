@@ -49,7 +49,7 @@ export class RappiderAddressFormComponent implements OnChanges, OnInit {
   initDefaults() {
     if (this.submitButton == null) {
       this.submitButton = {
-        text: 'SHARED.SUBMIT',
+        text: 'Submit',
         type: ButtonType.Primary
       };
     }

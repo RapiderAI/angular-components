@@ -1,0 +1,76 @@
+.event-success:hover {
+  background-color: #00c9a71c;
+  border-radius: var(--border-radius-2x);
+}
+
+.event-processing:hover {
+  background-color: #3f88f51c;
+  border-radius: var(--border-radius-2x);
+}
+
+.event-error:hover {
+  background-color: #de44361e;
+  border-radius: var(--border-radius-2x);
+}
+
+.event-warning:hover {
+  background-color: #ffc1071c;
+  border-radius: var(--border-radius-2x);
+}
+
+.events {
+  position: relative;
+  margin: 0px !important;
+  width: 100%;
+  height: 100%;
+}
+
+.cell-overlay-for-create-event {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.event-form {
+  width: 500px;
+}
+
+.close-button {
+  padding: var(--padding-4x) var(--padding-4x) var(--padding-x) 0px;
+  display: flex;
+  justify-content: end;
+}
+
+.form-content {
+  padding: var(--padding-2x) var(--padding-4x) var(--padding-x) var(--padding-4x);
+
+  ::ng-deep .default-button {
+    padding: 0 var(--padding-2x);
+  }
+}
+
+.content-template {
+  width: 400px;
+}
+
+.content-body {
+  padding: var(--padding-4x);
+
+  ::ng-deep .ant-badge-status-text {
+    font-size: var(--font-size-large);
+  }
+}
+
+.event-date {
+  margin-left: var(--margin-4x);
+  display: flex;
+  align-items: center;
+  gap: var(--padding-2x);
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-2x);
+  margin-bottom: var(--margin-3x);
+}
