@@ -1,0 +1,25 @@
+.modal-title {
+  font-size: var(--modal-title-font-size);
+}
+
+.code-mirror-save-button {
+  margin-top: var(--margin-2x);
+}
+
+.radio-group {
+  margin-bottom: var(--margin-2x);
+}
+
+.grid-view {
+  max-width: fit-content;
+  max-height: var(--json-array-max-height);
+  overflow: scroll;
+  border-bottom: var(--margin-x);
+  padding: 0px;
+
+  ::ng-deep {
+    .ant-table {
+      overflow: visible;
+    }
+  }
+}

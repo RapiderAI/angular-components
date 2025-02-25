@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { AlertComponent } from './alert.component';
+import { RappiderAlertComponent } from './alert.component';
 
 @NgModule({
-  exports: [AlertComponent],
-  imports: [AlertComponent]
+  imports: [RappiderAlertComponent],
+  exports: [RappiderAlertComponent]
 })
-export class AlertModule { }
+export class RappiderAlertModule { }

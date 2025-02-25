@@ -1,0 +1,27 @@
+<div *ngIf="value"
+     class="phone-number-input">
+  <div class="select">
+    <rappider-select [(ngModel)]="value.code"
+                     [grouppedOptions]="selectConfig?.grouppedOptions"
+                     [settings]="selectConfig?.settings"
+                     [placeholder]="selectConfig?.placeholder | translate"
+                     [size]="selectConfig?.size"
+                     [customTemplate]="isPhoneNumber ? countryCodeTemplate : null"
+                     [dropdownMatchSelectWidth]="selectConfig?.dropdownMatchSelectWidth"
+                     (ngModelChange)="onSelectValueChange($event)">
+    </rappider-select>
+  </div>
+  <div class="textbox">
+    <rappider-textbox [(ngModel)]="value.number"
+                      [placeholder]="textboxConfig?.placeholder"
+                      [size]="textboxConfig?.size"
+                      [mask]="mask"
+                      [showMaskTyped]="true"
+                      [dropSpecialCharacters]="true"
+                      (ngModelChange)="triggerValueChange()">
+    </rappider-textbox>
+  </div>
+</div>
+
+<ng-template #countryCodeTemplate
+             let-selected>{{ value.code.split(' ')[0] }}</ng-template>

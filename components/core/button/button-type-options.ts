@@ -1,23 +1,20 @@
-import { ButtonType } from "./button-type.type";
+import { ButtonType } from "./button-type.enum";
 
-export const buttonTypeOptions: {
-  key: string;
-  value: ButtonType;
-}[] = [
-    {
-      key: 'Default',
-      value: 'default'
-    },
-    {
-      key: 'Primary',
-      value: 'primary'
-    },
-    {
-      key: 'Dashed',
-      value: 'dashed'
-    },
-    {
-      key: 'Link',
-      value: 'link'
-    }
-  ];
+export const buttonTypeOptions = [
+  {
+    key: 'Default',
+    value: ButtonType.Default
+  },
+  {
+    key: 'Primary',
+    value: ButtonType.Primary
+  },
+  {
+    key: 'Dashed',
+    value: ButtonType.Dashed
+  },
+  {
+    key: 'Link',
+    value: ButtonType.Link
+  }
+];

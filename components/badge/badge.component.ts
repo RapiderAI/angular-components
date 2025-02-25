@@ -1,37 +1,35 @@
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
-import { NzBadgeComponent } from 'ng-zorro-antd/badge';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { RappiderHeadingModule } from '@rapider/angular-components/heading';
+import { RappiderTextModule } from '@rapider/angular-components/text'
+import { TextComponentConfig } from '@rapider/angular-components/text';
 import { SpacingConfig } from '@rapider/angular-components/core/style';
 import { BadgeStatus } from '@rapider/angular-components/core/badge';
-import { TextMode } from '@rapider/angular-components/core/text';
 
 @Component({
-  selector: 'rpd-badge',
+  selector: 'rappider-badge',
   imports: [
     CommonModule,
-    NzBadgeComponent,
+    NzBadgeModule,
+    RappiderHeadingModule,
+    RappiderTextModule
   ],
   standalone: true,
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
 })
-export class BadgeComponent {
-  count = input<number>();
-  color = input<string>();
-  dot = input<boolean>(false);
-  showDot = input<boolean>(true);
-  overflowCount = input<number>(99);
-  showZero = input<boolean>();
-  status = input<BadgeStatus, BadgeStatus | string>(undefined, {
-    transform: (initialValue) => {
-      return <BadgeStatus>initialValue;
-    }
-  });
-  title = input<string>();
-  text = input<string | undefined>();
-  offset = input<[number, number]>();
-  paddingSettings = input<SpacingConfig>();
-  marginSettings = input<SpacingConfig>();
-
-  protected TextMode = TextMode;
+export class RappiderBadgeComponent {
+  @Input() count: number;
+  @Input() color: string;
+  @Input() dot: boolean;
+  @Input() showDot: boolean;
+  @Input() overflowCount: number;
+  @Input() showZero: boolean;
+  @Input() status: BadgeStatus;
+  @Input() title: string;
+  @Input() text: TextComponentConfig;
+  @Input() offset: [number, number];
+  @Input() paddingSettings: SpacingConfig;
+  @Input() marginSettings: SpacingConfig;
 }

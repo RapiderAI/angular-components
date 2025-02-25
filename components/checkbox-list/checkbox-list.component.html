@@ -1,0 +1,54 @@
+<div class="checkbox-list">
+  <div *ngIf="header"
+       class="title">
+    <rappider-heading [content]="header.content"
+                      [type]="header.type"></rappider-heading>
+  </div>
+  <div *ngIf="isSelectAllButtonVisible"
+       class="select-all">
+    <rappider-checkbox [(ngModel)]="selectAll"
+                       [text]="selectAllText"
+                       (ngModelChange)="onSelectAllChange()">
+    </rappider-checkbox>
+  </div>
+
+  <div class="items"
+       [style.flex-direction]="direction">
+    <div *ngFor="let mappedOption of mappedOptions"
+         [ngClass]="direction === Direction.Column ? 'list-direction-column' : 'list-direction-row' ">
+      <rappider-checkbox [(ngModel)]="mappedOption.isSelected"
+                         [text]="mappedOption?.key"
+                         [cssStyle]="mappedOption.cssStyle"
+                         [cssClass]="mappedOption.cssClass"
+                         [disabled]="mappedOption.disabled"
+                         [checkboxType]="mappedOption.checkboxType"
+                         [icon]="mappedOption.icon"
+                         [tooltip]="mappedOption.tooltip"
+                         [additionalIcon]="mappedOption.additionalIcon"
+                         (ngModelChange)="onValueChange(mappedOption)"></rappider-checkbox>
+    </div>
+  </div>
+
+  <div *ngIf="button"
+       class="button">
+    <rappider-button [key]="button.key"
+                     [type]="button.type"
+                     [shape]="button.shape"
+                     [text]="button.text"
+                     [size]="button.size"
+                     [transparent]="button.transparent"
+                     [loading]="button.loading"
+                     [block]="button.block"
+                     [disabled]="button.disabled"
+                     [colorType]="button.colorType"
+                     [icon]="button.icon"
+                     [formButtonType]="button?.formButtonType"
+                     [borderSettings]="button?.borderSettings"
+                     [customSizeSettings]="button?.customSizeSettings"
+                     [customColorSettings]="button?.customColorSettings"
+                     [shadowSettings]="button?.shadowSettings"
+                     [paddingSettings]="button?.paddingSettings"
+                     [marginSettings]="button?.marginSettings"
+                     (click)="onButtonClick()"></rappider-button>
+  </div>
+</div>

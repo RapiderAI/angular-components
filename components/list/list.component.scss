@@ -1,0 +1,12 @@
+::ng-deep .card-item {
+  margin-bottom: 0px !important;
+}
+
+.scrollable-container {
+  overflow-y: auto;
+}
+
+.search-area {
+  width: 50%;
+  margin-bottom: var(--margin-4x);
+}

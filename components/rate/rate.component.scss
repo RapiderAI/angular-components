@@ -1,0 +1,11 @@
+.rate::ng-deep {
+  .ant-rate {
+    color: var(--rate-color);
+    display: flex;
+    gap: var(--rate-gap);
+  }
+
+  .anticon-star {
+    font-size: var(--rate-size);
+  }
+}

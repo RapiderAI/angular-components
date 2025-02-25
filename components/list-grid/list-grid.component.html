@@ -1,0 +1,536 @@
+<div class="list-grid-container"
+     *ngIf="config">
+  <!-- Title -->
+  <div *ngIf="config.title"
+       class="title">
+    <rappider-heading [content]="config.title.content"
+                      [type]="config.title.type"></rappider-heading>
+  </div>
+
+  <!-- List actions -->
+  <div *ngIf="config.listActions?.length"
+       class="list-actions">
+    <div *ngFor="let action of config.listActions"
+         class="list-actions">
+      <ng-container *ngIf="action.behavior === ActionBehavior.DropDownMenu; else buttonTemplate">
+        <ng-container *ngIf="customDropdownTemplate; else configDropdownTemplate">
+          <ng-container *ngTemplateOutlet="customDropdownTemplate"></ng-container>
+        </ng-container>
+        <ng-template #configDropdownTemplate>
+          <button nz-button
+                  nz-dropdown
+                  [nzDropdownMenu]="menu">
+            <span *ngIf="action.icon">
+              <rappider-icon [name]="action.icon.name"
+                             [type]="action.icon.type"></rappider-icon>
+              &nbsp;
+            </span>
+            {{ action.text | translate }}
+          </button>
+
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <ng-container
+                            *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: action?.dropdownConfig?.items }"></ng-container>
+              <ng-template #recursiveMenuList
+                           let-menus>
+                <ng-container *ngFor="let menu of menus">
+                  <div class="menu-item">
+                    <div class="menu-item-icon">
+                      <rappider-icon *ngIf="menu.icon && menu.icon?.name"
+                                     [name]="menu.icon.name"
+                                     [color]="menu.icon.color"
+                                     [theme]="menu.icon.theme"
+                                     [type]="menu.icon.type"
+                                     [size]="menu.icon.size"></rappider-icon>
+                    </div>
+                    <li *ngIf="menu.items?.length; else menuItem"
+                        nz-submenu
+                        [nzTitle]="menu.label | translate"
+                        (click)="onListActionDropdownItemClick(menu)">
+                      <ul>
+                        <ng-container
+                                      *ngTemplateOutlet="recursiveMenuList; context:{ $implicit: menu.items }"></ng-container>
+                      </ul>
+                    </li>
+                    <ng-template #menuItem>
+                      <li *ngIf="!menu.popconfirmTitle; else popConfirmTitleTemplate"
+                          nz-menu-item
+                          (click)="onListActionDropdownItemClick(menu)"> {{ menu.label | translate }}
+                      </li>
+                      <ng-template #popConfirmTitleTemplate>
+                        <li nz-menu-item
+                            nz-popconfirm
+                            [nzPopconfirmTitle]="menu.popconfirmTitle | translate"
+                            [nzOkText]="menu.label| translate"
+                            [nzOkDanger]="menu.popConfirmOkDanger"
+                            (nzOnConfirm)="onListActionDropdownItemClick(menu)"> {{ menu.label | translate }} </li>
+                      </ng-template>
+                    </ng-template>
+                  </div>
+                </ng-container>
+              </ng-template>
+            </ul>
+          </nz-dropdown-menu>
+        </ng-template>
+      </ng-container>
+
+      <ng-template #buttonTemplate>
+        <rappider-button [icon]="action.icon"
+                         [iconPlacement]="action?.iconPlacement"
+                         [text]="action.text | translate"
+                         [disabled]="action.disabled"
+                         [ngClass]="action.cssClass"
+                         [type]="action.buttonType"
+                         [popconfirmTitle]="action.popconfirmTitle"
+                         [emitWithoutPopconfirm]="action.emitWithoutPopconfirm"
+                         [popconfirmCancelText]="action.popconfirmCancelText"
+                         [popconfirmOkText]="action.popconfirmOkText"
+                         [popconfirmOkDanger]="action.popconfirmOkDanger"
+                         [popconfirmPlacement]="action.popconfirmPlacement"
+                         [tooltipText]="action?.tooltipText"
+                         [redirectUrl]="action?.redirectUrl"
+                         [redirectTarget]="action?.redirectTarget"
+                         (confirm)="onListActionClick(action)">
+        </rappider-button>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="!config?.hideToolbar"
+       class="row grid-toolbar">
+    <!-- Search box -->
+    <ng-container *ngIf="config.searchable !== false">
+      <div class="col-md-6 col-sm-8 search-area">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+          <input type="text"
+                 [ngModel]="searchText"
+                 (ngModelChange)="filterData($event)"
+                 nz-input
+                 [placeholder]="config?.searchPlaceholder || 'Type to search'" />
+          <ng-template #suffixIconSearch>
+            <ng-container *ngIf="searchText">
+              <a (click)="filterData(null)">
+                <i class="far fa-times-circle"></i>
+              </a>
+            </ng-container>
+          </ng-template>
+        </nz-input-group>
+      </div>
+    </ng-container>
+
+    <!-- Visible Columns multi selection -->
+    <ng-container *ngIf="(config?.filterable !== false) && (config?.columnVisibilitySelectable !== false)">
+      <div class="toolbar-actions"
+           [ngClass]="{'col-md-12 cols-sm-12': config?.searchable === false, 'col-md-6 col-sm-4': config?.searchable !== false}">
+        <!-- Column Filters -->
+        <ng-container *ngIf="config?.columnVisibilitySelectable !== false">
+          <nz-select [(ngModel)]="visibleColumns"
+                     class="filter-columns-select"
+                     [nzShowSearch]="false"
+                     [nzShowArrow]="true"
+                     [nzMode]="'multiple'"
+                     [nzMaxTagCount]="0"
+                     [nzMaxTagPlaceholder]="colSelectPlaceHolder"
+                     (ngModelChange)="onFilterChange($event)">
+            <nz-option *ngFor="let column of getVisibilityChangableColumnList(config?.columns)"
+                       [nzDisabled]="config && config.defaultSearchField && column.fieldName === config.defaultSearchField"
+                       [nzLabel]="column.title | translate"
+                       [nzValue]="column.fieldName"></nz-option>
+          </nz-select>
+          <ng-template #colSelectPlaceHolder
+                       let-selectedList>
+            <div class="filter-columns-placeholder">
+              <div>
+                <i class="far fa-line-columns"></i>
+              </div>
+              <div>
+                &nbsp;Filter Columns
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </div>
+    </ng-container>
+
+  </div>
+
+  <nz-table #dataTable
+            *ngIf="config.columns?.length"
+            nzHideOnSinglePage
+            [nzScroll]="{x: config?.scroll?.xAxis, y: config?.scroll?.yAxis}"
+            [nzData]="displayedData"
+            [nzSize]="config.size"
+            [nzShowPagination]="config.showPagination"
+            [nzPageSize]="config.pageSize"
+            [(nzPageIndex)]="pageNumber"
+            [ngClass]="borderless === true ? 'no-border' : null "
+            [nzFrontPagination]="config.nzFrontPagination"
+            [nzTotal]="config.nzTotal"
+            (nzQueryParams)="onPaginationChange($event)">
+    <thead (nzSortOrderChange)="sortData($event)">
+      <!-- Column Headers -->
+      <tr>
+        <!-- Orderable icon -->
+        <th *ngIf="config.handleorderableFn || config.orderable"
+            class="table-header"></th>
+        <!-- Select All checkbox -->
+        <th *ngIf="config.selectable"
+            nzWidth="62px"
+            [nzShowCheckbox]="isMultipleSelectionEnabled()"
+            [(nzChecked)]="isAllSelected"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="onBulkSelectionChange($event)"
+            class="table-header"></th>
+        <!-- Columns titles from the config -->
+        <ng-container *ngFor="let column of getVisibleColumns(config.columns);let index = index">
+          <ng-container *ngIf="column.sortable !== false; else notSortableColumnConfig">
+            <th nzShowSort
+                [nzColumnKey]="column.fieldName"
+                class="table-header"
+                [nzLeft]="column?.fixedColumnOnLeft || false"
+                [nzRight]="column?.fixedColumnOnRight || false"
+                [ngClass]="(column?.fixedColumnOnRight || column?.fixedColumnOnLeft) ? 'fixed-header' : null">
+              <!-- Filters -->
+
+              <div class="d-flex gap-2">
+                <ng-container *ngIf="config.filterable !== false">
+                  <div class="filter">
+                    <rappider-grid-filter [(ngModel)]="columnFilters[index].filterValue"
+                                          [fieldName]="columnFilters[index].fieldName"
+                                          [data]="data"
+                                          [columnType]="columnFilters[index].columnType"
+                                          (dataChange)="onDataFilter($event)"></rappider-grid-filter>
+                  </div>
+                </ng-container>
+                <!-- End of filters -->
+
+                {{ column.title | translate }}
+              </div>
+            </th>
+          </ng-container>
+          <ng-template #notSortableColumnConfig>
+            <th class="table-header">{{ column.title | translate }}</th>
+          </ng-template>
+        </ng-container>
+        <ng-container *ngIf="config.itemActions?.length">
+          <th class="table-header"
+              [nzRight]="config?.fixedActionColumn || false"
+              [ngClass]="config?.fixedActionColumn ? 'fixed-header' : null"></th>
+        </ng-container>
+      </tr>
+      <!-- End of Column Headers -->
+    </thead>
+    <tbody cdkDropList
+           (cdkDropListDropped)="onRowOrderChange($event)">
+      <tr *ngFor="let data of dataTable.data; let rowIndex = index"
+          [cdkDragDisabled]="!checkListOrderable(displayedData, data) && !config.orderable"
+          cdkDrag>
+        <!-- Orderable icon -->
+        <td *ngIf="config.orderable">
+          <i class="fas fa-bars"></i>
+        </td>
+        <!-- HandleOrderable icon -->
+        <td *ngIf="config.handleorderableFn">
+          <i *ngIf="checkListOrderable(displayedData, data)"
+             class="fas fa-bars"></i>
+          <i *ngIf="!checkListOrderable(displayedData, data)"
+             class="fas fa-bars invisible"></i>
+        </td>
+        <!-- Select item checkbox -->
+        <td *ngIf="config.selectable"
+            nzShowCheckbox
+            [nzChecked]="data.selected"
+            (nzCheckedChange)="selectItems($event, rowIndex)"></td>
+        <!-- Columns from the config -->
+        <td *ngFor="let column of getVisibleColumns(config.columns)"
+            [ngStyle]="column.cssStyle"
+            [nzLeft]="column?.fixedColumnOnLeft || false"
+            [nzRight]="column?.fixedColumnOnRight || false"
+            [ngClass]="(column?.fixedColumnOnRight || column?.fixedColumnOnLeft) ? 'fixed-column' : null">
+          <ng-container *ngIf="isListGridDataObject(getFieldValueByFieldName(data, column.fieldName))
+                        && column.isListGridDataObject !== false; else notObjectTemplates">
+            <!-- OBJECT type field -->
+            <ng-container>
+              <pre class="object-type-field">{{ getFieldValueByFieldName(data, column.fieldName) | json }}</pre>
+            </ng-container>
+          </ng-container>
+          <rappider-input-template *ngIf="column.type === CrudViewColumnType.InputTemplate"
+                                   [ngModel]="getFieldValueByFieldName(data, column.fieldName)"
+                                   (ngModelChange)="emitFieldValueChange(column, $event, data)"
+                                   [typeAndFormat]="{type: column.inputTemplateType}"></rappider-input-template>
+          <ng-template #notObjectTemplates>
+            <!-- TEXT type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Text">
+              <div *ngIf="!showEllipsisTextWithPopover; else popoverTemplate"
+                   class="ellipsis">
+                {{ getFieldValueByFieldName(data, column.fieldName) | translate }}
+              </div>
+              <ng-template #popoverTemplate>
+                <div class="ellipsis"
+                     nz-popover
+                     nzPopoverTitle="Value"
+                     [nzPopoverContent]="getFieldValueByFieldName(data, column.fieldName)">
+                  {{ getFieldValueByFieldName(data, column.fieldName) }}
+                </div>
+              </ng-template>
+            </ng-container>
+            <!-- NUMBER type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Number">
+              {{ getFieldValueByFieldName(data, column.fieldName) }}
+            </ng-container>
+            <!-- CURRENCY type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Currency">
+              {{ getFieldValueByFieldName(data, column.fieldName) | currency: column.format || 'USD' }}
+            </ng-container>
+            <!-- TAG type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Tag">
+              <!-- get color data from metadata for each row if exist -->
+              <nz-tag *ngIf="getFieldValueByFieldName(data,column.fieldName)"
+                      [nzColor]="data?.metadata?.color || column?.settings?.color">
+                {{ getFieldValueByFieldName(data,column.fieldName) }}</nz-tag>
+            </ng-container>
+            <!-- TAG LIST type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.TagList">
+              <ng-container *ngFor="let tag of getFieldValueByFieldName(data,column.fieldName)">
+                <nz-tag *ngIf="tag"
+                        [nzColor]="tag?.color">{{tag?.title}}</nz-tag>
+              </ng-container>
+            </ng-container>
+            <!-- ICON type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Icon">
+              <!-- <i [ngClass]="getFieldValueByFieldName(data, column.fieldName)"
+                 class="icon-column"></i> -->
+              <rappider-icon [name]="getFieldValueByFieldName(data, column.fieldName)"></rappider-icon>
+            </ng-container>
+            <!-- LINK type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Link">
+              <a *ngIf="!showEllipsisLinkWithPopover; else popoverTemplate"
+                 class="ellipsis"
+                 [routerLink]="execTemplate(column.routerLink, data)"
+                 [queryParams]="column.queryParams"
+                 [innerHTML]="getFieldValueByFieldName(data, column.fieldName)"></a>
+              <ng-template #popoverTemplate>
+                <a class="ellipsis"
+                   nz-popover
+                   nzPopoverTitle="Value"
+                   [nzPopoverContent]="getFieldValueByFieldName(data, column.fieldName)"
+                   [routerLink]="execTemplate(column.routerLink, data)"
+                   [queryParams]="column.queryParams"
+                   [innerHTML]="getFieldValueByFieldName(data, column.fieldName)"></a>
+              </ng-template>
+            </ng-container>
+            <!-- ACTION LINK type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.ActionLink">
+              <a (click)="onEmitItemClick(data)">{{ getFieldValueByFieldName(data, column.fieldName) }}</a>
+            </ng-container>
+            <!-- DATETIME type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.DateTime">
+              <ng-container *ngIf="getFieldValueByFieldName(data, column.fieldName); else noDateTime">
+                <ng-container *ngIf="config.dateFormat; else noDateTimeFormat">
+                  {{convertToDate(getFieldValueByFieldName(data, column.fieldName))}}
+                </ng-container>
+              </ng-container>
+              <ng-template #noDateTimeFormat>
+                {{convertToDate(getFieldValueByFieldName(data, column.fieldName)) | date:'short'}}
+              </ng-template>
+              <ng-template #noDateTime>
+              </ng-template>
+            </ng-container>
+            <!-- DATE type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Date">
+              <ng-container *ngIf="!getFieldValueByFieldName(data, column.fieldName)">
+              </ng-container>
+              <ng-container *ngIf="getFieldValueByFieldName(data, column.fieldName)">
+                <ng-container *ngIf="config.dateFormat; else noDateFormat">
+                  {{convertToDate(getFieldValueByFieldName(data, column.fieldName))}}
+                </ng-container>
+              </ng-container>
+              <ng-template #noDateFormat>
+                {{convertToDate(getFieldValueByFieldName(data, column.fieldName)) | date:'short'}}
+              </ng-template>
+            </ng-container>
+            <!-- BOOLEAN type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Boolean">
+              <ng-container *ngIf="getFieldValueByFieldName(data, column.fieldName)">
+                <i class="fas fa-check color-green"></i>
+              </ng-container>
+              <ng-container *ngIf="!getFieldValueByFieldName(data, column.fieldName)">
+                <i class="fas fa-times color-red"></i>
+              </ng-container>
+            </ng-container>
+            <!-- IMAGE type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Image">
+              <img class="thumbnail"
+                   [ngClass]="{ 'no-image-thumbnail': !getFieldValueByFieldName(data, column.fieldName) }"
+                   [src]="getFieldValueByFieldName(data, column.fieldName) || noImageUrl" />
+            </ng-container>
+            <!-- RATE type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Rate">
+              <rappider-rate-display [rate]="getFieldValueByFieldName(data, column.fieldName)"></rappider-rate-display>
+            </ng-container>
+            <!-- Code type field -->
+            <ng-container *ngIf="column.type === CrudViewColumnType.Code">
+              <pre>
+                <samp>
+                  {{getFieldValueByFieldName(data, column.fieldName)}}
+                </samp>
+              </pre>
+            </ng-container>
+            <!-- OTHER type field -->
+            <ng-container *ngIf="column.type === 'other'">
+              {{ getFieldValueByFieldName(data, column.fieldName) }}
+            </ng-container>
+          </ng-template>
+        </td>
+        <!-- Action columns -->
+        <td *ngIf="config.itemActions?.length"
+            class="item-actions"
+            [nzRight]="config?.fixedActionColumn || false">
+          <ng-container *ngIf="config.itemActionsLength > config.itemActions.length; else dropdownWrap">
+            <div class="list-grid-action-buttons-container">
+              <ng-container *ngFor="let action of config.itemActions; let itemActionIndex = index">
+                <ng-container *ngIf="checkActionButtonVisibility(displayedData, data, action)">
+                  <!-- button view -->
+                  <ng-container *ngIf="!action.view || action.view === ActionView.Button">
+                    <rappider-button [icon]="action.icon"
+                                     [iconPlacement]="action?.iconPlacement"
+                                     [text]="action.text | translate"
+                                     [disabled]="checkActionButtonDisabled(displayedData, data, action) || action.disabled"
+                                     [type]="action.buttonType"
+                                     [size]="action.size || 'extra-small'"
+                                     [popconfirmTitle]="action.popconfirmTitle"
+                                     [emitWithoutPopconfirm]="action.emitWithoutPopconfirm"
+                                     [popconfirmCancelText]="action.popconfirmCancelText"
+                                     [popconfirmOkText]="action.popconfirmOkText"
+                                     [popconfirmOkDanger]="action.popconfirmOkDanger"
+                                     [popconfirmPlacement]="action.popconfirmPlacement"
+                                     [tooltipText]="checkActionButtonTooltip(displayedData, data, action) || action.tooltipText"
+                                     [redirectUrl]="action?.redirectUrl"
+                                     [redirectTarget]="action?.redirectTarget"
+                                     (confirm)="onColumnActionClick(action, data, rowIndex)">
+                    </rappider-button>
+                  </ng-container>
+
+                  <!-- icon view -->
+                  <ng-container
+                                *ngIf="action.view === ActionView.Icon && action.behavior !== ActionBehavior.DropDownMenu && action.popconfirmTitle">
+                    <a (click)="onColumnActionClick(action, data, rowIndex)">
+                      <ng-container *ngIf="action.icon">
+                        <i [ngClass]="action.icon"></i>
+                      </ng-container>
+                    </a>
+                  </ng-container>
+
+                  <!-- icon view drop down menu -->
+                  <ng-container
+                                *ngIf="action.view === ActionView.Icon && action.behavior === ActionBehavior.DropDownMenu">
+                    <a nz-dropdown
+                       nzPlacement="leftTop"
+                       nzTrigger="click"
+                       [nzDropdownMenu]="menu">
+                      <ng-container *ngIf="action.icon">
+                        <i [ngClass]="action.icon"></i>
+                      </ng-container>
+                      <span *ngIf="action.text">{{ action.text | translate}}</span>
+                    </a>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                      <ul nz-menu>
+                        <li *ngFor="let menuItem of action.actions"
+                            nz-menu-item
+                            [nzDisabled]="menuItem.disabled"
+                            class="action-drop-down-menu-item"
+                            (click)="onColumnActionClick(menuItem, data, rowIndex)">
+                          <ng-container *ngIf="menuItem.icon">
+                            <i [ngClass]="menuItem.icon"></i>
+                          </ng-container>
+                          &nbsp;&nbsp;
+                          <span *ngIf="menuItem.title">{{ menuItem.title }}</span>
+                        </li>
+                      </ul>
+                    </nz-dropdown-menu>
+                  </ng-container>
+                  <nz-divider *ngIf="config.itemActions.length > (itemActionIndex + 1)"
+                              nzType="vertical"></nz-divider>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+
+          <ng-template #dropdownWrap>
+            <a *ngIf="checkItemActionDropdownMenuVisiblity(displayedData, data, config.itemActions)"
+               nz-dropdown
+               nzPlacement="leftTop"
+               nzTrigger="click"
+               [nzDropdownMenu]="menu">
+              <i nz-icon
+                 nzType="ellipsis"
+                 nzTheme="outline"></i>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <ng-container *ngFor="let action of config.itemActions; let itemActionIndex = index">
+
+                  <ng-container *ngIf="checkActionButtonVisibility(displayedData, data, action)">
+                    <li *ngIf="action.popconfirmTitle"
+                        class="action-drop-down-menu-item"
+                        nz-menu-item
+                        nz-popconfirm
+                        [nzDisabled]="action.disabled"
+                        [nzPopconfirmTitle]="action.popconfirmTitle | translate"
+                        [nzCancelText]="action.popConfirmCancelText| translate"
+                        [nzOkText]="action.popConfirmOkText| translate"
+                        [nzOkDanger]="action.popConfirmOkDanger"
+                        (nzOnCancel)="cancel()"
+                        (nzOnConfirm)="onColumnActionClick(action, data, rowIndex)">
+                      <div class="action-drop-down-menu-item-row">
+                        <div *ngIf="action.icon"
+                             class="dropdown-menu-item-icon">
+                          <i [ngClass]="action.icon"></i>
+                        </div>
+                        <ng-container *ngIf="action.icon && action.text">
+                          &nbsp;&nbsp;
+                        </ng-container>
+                        <div *ngIf="action.text"
+                             class="dropdown-menu-item-text">
+                          <span>{{ action.text | translate }}</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li *ngIf="!action.popconfirmTitle"
+                        class="action-drop-down-menu-item"
+                        nz-menu-item
+                        [nzDisabled]="action.disabled"
+                        (click)="onColumnActionClick(action, data, rowIndex)">
+                      <div class="action-drop-down-menu-item-row">
+                        <div *ngIf="action.icon"
+                             class="dropdown-menu-item-icon">
+                          <i [ngClass]="action.icon"></i>
+                        </div>
+                        <ng-container *ngIf="action.icon && action.text">
+                          &nbsp;&nbsp;
+                        </ng-container>
+                        <div *ngIf="action.text"
+                             class="dropdown-menu-item-text">
+                          <span>{{ action.text | translate }}</span>
+                        </div>
+                      </div>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ul>
+            </nz-dropdown-menu>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <div *ngIf="loading"
+       class="loading">
+    <span nz-icon
+          nzType="loading"
+          nzTheme="outline"></span>
+    <span> {{loadingMessage | translate}}</span>
+  </div>
+</div>

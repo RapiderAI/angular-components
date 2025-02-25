@@ -1,0 +1,50 @@
+<!-- Add Button-->
+<rappider-button transparent="true"
+                 type="default"
+                 [icon]="{name: 'fas fa-plus', type: 'FONT_AWESOME'}"
+                 [text]="'CRUD_VIEW_MODULE.LIST_GRID_DATA_INPUT_COMPONENT.ADD_LIST_GRID_DATA' | translate"
+                 (click)="onButtonClick()"></rappider-button>
+<!-- Modal -->
+<rappider-modal [(visible)]="isModalVisible"
+                [title]="titleTemplate"
+                [fullScreen]="true"
+                (cancelClick)="hideModal()"
+                (okClick)="onAddListGridDataSubmit()">
+  <!-- Radio -->
+  <div class="radio">
+    <rappider-radio [options]="radioOptions"
+                    [(ngModel)]="dataType"></rappider-radio>
+  </div>
+  <!-- Input -->
+  <div class="input">
+    <!-- Codemirror -->
+    <ng-container *ngIf="dataType === 'static'; else dynamicMode">
+      <rappider-spin [spinning]="isCodemirrorLoading">
+        <rappider-code-editor *ngIf="!isCodemirrorLoading"
+                              [(ngModel)]="jsonValue"
+                              [settings]="codeMirrorSettings"></rappider-code-editor>
+      </rappider-spin>
+    </ng-container>
+
+    <!-- Dynamic Mode-->
+    <ng-template #dynamicMode>
+      <!-- Label -->
+      <div class="form-item">
+        <rappider-input-label [title]="'Url' | translate">
+        </rappider-input-label>
+      </div>
+      <!-- Textbox-->
+      <div>
+        <rappider-textbox [(ngModel)]="dataUrl">
+        </rappider-textbox>
+      </div>
+    </ng-template>
+
+    <!-- Title Template-->
+    <ng-template #titleTemplate>
+      <div class="title">
+        {{ 'CRUD_VIEW_MODULE.LIST_GRID_DATA_INPUT_COMPONENT.ADD_LIST_GRID_DATA' | translate }}
+      </div>
+    </ng-template>
+  </div>
+</rappider-modal>

@@ -1,0 +1,28 @@
+<nz-steps [nzCurrent]="current"
+          (nzCurrentChange)="onCurrentChange($any($event))"
+          [nzType]="stepsType"
+          [nzDirection]="stepsDirection"
+          [nzLabelPlacement]="labelPlacement"
+          [nzProgressDot]="progressDot"
+          [nzSize]="stepsSize"
+          [nzStatus]="stepsStatus"
+          [nzStartIndex]="startIndex"
+          (nzIndexChange)="onStepIndexChange($event)">
+  <ng-container *ngFor="let step of steps">
+    <nz-step [nzTitle]="step?.title"
+             [nzStatus]="step?.status || 'wait'"
+             [nzPercentage]="step?.percentage"
+             [nzSubtitle]="step?.subTitle"
+             [nzIcon]="step?.icon?.name ? iconTemplate : null"
+             [nzDescription]="step?.description"
+             [nzDisabled]="step?.disabled">
+    </nz-step>
+    <ng-template #iconTemplate>
+      <rappider-icon [name]="step?.icon?.name"
+                     [color]="step?.icon?.color"
+                     [type]="step?.icon?.type"
+                     [theme]="step?.icon?.theme"
+                     [size]="step?.icon?.size"></rappider-icon>
+    </ng-template>
+  </ng-container>
+</nz-steps>

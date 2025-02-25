@@ -1,0 +1,164 @@
+<!-- TODO: Entire html will be changed to form in second phase.-->
+<!-- <rappider-button transparent="true"
+                 type="primary"
+                 text="Edit List Grid"
+                 (click)="onEditListGridButtonClick()"></rappider-button>
+
+<rappider-modal [(visible)]="editListGridModalVisible"
+          [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_SUBMIT_BUTTON_SETTINGS' | translate"
+          (cancelClick)="handleCancel()"
+          (okClick)="onEditListGridSubmit()">
+  <rappider-crud-view-edit-form [config]="LIST_GRID_CONFIG_INPUT"
+                                [data]="value"
+                                (formValueChange)="onFormValueChange($event)"></rappider-crud-view-edit-form>
+</rappider-modal> -->
+
+<rappider-button transparent="true"
+                 type="default"
+                 [icon]="{name: 'far fa-edit', type: 'FONT_AWESOME'}"
+                 [text]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.EDIT_LIST_GRID' | translate"
+                 (click)="onEditListGridButtonClick()"></rappider-button>
+
+
+<rappider-modal [(visible)]="editListGridModalVisible"
+                [title]="'CRUD_VIEW_MODULE.EDIT_FORM_CONFIG_INPUT_COMPONENT.EDIT_SUBMIT_BUTTON_SETTINGS' | translate"
+                [fullScreen]="true"
+                (cancelClick)="closeEditListGridModal()"
+                (okClick)="onEditListGridModalSubmit()">
+  <!-- Title -->
+  <div class="form-item">
+    <rappider-input-label [title]="'Title' | translate"></rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-textbox [(ngModel)]="title">
+    </rappider-textbox>
+  </div>
+
+  <!-- Searchable -->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.SEARCHABLE' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-checkbox [(ngModel)]="searchable"
+                       [text]="checkbox?.text"
+                       [borderSettings]="checkbox?.borderSettings"
+                       [customSizeSettings]="checkbox?.customSizeSettings"
+                       [shadowSettings]="checkbox?.shadowSettings"
+                       [marginSettings]="checkbox?.marginSettings"
+                       [paddingSettings]="checkbox?.paddingSettings"></rappider-checkbox>
+  </div>
+
+  <!-- Column Visibility Selectable-->
+  <div class="form-item">
+    <rappider-input-label
+                          [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.COLUMN_VISIBILITY_SELECTABLE' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-checkbox [(ngModel)]="columnVisibilitySelectable"
+                       [text]="checkbox?.text"
+                       [borderSettings]="checkbox?.borderSettings"
+                       [customSizeSettings]="checkbox?.customSizeSettings"
+                       [shadowSettings]="checkbox?.shadowSettings"
+                       [marginSettings]="checkbox?.marginSettings"
+                       [paddingSettings]="checkbox?.paddingSettings"></rappider-checkbox>
+  </div>
+
+  <!-- Default Search Field -->
+  <div class="form-item">
+    <rappider-input-label
+                          [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.DEFAULT_SEARCH_FIELD' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-textbox [(ngModel)]="defaultSearchField">
+    </rappider-textbox>
+  </div>
+
+  <!-- Columns -->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.COLUMNS' | translate">
+    </rappider-input-label>
+  </div>
+  <div class="form-input-item">
+    <rappider-json-array [previewFieldNames]="columnsPreviewFieldNames"
+                         [(ngModel)]="columns"
+                         (ngModelChange)="onColumnsChange()"></rappider-json-array>
+  </div>
+
+  <!-- Selectable -->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.SELECTABLE' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-checkbox [(ngModel)]="selectable"
+                       [text]="checkbox?.text"
+                       [borderSettings]="checkbox?.borderSettings"
+                       [customSizeSettings]="checkbox?.customSizeSettings"
+                       [shadowSettings]="checkbox?.shadowSettings"
+                       [marginSettings]="checkbox?.marginSettings"
+                       [paddingSettings]="checkbox?.paddingSettings"></rappider-checkbox>
+  </div>
+
+  <!-- List Actions -->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.LIST_ACTIONS' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-json-array [previewFieldNames]="actionsPreviewFieldNames"
+                         [(ngModel)]="listActions"
+                         (ngModelChange)="onListActionsChange()"></rappider-json-array>
+  </div>
+
+  <!-- Item Actions -->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.ITEM_ACTIONS' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-json-array [previewFieldNames]="actionsPreviewFieldNames"
+                         [(ngModel)]="itemActions"
+                         (ngModelChange)="onItemActionsChange()"></rappider-json-array>
+  </div>
+
+  <!-- Input Size -->
+  <div class="form-item">
+    <rappider-input-label [title]="'Size' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-select [options]="inputSizes"
+                     [(ngModel)]="size"
+                     [settings]="SINGLE_SELECT_SETTINGS_CONFIG"
+                     (ngModelChange)="onSizeChange()"></rappider-select>
+  </div>
+
+  <!-- Orderable-->
+  <div class="form-item">
+    <rappider-input-label [title]="'CRUD_VIEW_MODULE.LIST_GRID_CONFIG_INPUT_COMPONENT.ORDERABLE' | translate">
+    </rappider-input-label>
+  </div>
+
+  <div class="form-input-item">
+    <rappider-checkbox [(ngModel)]="orderable"
+                       [text]="searchable || false"
+                       [borderSettings]="checkbox?.borderSettings"
+                       [text]="checkbox?.text"
+                       [customSizeSettings]="checkbox?.customSizeSettings"
+                       [shadowSettings]="checkbox?.shadowSettings"
+                       [marginSettings]="checkbox?.marginSettings"
+                       [paddingSettings]="checkbox?.paddingSettings"
+                       (ngModelChange)="onOrderableChange()"></rappider-checkbox>
+  </div>
+</rappider-modal>

@@ -1,0 +1,18 @@
+.card-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-text {
+  font-weight: var(--font-weight-bold);
+  line-height: var(line-height-base);
+}
+
+.item-description {
+  font-weight: var(--font-weight-light);
+}
+
+.card-eleven {
+  padding: var(--card-padding);
+  margin-bottom: 0px;
+}

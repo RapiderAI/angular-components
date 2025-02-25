@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RateDisplayComponent } from './rate-display.component';
+import { RappiderRateDisplayComponent } from './rate-display.component';
 
 @NgModule({
-  exports: [RateDisplayComponent],
-  imports: [RateDisplayComponent]
+  imports: [RappiderRateDisplayComponent],
+  exports: [RappiderRateDisplayComponent],
 })
-export class RateDisplayModule { }
+export class RappiderRateDisplayModule { }

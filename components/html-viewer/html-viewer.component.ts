@@ -1,35 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, ViewEncapsulation, signal, effect } from '@angular/core';
+import { Component, Input, OnChanges, ViewEncapsulation, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-  selector: 'rpd-html-viewer',
+  selector: 'rappider-html-viewer',
+  standalone: true,
   imports: [
     CommonModule,
   ],
   templateUrl: './html-viewer.component.html',
   styleUrls: ['./html-viewer.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  standalone: true
+  encapsulation: ViewEncapsulation.None
 })
-export class HtmlViewerComponent {
-  html = input<string>('');
+export class RappiderHtmlViewerComponent implements OnInit, OnChanges {
 
-  // Signal for safe HTML
-  safeHTML = signal<SafeHtml>('');
+  @Input() html: string;
 
-  constructor(
-    private sanitizer: DomSanitizer
-  ) {
-    // Subscribe to html input changes
-    effect(() => {
-      this.updateSafeHtml(this.html());
-    });
+  safeHTML: SafeHtml;
+
+  constructor(private sanitizer: DomSanitizer) { }
+
+  ngOnInit() {
+    this.safeHTML = this.sanitizer.bypassSecurityTrustHtml(this.html);
   }
 
-  private updateSafeHtml(htmlContent: string) {
-    this.safeHTML.set(
-      this.sanitizer.bypassSecurityTrustHtml(htmlContent)
-    );
+  ngOnChanges() {
+    this.safeHTML = this.sanitizer.bypassSecurityTrustHtml(this.html);
   }
+
 }

@@ -1,0 +1,17 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--margin-3x);
+
+  rappider-button {
+    .button {
+      .ant-btn-loading {
+        padding: 0.375rem 0.75rem !important;
+      }
+    }
+  }
+}
+
+.codemirror-input-form {
+  height: var(--height-14x);
+}

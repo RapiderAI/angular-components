@@ -1,0 +1,34 @@
+<nz-card *ngIf="title || buttonTemplate"
+         [nzTitle]="title"
+         [nzExtra]="buttonTemplate">
+  <ng-container *ngFor="let item of items">
+    <div class="icon-and-menu-list">
+      <rappider-icon-and-menu-list-item [title]="item.title"
+                                        [description]="item.description"
+                                        [icon]="item.icon"
+                                        [dropdownMenu]="item.dropdownMenu">
+      </rappider-icon-and-menu-list-item>
+    </div>
+  </ng-container>
+</nz-card>
+<ng-template #buttonTemplate>
+  <rappider-button *ngIf="button"
+                   [type]="button.type"
+                   [shape]="button.shape"
+                   [text]="button.text"
+                   [size]="button.size"
+                   [transparent]="button.transparent"
+                   [loading]="button.loading"
+                   [block]="button.block"
+                   [disabled]="button.disabled"
+                   [colorType]="button.colorType"
+                   [icon]="button.icon"
+                   [formButtonType]="button?.formButtonType"
+                   [borderSettings]="button?.borderSettings"
+                   [customSizeSettings]="button?.customSizeSettings"
+                   [customColorSettings]="button?.customColorSettings"
+                   [shadowSettings]="button?.shadowSettings"
+                   [paddingSettings]="button?.paddingSettings"
+                   [marginSettings]="button?.marginSettings"
+                   (click)="onButtonClick()"></rappider-button>
+</ng-template>

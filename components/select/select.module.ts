@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SelectComponent } from './select.component';
+import { RappiderSelectComponent } from './select.component';
+
 
 @NgModule({
-  exports: [SelectComponent],
-  imports: [SelectComponent]
+  imports: [RappiderSelectComponent],
+  exports: [RappiderSelectComponent],
 })
-export class SelectModule { }
+export class RappiderSelectModule { }

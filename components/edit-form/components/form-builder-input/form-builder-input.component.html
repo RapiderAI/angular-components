@@ -1,0 +1,875 @@
+<div cdkDropList
+     (cdkDropListDropped)="drop($event)">
+  <section *ngFor="let configItem of value; let i = index"
+           cdkDrag
+           class="config-edit-area">
+    <ng-container *ngIf="editedIndex === i; else descriptionTmpl">
+      <div class="form-area">
+        <div class="config-input-area">
+          <div class="control-area">
+            <div class="label">
+              Title:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.title"></rappider-textbox>
+              <small *ngIf="tempValueSubmitted && !tempCrudFormItem.title"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Field Name:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.fieldName"></rappider-textbox>
+              <small *ngIf="!isFieldNameUnique() && tempValueSubmitted"
+                     class="error">
+                *Field Name must be unique.
+              </small>
+              <br>
+              <small *ngIf="tempValueSubmitted && !tempCrudFormItem.fieldName"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Type:
+            </div>
+            <div class="input">
+              <rappider-select [ngModel]="tempCrudFormItem.type"
+                               (ngModelChange)="onTypeChange($event)"
+                               [options]="typeSelectOptions"></rappider-select>
+              <small *ngIf="tempValueSubmitted && !tempCrudFormItem.type"
+                     class="error">*This field can't be empty</small>
+            </div>
+          </div>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.DatePicker">
+            <div class="control-area">
+              <div class="label">
+                Date Format:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.dateFormat"
+                                 [options]="dateFormatOptions"></rappider-select>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.ImageUpload">
+            <div class="control-area">
+              <div class="label">
+                Upload Button Visibility:
+              </div>
+              <div class="input">
+                <rappider-checkbox [(ngModel)]="tempCrudFormItem.uploadButtonVisibility"></rappider-checkbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Width:
+              </div>
+              <div class="input">
+                <rappider-dimension-select [(ngModel)]="imageUploadWidth"
+                                           (ngModelChange)="onImageUploadWidthChange($event)"></rappider-dimension-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Height:
+              </div>
+              <div class="input">
+                <rappider-dimension-select [(ngModel)]="imageUploadHeight"
+                                           (ngModelChange)="onImageUploadHeightChange($event)"></rappider-dimension-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Image Upload Button Text:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="imageUploadButtonText"
+                                  (ngModelChange)="onImageUploadButtonTextChange($event)"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Image Upload Button Type:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="imageUploadButtonType"
+                                 [options]="imageUploadButtonTypeOptions"
+                                 (ngModelChange)="onImageUploadButtonTypeChange($event)"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Image Upload Button Icon:
+              </div>
+              <div class="input">
+                <rappider-icon-picker-wrapper [(ngModel)]="imageUploadButtonIcon"
+                                              (ngModelChange)="onImageUploadButtonIconChange($event)"></rappider-icon-picker-wrapper>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.RowForm">
+            <div class="control-area">
+              <div class="label">
+                Columns:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.columns"
+                                     [previewFieldNames]="tempCrudFormItem.columns"
+                                     [modalTitle]="'Add Columns'"></rappider-json-array>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.InputGroup">
+            <div class="control-area">
+              <div class="label">
+                Textbox:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.textbox"></rappider-json-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Prefix Text:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.prefixText"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Suffix Text:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.suffixText"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Prefix Icon:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.prefixIcon"></rappider-json-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Suffix Icon:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.suffixIcon"></rappider-json-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Prefix Button:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.prefixButton"></rappider-json-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Suffix Button:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.suffixButton"></rappider-json-input>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.Radio">
+            <div class="control-area">
+              <div class="label">
+                Selectable Options:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.options"></rappider-json-array>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Color:
+              </div>
+              <div class="input">
+                <rappider-color-picker [(ngModel)]="tempCrudFormItem.color"></rappider-color-picker>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Width:
+              </div>
+              <div class="input">
+                <rappider-dimension-select [(ngModel)]="tempCrudFormItem.width"></rappider-dimension-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Height:
+              </div>
+              <div class="input">
+                <rappider-dimension-select [(ngModel)]="tempCrudFormItem.height"></rappider-dimension-select>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.RowSelect">
+            <div class="control-area">
+              <div class="label">
+                Orderable:
+              </div>
+              <div class="input">
+                <rappider-checkbox [(ngModel)]="tempCrudFormItem.orderable"></rappider-checkbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Columns:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.columns"></rappider-json-array>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Add Button Visible:
+              </div>
+              <div class="input">
+                <rappider-checkbox [(ngModel)]="tempCrudFormItem.addButtonVisible"></rappider-checkbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Has Initial Empty Row:
+              </div>
+              <div class="input">
+                <rappider-checkbox [(ngModel)]="tempCrudFormItem.hasInitialEmptyRow"></rappider-checkbox>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.CheckboxList">
+            <div class="control-area">
+              <div class="label">
+                Direction:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.direction"
+                                 [options]="checkboxListDirectionOptions"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Options:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.options"></rappider-json-array>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Select All Button Visibility:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.isSelectAllButtonVisible"></rappider-switch>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.CheckBox">
+            <div class="control-area">
+              <div class="label">
+                Type:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.checkboxType"
+                                 [options]="checkboxTypeOptions"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Text:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.text"></rappider-json-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Tooltip:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.tooltip"></rappider-textbox>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.Button">
+            <div class="control-area">
+              <div class="label">
+                Text:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.text"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Type:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.buttonType"
+                                 [options]="buttonTypeOptions"></rappider-select>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.Select">
+            <div class="control-area">
+              <div class="label">
+                Size:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.size"
+                                 [options]="inputSize"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Select Mode:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.settings.mode"
+                                 [options]="selectMode"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Options:
+              </div>
+              <div class="input">
+                <rappider-row-form [(ngModel)]="tempCrudFormItem.options"
+                                   [hasInitialEmptyRow]="true"
+                                   addButtonText="Save Options"
+                                   [addButtonVisible]="true"
+                                   [columns]="rowFormColumnsConfig"></rappider-row-form>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.TextBox">
+            <div class="control-area">
+              <div class="label">
+                Size:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.size"
+                                 [options]="inputSize"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Textbox Type:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.textType"
+                                 [options]="textboxTypeOptions"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Mask Guide:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.maskGuide"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Mention Supported:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.mentionSupported"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Mention Prefix:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.mentionPrefix"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Show Mask Typed:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.showMaskTyped"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Drop Special Characters:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.dropSpecialCharacters"></rappider-switch>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.RadioGroup">
+            <div class="control-area">
+              <div class="label">
+                Options:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.options"></rappider-json-array>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Invalid Config Text:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.invalidConfigText"></rappider-textbox>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Size:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.size"
+                                 [options]="inputSize"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Disabled:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.disabled"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Direction:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.direction"
+                                 [options]="radioGroupDirectionOptions"></rappider-select>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Gap:
+              </div>
+              <div class="input">
+                <rappider-textbox [(ngModel)]="tempCrudFormItem.gap"></rappider-textbox>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.Slider">
+            <div class="control-area">
+              <div class="label">
+                Read Only:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.readonly"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Dual Mode:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.dualMode"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Min Range:
+              </div>
+              <div class="input">
+                <rappider-number-input [(ngModel)]="tempCrudFormItem.minRange"></rappider-number-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Max Range:
+              </div>
+              <div class="input">
+                <rappider-number-input [(ngModel)]="tempCrudFormItem.maxRange"></rappider-number-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Custom Max:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.customMax"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Step:
+              </div>
+              <div class="input">
+                <rappider-number-input [(ngModel)]="tempCrudFormItem.step"></rappider-number-input>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Marks:
+              </div>
+              <div class="input">
+                <rappider-json-input [(ngModel)]="tempCrudFormItem.marks"></rappider-json-input>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.InlineRowForm">
+            <div class="control-area">
+              <div class="label">
+                Orderable:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.orderable"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Columns:
+              </div>
+              <div class="input">
+                <rappider-json-array [(ngModel)]="tempCrudFormItem.columns"></rappider-json-array>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Order Numbers Visibility:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.orderNumbersVisibility"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Single Row:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.singleRow"></rappider-switch>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="tempCrudFormItem.type === CrudViewFormItemType.CheckboxTable">
+            <div class="control-area">
+              <div class="label">
+                Checkbox Mode:
+              </div>
+              <div class="input">
+                <rappider-switch [(ngModel)]="tempCrudFormItem.checkboxMode"></rappider-switch>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Rows:
+              </div>
+              <div class="input">
+                <rappider-row-form [(ngModel)]="tempCrudFormItem.rows"
+                                   [hasInitialEmptyRow]="true"
+                                   addButtonText="Save Options"
+                                   [addButtonVisible]="true"
+                                   [columns]="rowFormColumnsConfig"></rappider-row-form>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Columns:
+              </div>
+              <div class="input">
+                <rappider-row-form [(ngModel)]="tempCrudFormItem.columns"
+                                   [hasInitialEmptyRow]="true"
+                                   addButtonText="Save Options"
+                                   [addButtonVisible]="true"
+                                   [columns]="rowFormColumnsConfig"></rappider-row-form>
+              </div>
+            </div>
+            <div class="control-area">
+              <div class="label">
+                Check:
+              </div>
+              <div class="input">
+                <rappider-row-form [(ngModel)]="tempCrudFormItem.check"
+                                   [hasInitialEmptyRow]="true"
+                                   addButtonText="Save Options"
+                                   [addButtonVisible]="true"
+                                   [columns]="checkboxTableCheckConfig"></rappider-row-form>
+              </div>
+            </div>
+
+            <div class="control-area">
+              <div class="label">
+                Row Title Placement:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.rowTitlePlacement"
+                                 [options]="rowTitlePlacement"></rappider-select>
+              </div>
+            </div>
+
+            <div class="control-area">
+              <div class="label">
+                Column Title Placement:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.columnTitlePlacement"
+                                 [options]="columnTitlePlacement"></rappider-select>
+              </div>
+            </div>
+
+            <div class="control-area">
+              <div class="label">
+                Item Placement:
+              </div>
+              <div class="input">
+                <rappider-select [(ngModel)]="tempCrudFormItem.itemPlacement"
+                                 [options]="itemPlacement"></rappider-select>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="control-area">
+            <div class="label">
+              Placeholder:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.placeholder"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Description:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.description"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Mask:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.mask"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Hint:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.hint"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Label Icon:
+            </div>
+            <div class="input">
+              <rappider-icon-picker-two [(ngModel)]="tempCrudFormItem.labelIcon"></rappider-icon-picker-two>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Index:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.index"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Validators:
+            </div>
+            <div class="input">
+              <rappider-validators-pattern-tab-list-wrapper [ngModel]="getTransformValidators(tempCrudFormItem.validators)" (ngModelChange)="onValidatorsChange($event)"></rappider-validators-pattern-tab-list-wrapper>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Css Class:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.cssClass"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Css Style:
+            </div>
+            <div class="input">
+              <rappider-json-array [(ngModel)]="tempCrudFormItem.cssStyle"
+                                   [previewFieldNames]="tempCrudFormItem.cssStyle"></rappider-json-array>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Visible:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudFormItem.visible"></rappider-switch>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Loading:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudFormItem.loading"></rappider-switch>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Metadata:
+            </div>
+            <div class="input">
+              <rappider-row-form [(ngModel)]="tempCrudFormItem.metadata"></rappider-row-form>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Default:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.default"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Is Linked:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudFormItem.isLinked"></rappider-switch>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Linked Field Name:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.linkedFieldName"></rappider-textbox>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Link Data Transformation Function:
+            </div>
+            <div class="input">
+              <rappider-code-editor
+                                    [(ngModel)]="tempCrudFormItem.linkDataTransformationFunction"></rappider-code-editor>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Settings:
+            </div>
+            <div class="input">
+              <rappider-code-editor [(ngModel)]="tempCrudFormItem.settings"></rappider-code-editor>
+            </div>
+          </div>
+
+          <div class="control-area">
+            <div class="label">
+              Section:
+            </div>
+            <div class="input">
+              <rappider-textbox [(ngModel)]="tempCrudFormItem.section"></rappider-textbox>
+            </div>
+          </div>
+
+          <div class="control-area">
+            <div class="label">
+              Column Width: (%)
+            </div>
+            <div class="input">
+                 <rappider-number-input [(ngModel)]="tempCrudFormItem.columnWidth"></rappider-number-input>
+                 <rappider-icon [name]="'fa-regular fa-circle-info'" [color]="'var(--primary-color)'"></rappider-icon> Vertical layout is recommended for optimal use of this column width feature.
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Show Required Sign:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudFormItem.showRequiredSign"></rappider-switch>
+            </div>
+          </div>
+          <div class="control-area">
+            <div class="label">
+              Show Colon Sign:
+            </div>
+            <div class="input">
+              <rappider-switch [(ngModel)]="tempCrudFormItem.showColonSign"></rappider-switch>
+            </div>
+          </div>
+        </div>
+        <div class="button-area">
+          <div class="save-button">
+            <rappider-button text="Save"
+                             type="primary"
+                             (click)="onSave()"></rappider-button>
+          </div>
+          &nbsp;
+          <div class="cancel-button">
+            <rappider-button *ngIf="!isFirstInitialize"
+                             text="Cancel"
+                             (click)="onEditCancel()"></rappider-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #descriptionTmpl>
+      <div class="short-description">
+        <div class="drag-icon">
+          <i class="fa-regular fa-grip-lines"></i>
+        </div>
+        <div class="description">
+          <span><b>Title:</b></span> {{configItem.title}},
+          <span><b>Field Name:</b></span> {{configItem.fieldName}},
+          <span><b>Type:</b></span> {{configItem.type}}
+        </div>
+      </div>
+      <div class="delete-edit-buttons">
+        <div class="edit-button">
+          <rappider-button [icon]="editButtonIconConfig"
+                           size="small"
+                           (click)="onEditItemClick(i)"></rappider-button>
+        </div>
+        &nbsp;
+        <div>
+          <rappider-button [icon]="deleteButtonIconConfig"
+                           size="small"
+                           popconfirmTitle="Are you sure to delete this item?"
+                           [emitWithoutPopconfirm]="false"
+                           (confirm)="onDeleteItemClick(i)">
+          </rappider-button>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</div>
+
+<small *ngIf="hasAddError"
+       class="error">You're already adding an item. Please save before adding a new one.</small>
+<rappider-button text="Add Form Element"
+                 (click)="addFormControl()"></rappider-button>

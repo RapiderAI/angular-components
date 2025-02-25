@@ -1,4 +1,6 @@
 .alert {
+  padding: 0px !important;
+  margin: 0px !important;
 
   &::ng-deep {
     .alert-description-start {
@@ -19,10 +21,10 @@
     }
 
     .ant-alert {
-      // padding: var(--alert-padding);
-      // height: var(--alert-height);
-      // min-height: var(--alert-min-height);
-      // max-height: var(--alert-max-height);
+      padding: var(--alert-padding);
+      height: var(--alert-height);
+      min-height: var(--alert-min-height);
+      max-height: var(--alert-max-height);
     }
   }
 }

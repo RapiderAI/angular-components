@@ -1,24 +1,29 @@
-import { Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { ColorConfig } from '@rapider/angular-components/core/style';
 import { TypographyConfig } from '@rapider/angular-components/core/typography';
+import { CommonModule } from '@angular/common';
 import { HeadingType } from '@rapider/angular-components/core/heading';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'rpd-heading',
+  selector: 'rappider-heading',
   standalone: true,
   imports: [
     CommonModule,
+    TranslateModule,
   ],
   templateUrl: './heading.component.html',
   styleUrls: ['./heading.component.scss']
 })
-export class HeadingComponent {
-  type = input<HeadingType | string>(HeadingType.H1);
-  content = input<string>();
-  typography = input<TypographyConfig>();
-  colorSettings = input<ColorConfig>();
-  className = input<string>();
+export class RappiderHeadingComponent {
 
-  protected readonly HeadingType = HeadingType;
+  /* heading type  */
+  @Input() type: HeadingType;
+  /* content  */
+  @Input() content: string;
+  @Input() typography: TypographyConfig;
+  @Input() colorSettings: ColorConfig;
+  @Input() className: string;
+
+  HeadingType = HeadingType;
 }

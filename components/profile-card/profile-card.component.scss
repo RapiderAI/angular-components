@@ -1,0 +1,34 @@
+.profile-tag {
+  display: flex;
+  justify-content: space-between;
+
+  ::ng-deep rappider-icon {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--margin-2x);
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  padding-top: var(--margin-2x);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.image {
+  margin-bottom: var(--margin-2x);
+}
+
+hr {
+  margin-top: var(--margin-3x) !important;
+  margin-bottom: var(--margin-3x) !important;
+  border-top: var(--border-size-x) solid var(--primary-border-color) !important;
+}

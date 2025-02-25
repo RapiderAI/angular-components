@@ -1,0 +1,42 @@
+<div *ngIf="!customMax; else customMaxTemplate"
+     class="slider slider-flex">
+  <span *ngIf="isRangeVisible">{{ minRange }}</span>
+  <div [ngClass]="{'nz-slider-flex': isRangeVisible}"><nz-slider
+               [class]="handleType === SliderHandleType.Stick ? 'stick' : null"
+               nz-input
+               [(ngModel)]="value"
+               [nzRange]="dualMode"
+               [nzMin]="minRange"
+               [nzMax]="maxRange"
+               [nzStep]="step"
+               [nzMarks]="marks"
+               [nzDisabled]="readonly"
+               [ngClass]="cssClass"
+               [ngStyle]="cssStyle"
+               (nzOnAfterChange)="onBlur()"></nz-slider></div><span *ngIf="isRangeVisible">{{ maxRange }}</span>
+</div>
+
+<ng-template #customMaxTemplate>
+  <div class="slider custom-max slider-flex">
+    <span *ngIf="isRangeVisible">{{ minRange }}</span>
+    <div [ngClass]="{'nz-slider-flex': isRangeVisible}"><nz-slider [ngClass]="{'nz-slider-flex': isRangeVisible}"
+                 [class]="handleType === SliderHandleType.Stick ? 'stick' : null"
+                 nz-input
+                 [(ngModel)]="value"
+                 [nzRange]="dualMode"
+                 [nzMin]="minRange"
+                 [nzMax]="maxRange"
+                 [nzStep]="step"
+                 [nzMarks]="marks"
+                 [nzDisabled]="readonly"
+                 [ngClass]="cssClass"
+                 [ngStyle]="cssStyle"
+                 (nzOnAfterChange)="onBlur()"></nz-slider></div><span *ngIf="isRangeVisible">{{ maxRange }}</span>
+    <rappider-button *ngIf="buttonVisibility"
+                     [icon]="{name: !textboxVisibility ? 'fa-solid fa-plus' : 'fa-solid fa-minus'}"
+                     (confirm)="changeVisibility($event)"></rappider-button>
+    <rappider-number-input *ngIf="textboxVisibility"
+                           [ngModel]="maxRange"
+                           (valueChange)="customMaxChange($event)"></rappider-number-input>
+  </div>
+</ng-template>

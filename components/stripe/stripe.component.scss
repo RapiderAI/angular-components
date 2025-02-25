@@ -1,0 +1,32 @@
+.form-element {
+  margin-bottom: var(--margin-2x);
+  width: 100%;
+}
+
+.form-item {
+  display: block;
+  margin-bottom: 0;
+}
+
+.form-label {
+  margin-bottom: 0;
+
+  &::ng-deep {
+    label {
+      padding-bottom: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.promotion-code {
+  display: flex;
+  gap: var(--margin-2x);
+}
+
+.apply-button {
+  flex: unset !important;
+}

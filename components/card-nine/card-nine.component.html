@@ -1,0 +1,30 @@
+<div class="card-nine">
+  <div *ngFor="let item of items"
+       class="card-container"
+       [style.background]="item?.backgroundColor">
+    <div *ngIf="item?.icon?.name"
+         class="icon-container">
+      <rappider-icon [name]="item?.icon.name"
+                     [type]="item?.icon.type"
+                     [theme]="item?.icon.theme"
+                     [color]="item?.icon.color"
+                     [size]="item?.icon.size"></rappider-icon>
+    </div>
+    <div *ngIf="item?.text"
+         class="content">
+      <rappider-text [content]="item?.text.content"
+                     [textMode]="item?.text.textMode"
+                     [text]="item?.text.text"
+                     [typography]="item?.text.typography"
+                     [colorSettings]="item?.text.colorSettings"></rappider-text>
+    </div>
+    <div *ngIf="item?.description"
+         class="content-description">
+      <rappider-text [content]="item?.description.content"
+                     [textMode]="item?.description.textMode"
+                     [text]="item?.description.text"
+                     [typography]="item?.description.typography"
+                     [colorSettings]="item?.description.colorSettings"></rappider-text>
+    </div>
+  </div>
+</div>

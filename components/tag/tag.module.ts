@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { TagComponent } from './tag.component';
+import { RappiderTagComponent } from './tag.component';
 
 @NgModule({
-  exports: [TagComponent],
-  imports: [TagComponent]
+  imports: [RappiderTagComponent],
+  exports: [RappiderTagComponent],
 })
-export class TagModule { }
+export class RappiderTagModule { }

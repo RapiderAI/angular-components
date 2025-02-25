@@ -3,13 +3,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "strict": false,
     "paths": {
-      "@rapider/angular-components": [
-        "./dist"
-      ]
+      "@rapider/angular-components/*": [
+        "components/*"
+      ],
     },
-    "outDir": "./dist/out-tsc",
-    "strict": true,
+    "outDir": "./dist/app",
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -27,6 +31,8 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictInputTypes": false,
+    "strictAttributeTypes": false
   }
 }

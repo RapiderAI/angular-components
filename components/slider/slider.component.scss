@@ -1,0 +1,95 @@
+.stick {
+  .ant-slider-handle {
+    width: 1px;
+    border-radius: 0px;
+  }
+
+  .ant-slider-dot {
+    border-radius: 0px;
+    width: 0.2rem;
+    margin-left: 0px;
+  }
+}
+
+.slider::ng-deep {
+
+  min-width: var(--width-2x);
+
+  .ant-slider {
+    &:hover {
+      .ant-slider-rail {
+        background-color: var(--slider-background-color);
+      }
+
+      .ant-slider-track {
+        background-color: var(--slider-border-color);
+      }
+
+      .ant-slider-handle {
+        border-color: var(--slider-border-color);
+      }
+    }
+  }
+
+  .ant-slider-rail {
+    background-color: var(--slider-background-color);
+  }
+
+  .ant-slider-track {
+    background-color: var(--slider-border-color);
+  }
+
+  .ant-slider-handle {
+    border-color: var(--slider-border-color);
+
+    &:focus {
+      border-color: var(--slider-border-color);
+    }
+  }
+
+  .ant-slider-dot {
+    border-color: var(--slider-background-color);
+  }
+
+  .ant-slider-dot-active {
+    border-color: var(--slider-border-color);
+  }
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.custom-max {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+
+  nz-slider {
+    width: 75%;
+  }
+
+  rappider-number-input {
+    width: 15%;
+  }
+
+  rappider-button {
+    width: fit-content;
+  }
+}
+
+.slider-flex {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--margin-2x);
+
+  div {
+    width: 100%;
+  }
+}
+
+.nz-slider-flex {
+  flex-grow: 1;
+}

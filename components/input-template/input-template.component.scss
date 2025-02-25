@@ -1,0 +1,38 @@
+.input-template-component {
+  display: flex;
+  align-items: center;
+
+  .input-area {
+    width: 100%;
+
+    .checkbox-area {
+      display: flex;
+    }
+
+    .object-and-array-area {
+      height: 200px;
+    }
+  }
+
+  .actions-dropdown {
+    ::ng-deep {
+      rappider-icon {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .null-tag {
+    border-radius: var(--border-radius-2x);
+    border: var(--border-size-x) var(--secondary-border-color) solid;
+
+    ::ng-deep nz-tag {
+      margin: var(--margin-x);
+    }
+  }
+}
+
+.switch-value {
+  margin-left: var(--margin-2x);
+}

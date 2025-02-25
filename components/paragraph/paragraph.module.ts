@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ParagraphComponent } from './paragraph.component';
+import { RappiderParagraphComponent } from './paragraph.component';
 
 @NgModule({
-  exports: [ParagraphComponent],
-  imports: [ParagraphComponent]
+  imports: [RappiderParagraphComponent],
+  exports: [RappiderParagraphComponent]
 })
-export class ParagraphModule { }
+export class RappiderParagraphModule { }

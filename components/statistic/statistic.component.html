@@ -1,0 +1,13 @@
+<nz-statistic [nzValue]="value"
+              [nzTitle]="title"
+              [nzPrefix]="iconTmpl"
+              [nzSuffix]="suffix"></nz-statistic>
+<ng-template #iconTmpl>
+  <rappider-icon *ngIf="icon?.name"
+                 [name]="icon.name"
+                 [type]="icon.type"
+                 [theme]="icon.theme"
+                 [color]="icon.color"
+                 [size]="icon.size">
+  </rappider-icon>
+</ng-template>

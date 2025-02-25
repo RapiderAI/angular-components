@@ -1,0 +1,24 @@
+.radio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rappider-radio-group {
+  display: inline-flex;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.rappider-radio-group-vertical {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.rappider-radio-group-horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

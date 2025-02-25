@@ -1,1 +1,0 @@
-export type ButtonSize = 'large' | 'default' | 'small';

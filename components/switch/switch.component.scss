@@ -1,0 +1,16 @@
+.switch {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-2x);
+
+  &::ng-deep {
+    .ant-switch {
+      background-color: var(--switch-background-color, var(--component-header-background-color));
+      box-shadow: var(--switch-box-shadow);
+    }
+
+    .ant-switch-checked {
+      background-color: var(--switch-checked-background-color, var(--primary-color));
+    }
+  }
+}

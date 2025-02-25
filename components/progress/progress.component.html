@@ -1,0 +1,25 @@
+<ng-container *ngIf="!isSuccessPercentVisible;else successPercentVisibleTemplate">
+  <nz-progress class="progress"
+               [nzPercent]="percent"
+               [nzStatus]="status"
+               [nzShowInfo]="showInfo"
+               [nzType]="type || 'line'"
+               [nzSize]="size"
+               [nzWidth]="width"
+               [nzStrokeWidth]="strokeWidth"
+               [style.padding]="paddingSettings?.all"
+               [style.margin]="marginSettings?.all"></nz-progress>
+</ng-container>
+<ng-template #successPercentVisibleTemplate>
+  <nz-progress class="progress"
+               [nzPercent]="percent"
+               [nzStatus]="status"
+               [nzShowInfo]="showInfo"
+               [nzType]="type || 'line'"
+               [nzSuccessPercent]="successPercent"
+               [nzSize]="size"
+               [nzWidth]="width"
+               [nzStrokeWidth]="strokeWidth"
+               [style.padding]="paddingSettings?.all"
+               [style.margin]="marginSettings?.all"></nz-progress>
+</ng-template>

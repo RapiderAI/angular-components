@@ -1,0 +1,28 @@
+<div *ngIf="buttons"
+     [ngClass]="direction === Direction.Horizontal ? 'button-list-horizontal' : 'button-list-vertical'"
+     [style.gap]="gap">
+  <div *ngFor="let button of buttons">
+    <rappider-button [key]="button.key"
+                     [text]="button.text"
+                     [type]="button.type"
+                     [shape]="button.shape"
+                     [size]="button.size"
+                     [transparent]="button.transparent"
+                     [loading]="button.loading"
+                     [block]="button.block"
+                     [disabled]="button.disabled"
+                     [icon]="button.icon"
+                     [colorType]="button.colorType"
+                     [popconfirmTitle]="button.popconfirmTitle"
+                     [emitWithoutPopconfirm]="button.emitWithoutPopconfirm"
+                     [iconPlacement]="button.iconPlacement"
+                     [formButtonType]="button?.formButtonType"
+                     [borderSettings]="button?.borderSettings"
+                     [customSizeSettings]="button?.customSizeSettings"
+                     [customColorSettings]="button?.customColorSettings"
+                     [shadowSettings]="button?.shadowSettings"
+                     [paddingSettings]="button?.paddingSettings"
+                     [marginSettings]="button?.marginSettings"
+                     (confirm)="onButtonClick(button)"></rappider-button>
+  </div>
+</div>

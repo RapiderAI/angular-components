@@ -1,0 +1,63 @@
+::ng-deep .ant-spin-dot-item {
+  background-color: var(--spin-background-color) !important;
+}
+
+.visible {
+  ::ng-deep {
+    .ant-spin-blur {
+      opacity: 1;
+    }
+
+    .ant-spin-blur::after {
+      opacity: 0.4;
+    }
+  }
+}
+
+.slightly-transparent {
+  ::ng-deep {
+    .ant-spin-blur {
+      opacity: 0.75;
+    }
+
+    .ant-spin-blur::after {
+      opacity: 0.4;
+    }
+  }
+}
+
+.moderately-transparent {
+  ::ng-deep {
+    .ant-spin-blur {
+      opacity: 0.5;
+    }
+
+    .ant-spin-blur::after {
+      opacity: 0.4;
+    }
+  }
+}
+
+.highly-transparent {
+  ::ng-deep {
+    .ant-spin-blur {
+      opacity: 0.25;
+    }
+
+    .ant-spin-blur::after {
+      opacity: 0.4;
+    }
+  }
+}
+
+.invisible {
+  ::ng-deep {
+    .ant-spin-blur {
+      opacity: 0;
+    }
+
+    .ant-spin-blur::after {
+      opacity: 0.4;
+    }
+  }
+}

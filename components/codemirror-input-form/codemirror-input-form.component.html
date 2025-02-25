@@ -1,0 +1,31 @@
+<div class="codemirror-input-form">
+  <div class="codemirror-container">
+    <rappider-code-editor [(ngModel)]="codemirrorContent"
+                          [settings]="codemirrorSettings"
+                          [title]="codemirrorTitle"
+                          [additionalButtons]="codemirrorAdditionalButtons"
+                          (additionalButtonClick)="onAdditionalButtonClick($event)"></rappider-code-editor>
+  </div>
+
+  <div class="button-container">
+    <rappider-button [text]="button.text"
+                     [type]="button.type"
+                     [shape]="button.shape"
+                     [key]="button.key"
+                     [size]="button.size"
+                     [transparent]="button.transparent"
+                     [loading]="button.loading"
+                     [block]="button.block"
+                     [disabled]="button.disabled"
+                     [colorType]="button.colorType"
+                     [icon]="button.icon"
+                     [formButtonType]="button?.formButtonType"
+                     [borderSettings]="button?.borderSettings"
+                     [customSizeSettings]="button?.customSizeSettings"
+                     [customColorSettings]="button?.customColorSettings"
+                     [shadowSettings]="button?.shadowSettings"
+                     [paddingSettings]="button?.paddingSettings"
+                     [marginSettings]="button?.marginSettings"
+                     (click)="onButtonClick()"></rappider-button>
+  </div>
+</div>
