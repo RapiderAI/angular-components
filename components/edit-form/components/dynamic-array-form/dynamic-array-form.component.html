@@ -29,11 +29,6 @@
                     (cancelClick)="closeJsonArrayModal(i)"
                     (okClick)="onValueChange(i)">
       <div class="generated-form">
-        <rappider-crud-view-edit-form [config]="modal.config"
-                                      [data]="formData"
-                                      (formValueChange)="onFormValueChange($event, i)"
-                                      (objectModalOpen)="onObjectFieldModalOpen($event, i)">
-        </rappider-crud-view-edit-form>
       </div>
     </rappider-modal>
   </div>
