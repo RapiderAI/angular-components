@@ -23,7 +23,7 @@ export class NotificationService {
     );
   }
 
-  createNotificationTemplate(template: TemplateRef<{}>, options: NzNotificationDataOptions = {}) {
+  createNotificationTemplate(template, options: NzNotificationDataOptions = {}) {
     this.nzNotificationService.template(template, { nzPlacement: DEFAULT_NOTIFICATION_PLACEMENT, ...options });
   }
 
