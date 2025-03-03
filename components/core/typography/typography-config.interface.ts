@@ -13,4 +13,5 @@ export interface TypographyConfig {
   textDecoration?: string;
   textTransform?: string;
   userSelect?: string;
+  whiteSpace?: string;
 }
