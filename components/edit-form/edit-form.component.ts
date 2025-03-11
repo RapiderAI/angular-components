@@ -91,7 +91,6 @@ import { RappiderCheckboxListComponent } from '@rapider/angular-components/check
 import { RappiderTreeSelectComponent } from '@rapider/angular-components/tree-select';
 import { RappiderAssetPickerComponent } from '@rapider/angular-components/asset-picker';
 import { CodeEditorComponent } from '@rapider/angular-components/code-editor';
-import { RappiderDynamicArrayFormComponent } from './components/dynamic-array-form/dynamic-array-form.component';
 
 const monacoEditorConfig = {
   baseUrl: 'assets',
@@ -155,7 +154,6 @@ const monacoEditorConfig = {
     RappiderButtonComponent,
     RappiderIconComponent,
     RappiderRowSelectComponent,
-    RappiderDynamicArrayFormComponent,
     RappiderInlineRowFormModule,
     RappiderIconPickerTwoComponent,
     RappiderPhoneNumberInputComponent,

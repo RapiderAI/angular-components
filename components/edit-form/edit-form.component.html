@@ -855,34 +855,6 @@
             class="form-item-divider">
       </ng-container>
 
-      <!-- DYNAMIC ARRAY FORM COMPONENT -->
-      <ng-container *ngIf="item.type === ComponentTypes.DynamicArrayForm">
-        <nz-form-item>
-          <!-- label -->
-          <ng-container *ngTemplateOutlet="label;context:{
-                title: item.title,
-                icon: item.labelIcon,
-                iconTooltipTitle: item.labelIconTooltipTitle,
-                menu: item.menu,
-                size: labelComponentSize,
-                required: item.showRequiredSign,
-                colon: item.showColonSign,
-                hint: item.hint,
-                formLayout: formLayout,
-                labelDescription: item.labelDescription
-              }"></ng-container>
-          <rappider-dynamic-array-form rappiderUnwrapTag
-                                       [formControlName]="item.fieldName"
-                                       [dynamicFormInputs]="item.dynamicFormInputs"
-                                       [defaultInputs]="item.defaultInputs"
-                                       (blur)="onFieldBlur(item.fieldName)"
-                                       (ngModelChange)="onFieldValueChange(item, $event)">
-          </rappider-dynamic-array-form>
-        </nz-form-item>
-        <hr *ngIf="dividerMode"
-            class="form-item-divider">
-      </ng-container>
-
       <!-- JSON ARRAY COMPONENT -->
       <ng-container *ngIf="item.type === ComponentTypes.JsonArray">
         <nz-form-item>
