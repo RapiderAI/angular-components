@@ -18,7 +18,8 @@
                          [color]="icon.color"
                          [size]="icon.size"></rappider-icon>
           <span *ngIf="text && icon?.name">&nbsp;&nbsp;</span>
-          <rappider-text [content]="text?.content"
+          <rappider-text *ngIf="text"
+                         [content]="text?.content"
                          [text]="text?.text"
                          [textMode]="text?.textMode"
                          [typography]="text?.typography"
@@ -36,7 +37,8 @@
            [ngStyle]="cssStyle"
            [disabled]="disabled"
            (ngModelChange)="onValueChange($event)">
-      <rappider-text [content]="text?.content"
+      <rappider-text *ngIf="text"
+                     [content]="text?.content"
                      [text]="text?.text"
                      [textMode]="text?.textMode"
                      [typography]="text?.typography"
