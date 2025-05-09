@@ -1,0 +1,76 @@
+<div class="section">
+  <div class="card-container">
+    <div class="card-area">
+      <div *ngIf="heading"
+           class="card-header">
+        <rappider-heading [content]="heading.content"
+                          [type]="heading.type"></rappider-heading>
+      </div>
+      <div class="card-body">
+        <ng-container *ngFor="let item of data">
+          <div class="user-area">
+            <div *ngIf="item.avatar">
+              <rappider-avatar [iconName]="item.avatar.iconName"
+                               [text]="item.avatar.text"
+                               [shape]="item.avatar.shape"
+                               [imageUrl]="item.avatar.imageUrl"
+                               [altText]="item.avatar.altText"
+                               [cssStyle]="item.avatar.cssStyle"
+                               [size]="item.avatar.size"
+                               [borderSettings]="item.avatar.borderSettings"
+                               [sizeSettings]="item.avatar.sizeSettings"
+                               [colorSettings]="item.avatar.colorSettings"
+                               [boxShadowSettings]="item.avatar.boxShadowSettings"
+                               [paddingSettings]="item.avatar.paddingSettings"
+                               [marginSettings]="item.avatar.marginSettings"
+                               [description]="item.avatar.description"></rappider-avatar>
+            </div>
+            <div class="message-area">
+              <div class="name-area">
+                <div *ngIf="item.name"
+                     class="name">
+                  <rappider-text [content]="item.name.content"
+                                 [textMode]="item.name.textMode"
+                                 [text]="item.name.text"
+                                 [typography]="item.name.typography"
+                                 [colorSettings]="item.name.colorSettings"></rappider-text>
+                </div>
+                <div *ngIf="item.time"
+                     class="text-muted">
+                  <rappider-label [content]="item.time"></rappider-label>
+                </div>
+              </div>
+              <div *ngIf="item.message">
+                <rappider-paragraph [content]="item?.message?.content"
+                                    [colorSettings]="item?.message?.colorSettings"></rappider-paragraph>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="card-footer">
+        <div *ngIf="button"
+             class="button-area">
+          <rappider-button [type]="button.type"
+                           [text]="button.text"
+                           [shape]="button.shape"
+                           [size]="button.size"
+                           [transparent]="button.transparent"
+                           [loading]="button.loading"
+                           [block]="button.block"
+                           [disabled]="button.disabled"
+                           [colorType]="button.colorType"
+                           [formButtonType]="button?.formButtonType"
+                           [borderSettings]="button?.borderSettings"
+                           [customSizeSettings]="button?.customSizeSettings"
+                           [customColorSettings]="button?.customColorSettings"
+                           [shadowSettings]="button?.shadowSettings"
+                           [paddingSettings]="button?.paddingSettings"
+                           [marginSettings]="button?.marginSettings"
+                           [icon]="button.icon"></rappider-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
