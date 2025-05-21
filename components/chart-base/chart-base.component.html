@@ -1,0 +1,25 @@
+<ng-container *ngIf="uniqueId && content">
+  <div class="content-container">
+    <div *ngIf="content.title"
+         class="title-container">
+      <rappider-heading [type]="content.title.type"
+                        [content]="content.title.content"></rappider-heading>
+    </div>
+    <div *ngIf="content.subtitle"
+         class="subtitle-container">
+      <rappider-heading [type]="content.subtitle.type"
+                        [content]="content.subtitle.content"></rappider-heading>
+    </div>
+    <div *ngIf="content.description"
+         class="subtitle-container">
+      <rappider-paragraph [content]="content.description.content"
+                          [typography]="content.description.typography"
+                          [colorSettings]="content.description.colorSettings"></rappider-paragraph>
+    </div>
+  </div>
+
+  <div [id]="uniqueId"
+       class="chart-container"
+       [style.width]="'100%'"
+       [style.height]="config['height'] || defaultHeight"></div>
+</ng-container>
