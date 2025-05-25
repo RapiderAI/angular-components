@@ -23,4 +23,5 @@ export interface SelectComponentConfig {
   paddingSettings?: SpacingConfig;
   marginSettings?: SpacingConfig;
   size?: InputSize;
+  optionMode?: string;
 }

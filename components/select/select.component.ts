@@ -71,7 +71,7 @@ export class RappiderSelectComponent implements OnInit, OnChanges, ControlValueA
   @Input() marginSettings: SpacingConfig;
   @Input() size: InputSize;
   @Input() customTemplate: TemplateRef<any>;
-  @Input() optionMode: SelectOptionMode = SelectOptionMode.Options;
+  @Input() optionMode: SelectOptionMode | undefined;
   @Input() initialValue: any;
 
   SelectOptionMode = SelectOptionMode;
@@ -156,7 +156,7 @@ export class RappiderSelectComponent implements OnInit, OnChanges, ControlValueA
   }
 
   initDefaults() {
-    if (this.optionMode == null) {
+    if (!this.optionMode) {
       if (this.options?.length) {
         this.optionMode = SelectOptionMode.Options;
       } else if (this.grouppedOptions?.length) {
