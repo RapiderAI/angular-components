@@ -1,6 +1,5 @@
 <div [ngClass]="settings.mode === SelectMode.OptionSelect ? 'option-select' : 'select'">
   <ng-container *ngIf="optionMode === SelectOptionMode.GrouppedOptions">
-    groups
     <nz-select [(ngModel)]="value"
                [nzAllowClear]="settings?.allowClear"
                [nzMode]="(settings.mode === SelectMode.OptionSelect ? SelectMode.OptionSelect : settings?.mode) || DEFAULT_MODE"
