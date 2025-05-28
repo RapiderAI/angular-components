@@ -253,30 +253,40 @@ export class RappiderListGridComponent implements OnInit, OnChanges {
     return moment(dateValue).format('MMMM Do YYYY, h:mm:ss a');
   }
 
-  filterData(searchText: string) {
-    let data;
-    if (searchText && searchText.trim() && this.config
-      && (this.config.defaultSearchField || this.config.multipleSearchFields)) {
-      this.searchText = searchText;
-      if (this.config.multipleSearchFields && this.config.multipleSearchFields.length > 0) {
-        data = this.data?.filter(item =>
-          this.config.multipleSearchFields.some(field => item[field]?.toLowerCase().includes(searchText.trim().toLowerCase()))
-        );
-      } else if (this.config.defaultSearchField) {
-        data = this.data?.filter(item =>
-          item[this.config.defaultSearchField]?.toLowerCase().includes(searchText.trim().toLowerCase())
+  filterData(searchText: string): void {
+    if (!searchText?.trim() || (!this.config?.multipleSearchFields?.length && !this.config?.defaultSearchField)) {
+      this.displayedData = [...(this.data || [])];
+      this.searchTextChange.emit(searchText);
+      return;
+    }
+
+    this.searchText = searchText;
+
+    const searchTerms = searchText.trim().toLowerCase().split(' ');
+
+    const filteredData = this.data?.filter(item => {
+      if (this.config?.multipleSearchFields?.length > 0) {
+        return searchTerms.every(term =>
+          this.config.multipleSearchFields.some(field => {
+            const value = item[field]?.toString().toLowerCase();
+            return value?.includes(term);
+          })
         );
       }
-    } else {
-      this.searchText = null;
-      data = [...(this.data || [])];
-    }
+      if (this.config?.defaultSearchField) {
+        return searchTerms.every(term => {
+          const value = item[this.config.defaultSearchField]?.toString().toLowerCase();
+          return value?.includes(term);
+        });
+      }
+      return true;
+    }) || [];
+
+
     this.searchTextChange.emit(searchText);
-    if (this.sort) {
-      this.displayedData = orderBy(data, this.sort.key, this.sort.value);
-    } else {
-      this.displayedData = data;
-    }
+    this.displayedData = this.sort
+      ? orderBy(filteredData, this.sort.key, this.sort.value)
+      : filteredData;
   }
 
   clearSearchText() {
