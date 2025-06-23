@@ -1,6 +1,6 @@
 {
   "name": "@rapider/angular-components",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.12",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
